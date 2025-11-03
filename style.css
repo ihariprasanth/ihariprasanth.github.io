@@ -230,15 +230,25 @@ body {
     color: var(--primary-color);
 }
 
+/* MODIFICATION HERE:
+Removed background, flex properties. Added overflow: hidden.
+*/
 .profile-card {
     width: 300px;
     height: 300px;
-    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
     border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
     animation: float 3s ease-in-out infinite;
+    overflow: hidden; /* This makes the image circular */
+    box-shadow: var(--shadow);
+}
+
+/* NEW RULE ADDED:
+This styles the <img> tag you added.
+*/
+.profile-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Prevents image from stretching */
 }
 
 @keyframes float {
@@ -246,10 +256,15 @@ body {
     50% { transform: translateY(-20px); }
 }
 
+/* MODIFICATION HERE:
+This rule is no longer needed, so it has been removed.
+*/
+/*
 .code-icon {
     font-size: 4rem;
     color: white;
 }
+*/
 
 .scroll-indicator {
     position: absolute;
