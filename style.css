@@ -537,4 +537,40 @@ a {
   transform: translateY(-3px);
 }
 
+/* 🌟 Permanent Blue Glow Line */
+.glow-line {
+  position: fixed;
+  left: 230px;
+  top: 0;
+  width: 2px;
+  height: 100%;
+  background: var(--primary-color);
+  box-shadow: 0 0 25px var(--primary-color), 0 0 45px rgba(37, 99, 235, 0.8);
+  z-index: 50;
+}
+
+/* Centering About Section */
+.about {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 5rem 0;
+}
+
+.about-card {
+  background: var(--bg-secondary);
+  border: 2px solid rgba(37, 99, 235, 0.4);
+  border-radius: 1rem;
+  padding: 2.5rem;
+  width: 80%;
+  max-width: 700px;
+  box-shadow: 0 0 20px rgba(37, 99, 235, 0.3);
+  transition: all 0.3s ease;
+}
+
+.about-card:hover {
+  box-shadow: 0 0 30px var(--primary-color);
+}
 
