@@ -1,3 +1,22 @@
+@font-face {
+  font-family: "SF Pro Display";
+  src: url("fonts/SF-Pro-Display-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "SF Pro Display";
+  src: url("fonts/SF-Pro-Display-Bold.ttf") format("truetype");
+  font-weight: bold;
+  font-style: normal;
+}
+
+body {
+  font-family: "SF Pro Display", "SF Pro Text", -apple-system, BlinkMacSystemFont,
+               "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
 /* Reset and Base Styles */
 * {
   margin: 0;
@@ -548,4 +567,7 @@ a {
   box-shadow: 0 0 25px var(--primary-color), 0 0 60px rgba(37, 99, 235, 0.8);
   z-index: 100;
   border-radius: 2px;
+}
+* {
+  font-family: inherit;
 }
