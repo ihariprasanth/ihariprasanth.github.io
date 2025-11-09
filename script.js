@@ -34,35 +34,6 @@ document.querySelectorAll(".skill-category").forEach(skill => {
   skillObserver.observe(skill);
 });
 
-// 🔢 Animate Counter Numbers (About Stats)
-const counterObserver = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      const counters = entry.target.querySelectorAll(".stat-number");
-      counters.forEach(counter => {
-        const target = parseInt(counter.getAttribute("data-count"));
-        const duration = 2000; // 2 seconds
-        const step = target / (duration / 16);
-        let current = 0;
-
-        const timer = setInterval(() => {
-          current += step;
-          if (current >= target) {
-            counter.textContent = target + "+";
-            clearInterval(timer);
-          } else {
-            counter.textContent = Math.floor(current);
-          }
-        }, 16);
-      });
-    }
-  });
-}, observerOptions);
-
-document.querySelectorAll(".about-stats").forEach(stats => {
-  counterObserver.observe(stats);
-});
-
 // 💫 Page Load Fade-in Animation
 window.addEventListener("load", () => {
   document.body.style.opacity = "0";
@@ -73,7 +44,7 @@ window.addEventListener("load", () => {
 });
 
 
-// 🔥 Home Button Triple Click - Toggle Blue/Red Neon Mode
+// 🔥 Home Button Triple Click — Full Neon Red Mode Toggle
 let homeClickCount = 0;
 let lastClickTime = 0;
 let isRedMode = false;
@@ -84,7 +55,7 @@ if (homeButton) {
   homeButton.addEventListener("click", () => {
     const now = Date.now();
 
-    // Count only quick clicks (within 2 seconds)
+    // Count quick clicks (within 2 seconds)
     if (now - lastClickTime < 2000) {
       homeClickCount++;
     } else {
@@ -93,27 +64,53 @@ if (homeButton) {
 
     lastClickTime = now;
 
-    // Trigger toggle when 3 quick clicks
+    // Trigger after 3 quick clicks
     if (homeClickCount === 3) {
       if (!isRedMode) {
-        // 🔴 Switch to Red Mode
+        // 🔴 Activate Red Mode
         document.documentElement.style.setProperty('--primary-color', '#ff0033');
         document.documentElement.style.setProperty('--secondary-color', '#ff3366');
         document.documentElement.style.setProperty('--border-color', '#ff0033');
         document.documentElement.style.setProperty('--shadow', '0 0 25px rgba(255,0,0,0.6)');
-        console.log("🔴 Red Mode Activated");
+        document.documentElement.style.setProperty('--text-light', '#ffcccc');
+
+        // Sidebar + Buttons + Glow update
+        document.querySelectorAll('.sidebar-links a, .btn, .view-cert-btn, .verify-cert-btn, .social-link, .connect-box, .education-item, .skill-category, .glow-line').forEach(el => {
+          el.style.transition = 'all 0.4s ease';
+          el.style.boxShadow = '0 0 20px rgba(255,0,0,0.8)';
+          el.style.borderColor = '#ff0033';
+        });
+
+        // Change highlight color (like your name)
+        document.querySelectorAll('.highlight').forEach(el => {
+          el.style.color = '#ff0033';
+        });
+
+        console.log("🔥 RED MODE ACTIVATED");
         isRedMode = true;
       } else {
-        // 🔵 Switch Back to Original Blue Mode
+        // 🔵 Restore Blue Mode
         document.documentElement.style.setProperty('--primary-color', '#2563eb');
         document.documentElement.style.setProperty('--secondary-color', '#7c3aed');
         document.documentElement.style.setProperty('--border-color', '#2563eb');
-        document.documentElement.style.setProperty('--shadow', '0 0 25px rgba(37,99,235,0.5)');
-        console.log("🔵 Blue Mode Restored");
+        document.documentElement.style.setProperty('--shadow', '0 0 25px rgba(37,99,235,0.6)');
+        document.documentElement.style.setProperty('--text-light', '#b5b5b5');
+
+        document.querySelectorAll('.sidebar-links a, .btn, .view-cert-btn, .verify-cert-btn, .social-link, .connect-box, .education-item, .skill-category, .glow-line').forEach(el => {
+          el.style.transition = 'all 0.4s ease';
+          el.style.boxShadow = '0 0 20px rgba(37,99,235,0.7)';
+          el.style.borderColor = '#2563eb';
+        });
+
+        document.querySelectorAll('.highlight').forEach(el => {
+          el.style.color = '#2563eb';
+        });
+
+        console.log("🔵 BLUE MODE RESTORED");
         isRedMode = false;
       }
 
-      // Reset counter after activation
+      // Reset click count
       homeClickCount = 0;
     }
   });
