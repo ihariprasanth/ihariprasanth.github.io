@@ -71,14 +71,15 @@ body {
 }
 
 .logo a {
-    font-size: 1.5rem;
+    font-size: 1.6rem;
     font-weight: 700;
     text-decoration: none;
-    color: var(--text-color);
+    color: var(--primary-color);
+    text-transform: uppercase;
 }
 
 .logo span {
-    color: var(--primary-color);
+    display: none; /* hide .dev */
 }
 
 .nav-links {
@@ -162,13 +163,14 @@ body {
 }
 
 .hero-text h1 {
-    font-size: 3.5rem;
+    font-size: 3rem; /* reduced slightly to keep one line */
     font-weight: 700;
     margin-bottom: 1rem;
 }
 
 .highlight {
     color: var(--primary-color);
+    white-space: nowrap;
 }
 
 .typing-text {
@@ -230,41 +232,32 @@ body {
     color: var(--primary-color);
 }
 
-/* MODIFICATION HERE:
-Removed background, flex properties. Added overflow: hidden.
-*/
+/* Profile Image */
 .profile-card {
     width: 300px;
     height: 300px;
     border-radius: 50%;
     animation: float 3s ease-in-out infinite;
-    overflow: hidden; /* This makes the image circular */
-    box-shadow: var(--shadow);
+    overflow: hidden;
+    box-shadow: 0 0 25px var(--primary-color);
+    transition: var(--transition);
 }
 
-/* NEW RULE ADDED:
-This styles the <img> tag you added.
-*/
 .profile-card img {
     width: 100%;
     height: 100%;
-    object-fit: cover; /* Prevents image from stretching */
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.profile-card:hover {
+    box-shadow: 0 0 40px var(--primary-color);
 }
 
 @keyframes float {
     0%, 100% { transform: translateY(0px); }
     50% { transform: translateY(-20px); }
 }
-
-/* MODIFICATION HERE:
-This rule is no longer needed, so it has been removed.
-*/
-/*
-.code-icon {
-    font-size: 4rem;
-    color: white;
-}
-*/
 
 .scroll-indicator {
     position: absolute;
@@ -496,6 +489,75 @@ section {
     color: var(--secondary-color);
 }
 
+/* Education Section */
+.education {
+    background: var(--bg-secondary);
+    padding: 5rem 0;
+}
+
+.education-content {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.education-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 2rem;
+    margin-bottom: 3rem;
+    padding: 2rem;
+    background: var(--bg-color);
+    border-radius: 1rem;
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+}
+
+.education-item:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-lg);
+}
+
+.edu-icon {
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    color: white;
+    flex-shrink: 0;
+}
+
+.edu-details h3 {
+    color: var(--text-color);
+    margin-bottom: 0.5rem;
+    font-size: 1.3rem;
+}
+
+.institution {
+    color: var(--primary-color);
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+}
+
+.duration {
+    color: var(--text-light);
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+}
+
+.achievement {
+    color: var(--text-light);
+    font-style: italic;
+    margin-top: 0.5rem;
+    padding: 0.5rem;
+    background: var(--bg-secondary);
+    border-radius: 0.5rem;
+    border-left: 3px solid var(--primary-color);
+}
+
 /* Contact Section */
 .contact-content {
     display: grid;
@@ -640,7 +702,7 @@ section {
     }
 
     .hero-text h1 {
-        font-size: 2.5rem;
+        font-size: 2.4rem;
     }
 
     .about-content {
@@ -657,88 +719,5 @@ section {
 
     .hero-buttons {
         justify-content: center;
-    }
-}
-/* Add this to your existing CSS file */
-
-/* Education Section */
-.education {
-    background: var(--bg-secondary);
-    padding: 5rem 0;
-}
-
-.education-content {
-    max-width: 800px;
-    margin: 0 auto;
-}
-
-.education-item {
-    display: flex;
-    align-items: flex-start;
-    gap: 2rem;
-    margin-bottom: 3rem;
-    padding: 2rem;
-    background: var(--bg-color);
-    border-radius: 1rem;
-    box-shadow: var(--shadow);
-    transition: var(--transition);
-}
-
-.education-item:hover {
-    transform: translateY(-5px);
-    box-shadow: var(--shadow-lg);
-}
-
-.edu-icon {
-    width: 60px;
-    height: 60px;
-    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.5rem;
-    color: white;
-    flex-shrink: 0;
-}
-
-.edu-details h3 {
-    color: var(--text-color);
-    margin-bottom: 0.5rem;
-    font-size: 1.3rem;
-}
-
-.institution {
-    color: var(--primary-color);
-    font-weight: 600;
-    margin-bottom: 0.25rem;
-}
-
-.duration {
-    color: var(--text-light);
-    font-size: 0.9rem;
-    margin-bottom: 0.5rem;
-}
-
-.achievement {
-    color: var(--text-light);
-    font-style: italic;
-    margin-top: 0.5rem;
-    padding: 0.5rem;
-    background: var(--bg-secondary);
-    border-radius: 0.5rem;
-    border-left: 3px solid var(--primary-color);
-}
-
-/* Responsive Design for Education */
-@media (max-width: 768px) {
-    .education-item {
-        flex-direction: column;
-        text-align: center;
-        gap: 1rem;
-    }
-    
-    .edu-icon {
-        align-self: center;
     }
 }
