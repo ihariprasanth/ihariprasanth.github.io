@@ -1,11 +1,10 @@
-/* Reset */
+/* Reset and Base Styles */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-/* Variables */
 :root {
   --primary-color: #2563eb;
   --secondary-color: #7c3aed;
@@ -24,6 +23,7 @@ body {
   background-color: var(--bg-color);
   line-height: 1.6;
   overflow-x: hidden;
+  transition: var(--transition);
 }
 
 /* Sidebar */
@@ -82,7 +82,7 @@ body {
   transform: translateY(-3px);
 }
 
-/* Global Section Alignment */
+/* Page Layout */
 .content-align {
   margin-left: 230px;
   padding: 80px;
@@ -268,13 +268,13 @@ body {
 }
 
 .skill-item {
-  margin-bottom: 1rem;
+  margin-bottom: 1.2rem;
 }
 
 .skill-item span {
   display: block;
   text-align: left;
-  margin-bottom: 0.3rem;
+  margin-bottom: 0.4rem;
 }
 
 .skill-bar {
@@ -315,19 +315,28 @@ body {
   box-shadow: 0 0 25px var(--primary-color);
 }
 
-/* Contact Section */
+/* 🌟 Contact Section */
 .contact-content {
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
-  gap: 1.5rem;
+  gap: 2.5rem;
+  padding: 4rem 0;
 }
 
 .contact-info h3 {
   font-size: 1.8rem;
-  margin-bottom: 0.8rem;
+  margin-bottom: 1.2rem;
   color: var(--text-color);
+}
+
+.contact-info p {
+  color: var(--text-light);
+  font-size: 1rem;
+  max-width: 600px;
+  margin: 0 auto 1rem auto;
+  line-height: 1.7;
 }
 
 .contact-method {
@@ -335,29 +344,41 @@ body {
   align-items: center;
   justify-content: center;
   gap: 1rem;
-  margin-bottom: 1.2rem;
+  margin: 1.8rem 0;
 }
 
 .contact-method i {
   color: var(--primary-color);
-  font-size: 1.5rem;
+  font-size: 1.8rem;
+  min-width: 35px;
 }
 
-/* Social Icons */
+.contact-method h4 {
+  font-size: 1.1rem;
+  color: var(--text-color);
+  margin-bottom: 0.3rem;
+}
+
+.contact-method p {
+  color: var(--text-light);
+  font-size: 1rem;
+}
+
+/* 🌟 Centered Social Icons */
 .social-container {
   display: flex;
   justify-content: center;
-  gap: 1.2rem;
-  margin-top: 2rem;
+  gap: 1.5rem;
+  margin-top: 2.5rem;
 }
 
 .social-link {
-  width: 55px;
-  height: 55px;
+  width: 60px;
+  height: 60px;
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 10px;
+  border-radius: 12px;
   background: var(--bg-secondary);
   border: 2px solid rgba(37, 99, 235, 0.5);
   box-shadow: 0 0 15px rgba(37, 99, 235, 0.3);
@@ -365,9 +386,17 @@ body {
 }
 
 .social-link:hover {
+  transform: translateY(-5px);
   border-color: var(--primary-color);
-  transform: translateY(-4px);
   box-shadow: 0 0 25px var(--primary-color);
+}
+
+.social-link i,
+.social-link img {
+  font-size: 1.6rem;
+  color: white;
+  width: 26px;
+  height: 26px;
 }
 
 .leetcode-icon {
@@ -410,4 +439,9 @@ body {
   .profile-card {
     margin-top: 2rem;
   }
+}
+
+/* Remove underline globally */
+a {
+  text-decoration: none !important;
 }
