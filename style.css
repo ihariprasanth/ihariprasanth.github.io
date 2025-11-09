@@ -134,13 +134,14 @@ body {
   margin: 0 auto;
   padding: 0 2rem;
 }
+
 .hero-image {
   flex: 1;
   display: flex;
-  justify-content: flex-start; /* push it closer to center */
+  justify-content: flex-start;
   align-items: center;
   position: relative;
-  left: -60px; /* 🔹 This moves it closer to the text */
+  left: -60px;
 }
 
 .hero-text {
@@ -157,7 +158,6 @@ body {
 .highlight {
   color: var(--primary-color);
 }
-
 
 .hero-description {
   font-size: 1.2rem;
@@ -195,15 +195,16 @@ body {
   transform: translateY(-3px);
 }
 
-/* 🌟 Floating Profile Image — shifted left for perfect alignment */
+/* Floating Profile Image */
 .profile-card {
-  width: 300px;
-  height: 300px;
+  width: 280px;
+  height: 280px;
   border-radius: 50%;
   overflow: hidden;
   box-shadow: 0 0 25px var(--primary-color);
   animation: float 3s ease-in-out infinite, glowPulse 3s ease-in-out infinite;
-  transition: all 0.4s ease;
+  position: relative;
+  right: -40px;
 }
 
 .profile-card img {
@@ -212,7 +213,6 @@ body {
   object-fit: cover;
   border-radius: 50%;
 }
-
 
 @keyframes glowPulse {
   0%, 100% { box-shadow: 0 0 25px var(--primary-color); }
@@ -240,17 +240,6 @@ body {
 .about-card:hover {
   box-shadow: 0 0 25px var(--primary-color);
   transform: translateY(-5px);
-}
-
-.about-stats {
-  display: flex;
-  justify-content: space-around;
-  margin-top: 1.2rem;
-}
-
-.stat-number {
-  font-size: 1.5rem;
-  color: var(--primary-color);
 }
 
 /* Skills Section */
@@ -287,7 +276,6 @@ body {
   color: var(--text-color);
 }
 
-/* Neon Skill Bars */
 .skill-bar {
   height: 10px;
   background: rgba(255, 255, 255, 0.1);
@@ -328,7 +316,7 @@ body {
   box-shadow: 0 0 25px var(--primary-color);
 }
 
-/* 🌟 Contact Section */
+/* Contact Section (Clean Version) */
 .contact-content {
   display: flex;
   flex-direction: column;
@@ -338,50 +326,39 @@ body {
   padding: 3rem 0;
 }
 
-/* 🔹 Neon Border for Let's Connect */
+/* Neon Border for Let's Connect */
 .connect-box {
   background: var(--bg-secondary);
   border: 2px solid rgba(37, 99, 235, 0.4);
   border-radius: 1rem;
-  padding: 2.2rem 2.5rem;
+  padding: 2rem 2.5rem;
   width: 80%;
   max-width: 700px;
-  box-shadow: 0 0 15px rgba(37, 99, 235, 0.2);
+  box-shadow: 0 0 15px rgba(37, 99, 235, 0.3);
   transition: all 0.4s ease;
+  margin: 2rem auto;
 }
 
 .connect-box:hover {
   box-shadow: 0 0 25px var(--primary-color);
   border-color: var(--primary-color);
-  transform: translateY(-5px);
 }
 
 .contact-info h3 {
   font-size: 1.8rem;
-  margin-bottom: 1rem;
+  margin-bottom: 1.2rem;
   color: var(--text-color);
 }
 
 .contact-info p {
   color: var(--text-light);
   font-size: 1rem;
-  max-width: 600px;
-  margin: 0 auto 1rem auto;
+  margin-bottom: 1.2rem;
   line-height: 1.7;
 }
 
 .contact-method {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 1rem;
-  margin: 1.5rem 0;
-}
-
-.contact-method i {
-  color: var(--primary-color);
-  font-size: 1.8rem;
-  min-width: 35px;
+  margin: 1rem 0;
 }
 
 .contact-method h4 {
@@ -392,15 +369,14 @@ body {
 
 .contact-method p {
   color: var(--text-light);
-  font-size: 1rem;
 }
 
-/* 🌟 Centered Social Icons */
+/* Centered Social Icons */
 .social-container {
   display: flex;
   justify-content: center;
   gap: 1.5rem;
-  margin-top: 2rem;
+  margin-top: 1.5rem;
 }
 
 .social-link {
@@ -428,12 +404,6 @@ body {
   color: white;
   width: 26px;
   height: 26px;
-}
-
-.leetcode-icon {
-  width: 26px;
-  height: 26px;
-  filter: invert(1);
 }
 
 /* Footer */
@@ -476,105 +446,3 @@ body {
 a {
   text-decoration: none !important;
 }
-/* 🌟 Neon Glowing View Certificate Button */
-.view-cert-btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
-  margin-top: 1rem;
-  padding: 0.7rem 1.8rem;
-  color: white;
-  background: transparent;
-  border: 2px solid var(--primary-color);
-  border-radius: 10px;
-  font-weight: 600;
-  text-decoration: none;
-  transition: var(--transition);
-  box-shadow: 0 0 15px rgba(37, 99, 235, 0.3);
-}
-
-.view-cert-btn i {
-  font-size: 1.2rem;
-  color: var(--primary-color);
-}
-
-.view-cert-btn:hover {
-  background: var(--primary-color);
-  color: white;
-  box-shadow: 0 0 25px var(--primary-color);
-  transform: translateY(-3px);
-}
-
-/* 🌟 Adjust Floating Image Position */
-.profile-card {
-  width: 280px;
-  height: 280px;
-  border-radius: 50%;
-  overflow: hidden;
-  box-shadow: 0 0 25px var(--primary-color);
-  animation: float 3s ease-in-out infinite, glowPulse 3s ease-in-out infinite;
-  position: relative;
-  right: -40px; /* 🔹 moved left slightly (was -80px before) */
-}
-
-/* 🔹 Verify Certificate (Udemy) Button */
-.verify-cert-btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
-  margin-top: 1rem;
-  padding: 0.7rem 1.8rem;
-  color: white;
-  background: transparent;
-  border: 2px solid #00ffb7;
-  border-radius: 10px;
-  font-weight: 600;
-  text-decoration: none;
-  transition: var(--transition);
-  box-shadow: 0 0 15px rgba(0, 255, 183, 0.3);
-}
-
-.verify-cert-btn i {
-  color: #00ffb7;
-  font-size: 1.2rem;
-}
-
-.verify-cert-btn:hover {
-  background: #00ffb7;
-  color: #111;
-  box-shadow: 0 0 25px #00ffb7;
-  transform: translateY(-3px);
-}
-
-/* 🌟 View Certificate (Deloitte) Button */
-.view-cert-btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
-  margin-top: 1rem;
-  padding: 0.7rem 1.8rem;
-  color: white;
-  background: transparent;
-  border: 2px solid var(--primary-color);
-  border-radius: 10px;
-  font-weight: 600;
-  text-decoration: none;
-  transition: var(--transition);
-  box-shadow: 0 0 15px rgba(37, 99, 235, 0.3);
-}
-
-.view-cert-btn i {
-  font-size: 1.2rem;
-  color: var(--primary-color);
-}
-
-.view-cert-btn:hover {
-  background: var(--primary-color);
-  color: white;
-  box-shadow: 0 0 25px var(--primary-color);
-  transform: translateY(-3px);
-}
-
