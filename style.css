@@ -17,15 +17,15 @@
     --transition: all 0.3s ease;
 }
 
-/* ✅ True Matte Dark Mode */
-[data-theme="dark"] {
+/* ✅ Updated Dark Theme (Matte Black Style) */
+html[data-theme="dark"], body[data-theme="dark"] {
     --primary-color: #3b82f6;
     --secondary-color: #8b5cf6;
     --text-color: #f5f5f5;
     --text-light: #cccccc;
-    --bg-color: rgb(23, 23, 23);        /* Main dark background */
-    --bg-secondary: rgb(33, 33, 33);    /* Slightly lighter section */
-    --border-color: rgb(60, 60, 60);
+    --bg-color: rgb(23, 23, 23);
+    --bg-secondary: rgb(33, 33, 33);
+    --border-color: rgb(50, 50, 50);
     --shadow: 0 4px 10px rgba(0, 0, 0, 0.6);
 }
 
@@ -77,6 +77,10 @@ body {
     text-decoration: none;
     color: var(--primary-color);
     text-transform: uppercase;
+}
+
+.logo span {
+    display: none;
 }
 
 .nav-links {
@@ -255,18 +259,34 @@ body {
 
 /* Glow Animation */
 @keyframes glowPulse {
-    0%, 100% {
-        box-shadow: 0 0 25px var(--primary-color);
-    }
-    50% {
-        box-shadow: 0 0 45px var(--primary-color);
-    }
+    0%, 100% { box-shadow: 0 0 25px var(--primary-color); }
+    50% { box-shadow: 0 0 45px var(--primary-color); }
 }
 
 /* Floating Animation */
 @keyframes float {
     0%, 100% { transform: translateY(0px); }
     50% { transform: translateY(-20px); }
+}
+
+/* Scroll Indicator */
+.scroll-indicator {
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    animation: bounce 2s infinite;
+}
+
+.scroll-indicator a {
+    color: var(--text-color);
+    font-size: 1.5rem;
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% { transform: translateY(0) translateX(-50%); }
+    40% { transform: translateY(-10px) translateX(-50%); }
+    60% { transform: translateY(-5px) translateX(-50%); }
 }
 
 /* Sections */
@@ -297,6 +317,61 @@ section {
     background: var(--bg-secondary);
 }
 
+.about-content {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 4rem;
+    align-items: center;
+}
+
+.about-text h3 {
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+    color: var(--text-color);
+}
+
+.about-text p {
+    margin-bottom: 1.5rem;
+    color: var(--text-light);
+    line-height: 1.8;
+}
+
+.about-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.stat {
+    text-align: center;
+}
+
+.stat-number {
+    display: block;
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    margin-bottom: 0.5rem;
+}
+
+.stat-label {
+    color: var(--text-light);
+    font-size: 0.9rem;
+}
+
+.image-placeholder {
+    width: 250px;
+    height: 250px;
+    background: var(--border-color);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 4rem;
+    color: var(--text-light);
+}
+
 /* Skills Section */
 .skills-grid {
     display: grid;
@@ -304,16 +379,237 @@ section {
     gap: 2rem;
 }
 
+.skill-category h3 {
+    margin-bottom: 1.5rem;
+    color: var(--text-color);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.skill-item {
+    margin-bottom: 1.5rem;
+}
+
+.skill-item span {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: var(--text-color);
+    font-weight: 500;
+}
+
+.skill-bar {
+    height: 8px;
+    background: var(--border-color);
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.skill-progress {
+    height: 100%;
+    background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+    border-radius: 4px;
+    width: 0;
+    transition: width 1s ease-in-out;
+}
+
 /* Projects Section */
 .projects {
     background: var(--bg-secondary);
 }
 
-/* Contact Section */
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2rem;
+}
+
+.project-card {
+    background: var(--bg-color);
+    border-radius: 1rem;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+}
+
+.project-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+}
+
+/* 🌐 Contact Section (Premium UI) */
+.contact {
+    background: var(--bg-secondary);
+    padding: 6rem 0;
+}
+
 .contact-content {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 4rem;
+    grid-template-columns: 1.1fr 1fr;
+    gap: 3rem;
+    align-items: stretch;
+}
+
+.contact-info {
+    background: var(--bg-color);
+    border-radius: 1rem;
+    padding: 3rem;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    transition: var(--transition);
+}
+
+.contact-info:hover {
+    box-shadow: 0 0 25px rgba(59, 130, 246, 0.4);
+}
+
+.contact-info h3 {
+    font-size: 2rem;
+    color: var(--text-color);
+    margin-bottom: 1rem;
+}
+
+.contact-info p {
+    color: var(--text-light);
+    margin-bottom: 2rem;
+    line-height: 1.7;
+}
+
+.contact-methods {
+    margin-bottom: 2rem;
+}
+
+.contact-method {
+    display: flex;
+    align-items: flex-start;
+    gap: 1.2rem;
+    margin-bottom: 1.8rem;
+}
+
+.contact-method i {
+    font-size: 1.6rem;
+    color: var(--primary-color);
+    background: rgba(59, 130, 246, 0.1);
+    padding: 0.8rem;
+    border-radius: 50%;
+}
+
+.contact-method h4 {
+    color: var(--text-color);
+    margin-bottom: 0.3rem;
+    font-size: 1rem;
+}
+
+.contact-method p {
+    color: var(--text-light);
+    font-size: 0.95rem;
+}
+
+.social-links {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.social-link {
+    width: 45px;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: var(--bg-secondary);
+    color: var(--primary-color);
+    font-size: 1.2rem;
+    transition: var(--transition);
+    box-shadow: 0 0 10px rgba(59, 130, 246, 0.1);
+}
+
+.social-link:hover {
+    background: var(--primary-color);
+    color: #fff;
+    transform: translateY(-4px);
+    box-shadow: 0 0 20px rgba(59, 130, 246, 0.4);
+}
+
+/* ✉️ Contact Form */
+.contact-form {
+    background: var(--bg-color);
+    padding: 2.5rem;
+    border-radius: 1rem;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.25);
+    transition: var(--transition);
+}
+
+.contact-form:hover {
+    box-shadow: 0 0 30px rgba(59, 130, 246, 0.3);
+}
+
+.form-group {
+    position: relative;
+    margin-bottom: 2rem;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 1rem;
+    background: var(--bg-secondary);
+    border: 2px solid transparent;
+    border-radius: 0.6rem;
+    color: var(--text-color);
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    outline: none;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 10px rgba(59, 130, 246, 0.4);
+    background: var(--bg-color);
+}
+
+.form-group label {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    color: var(--text-light);
+    transition: 0.3s ease;
+    pointer-events: none;
+    font-size: 1rem;
+}
+
+.form-group input:focus + label,
+.form-group textarea:focus + label,
+.form-group input:valid + label,
+.form-group textarea:valid + label {
+    top: -0.7rem;
+    left: 0.8rem;
+    font-size: 0.8rem;
+    background: var(--bg-color);
+    padding: 0 0.4rem;
+    color: var(--primary-color);
+}
+
+/* 📩 Send Button */
+.contact-form .btn {
+    width: 100%;
+    font-size: 1rem;
+    padding: 1rem;
+    border-radius: 0.6rem;
+    transition: var(--transition);
+    font-weight: 600;
+}
+
+.contact-form .btn.primary {
+    background: var(--primary-color);
+    color: white;
+    box-shadow: 0 0 10px rgba(59, 130, 246, 0.3);
+}
+
+.contact-form .btn.primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 0 25px rgba(59, 130, 246, 0.5);
 }
 
 /* Footer */
@@ -325,22 +621,18 @@ section {
 }
 
 /* Responsive */
-@media (max-width: 768px) {
-    .hamburger {
-        display: flex;
-    }
-    .nav-links {
-        display: none;
-    }
-    .hero-content {
+@media (max-width: 900px) {
+    .contact-content {
         grid-template-columns: 1fr;
-        text-align: center;
     }
-    .profile-card {
-        right: 0;
+
+    .contact-info,
+    .contact-form {
         margin: 0 auto;
+        width: 90%;
     }
-    .hero-text h1 {
-        font-size: 2.4rem;
+
+    .contact-form {
+        margin-top: 2rem;
     }
 }
