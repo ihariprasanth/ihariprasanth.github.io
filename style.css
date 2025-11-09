@@ -334,16 +334,45 @@ section {
     font-size: 0.9rem;
 }
 
-.image-placeholder {
-    width: 250px;
-    height: 250px;
-    background: var(--border-color);
-    border-radius: 50%;
+/* ✅ Skills (restored old style) */
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.skill-category h3 {
+    margin-bottom: 1.5rem;
+    color: var(--text-color);
     display: flex;
     align-items: center;
-    justify-content: center;
-    font-size: 4rem;
-    color: var(--text-light);
+    gap: 0.5rem;
+}
+
+.skill-item {
+    margin-bottom: 1.5rem;
+}
+
+.skill-item span {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: var(--text-color);
+    font-weight: 500;
+}
+
+.skill-bar {
+    height: 8px;
+    background: var(--border-color);
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.skill-progress {
+    height: 100%;
+    background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+    border-radius: 4px;
+    width: 0;
+    transition: width 1s ease-in-out;
 }
 
 /* 🌟 Education Section - Neon Centered Style */
@@ -395,18 +424,11 @@ section {
     margin-bottom: 0.4rem;
 }
 
-@media (max-width: 768px) {
-    .education-item {
-        width: 95%;
-        padding: 1.5rem;
-    }
-}
-
-/* Contact Section */
+/* ✅ Contact Section (restored original layout) */
 .contact-content {
-    display: flex;
-    justify-content: center;
-    text-align: center;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
 }
 
 .contact-info h3 {
@@ -421,26 +443,21 @@ section {
     line-height: 1.6;
 }
 
-.contact-methods {
-    margin-bottom: 2rem;
-}
-
 .contact-method {
     display: flex;
     align-items: center;
     gap: 1rem;
     margin-bottom: 1.5rem;
-    justify-content: center;
 }
 
 .contact-method i {
     font-size: 1.5rem;
     color: var(--primary-color);
+    width: 40px;
 }
 
 .social-links {
     display: flex;
-    justify-content: center;
     gap: 1rem;
 }
 
@@ -453,6 +470,7 @@ section {
     background: var(--bg-secondary);
     color: var(--text-color);
     border-radius: 50%;
+    text-decoration: none;
     transition: var(--transition);
 }
 
@@ -477,6 +495,7 @@ section {
     .hero-content { grid-template-columns: 1fr; text-align: center; }
     .profile-card { right: 0; margin: 0 auto; }
     .about-content { grid-template-columns: 1fr; }
+    .contact-content { grid-template-columns: 1fr; }
     .about-stats { grid-template-columns: 1fr; }
     .hero-buttons { justify-content: center; }
 }
