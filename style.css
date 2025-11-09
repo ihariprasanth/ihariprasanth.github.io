@@ -55,7 +55,7 @@ body {
   list-style: none;
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: 1.4rem;
   align-items: center;
 }
 
@@ -85,15 +85,15 @@ body {
 /* Page Layout */
 .content-align {
   margin-left: 230px;
-  padding: 80px;
+  padding: 60px;
   text-align: center;
 }
 
 /* Section Titles */
 .section-title {
-  font-size: 2.3rem;
+  font-size: 2.2rem;
   font-weight: 700;
-  margin-bottom: 2rem;
+  margin-bottom: 1.3rem;
   position: relative;
   letter-spacing: 0.5px;
 }
@@ -106,7 +106,7 @@ body {
   background: var(--primary-color);
   left: 50%;
   transform: translateX(-50%);
-  bottom: -10px;
+  bottom: -8px;
 }
 
 /* Hero Section */
@@ -169,7 +169,7 @@ body {
 .hero-buttons {
   display: flex;
   gap: 1rem;
-  margin-top: 1.8rem;
+  margin-top: 1.5rem;
 }
 
 .btn {
@@ -226,7 +226,7 @@ body {
   background: var(--bg-secondary);
   border: 2px solid rgba(37, 99, 235, 0.4);
   border-radius: 1rem;
-  padding: 2.5rem;
+  padding: 2.3rem;
   width: 80%;
   max-width: 700px;
   margin: 2rem auto;
@@ -242,11 +242,11 @@ body {
 .about-stats {
   display: flex;
   justify-content: space-around;
-  margin-top: 1.5rem;
+  margin-top: 1.2rem;
 }
 
 .stat-number {
-  font-size: 1.6rem;
+  font-size: 1.5rem;
   color: var(--primary-color);
 }
 
@@ -262,41 +262,16 @@ body {
   max-width: 700px;
   background: var(--bg-secondary);
   border-radius: 1rem;
-  padding: 2.5rem;
+  padding: 2rem;
   border: 2px solid rgba(37, 99, 235, 0.4);
   box-shadow: 0 0 15px rgba(37, 99, 235, 0.15);
-}
-
-.skill-item {
-  margin-bottom: 1.2rem;
-}
-
-.skill-item span {
-  display: block;
-  text-align: left;
-  margin-bottom: 0.4rem;
-}
-
-.skill-bar {
-  width: 100%;
-  height: 8px;
-  background: #333;
-  border-radius: 5px;
-  overflow: hidden;
-}
-
-.skill-progress {
-  height: 100%;
-  width: 0;
-  background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
-  transition: width 1s ease-in-out;
 }
 
 /* Education Section */
 .education-content {
   display: flex;
   flex-direction: column;
-  gap: 2.5rem;
+  gap: 2rem;
   align-items: center;
 }
 
@@ -304,7 +279,7 @@ body {
   background: var(--bg-secondary);
   border: 2px solid rgba(37, 99, 235, 0.4);
   border-radius: 1rem;
-  padding: 2.5rem;
+  padding: 2rem;
   width: 80%;
   max-width: 700px;
   box-shadow: 0 0 15px rgba(37, 99, 235, 0.15);
@@ -321,13 +296,31 @@ body {
   flex-direction: column;
   align-items: center;
   text-align: center;
-  gap: 2.5rem;
-  padding: 4rem 0;
+  gap: 2rem;
+  padding: 3rem 0;
+}
+
+/* 🔹 Neon Border for Let's Connect */
+.connect-box {
+  background: var(--bg-secondary);
+  border: 2px solid rgba(37, 99, 235, 0.4);
+  border-radius: 1rem;
+  padding: 2.2rem 2.5rem;
+  width: 80%;
+  max-width: 700px;
+  box-shadow: 0 0 15px rgba(37, 99, 235, 0.2);
+  transition: all 0.4s ease;
+}
+
+.connect-box:hover {
+  box-shadow: 0 0 25px var(--primary-color);
+  border-color: var(--primary-color);
+  transform: translateY(-5px);
 }
 
 .contact-info h3 {
   font-size: 1.8rem;
-  margin-bottom: 1.2rem;
+  margin-bottom: 1rem;
   color: var(--text-color);
 }
 
@@ -344,7 +337,7 @@ body {
   align-items: center;
   justify-content: center;
   gap: 1rem;
-  margin: 1.8rem 0;
+  margin: 1.5rem 0;
 }
 
 .contact-method i {
@@ -369,7 +362,7 @@ body {
   display: flex;
   justify-content: center;
   gap: 1.5rem;
-  margin-top: 2.5rem;
+  margin-top: 2rem;
 }
 
 .social-link {
