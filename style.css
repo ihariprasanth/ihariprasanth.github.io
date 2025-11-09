@@ -8,26 +8,13 @@
 :root {
   --primary-color: #2563eb;
   --secondary-color: #7c3aed;
-  --text-color: #1f2937;
-  --text-light: #6b7280;
-  --bg-color: #ffffff;
-  --bg-secondary: #f8fafc;
-  --border-color: #e5e7eb;
-  --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-  --transition: all 0.3s ease;
-}
-
-/* ✅ Updated Dark Theme (Matte Black Style) */
-html[data-theme="dark"],
-body[data-theme="dark"] {
-  --primary-color: #3b82f6;
-  --secondary-color: #8b5cf6;
   --text-color: #f5f5f5;
   --text-light: #cccccc;
   --bg-color: rgb(23, 23, 23);
   --bg-secondary: rgb(33, 33, 33);
   --border-color: rgb(50, 50, 50);
   --shadow: 0 4px 10px rgba(0, 0, 0, 0.6);
+  --transition: all 0.3s ease;
 }
 
 /* Global */
@@ -54,14 +41,10 @@ body {
   position: fixed;
   top: 0;
   width: 100%;
-  background: rgba(255, 255, 255, 0.95);
+  background: rgba(23, 23, 23, 0.95);
   backdrop-filter: blur(10px);
   z-index: 1000;
   transition: var(--transition);
-}
-
-[data-theme="dark"] #navbar {
-  background: rgba(23, 23, 23, 0.95);
 }
 
 .nav-container {
@@ -99,75 +82,13 @@ body {
   color: var(--primary-color);
 }
 
-.nav-links a::after {
-  content: "";
-  position: absolute;
-  bottom: -5px;
-  left: 0;
-  width: 0;
-  height: 2px;
-  background: var(--primary-color);
-  transition: var(--transition);
-}
-
-.nav-links a:hover::after {
-  width: 100%;
-}
-
-/* 🌗 iOS Toggle Switch */
-.switch {
-  position: relative;
-  display: inline-block;
-  width: 52px;
-  height: 28px;
-}
-
-.switch input {
-  opacity: 0;
-  width: 0;
-  height: 0;
-}
-
-.slider {
-  position: absolute;
-  cursor: pointer;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: #ccc;
-  transition: 0.4s;
-  border-radius: 34px;
-}
-
-.slider:before {
-  position: absolute;
-  content: "";
-  height: 22px;
-  width: 22px;
-  left: 3px;
-  bottom: 3px;
-  background-color: white;
-  transition: 0.4s;
-  border-radius: 50%;
-}
-
-input:checked + .slider {
-  background-color: var(--primary-color);
-  box-shadow: 0 0 10px var(--primary-color);
-}
-
-input:checked + .slider:before {
-  transform: translateX(24px);
-}
-
 /* Hero Section */
 .hero {
   min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(135deg, var(--bg-color) 0%, var(--bg-secondary) 100%);
+  background: var(--bg-color);
   position: relative;
 }
 
@@ -203,14 +124,8 @@ input:checked + .slider:before {
 }
 
 @keyframes typing {
-  0%,
-  100% {
-    width: 0;
-  }
-  50%,
-  70% {
-    width: 100%;
-  }
+  0%, 100% { width: 0; }
+  50%, 70% { width: 100%; }
 }
 
 .hero-description {
@@ -277,23 +192,13 @@ input:checked + .slider:before {
 }
 
 @keyframes glowPulse {
-  0%,
-  100% {
-    box-shadow: 0 0 25px var(--primary-color);
-  }
-  50% {
-    box-shadow: 0 0 45px var(--primary-color);
-  }
+  0%, 100% { box-shadow: 0 0 25px var(--primary-color); }
+  50% { box-shadow: 0 0 45px var(--primary-color); }
 }
 
 @keyframes float {
-  0%,
-  100% {
-    transform: translateY(0px);
-  }
-  50% {
-    transform: translateY(-20px);
-  }
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-20px); }
 }
 
 /* Sections */
@@ -319,9 +224,34 @@ section {
   background: var(--primary-color);
 }
 
-/* About */
+/* 🌟 ABOUT SECTION - Neon Card Style Like Education */
 .about {
+  background: var(--bg-color);
+  text-align: center;
+}
+
+.about-cards {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+}
+
+.about-card {
   background: var(--bg-secondary);
+  border: 2px solid rgba(37, 99, 235, 0.4);
+  border-radius: 1rem;
+  padding: 2rem 2.5rem;
+  width: 80%;
+  max-width: 700px;
+  box-shadow: 0 0 15px rgba(37, 99, 235, 0.15);
+  transition: all 0.4s ease;
+}
+
+.about-card:hover {
+  transform: translateY(-5px);
+  border-color: var(--primary-color);
+  box-shadow: 0 0 30px rgba(37, 99, 235, 0.5);
 }
 
 /* Skills Section */
@@ -365,7 +295,7 @@ section {
   transition: width 1s ease-in-out;
 }
 
-/* 🌟 Education Section - Neon Centered Style */
+/* 🌟 Education Section */
 .education {
   background: var(--bg-color);
   text-align: center;
@@ -419,41 +349,6 @@ section {
   font-size: 1.5rem;
   color: var(--primary-color);
   width: 40px;
-}
-
-/* Footer */
-.footer {
-  background: var(--bg-secondary);
-  text-align: center;
-  padding: 2rem 0;
-  color: var(--text-light);
-}
-
-/* Responsive */
-@media (max-width: 768px) {
-  .hero-content {
-    grid-template-columns: 1fr;
-    text-align: center;
-  }
-
-  .profile-card {
-    right: 0;
-    margin: 0 auto;
-  }
-
-  .contact-content {
-    grid-template-columns: 1fr;
-  }
-
-  .hero-buttons {
-    justify-content: center;
-  }
-}
-
-/* ✅ Force dark theme background fix */
-html[data-theme="dark"],
-body[data-theme="dark"] {
-  background-color: rgb(23, 23, 23) !important;
 }
 
 /* 🌟 Social Links with Neon Border */
@@ -515,3 +410,36 @@ body[data-theme="dark"] {
   filter: invert(1);
 }
 
+/* Footer */
+.footer {
+  background: var(--bg-secondary);
+  text-align: center;
+  padding: 2rem 0;
+  color: var(--text-light);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .hero-content {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .profile-card {
+    right: 0;
+    margin: 0 auto;
+  }
+
+  .contact-content {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-buttons {
+    justify-content: center;
+  }
+}
+
+/* Remove underline globally */
+a {
+  text-decoration: none !important;
+}
