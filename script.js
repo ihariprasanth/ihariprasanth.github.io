@@ -1,25 +1,3 @@
-// 🌗 Theme Toggle (iOS-style switch)
-const toggle = document.getElementById("themeToggle");
-const root = document.documentElement;
-
-// Load saved theme
-const savedTheme = localStorage.getItem("theme") || 
-  (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
-
-root.setAttribute("data-theme", savedTheme);
-toggle.checked = savedTheme === "dark";
-
-// Toggle switch event
-toggle.addEventListener("change", () => {
-  if (toggle.checked) {
-    root.setAttribute("data-theme", "dark");
-    localStorage.setItem("theme", "dark");
-  } else {
-    root.setAttribute("data-theme", "light");
-    localStorage.setItem("theme", "light");
-  }
-});
-
 // 🌐 Smooth Scrolling for Nav Links
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   anchor.addEventListener("click", function (e) {
@@ -34,20 +12,17 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   });
 });
 
-// 🧭 Navbar background on scroll
+// 🧭 Navbar background on scroll (always dark theme)
 window.addEventListener("scroll", () => {
   const navbar = document.getElementById("navbar");
   if (window.scrollY > 100) {
-    navbar.style.background = "rgba(255, 255, 255, 0.95)";
-    if (document.documentElement.getAttribute("data-theme") === "dark") {
-      navbar.style.background = "rgba(23, 23, 23, 0.95)";
-    }
+    navbar.style.background = "rgba(23, 23, 23, 0.95)";
   } else {
     navbar.style.background = "transparent";
   }
 });
 
-// ⚡ Animate Skill Bars when in View
+// ⚡ Animate Skill Bars when they come into view
 const observerOptions = {
   threshold: 0.5,
   rootMargin: "0px 0px -100px 0px"
@@ -76,8 +51,8 @@ const counterObserver = new IntersectionObserver((entries) => {
       const counters = entry.target.querySelectorAll(".stat-number");
       counters.forEach(counter => {
         const target = parseInt(counter.getAttribute("data-count"));
-        const duration = 2000;
-        const step = target / (duration / 16);
+        const duration = 2000; // 2 seconds
+        const step = target / (duration / 16); // 60fps
         let current = 0;
 
         const timer = setInterval(() => {
@@ -118,7 +93,7 @@ document.querySelectorAll(".nav-links a").forEach(link => {
 // 💫 Page Load Fade-in Animation
 window.addEventListener("load", () => {
   document.body.style.opacity = "0";
-  document.body.style.transition = "opacity 0.4s ease";
+  document.body.style.transition = "opacity 0.5s ease";
   
   setTimeout(() => {
     document.body.style.opacity = "1";
