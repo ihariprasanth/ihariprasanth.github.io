@@ -111,11 +111,12 @@ body {
 
 /* Hero Section */
 .hero {
+  min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: 100vh;
   background: var(--bg-color);
+  position: relative;
 }
 
 .new-layout {
@@ -128,17 +129,29 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 3rem;
-  width: 100%;
+  gap: 2rem;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+.hero-image {
+  flex: 1;
+  display: flex;
+  justify-content: flex-start; /* push it closer to center */
+  align-items: center;
+  position: relative;
+  left: -60px; /* 🔹 This moves it closer to the text */
 }
 
 .hero-text {
   flex: 1;
+  max-width: 550px;
 }
 
 .hero-text h1 {
-  font-size: 2.8rem;
+  font-size: 3rem;
   font-weight: 700;
+  margin-bottom: 1rem;
 }
 
 .highlight {
@@ -147,9 +160,10 @@ body {
 
 
 .hero-description {
-  margin-top: 1rem;
+  font-size: 1.2rem;
   color: var(--text-light);
-  max-width: 550px;
+  margin-bottom: 2rem;
+  line-height: 1.6;
 }
 
 .hero-buttons {
@@ -189,9 +203,6 @@ body {
   overflow: hidden;
   box-shadow: 0 0 25px var(--primary-color);
   animation: float 3s ease-in-out infinite, glowPulse 3s ease-in-out infinite;
-  position: relative;
-  right: 200px; /* 🔹 moved further left (previously -140px) */
-  top: 10px;
   transition: all 0.4s ease;
 }
 
@@ -203,14 +214,14 @@ body {
 }
 
 
-@keyframes float {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-20px); }
-}
-
 @keyframes glowPulse {
   0%, 100% { box-shadow: 0 0 25px var(--primary-color); }
-  50% { box-shadow: 0 0 40px var(--primary-color); }
+  50% { box-shadow: 0 0 45px var(--primary-color); }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-20px); }
 }
 
 /* About Section */
