@@ -517,6 +517,11 @@ a {
   position: relative;
   left: 40px; /* 🔹 moved left slightly (was -80px before) */
 }
+.profile-card {
+  left: auto;
+  right: -80px; /* moves image more right */
+}
+
 
 /* 🔹 Verify Certificate (Udemy) Button */
 .verify-cert-btn {
