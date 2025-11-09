@@ -515,7 +515,7 @@ a {
   box-shadow: 0 0 25px var(--primary-color);
   animation: float 3s ease-in-out infinite, glowPulse 3s ease-in-out infinite;
   position: relative;
-  right: -40px; /* 🔹 moved left slightly (was -80px before) */
+  right: 0px; /* 🔹 moved left slightly (was -80px before) */
 }
 
 /* 🔹 Verify Certificate (Udemy) Button */
