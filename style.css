@@ -537,3 +537,15 @@ a {
   transform: translateY(-3px);
 }
 
+/* 🔹 Permanent Glowing Vertical Line */
+.glow-line {
+  position: fixed;
+  left: 230px; /* aligns right after sidebar */
+  top: 0;
+  width: 3px;
+  height: 100%;
+  background: var(--primary-color);
+  box-shadow: 0 0 25px var(--primary-color), 0 0 60px rgba(37, 99, 235, 0.8);
+  z-index: 100;
+  border-radius: 2px;
+}
