@@ -36,7 +36,7 @@ body {
   padding: 0 2rem;
 }
 
-/* 🌟 Sidebar with Neon Blue Line */
+/* 🌟 Sidebar */
 .sidebar {
   position: fixed;
   top: 0;
@@ -56,51 +56,57 @@ body {
 .sidebar .logo {
   position: absolute;
   top: 40px;
-  font-size: 1.2rem;
+  font-size: 1.3rem;
   color: var(--primary-color);
   text-transform: uppercase;
   font-weight: 700;
   text-align: center;
+  letter-spacing: 1px;
 }
 
 .sidebar-links {
   list-style: none;
   display: flex;
   flex-direction: column;
-  gap: 1.2rem;
   align-items: center;
-  margin-top: 80px;
+  gap: 1.4rem;
+  margin-top: 40px;
 }
 
+/* ✅ Equal Sized Neon Menu Buttons */
 .sidebar-links a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 140px;
+  height: 42px;
   color: var(--text-color);
   text-decoration: none;
   font-weight: 500;
   font-size: 1rem;
+  border: 2px solid rgba(37, 99, 235, 0.4);
+  border-radius: 12px;
+  background: rgba(33, 33, 33, 0.8);
+  box-shadow: 0 0 12px rgba(37, 99, 235, 0.2);
   transition: all 0.3s ease;
-  border: 1px solid rgba(37, 99, 235, 0.3);
-  border-radius: 10px;
-  padding: 0.6rem 1.5rem;
-  width: 130px;
-  text-align: center;
-  box-shadow: 0 0 8px rgba(37, 99, 235, 0.2);
 }
 
 .sidebar-links a:hover {
   color: var(--primary-color);
   border-color: var(--primary-color);
-  box-shadow: 0 0 15px rgba(37, 99, 235, 0.5);
+  box-shadow: 0 0 18px rgba(37, 99, 235, 0.6);
   transform: translateY(-2px);
 }
 
-/* Hero Section (Perfectly Centered) */
+/* 🧭 Hero Section */
 .hero.new-layout {
   margin-left: 230px;
+  min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: 100vh;
   background: var(--bg-color);
+  padding: 0 3rem;
 }
 
 .hero-grid {
@@ -108,12 +114,11 @@ body {
   grid-template-columns: 1.2fr 1fr;
   align-items: center;
   gap: 3rem;
-  padding: 0 3rem;
+  max-width: 1000px;
 }
 
 .hero-text {
   text-align: left;
-  margin-left: 1rem;
 }
 
 .hero-text h1 {
@@ -191,7 +196,7 @@ body {
   height: 300px;
   border-radius: 50%;
   overflow: hidden;
-  box-shadow: 0 0 30px var(--primary-color);
+  box-shadow: 0 0 35px var(--primary-color);
   animation: float 3s ease-in-out infinite, glowPulse 3s ease-in-out infinite;
 }
 
@@ -212,7 +217,7 @@ body {
   50% { transform: translateY(-20px); }
 }
 
-/* Section Spacing */
+/* Section Titles */
 section {
   padding: 5rem 0;
 }
@@ -274,20 +279,15 @@ section {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 4rem;
+  align-items: start;
 }
 
-.contact-method i {
-  font-size: 1.5rem;
-  color: var(--primary-color);
-}
-
-/* 🌟 Social Icons */
+/* Social Icons */
 .social-container {
   display: flex;
   gap: 1rem;
   margin-top: 2rem;
   flex-wrap: wrap;
-  justify-content: left;
 }
 
 .social-link {
@@ -348,7 +348,14 @@ section {
   .profile-card {
     margin: 2rem auto 0;
   }
+
+  .sidebar-links a {
+    width: 110px;
+    height: 38px;
+  }
 }
 
 /* Remove underline */
-a { text-decoration: none !important; }
+a {
+  text-decoration: none !important;
+}
