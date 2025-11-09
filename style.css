@@ -18,7 +18,7 @@
 }
 
 /* ✅ Updated Dark Theme (Matte Black Style) */
-[data-theme="dark"] {
+html[data-theme="dark"], body[data-theme="dark"] {
     --primary-color: #3b82f6;
     --secondary-color: #8b5cf6;
     --text-color: #f5f5f5;
@@ -566,4 +566,18 @@ section {
         justify-content: center;
     }
 }
+/* ✅ Force dark theme background fix */
+html[data-theme="dark"], body[data-theme="dark"] {
+    background-color: rgb(23, 23, 23) !important;
+}
+
+html[data-theme="dark"] .hero,
+html[data-theme="dark"] section {
+    background-color: rgb(23, 23, 23) !important;
+}
+
+html[data-theme="dark"] #navbar {
+    background: rgba(23, 23, 23, 0.95) !important;
+}
+
  
