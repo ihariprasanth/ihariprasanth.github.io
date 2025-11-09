@@ -9,13 +9,17 @@ document.querySelectorAll('.sidebar-links a[href^="#"]').forEach(anchor => {
         block: "start"
       });
     }
+
+    // Highlight the active menu item
+    document.querySelectorAll('.sidebar-links a').forEach(link => link.classList.remove('active'));
+    this.classList.add('active');
   });
 });
 
 // ⚡ Animate Skill Bars when they come into view
 const observerOptions = {
-  threshold: 0.5,
-  rootMargin: "0px 0px -100px 0px"
+  threshold: 0.4,
+  rootMargin: "0px 0px -50px 0px"
 };
 
 const skillObserver = new IntersectionObserver((entries) => {
@@ -24,7 +28,10 @@ const skillObserver = new IntersectionObserver((entries) => {
       const skillBars = entry.target.querySelectorAll(".skill-progress");
       skillBars.forEach(bar => {
         const width = bar.getAttribute("data-width");
-        bar.style.width = width + "%";
+        if (!bar.classList.contains("filled")) {
+          bar.style.width = width + "%";
+          bar.classList.add("filled");
+        }
       });
     }
   });
@@ -41,19 +48,22 @@ const counterObserver = new IntersectionObserver((entries) => {
       const counters = entry.target.querySelectorAll(".stat-number");
       counters.forEach(counter => {
         const target = parseInt(counter.getAttribute("data-count"));
-        const duration = 2000; // 2 seconds
-        const step = target / (duration / 16); // smooth FPS-based step
+        const duration = 1800; // ms
+        const step = target / (duration / 16);
         let current = 0;
 
-        const timer = setInterval(() => {
-          current += step;
-          if (current >= target) {
-            counter.textContent = target + "+";
-            clearInterval(timer);
-          } else {
-            counter.textContent = Math.floor(current);
-          }
-        }, 16);
+        if (!counter.classList.contains("counted")) {
+          const timer = setInterval(() => {
+            current += step;
+            if (current >= target) {
+              counter.textContent = target + "+";
+              clearInterval(timer);
+            } else {
+              counter.textContent = Math.floor(current);
+            }
+          }, 16);
+          counter.classList.add("counted");
+        }
       });
     }
   });
@@ -67,8 +77,15 @@ document.querySelectorAll(".about-stats").forEach(stats => {
 window.addEventListener("load", () => {
   document.body.style.opacity = "0";
   document.body.style.transition = "opacity 0.5s ease";
-  
   setTimeout(() => {
     document.body.style.opacity = "1";
   }, 100);
 });
+
+// 🌟 Sidebar Glow Animation (Optional)
+const sidebar = document.querySelector(".sidebar");
+let glow = 0;
+setInterval(() => {
+  glow = glow === 0 ? 0.6 : 0;
+  sidebar.style.boxShadow = `0 0 ${glow ? 25 : 10}px rgba(37, 99, 235, ${glow})`;
+}, 1800);
