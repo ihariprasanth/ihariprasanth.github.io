@@ -455,3 +455,63 @@ html[data-theme="dark"],
 body[data-theme="dark"] {
   background-color: rgb(23, 23, 23) !important;
 }
+
+/* 🌟 Social Links with Neon Border */
+.social-container {
+  display: flex;
+  gap: 1.2rem;
+  margin-top: 2rem;
+  flex-wrap: wrap;
+}
+
+.social-link {
+  width: 55px;
+  height: 55px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg-secondary);
+  border: 2px solid rgba(37, 99, 235, 0.5);
+  box-shadow: 0 0 12px rgba(37, 99, 235, 0.3);
+  transition: all 0.3s ease;
+}
+
+.social-link i,
+.social-link img {
+  font-size: 1.6rem;
+  color: white;
+  width: 26px;
+  height: 26px;
+}
+
+.social-link:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 0 20px var(--primary-color);
+  border-color: var(--primary-color);
+}
+
+/* Platform-specific colors */
+.linkedin:hover i {
+  color: #0077b5;
+}
+
+.github:hover i {
+  color: #ffffff;
+}
+
+.leetcode:hover img {
+  filter: invert(73%) sepia(95%) saturate(448%) hue-rotate(357deg) brightness(101%) contrast(97%);
+}
+
+.instagram:hover i {
+  color: #e4405f;
+}
+
+.leetcode-icon {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+  filter: invert(1);
+}
+
