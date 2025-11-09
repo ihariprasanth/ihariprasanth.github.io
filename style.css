@@ -36,29 +36,30 @@ body {
   padding: 0 2rem;
 }
 
-/* 🌟 Sidebar Navigation */
+/* 🌟 Sidebar with Neon Blue Line */
 .sidebar {
   position: fixed;
   top: 0;
   left: 0;
-  width: 220px;
+  width: 230px;
   height: 100vh;
   background: rgb(25, 25, 25);
-  border-right: 2px solid rgba(37, 99, 235, 0.5);
-  box-shadow: 0 0 25px rgba(37, 99, 235, 0.2);
+  border-right: 3px solid var(--primary-color);
+  box-shadow: 0 0 25px rgba(37, 99, 235, 0.3);
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
-  padding-top: 2rem;
   z-index: 999;
 }
 
 .sidebar .logo {
+  position: absolute;
+  top: 40px;
   font-size: 1.2rem;
   color: var(--primary-color);
   text-transform: uppercase;
   font-weight: 700;
-  margin-bottom: 2rem;
   text-align: center;
 }
 
@@ -67,6 +68,8 @@ body {
   display: flex;
   flex-direction: column;
   gap: 1.2rem;
+  align-items: center;
+  margin-top: 80px;
 }
 
 .sidebar-links a {
@@ -75,16 +78,24 @@ body {
   font-weight: 500;
   font-size: 1rem;
   transition: all 0.3s ease;
+  border: 1px solid rgba(37, 99, 235, 0.3);
+  border-radius: 10px;
+  padding: 0.6rem 1.5rem;
+  width: 130px;
+  text-align: center;
+  box-shadow: 0 0 8px rgba(37, 99, 235, 0.2);
 }
 
 .sidebar-links a:hover {
   color: var(--primary-color);
-  transform: translateX(5px);
+  border-color: var(--primary-color);
+  box-shadow: 0 0 15px rgba(37, 99, 235, 0.5);
+  transform: translateY(-2px);
 }
 
-/* Hero Section (New Sidebar Layout) */
+/* Hero Section (Perfectly Centered) */
 .hero.new-layout {
-  margin-left: 220px;
+  margin-left: 230px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -97,7 +108,12 @@ body {
   grid-template-columns: 1.2fr 1fr;
   align-items: center;
   gap: 3rem;
-  padding: 0 2rem;
+  padding: 0 3rem;
+}
+
+.hero-text {
+  text-align: left;
+  margin-left: 1rem;
 }
 
 .hero-text h1 {
@@ -108,7 +124,6 @@ body {
 
 .highlight {
   color: var(--primary-color);
-  white-space: nowrap;
 }
 
 .typing-text {
@@ -176,9 +191,7 @@ body {
   height: 300px;
   border-radius: 50%;
   overflow: hidden;
-  position: relative;
-  right: -40px;
-  box-shadow: 0 0 25px var(--primary-color);
+  box-shadow: 0 0 30px var(--primary-color);
   animation: float 3s ease-in-out infinite, glowPulse 3s ease-in-out infinite;
 }
 
@@ -199,7 +212,7 @@ body {
   50% { transform: translateY(-20px); }
 }
 
-/* Sections */
+/* Section Spacing */
 section {
   padding: 5rem 0;
 }
@@ -222,90 +235,14 @@ section {
   background: var(--primary-color);
 }
 
-/* 🌟 ABOUT SECTION - Neon Card Style */
-.about {
-  background: var(--bg-color);
-  text-align: center;
-}
-
-.about-cards {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 2rem;
-}
-
-.about-card {
-  background: var(--bg-secondary);
-  border: 2px solid rgba(37, 99, 235, 0.4);
-  border-radius: 1rem;
-  padding: 2rem 2.5rem;
-  width: 80%;
-  max-width: 700px;
-  box-shadow: 0 0 15px rgba(37, 99, 235, 0.15);
-  transition: all 0.4s ease;
-}
-
-.about-card:hover {
-  transform: translateY(-5px);
-  border-color: var(--primary-color);
-  box-shadow: 0 0 30px rgba(37, 99, 235, 0.5);
-}
-
-/* Skills Section */
-.skills-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 2rem;
-}
-
-.skill-category h3 {
-  margin-bottom: 1.5rem;
-  color: var(--text-color);
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-.skill-item {
-  margin-bottom: 1.5rem;
-}
-
-.skill-item span {
-  display: block;
-  margin-bottom: 0.5rem;
-  color: var(--text-color);
-  font-weight: 500;
-}
-
-.skill-bar {
-  height: 8px;
-  background: var(--border-color);
-  border-radius: 4px;
-  overflow: hidden;
-}
-
-.skill-progress {
-  height: 100%;
-  background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
-  border-radius: 4px;
-  width: 0;
-  transition: width 1s ease-in-out;
-}
-
-/* 🌟 Education Section */
+/* Neon Card Style for About & Education */
+.about,
 .education {
   background: var(--bg-color);
   text-align: center;
 }
 
-.education-content {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 2.5rem;
-}
-
+.about-card,
 .education-item {
   background: var(--bg-secondary);
   border: 2px solid rgba(37, 99, 235, 0.4);
@@ -313,14 +250,23 @@ section {
   padding: 2rem 2.5rem;
   width: 80%;
   max-width: 700px;
+  margin: 1rem auto;
   box-shadow: 0 0 15px rgba(37, 99, 235, 0.15);
   transition: all 0.4s ease;
 }
 
+.about-card:hover,
 .education-item:hover {
   transform: translateY(-5px);
   border-color: var(--primary-color);
   box-shadow: 0 0 30px rgba(37, 99, 235, 0.5);
+}
+
+/* Skills */
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
 }
 
 /* Contact Section */
@@ -330,36 +276,23 @@ section {
   gap: 4rem;
 }
 
-.contact-info h3 {
-  font-size: 1.8rem;
-  margin-bottom: 1rem;
-  color: var(--text-color);
-}
-
-.contact-method {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  margin-bottom: 1.5rem;
-}
-
 .contact-method i {
   font-size: 1.5rem;
   color: var(--primary-color);
-  width: 40px;
 }
 
-/* 🌟 Social Links with Neon Border */
+/* 🌟 Social Icons */
 .social-container {
   display: flex;
-  gap: 1.2rem;
+  gap: 1rem;
   margin-top: 2rem;
   flex-wrap: wrap;
+  justify-content: left;
 }
 
 .social-link {
-  width: 55px;
-  height: 55px;
+  width: 50px;
+  height: 50px;
   border-radius: 12px;
   display: flex;
   align-items: center;
@@ -370,8 +303,7 @@ section {
   transition: all 0.3s ease;
 }
 
-.social-link i,
-.social-link img {
+.social-link i, .social-link img {
   font-size: 1.6rem;
   color: white;
   width: 26px;
@@ -382,21 +314,6 @@ section {
   transform: translateY(-6px);
   box-shadow: 0 0 20px var(--primary-color);
   border-color: var(--primary-color);
-}
-
-/* Platform-specific hover colors */
-.linkedin:hover i { color: #0077b5; }
-.github:hover i { color: #ffffff; }
-.leetcode:hover img {
-  filter: invert(73%) sepia(95%) saturate(448%) hue-rotate(357deg) brightness(101%) contrast(97%);
-}
-.instagram:hover i { color: #e4405f; }
-
-.leetcode-icon {
-  width: 24px;
-  height: 24px;
-  object-fit: contain;
-  filter: invert(1);
 }
 
 /* Footer */
@@ -416,21 +333,22 @@ section {
     flex-direction: row;
     justify-content: center;
     border-right: none;
-    border-bottom: 2px solid rgba(37, 99, 235, 0.4);
-    box-shadow: none;
+    border-bottom: 3px solid var(--primary-color);
   }
+
   .hero.new-layout {
     margin-left: 0;
-  }
-  .hero-grid {
-    grid-template-columns: 1fr;
     text-align: center;
   }
+
+  .hero-grid {
+    grid-template-columns: 1fr;
+  }
+
   .profile-card {
     margin: 2rem auto 0;
-    right: 0;
   }
 }
 
-/* Remove underline globally */
+/* Remove underline */
 a { text-decoration: none !important; }
