@@ -145,20 +145,6 @@ body {
   color: var(--primary-color);
 }
 
-.typing-text {
-  color: var(--text-light);
-  font-size: 1.4rem;
-  margin-top: 0.5rem;
-  border-right: 2px solid var(--primary-color);
-  overflow: hidden;
-  white-space: nowrap;
-  animation: typing 3s steps(20) infinite;
-}
-
-@keyframes typing {
-  0%, 100% { width: 0; }
-  50%, 70% { width: 100%; }
-}
 
 .hero-description {
   margin-top: 1rem;
