@@ -89,3 +89,45 @@ setInterval(() => {
   glow = glow === 0 ? 0.6 : 0;
   sidebar.style.boxShadow = `0 0 ${glow ? 25 : 10}px rgba(37, 99, 235, ${glow})`;
 }, 1800);
+// 🔥 Easter Egg: Change Theme to Red after 3 quick Home clicks
+let homeClickCount = 0;
+let lastClickTime = 0;
+
+const homeButton = document.querySelector('.sidebar-links a[href="#home"]');
+
+if (homeButton) {
+  homeButton.addEventListener("click", () => {
+    const now = Date.now();
+
+    // Check if clicks are within 2 seconds of each other
+    if (now - lastClickTime < 2000) {
+      homeClickCount++;
+    } else {
+      homeClickCount = 1; // reset if clicks too slow
+    }
+
+    lastClickTime = now;
+
+    // Trigger red theme on 3 fast clicks
+    if (homeClickCount === 3) {
+      document.documentElement.style.setProperty('--primary-color', '#ff0033');
+      document.documentElement.style.setProperty('--secondary-color', '#ff3333');
+      document.documentElement.style.setProperty('--border-color', '#ff0033');
+      document.documentElement.style.setProperty('--text-color', '#fff');
+      document.documentElement.style.setProperty('--text-light', '#ffcccc');
+      document.documentElement.style.setProperty('--bg-color', '#1a0000');
+      document.documentElement.style.setProperty('--bg-secondary', '#220000');
+      document.documentElement.style.setProperty('--shadow', '0 0 25px rgba(255,0,0,0.5)');
+      
+      // Optional: Add a quick pulse animation
+      document.body.style.transition = 'all 0.5s ease';
+      document.body.style.boxShadow = '0 0 40px rgba(255,0,0,0.7) inset';
+      setTimeout(() => {
+        document.body.style.boxShadow = 'none';
+      }, 1000);
+
+      console.log("🔥 Red Mode Activated!");
+      homeClickCount = 0; // reset counter
+    }
+  });
+}
