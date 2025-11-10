@@ -66,6 +66,8 @@ if (homeButton) {
 
     // Trigger after 3 quick clicks
     if (homeClickCount === 3) {
+      const glowLine = document.querySelector('.glow-line');
+
       if (!isRedMode) {
         // 🔴 Activate Red Mode
         document.documentElement.style.setProperty('--primary-color', '#ff0033');
@@ -78,17 +80,18 @@ if (homeButton) {
         document.querySelectorAll('.sidebar-links a, .btn, .view-cert-btn, .verify-cert-btn, .social-link, .connect-box, .education-item, .skill-category').forEach(el => {
           el.style.transition = 'all 0.4s ease';
           el.style.borderColor = '#ff0033';
-          el.style.boxShadow = 'none'; // Default off; will glow on hover
+          el.style.boxShadow = 'none'; // default off
         });
 
-        // Remove vertical red glow
-        const glowLine = document.querySelector('.glow-line');
+        // Remove blue glow from vertical line
         if (glowLine) {
           glowLine.style.borderRight = '2px solid #ff0033';
-          glowLine.style.boxShadow = 'none';
+          glowLine.style.boxShadow = 'none'; // 🚫 No glow at all
+          glowLine.style.filter = 'none'; // remove any residual blue neon
+          glowLine.style.background = 'none';
         }
 
-        // Change highlight color (like your name)
+        // Change highlight color
         document.querySelectorAll('.highlight').forEach(el => {
           el.style.color = '#ff0033';
         });
@@ -110,11 +113,11 @@ if (homeButton) {
           el.style.boxShadow = 'none';
         });
 
-        // Restore blue glow line
-        const glowLine = document.querySelector('.glow-line');
+        // Restore glowing blue line
         if (glowLine) {
           glowLine.style.borderRight = '2px solid #2563eb';
-          glowLine.style.boxShadow = '0 0 20px rgba(37,99,235,0.8)';
+          glowLine.style.boxShadow = '0 0 20px rgba(37,99,235,0.9)';
+          glowLine.style.filter = 'drop-shadow(0 0 8px #2563eb)';
         }
 
         // Restore highlight color
@@ -133,7 +136,7 @@ if (homeButton) {
 }
 
 
-// 🌟 Hover Glow Effect (Button / Section hover animation)
+// 🌟 Hover Glow Effect (when arrow moves on buttons/sections)
 document.addEventListener("mouseover", function (e) {
   const target = e.target.closest('.btn, .view-cert-btn, .verify-cert-btn, .education-item, .skill-category, .connect-box, .social-link');
   if (target) {
