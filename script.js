@@ -82,7 +82,4 @@ window.addEventListener("load", () => {
   }, 100);
 });
 
-// 🌟 Sidebar Glow Animation (static)
-const sidebar = document.querySelector(".sidebar");
-sidebar.style.boxShadow = "0 0 25px rgba(37, 99, 235, 0.7)";
 
