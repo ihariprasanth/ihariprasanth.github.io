@@ -560,40 +560,40 @@ a {
 * {
   font-family: inherit;
 }
-/* 💫 Depth Neon Effect (No visible line, only glow) */
-.glow-line {
+
+/* 💫 Neon Depth Glow Effect (No visible line, only ambient glow) */
+.neon-glow {
   position: fixed;
-  left: 230px; /* align glow beside sidebar */
+  left: 220px; /* adjust slightly to align with your sidebar edge */
   top: 0;
   height: 100vh;
-  width: 0px; /* no line, only glow */
+  width: 20px; /* invisible wide glow area */
   background: transparent;
   box-shadow:
-    0 0 25px rgba(37, 99, 235, 0.6),
-    0 0 50px rgba(37, 99, 235, 0.5),
-    0 0 80px rgba(37, 99, 235, 0.4);
+    -5px 0 30px rgba(37, 99, 235, 0.8),
+    -10px 0 60px rgba(37, 99, 235, 0.6),
+    -15px 0 100px rgba(37, 99, 235, 0.4);
   z-index: 1;
   pointer-events: none;
-  transition: all 0.4s ease;
+  border: none;
 }
 
-
-@keyframes softGlow {
+/* Optional smooth pulsing effect */
+@keyframes neonPulse {
   0%, 100% {
     box-shadow:
-      0 0 25px rgba(37, 99, 235, 0.6),
-      0 0 50px rgba(37, 99, 235, 0.5),
-      0 0 80px rgba(37, 99, 235, 0.4);
+      -5px 0 30px rgba(37, 99, 235, 0.8),
+      -10px 0 60px rgba(37, 99, 235, 0.6),
+      -15px 0 100px rgba(37, 99, 235, 0.4);
   }
   50% {
     box-shadow:
-      0 0 40px rgba(37, 99, 235, 0.8),
-      0 0 70px rgba(37, 99, 235, 0.6),
-      0 0 100px rgba(37, 99, 235, 0.5);
+      -5px 0 50px rgba(37, 99, 235, 1),
+      -10px 0 80px rgba(37, 99, 235, 0.8),
+      -15px 0 120px rgba(37, 99, 235, 0.6);
   }
 }
 
-.glow-line {
-  animation: softGlow 3s ease-in-out infinite;
+.neon-glow {
+  animation: neonPulse 4s ease-in-out infinite;
 }
-
