@@ -557,17 +557,21 @@ a {
 }
 
 /* 🔹 Permanent Glowing Vertical Line */
+/* 🌟 Permanent Glowing Vertical Blue Line */
 .glow-line {
   position: fixed;
-  left: 230px; /* aligns right after sidebar */
+  left: 230px; /* adjust if needed */
   top: 0;
-  width: 3px;
-  height: 100%;
-  background: var(--primary-color);
-  box-shadow: 0 0 25px var(--primary-color), 0 0 60px rgba(37, 99, 235, 0.8);
-  z-index: 100;
-  border-radius: 2px;
+  height: 100vh;
+  width: 2px;
+  background: #2563eb;
+  box-shadow: 
+    0 0 15px rgba(37, 99, 235, 0.8),
+    0 0 25px rgba(37, 99, 235, 0.9),
+    0 0 35px rgba(37, 99, 235, 1);
+  z-index: 999;
 }
+
 * {
   font-family: inherit;
 }
