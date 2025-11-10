@@ -560,16 +560,40 @@ a {
 * {
   font-family: inherit;
 }
-/* 🔹 Simple Vertical Blue Line (No Glow) */
+/* 💫 Depth Neon Effect (No visible line, only glow) */
 .glow-line {
   position: fixed;
-  left: 230px; /* align with sidebar */
+  left: 230px; /* align glow beside sidebar */
   top: 0;
   height: 100vh;
-  width: 2px;
-  background: #2563eb; /* solid blue line */
-  border: none;
-  box-shadow: none; /* remove glow */
-  filter: none;
-  z-index: 999;
+  width: 0px; /* no line, only glow */
+  background: transparent;
+  box-shadow:
+    0 0 25px rgba(37, 99, 235, 0.6),
+    0 0 50px rgba(37, 99, 235, 0.5),
+    0 0 80px rgba(37, 99, 235, 0.4);
+  z-index: 1;
+  pointer-events: none;
+  transition: all 0.4s ease;
 }
+
+
+@keyframes softGlow {
+  0%, 100% {
+    box-shadow:
+      0 0 25px rgba(37, 99, 235, 0.6),
+      0 0 50px rgba(37, 99, 235, 0.5),
+      0 0 80px rgba(37, 99, 235, 0.4);
+  }
+  50% {
+    box-shadow:
+      0 0 40px rgba(37, 99, 235, 0.8),
+      0 0 70px rgba(37, 99, 235, 0.6),
+      0 0 100px rgba(37, 99, 235, 0.5);
+  }
+}
+
+.glow-line {
+  animation: softGlow 3s ease-in-out infinite;
+}
+
