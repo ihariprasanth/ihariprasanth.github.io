@@ -16,32 +16,38 @@ document.querySelectorAll('.sidebar-links a[href^="#"]').forEach(anchor => {
   });
 });
 
-// ⚡ Animate Skill Bars (fixed to work with new skills layout)
+// ⚡ Animate Skill Bars (final working version)
 const observerOptions = {
-  threshold: 0.3,
-  rootMargin: "0px 0px -80px 0px"
+  threshold: 0.2, // triggers earlier
+  rootMargin: "0px 0px -100px 0px"
 };
 
 const skillObserver = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
       const skillBars = entry.target.querySelectorAll(".skill-progress");
-      skillBars.forEach(bar => {
+
+      // Fill each skill bar with its data-width value
+      skillBars.forEach((bar, index) => {
         const width = bar.getAttribute("data-width");
         if (!bar.classList.contains("filled")) {
-          bar.style.width = width + "%";
-          bar.classList.add("filled"); // prevent refilling on scroll
+          setTimeout(() => {
+            bar.style.width = width + "%";
+            bar.classList.add("filled");
+          }, index * 150); // adds a slight stagger for smooth effect
         }
       });
+
+      // Unobserve after filling once
+      skillObserver.unobserve(entry.target);
     }
   });
 }, observerOptions);
 
-// 👇 Observe both old and new skill containers
-document.querySelectorAll(".skill-category, .education-item").forEach(skill => {
-  skillObserver.observe(skill);
+// ✅ Observe both new skills box and old structure
+document.querySelectorAll(".education-item, .skills-grid, .skill-category").forEach(skillBox => {
+  skillObserver.observe(skillBox);
 });
-
 
 // 🔢 Animate Counter Numbers (About Stats)
 const counterObserver = new IntersectionObserver((entries) => {
