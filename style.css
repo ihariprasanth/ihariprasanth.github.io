@@ -525,51 +525,41 @@ a {
   margin-right: 0.8rem;
 }
 
-/* 🌟 Primary Button - Blue Glow */
-.btn.primary {
-  color: #fff;
-  border: 2px solid var(--primary-color);
-  background: transparent;
-  box-shadow: 0 0 15px rgba(37, 99, 235, 0.3);
+/* 💫 Full-Depth Neon Ambient Glow (Always visible, even on Home Page) */
+.neon-glow {
+  position: fixed;
+  left: 230px; /* perfectly aligned next to sidebar */
+  top: 0;
+  height: 100vh;
+  width: 160px; /* wider for more visible diffusion */
+  background: radial-gradient(
+    circle at left,
+    rgba(37, 99, 235, 0.45) 0%,
+    rgba(37, 99, 235, 0.25) 25%,
+    rgba(37, 99, 235, 0.12) 45%,
+    rgba(37, 99, 235, 0.05) 60%,
+    transparent 100%
+  );
+  filter: blur(45px);
+  opacity: 1;
+  pointer-events: none;
+
+  /* 🔹 This ensures the glow stays above background but below sidebar text */
+  z-index: 2;
+
+  /* Smooth ambient pulsing effect */
+  animation: ambientGlow 5s ease-in-out infinite alternate;
 }
 
-.btn.primary:hover {
-  background: var(--primary-color);
-  color: white;
-  box-shadow: 0 0 25px var(--primary-color), 0 0 45px rgba(37, 99, 235, 0.5);
-  transform: translateY(-3px);
-}
-
-/* 🌟 Secondary Button - Subtle Transparent Neon Border */
-.btn.secondary {
-  color: var(--text-color);
-  border: 2px solid rgba(37, 99, 235, 0.4);
-  background: transparent;
-  box-shadow: 0 0 10px rgba(37, 99, 235, 0.2);
-}
-
-.btn.secondary:hover {
-  color: var(--primary-color);
-  border-color: var(--primary-color);
-  box-shadow: 0 0 20px var(--primary-color), 0 0 40px rgba(37, 99, 235, 0.6);
-  transform: translateY(-3px);
-}
-
-
-* {
-  font-family: inherit;
-}
-
-
-/* Subtle depth animation */
+/* ✨ Ambient Pulse Animation for subtle breathing glow */
 @keyframes ambientGlow {
   0% {
-    opacity: 0.7;
-    filter: blur(25px);
+    opacity: 0.85;
+    filter: blur(40px);
   }
   100% {
     opacity: 1;
-    filter: blur(45px);
+    filter: blur(60px);
   }
 }
 
