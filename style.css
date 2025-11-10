@@ -560,3 +560,16 @@ a {
 * {
   font-family: inherit;
 }
+/* 🔹 Simple Vertical Blue Line (No Glow) */
+.glow-line {
+  position: fixed;
+  left: 230px; /* align with sidebar */
+  top: 0;
+  height: 100vh;
+  width: 2px;
+  background: #2563eb; /* solid blue line */
+  border: none;
+  box-shadow: none; /* remove glow */
+  filter: none;
+  z-index: 999;
+}
