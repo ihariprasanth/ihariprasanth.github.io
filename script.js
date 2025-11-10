@@ -16,10 +16,10 @@ document.querySelectorAll('.sidebar-links a[href^="#"]').forEach(anchor => {
   });
 });
 
-// ⚡ Animate Skill Bars when they come into view
+// ⚡ Animate Skill Bars (fixed to work with new skills layout)
 const observerOptions = {
-  threshold: 0.4,
-  rootMargin: "0px 0px -50px 0px"
+  threshold: 0.3,
+  rootMargin: "0px 0px -80px 0px"
 };
 
 const skillObserver = new IntersectionObserver((entries) => {
@@ -30,16 +30,18 @@ const skillObserver = new IntersectionObserver((entries) => {
         const width = bar.getAttribute("data-width");
         if (!bar.classList.contains("filled")) {
           bar.style.width = width + "%";
-          bar.classList.add("filled");
+          bar.classList.add("filled"); // prevent refilling on scroll
         }
       });
     }
   });
 }, observerOptions);
 
-document.querySelectorAll(".skill-category").forEach(skill => {
+// 👇 Observe both old and new skill containers
+document.querySelectorAll(".skill-category, .education-item").forEach(skill => {
   skillObserver.observe(skill);
 });
+
 
 // 🔢 Animate Counter Numbers (About Stats)
 const counterObserver = new IntersectionObserver((entries) => {
