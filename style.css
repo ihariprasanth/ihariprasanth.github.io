@@ -239,41 +239,63 @@ body {
   transform: translateY(-5px);
 }
 
-/* Two-column layout inside skill box */
-.two-column-skills .skills-wrapper {
+/* 🌟 Two-column compact Skills Layout */
+.skills-wrapper {
   display: flex;
   justify-content: space-between;
   gap: 2rem;
-  width: 100%;
+  margin-top: 1rem;
 }
 
-.two-column-skills .skills-col {
+.skills-col {
   flex: 1;
   display: flex;
   flex-direction: column;
   gap: 1.2rem;
 }
 
-.two-column-skills .skill-item {
-  text-align: left;
+/* Each skill item text */
+.skill-item span {
+  display: block;
+  font-weight: 600;
+  font-size: 0.95rem;
+  margin-bottom: 0.4rem;
+  color: var(--text-color);
 }
 
-.two-column-skills .skill-bar {
-  height: 10px;
-  background: rgba(255, 255, 255, 0.1);
-  border-radius: 6px;
+/* 🌈 Compact Skill Bars */
+.skill-bar {
+  height: 8px;
+  width: 90%;
+  margin: 0 auto;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 5px;
   overflow: hidden;
-  box-shadow: inset 0 0 10px rgba(37, 99, 235, 0.4);
+  box-shadow: inset 0 0 8px rgba(37, 99, 235, 0.4);
 }
 
-.two-column-skills .skill-progress {
+.skill-progress {
   height: 100%;
   width: 0;
   background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
-  border-radius: 6px;
-  box-shadow: 0 0 20px var(--primary-color);
-  transition: width 1.5s ease-in-out;
+  border-radius: 5px;
+  box-shadow: 0 0 15px var(--primary-color);
+  transition: width 1.3s ease-in-out;
 }
+
+
+/* Responsive - stack columns for smaller screens */
+@media (max-width: 768px) {
+  .skills-wrapper {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .skill-bar {
+    width: 100%;
+  }
+}
+
 
 /* Education Section */
 .education-content {
