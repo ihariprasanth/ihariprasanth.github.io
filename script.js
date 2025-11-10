@@ -43,8 +43,25 @@ window.addEventListener("load", () => {
   }, 100);
 });
 
+// 🌟 Section Glow on Scroll
+const glowSections = document.querySelectorAll(
+  ".education-item, .connect-box, .skill-category, .about, .hero-buttons .btn"
+);
 
-// 🔥 Home Button Triple Click — Full Neon Red Mode Toggle
+const glowObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.style.boxShadow = "0 0 25px var(--primary-color)";
+      entry.target.style.transition = "box-shadow 0.6s ease";
+    } else {
+      entry.target.style.boxShadow = "none";
+    }
+  });
+}, { threshold: 0.4 });
+
+glowSections.forEach(section => glowObserver.observe(section));
+
+// 🔥 Home Button Triple Click — Red Mode Toggle (with section-based glow)
 let homeClickCount = 0;
 let lastClickTime = 0;
 let isRedMode = false;
@@ -55,7 +72,6 @@ if (homeButton) {
   homeButton.addEventListener("click", () => {
     const now = Date.now();
 
-    // Count quick clicks (within 2 seconds)
     if (now - lastClickTime < 2000) {
       homeClickCount++;
     } else {
@@ -64,7 +80,6 @@ if (homeButton) {
 
     lastClickTime = now;
 
-    // Trigger after 3 quick clicks
     if (homeClickCount === 3) {
       if (!isRedMode) {
         // 🔴 Activate Red Mode
@@ -74,19 +89,14 @@ if (homeButton) {
         document.documentElement.style.setProperty('--shadow', '0 0 25px rgba(255,0,0,0.6)');
         document.documentElement.style.setProperty('--text-light', '#ffcccc');
 
-        // Sidebar + Buttons + Glow update
-        document.querySelectorAll('.sidebar-links a, .btn, .view-cert-btn, .verify-cert-btn, .social-link, .connect-box, .education-item, .skill-category, .glow-line').forEach(el => {
-          el.style.transition = 'all 0.4s ease';
-          el.style.boxShadow = '0 0 20px rgba(255,0,0,0.8)';
-          el.style.borderColor = '#ff0033';
-        });
+        // Disable vertical glow line in red mode
+        const glowLine = document.querySelector(".glow-line");
+        if (glowLine) {
+          glowLine.style.boxShadow = "none";
+          glowLine.style.borderRight = "2px solid #ff0033";
+        }
 
-        // Change highlight color (like your name)
-        document.querySelectorAll('.highlight').forEach(el => {
-          el.style.color = '#ff0033';
-        });
-
-        console.log("🔥 RED MODE ACTIVATED");
+        console.log("🔥 Red Mode Activated");
         isRedMode = true;
       } else {
         // 🔵 Restore Blue Mode
@@ -96,21 +106,17 @@ if (homeButton) {
         document.documentElement.style.setProperty('--shadow', '0 0 25px rgba(37,99,235,0.6)');
         document.documentElement.style.setProperty('--text-light', '#b5b5b5');
 
-        document.querySelectorAll('.sidebar-links a, .btn, .view-cert-btn, .verify-cert-btn, .social-link, .connect-box, .education-item, .skill-category, .glow-line').forEach(el => {
-          el.style.transition = 'all 0.4s ease';
-          el.style.boxShadow = '0 0 20px rgba(37,99,235,0.7)';
-          el.style.borderColor = '#2563eb';
-        });
+        // Restore vertical glow line in blue mode
+        const glowLine = document.querySelector(".glow-line");
+        if (glowLine) {
+          glowLine.style.borderRight = "2px solid #2563eb";
+          glowLine.style.boxShadow = "0 0 20px rgba(37,99,235,0.8)";
+        }
 
-        document.querySelectorAll('.highlight').forEach(el => {
-          el.style.color = '#2563eb';
-        });
-
-        console.log("🔵 BLUE MODE RESTORED");
+        console.log("🔵 Blue Mode Restored");
         isRedMode = false;
       }
 
-      // Reset click count
       homeClickCount = 0;
     }
   });
