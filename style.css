@@ -239,42 +239,26 @@ body {
   transform: translateY(-5px);
 }
 
-/* Skills Section */
-.skills-grid {
+/* Two-column layout inside skill box */
+.two-column-skills .skills-wrapper {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
+  gap: 2rem;
+  width: 100%;
 }
 
-.skill-category {
-  background: var(--bg-secondary);
-  border: 2px solid rgba(37, 99, 235, 0.4);
-  border-radius: 1rem;
-  padding: 2rem 2.5rem;
-  width: 80%;
-  max-width: 700px;
-  box-shadow: 0 0 15px rgba(37, 99, 235, 0.2);
-  transition: all 0.4s ease;
+.two-column-skills .skills-col {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
 }
 
-.skill-category:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 0 30px rgba(37, 99, 235, 0.6);
-}
-
-.skill-item {
-  margin-bottom: 1.5rem;
+.two-column-skills .skill-item {
   text-align: left;
 }
 
-.skill-item span {
-  display: block;
-  font-weight: 600;
-  margin-bottom: 0.5rem;
-  color: var(--text-color);
-}
-
-/* Neon Skill Bars */
-.skill-bar {
+.two-column-skills .skill-bar {
   height: 10px;
   background: rgba(255, 255, 255, 0.1);
   border-radius: 6px;
@@ -282,7 +266,7 @@ body {
   box-shadow: inset 0 0 10px rgba(37, 99, 235, 0.4);
 }
 
-.skill-progress {
+.two-column-skills .skill-progress {
   height: 100%;
   width: 0;
   background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
