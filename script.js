@@ -86,11 +86,3 @@ window.addEventListener("load", () => {
 const sidebar = document.querySelector(".sidebar");
 sidebar.style.boxShadow = "0 0 25px rgba(37, 99, 235, 0.7)";
 
-// 🌟 Permanent Vertical Blue Glow Line
-const glowLine = document.querySelector(".glow-line");
-if (glowLine) {
-  glowLine.style.borderRight = "2px solid #2563eb";
-  glowLine.style.boxShadow = "0 0 25px rgba(37,99,235,0.9)";
-  glowLine.style.filter = "drop-shadow(0 0 8px #2563eb)";
-  glowLine.style.transition = "all 0.4s ease";
-}
