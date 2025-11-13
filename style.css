@@ -825,4 +825,90 @@ a {
     padding: 0 15px;
   }
 }
+/* 📱 Mobile Styling — Desktop untouched */
+@media (max-width: 900px) {
+
+  /* --- HERO SECTION FIX --- */
+  .hero-grid {
+    flex-direction: column-reverse !important;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    text-align: center;
+    padding: 1rem;
+  }
+
+  .hero-image {
+    order: -1 !important;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
+  .profile-card {
+    width: 180px !important;
+    height: 180px !important;
+    margin: 0 auto;
+  }
+
+  .hero-text {
+    text-align: center;
+    padding: 0 10px;
+  }
+
+  /* --- REMOVE SIDEBAR + FIX SPACE --- */
+  .sidebar {
+    display: none !important;
+  }
+
+  .content-align,
+  .new-layout {
+    margin-left: 0 !important;
+    padding: 20px !important;
+  }
+
+  .footer {
+    display: none !important;
+  }
+
+  /* --- SECTION BOXES (About, Skills, Education, Contact) --- */
+  .education-item,
+  .connect-box,
+  .skill-category,
+  .about-card {
+    margin: 1.5rem auto !important;
+    width: 95% !important;
+    padding: 1.8rem !important;
+  }
+
+  /* --- SECTION HEADINGS CENTER FIX --- */
+  .section-title {
+    text-align: center !important;
+    margin-bottom: 1.5rem !important;
+    font-size: 1.8rem !important;
+  }
+
+  .section-title::after {
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+  }
+
+  /* --- SKILLS TWO COLUMN → ONE COLUMN FOR MOBILE --- */
+  .skills-wrapper {
+    display: flex;
+    flex-direction: column !important;
+    gap: 1.2rem;
+  }
+
+  .skills-col {
+    width: 100% !important;
+  }
+
+  /* --- Buttons full width on mobile --- */
+  .btn {
+    width: 100% !important;
+    justify-content: center !important;
+  }
+}
 
