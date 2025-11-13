@@ -610,3 +610,185 @@ a {
   }
 }
 
+/*last added*/
+/* ----------------------------
+  Mobile / Small-screen fixes
+  (Only affects <= 900px - desktop unchanged)
+   - hides sidebar + footer
+   - stacks hero and profile image
+   - buttons full-width and non-overlapping
+   - skills in single column on small phones, two columns on small tablets
+   - disables neon vertical glow area on mobile
+----------------------------*/
+@media (max-width: 900px) {
+  /* hide sidebar and neon glow (menu hidden on mobile as requested) */
+  .sidebar {
+    display: none !important;
+  }
+  .neon-glow {
+    display: none !important;
+  }
+
+  /* hide footer on mobile */
+  .footer {
+    display: none !important;
+  }
+
+  /* content spacing (use full width) */
+  .content-align,
+  .new-layout {
+    margin-left: 0 !important;
+    padding: 20px !important;
+    text-align: left;
+  }
+
+  /* hero layout stacks vertically & centers nicely */
+  .hero-grid {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 1.25rem !important;
+    padding: 20px !important;
+    max-width: 100%;
+  }
+
+  .hero-text {
+    width: 100% !important;
+    max-width: 100% !important;
+    text-align: center !important;
+    padding: 0 12px;
+  }
+
+  .hero-text h1 {
+    font-size: 2.2rem !important;
+    line-height: 1.05;
+  }
+
+  .hero-description {
+    font-size: 1rem !important;
+    margin-bottom: 1rem !important;
+  }
+
+  /* profile image reduced and positioned under/above text */
+  .hero-image {
+    width: 100% !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    order: 2;
+    margin-top: 6px;
+    left: 0 !important;
+  }
+
+  .profile-card {
+    width: 170px !important;
+    height: 170px !important;
+    box-shadow: 0 0 30px var(--primary-color) !important;
+    margin: 10px 0 0 0;
+  }
+
+  /* buttons stacked, full width but limited max-width so they don't stretch too far */
+  .hero-buttons {
+    width: 100% !important;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 12px !important;
+    align-items: center;
+    margin-top: 1rem !important;
+  }
+
+  .btn {
+    width: 85% !important;
+    max-width: 380px !important;
+    padding: 0.75rem 1rem !important;
+    margin-right: 0 !important;
+    box-sizing: border-box;
+  }
+
+  /* sections use full width but keep same boxed look */
+  .education-content,
+  .skills-grid,
+  .about-card,
+  .skill-category,
+  .education-item,
+  .connect-box {
+    width: 100% !important;
+    max-width: 720px !important;
+    margin: 18px auto !important;
+    padding: 1.2rem 1rem !important;
+    box-shadow: 0 0 18px rgba(37,99,235,0.12) !important;
+  }
+
+  .section-title {
+    font-size: 1.8rem !important;
+    margin-bottom: 0.8rem !important;
+  }
+
+  /* Skill columns: stacked on small phones, two columns on wider small screens */
+  .skills-wrapper {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 12px !important;
+  }
+
+  .skills-col {
+    width: 100% !important;
+  }
+
+  /* Make progress bars shorter and inside the boxed area */
+  .skill-bar {
+    height: 10px !important;
+    margin-top: 8px;
+  }
+  .skill-item {
+    padding: 8px 0 !important;
+  }
+
+  /* smaller edu/skill boxes heading sizes */
+  .education-item .edu-details h3,
+  .skill-category h3 {
+    font-size: 1.05rem !important;
+  }
+
+  /* contact box spacing tweaks */
+  .contact-content {
+    padding: 1.2rem 0 !important;
+  }
+  .contact-method {
+    margin: 10px 0 !important;
+  }
+
+  /* keep social icons visible and small */
+  .social-link {
+    width: 48px !important;
+    height: 48px !important;
+  }
+
+  /* ensure nav active link style doesn't force desktop-only layout */
+  .sidebar-links a {
+    width: 150px;
+  }
+
+  /* if panels still overlap due to custom inline styles, make sure z-index is reset */
+  .hero, .content-align, .education-content, .skills-grid {
+    position: relative !important;
+    z-index: 1 !important;
+  }
+
+  /* Optional: reduce font sizes inside boxed areas to avoid overflow */
+  .education-item p,
+  .connect-box p,
+  .hero-description {
+    font-size: 0.95rem !important;
+  }
+
+  /* Mobile-specific accessibility: increase hit area for links */
+  .sidebar-links a,
+  .btn,
+  .social-link,
+  .view-cert-btn,
+  .verify-cert-btn {
+    touch-action: manipulation;
+  }
+}
