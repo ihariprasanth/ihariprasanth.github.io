@@ -792,3 +792,37 @@ a {
     touch-action: manipulation;
   }
 }
+
+/* 📱 Mobile: Move profile photo above text (keep desktop same) */
+@media (max-width: 900px) {
+  .hero-grid {
+    display: flex;
+    flex-direction: column-reverse !important; /* reverse order for mobile */
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
+  }
+
+  /* make sure image stays centered and visible */
+  .hero-image {
+    order: -1 !important; /* ensures image comes first */
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+
+  .profile-card {
+    width: 180px !important;
+    height: 180px !important;
+    margin: 10px auto;
+    box-shadow: 0 0 30px var(--primary-color);
+  }
+
+  .hero-text {
+    text-align: center;
+    padding: 0 15px;
+  }
+}
+
