@@ -28,17 +28,48 @@
   <div class="content-align">
     <h1 class="section-title">Certifications</h1>
 
-    <div class="education-content">
+    <style>
+  /* Desktop → 2 columns, Mobile → 1 column */
+  .cert-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+  }
 
-      <!-- CARD EXAMPLE → Duplicate this block for new certificates -->
-      <div class="education-item">
-        <div class="edu-details">
-          <h3>Deep Learning Specialization</h3>
-          <p>Issued by: Coursera (deeplearning.ai)</p>
-          <p>Issued on: April 2025</p>
-          <p>Credential ID: <strong>abc-1234</strong></p>
-          <a href="#" target="_blank" class="btn primary">View Certificate</a>
-        </div>
+  @media (max-width: 900px) {
+    .cert-grid {
+      grid-template-columns: 1fr !important;
+    }
+  }
+</style>
+
+<div class="cert-grid">
+
+  <!-- CARD EXAMPLE → Duplicate this block for new certificates -->
+  <div class="education-item">
+    <div class="edu-details">
+      <h3>Deep Learning Specialization</h3>
+      <p>Issued by: Coursera (deeplearning.ai)</p>
+      <p>Issued on: April 2025</p>
+      <p>Credential ID: <strong>abc-1234</strong></p>
+      <a href="#" target="_blank" class="btn primary">View Certificate</a>
+    </div>
+  </div>
+
+  <div class="education-item">
+    <div class="edu-details">
+      <h3>Full Stack Web Development</h3>
+      <p>Issued by: GitHub Learning</p>
+      <p>Issued on: September 2024</p>
+      <p>Credential ID: <strong>fswd-9876</strong></p>
+      <a href="#" target="_blank" class="btn primary">View Certificate</a>
+    </div>
+  </div>
+
+  <!-- ADD MORE BELOW -->
+
+</div>
       </div>
 
       <div class="education-item">
