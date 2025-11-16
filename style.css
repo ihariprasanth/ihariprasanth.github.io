@@ -975,3 +975,11 @@ a {
 #education {
   padding-left: 180px !important;
 }
+/* Perfect equal spacing for education grid */
+.education-content.two-col-edu {
+  display: grid !important;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 40px !important;  /* equal column spacing */
+  row-gap: 40px !important;     /* equal row spacing */
+  padding-right: 40px;          /* prevents sticking to right side */
+}
