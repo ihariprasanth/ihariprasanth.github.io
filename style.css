@@ -1,6 +1,3 @@
-/* ---------------------------------------------------
-   FONT SETUP 
----------------------------------------------------*/
 @font-face {
   font-family: "SF Pro Display";
   src: url("fonts/SF-Pro-Display-Regular.ttf") format("truetype");
@@ -15,7 +12,12 @@
   font-style: normal;
 }
 
-/* Base Reset */
+body {
+  font-family: "SF Pro Display", "SF Pro Text", -apple-system, BlinkMacSystemFont,
+               "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+/* Reset and Base Styles */
 * {
   margin: 0;
   padding: 0;
@@ -25,125 +27,148 @@
 :root {
   --primary-color: #2563eb;
   --secondary-color: #7c3aed;
-  --text-color: #ffffff;
+  --text-color: #f5f5f5;
   --text-light: #b5b5b5;
   --bg-color: #111;
   --bg-secondary: #1a1a1a;
-  --transition: 0.3s ease;
+  --border-color: #2563eb;
+  --transition: all 0.3s ease;
 }
 
-/* ---------------------------------------------------
-   BODY 
----------------------------------------------------*/
+/* Body */
 body {
-  font-family: "SF Pro Display", sans-serif;
-  background: var(--bg-color);
+  font-family: "Inter", sans-serif;
   color: var(--text-color);
+  background-color: var(--bg-color);
+  line-height: 1.6;
   overflow-x: hidden;
+  transition: var(--transition);
 }
 
-/* ---------------------------------------------------
-   SIDEBAR 
----------------------------------------------------*/
+/* Sidebar */
 .sidebar {
   position: fixed;
   top: 0;
   left: 0;
   width: 230px;
-  height: 100vh;
+  height: 100%;
   background: #0a0a0a;
-  box-shadow: 0 0 30px rgba(37, 99, 235, 0.4);
-  padding-top: 40px;
-  z-index: 10;
-}
-
-.sidebar-links {
-  list-style: none;
-  padding: 0;
-  margin-top: 20px;
+  /* remove this line if you still have it:
+  border-right: 2px solid var(--primary-color); */
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  align-items: center;
+  padding-top: 2rem;
+  box-shadow: 0 0 25px rgba(37, 99, 235, 0.3);
+  z-index: 3; /* 🔹 Keep the sidebar above the glow */
+}
+
+
+.logo {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--primary-color);
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+/* Sidebar Links */
+.sidebar-links {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 1.4rem;
+  align-items: center;
 }
 
 .sidebar-links a {
-  display: block;
+  text-decoration: none;
+  color: var(--text-color);
+  font-weight: 500;
+  background: transparent;
+  border: 2px solid rgba(37, 99, 235, 0.5);
+  border-radius: 10px;
+  padding: 0.6rem 2.5rem;
+  display: inline-block;
+  box-shadow: 0 0 10px rgba(37, 99, 235, 0.2);
+  transition: var(--transition);
   width: 150px;
   text-align: center;
-  padding: 10px;
-  color: var(--text-color);
-  border-radius: 10px;
-  border: 2px solid rgba(37, 99, 235, 0.3);
-  transition: var(--transition);
 }
 
 .sidebar-links a:hover,
 .sidebar-links a.active {
+  color: var(--primary-color);
   border-color: var(--primary-color);
-  box-shadow: 0 0 18px var(--primary-color);
+  box-shadow: 0 0 20px var(--primary-color);
+  transform: translateY(-3px);
 }
 
-/* ---------------------------------------------------
-   SECTION WRAPPER — PERFECT CENTER ALIGNMENT
----------------------------------------------------*/
+/* Page Layout */
 .content-align {
-  margin-left: 230px;           /* space for sidebar */
-  padding: 60px 40px;
-  max-width: calc(100vw - 230px);
-}
-
-section {
-  max-width: 1100px;
-  margin-left: auto;
-  margin-right: auto;
+  margin-left: 230px;
+  padding: 60px;
   text-align: center;
 }
 
-/* ---------------------------------------------------
-   SECTION TITLE 
----------------------------------------------------*/
+/* Section Titles */
 .section-title {
-  font-size: 2.4rem;
-  margin-bottom: 1rem;
-  font-weight: bold;
+  font-size: 2.2rem;
+  font-weight: 700;
+  margin-bottom: 1.3rem;
   position: relative;
+  letter-spacing: 0.5px;
 }
 
 .section-title::after {
   content: "";
+  position: absolute;
   width: 60px;
   height: 3px;
   background: var(--primary-color);
-  position: absolute;
   left: 50%;
   transform: translateX(-50%);
   bottom: -8px;
 }
 
-/* ---------------------------------------------------
-   HERO SECTION
----------------------------------------------------*/
+/* Hero Section */
 .hero {
   min-height: 100vh;
   display: flex;
   align-items: center;
+  justify-content: center;
+  background: var(--bg-color);
+  position: relative;
 }
 
+.new-layout {
+  margin-left: 230px;
+  padding-left: 80px;
+  padding-right: 80px;
+}
+
+/* 🧭 Centered Layout for Hero Section */
 .hero-grid {
   display: flex;
-  gap: 50px;
-  margin: auto;
-  max-width: 1000px;
   align-items: center;
+  justify-content: center;
+  gap: 4rem;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  text-align: left;
 }
 
+/* 🧍‍♂️ Text Section */
 .hero-text {
-  text-align: left;
+  flex: 1;
+  max-width: 550px;
 }
 
 .hero-text h1 {
   font-size: 3rem;
-  font-weight: bold;
+  font-weight: 700;
+  margin-bottom: 1rem;
 }
 
 .highlight {
@@ -151,217 +176,754 @@ section {
 }
 
 .hero-description {
-  margin-top: 15px;
   font-size: 1.2rem;
   color: var(--text-light);
+  margin-bottom: 2rem;
+  line-height: 1.6;
 }
 
-/* Buttons */
-.btn {
-  padding: 12px 25px;
-  border-radius: 10px;
-  font-weight: bold;
-  cursor: pointer;
-  display: inline-block;
-  margin-right: 10px;
-  transition: var(--transition);
+/* 💫 Floating Image Section */
+.hero-image {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  left: -20px; /* adjust this for fine alignment */
 }
 
-.btn.primary {
-  border: 2px solid var(--primary-color);
-  color: white;
-}
-
-.btn.primary:hover {
-  background: var(--primary-color);
-}
-
-.btn.secondary {
-  border: 2px solid rgba(37, 99, 235, 0.4);
-}
-
-.btn.secondary:hover {
-  border-color: var(--primary-color);
-  color: var(--primary-color);
-}
-
-/* Hero Image */
 .profile-card {
-  width: 260px;
-  height: 260px;
+  width: 280px;
+  height: 280px;
   border-radius: 50%;
   overflow: hidden;
-  box-shadow: 0 0 35px var(--primary-color);
-  animation: float 3s infinite ease-in-out;
+  box-shadow: 0 0 25px var(--primary-color);
+  animation: float 3s ease-in-out infinite, glowPulse 3s ease-in-out infinite;
+  position: relative;
+  transition: all 0.4s ease;
 }
 
 .profile-card img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  border-radius: 50%;
+}
+
+/* Floating Animations */
+@keyframes glowPulse {
+  0%, 100% { box-shadow: 0 0 25px var(--primary-color); }
+  50% { box-shadow: 0 0 45px var(--primary-color); }
 }
 
 @keyframes float {
-  0% { transform: translateY(0px); }
-  50% { transform: translateY(-15px); }
-  100% { transform: translateY(0px); }
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-20px); }
 }
 
-/* ---------------------------------------------------
-   ABOUT CARD (Centered)
----------------------------------------------------*/
+/* About Section */
 .about-card {
   background: var(--bg-secondary);
-  padding: 30px;
-  border-radius: 15px;
+  border: 2px solid rgba(37, 99, 235, 0.4);
+  border-radius: 1rem;
+  padding: 2.3rem;
+  width: 80%;
   max-width: 700px;
-  margin: 0 auto;
-  border: 2px solid rgba(37, 99, 235, 0.3);
+  margin: 2rem auto;
+  box-shadow: 0 0 15px rgba(37, 99, 235, 0.2);
+  transition: var(--transition);
 }
 
-/* ---------------------------------------------------
-   SKILLS SECTION
----------------------------------------------------*/
+.about-card:hover {
+  box-shadow: 0 0 25px var(--primary-color);
+  transform: translateY(-5px);
+}
+
+/* 🌟 Two-column compact Skills Layout */
 .skills-wrapper {
-  max-width: 700px;
-  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  gap: 2rem;
+  margin-top: 1rem;
 }
 
 .skills-col {
-  width: 100%;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
 }
 
-/* ---------------------------------------------------
-   EDUCATION — PERFECT GRID
----------------------------------------------------*/
-.two-col-edu {
-  display: grid !important;
-  grid-template-columns: 1fr 1fr;
-  gap: 40px;
-  max-width: 1100px;
-  margin: auto;
+/* Each skill item text */
+.skill-item span {
+  display: block;
+  font-weight: 600;
+  font-size: 0.95rem;
+  margin-bottom: 0.4rem;
+  color: var(--text-color);
+}
+
+/* 🌈 Compact Skill Bars */
+.skill-bar {
+  height: 8px;
+  width: 90%;
+  margin: 0 auto;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 5px;
+  overflow: hidden;
+  box-shadow: inset 0 0 8px rgba(37, 99, 235, 0.4);
+}
+
+.skill-progress {
+  height: 100%;
+  width: 0; /* Start from 0 */
+  background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+  border-radius: 5px;
+  box-shadow: 0 0 15px var(--primary-color);
+  transition: width 1.5s ease-in-out;
+}
+
+
+
+/* Responsive - stack columns for smaller screens */
+@media (max-width: 768px) {
+  .skills-wrapper {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .skill-bar {
+    width: 100%;
+  }
+}
+
+
+/* Education Section */
+.education-content {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  align-items: center;
 }
 
 .education-item {
   background: var(--bg-secondary);
-  padding: 25px;
-  border-radius: 15px;
-  min-height: 260px;
-  text-align: center;
-  border: 2px solid rgba(37, 99, 235, 0.3);
-}
-
-.edu-icon {
-  font-size: 2rem;
-  margin-bottom: 10px;
-}
-
-/* Buttons */
-.verify-cert-btn,
-.view-cert-btn {
-  margin-top: 12px;
-  padding: 8px 18px;
-  border-radius: 8px;
-  display: inline-block;
-}
-
-.verify-cert-btn {
-  border: 2px solid #00ffb7;
-}
-
-.verify-cert-btn:hover {
-  background: #00ffb7;
-  color: #000;
-}
-
-.view-cert-btn {
-  border: 2px solid var(--primary-color);
-}
-
-.view-cert-btn:hover {
-  background: var(--primary-color);
-}
-
-/* ---------------------------------------------------
-   CONTACT SECTION
----------------------------------------------------*/
-.connect-box {
+  border: 2px solid rgba(37, 99, 235, 0.4);
+  border-radius: 1rem;
+  padding: 2rem;
+  width: 80%;
   max-width: 700px;
-  margin: auto;
-  background: var(--bg-secondary);
-  padding: 30px;
-  border-radius: 15px;
-  border: 2px solid rgba(37, 99, 235, 0.3);
+  box-shadow: 0 0 15px rgba(37, 99, 235, 0.15);
+  transition: var(--transition);
 }
 
+.education-item:hover {
+  box-shadow: 0 0 25px var(--primary-color);
+}
+
+/* 🌟 Contact Section */
+.contact-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 1.5rem;
+  padding: 3rem 0;
+}
+
+/* Neon Contact Box */
+.connect-box {
+  background: var(--bg-secondary);
+  border: 2px solid rgba(37, 99, 235, 0.4);
+  border-radius: 1rem;
+  padding: 2.2rem 2.5rem;
+  width: 80%;
+  max-width: 700px;
+  box-shadow: 0 0 15px rgba(37, 99, 235, 0.2);
+  transition: all 0.4s ease;
+}
+
+.connect-box:hover {
+  box-shadow: 0 0 25px var(--primary-color);
+  border-color: var(--primary-color);
+  transform: translateY(-5px);
+}
+
+.contact-info h3 {
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+  color: var(--text-color);
+}
+
+.contact-info p {
+  color: var(--text-light);
+  font-size: 1rem;
+  max-width: 600px;
+  margin: 0 auto 1rem auto;
+  line-height: 1.7;
+}
+
+.contact-method {
+  margin: 1rem 0;
+}
+
+.contact-method h4 {
+  font-size: 1.1rem;
+  color: var(--text-color);
+  margin-bottom: 0.3rem;
+}
+
+.contact-method p {
+  color: var(--text-light);
+  font-size: 1rem;
+}
+
+/* Centered Social Icons */
 .social-container {
   display: flex;
   justify-content: center;
-  gap: 20px;
-  margin-top: 20px;
+  gap: 1.5rem;
+  margin-top: 1.5rem;
 }
 
 .social-link {
-  width: 55px;
-  height: 55px;
-  border-radius: 12px;
-  border: 2px solid rgba(37, 99, 235, 0.4);
+  width: 60px;
+  height: 60px;
   display: flex;
   align-items: center;
   justify-content: center;
+  border-radius: 12px;
+  background: var(--bg-secondary);
+  border: 2px solid rgba(37, 99, 235, 0.5);
+  box-shadow: 0 0 15px rgba(37, 99, 235, 0.3);
   transition: var(--transition);
 }
 
 .social-link:hover {
+  transform: translateY(-5px);
   border-color: var(--primary-color);
   box-shadow: 0 0 25px var(--primary-color);
 }
 
-/* ---------------------------------------------------
-   FOOTER
----------------------------------------------------*/
-.footer {
-  margin-left: 230px;
-  text-align: center;
-  padding: 25px;
-  background: var(--bg-secondary);
+.social-link i,
+.social-link img {
+  font-size: 1.6rem;
+  color: white;
+  width: 26px;
+  height: 26px;
 }
 
-/* ---------------------------------------------------
-   MOBILE RESPONSIVE
----------------------------------------------------*/
-@media (max-width: 900px) {
+.leetcode-icon {
+  width: 26px;
+  height: 26px;
+  filter: invert(1);
+}
 
+/* Footer */
+.footer {
+  text-align: center;
+  padding: 2rem 0;
+  color: var(--text-light);
+  background: var(--bg-secondary);
+  margin-left: 230px;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
   .sidebar {
-    display: none;
+    position: relative;
+    width: 100%;
+    height: auto;
+    flex-direction: row;
+    justify-content: center;
+    border-right: none;
+    border-bottom: 2px solid var(--primary-color);
   }
 
-  .content-align {
+  .content-align, .new-layout {
     margin-left: 0;
-    padding: 25px;
+    padding: 2rem;
   }
 
   .hero-grid {
-    flex-direction: column-reverse;
+    flex-direction: column;
     text-align: center;
   }
 
   .profile-card {
-    width: 180px;
-    height: 180px;
+    margin-top: 2rem;
+  }
+}
+
+/* Remove underline globally */
+a {
+  text-decoration: none !important;
+}
+/* 🌟 View Certificate (Deloitte) Button — Blue Neon Glow */
+.view-cert-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: 1rem;
+  padding: 0.7rem 1.8rem;
+  color: white;
+  background: transparent;
+  border: 2px solid var(--primary-color);
+  border-radius: 10px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: var(--transition);
+  box-shadow: 0 0 20px rgba(37, 99, 235, 0.4);
+}
+
+.view-cert-btn i {
+  font-size: 1.2rem;
+  color: var(--primary-color);
+}
+
+.view-cert-btn:hover {
+  background: var(--primary-color);
+  color: white;
+  box-shadow: 0 0 25px var(--primary-color), 0 0 45px rgba(37, 99, 235, 0.6);
+  transform: translateY(-3px);
+}
+
+/* 💚 Verify Certificate (Udemy) Button — Neon Green Glow */
+.verify-cert-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: 1rem;
+  padding: 0.7rem 1.8rem;
+  color: white;
+  background: transparent;
+  border: 2px solid #00ffb7;
+  border-radius: 10px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: var(--transition);
+  box-shadow: 0 0 20px rgba(0, 255, 183, 0.4);
+}
+
+.verify-cert-btn i {
+  color: #00ffb7;
+  font-size: 1.2rem;
+}
+
+.verify-cert-btn:hover {
+  background: #00ffb7;
+  color: #111;
+  box-shadow: 0 0 25px #00ffb7, 0 0 45px rgba(0, 255, 183, 0.6);
+  transform: translateY(-3px);
+}
+/* 🌟 Universal Button Style */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75rem 2rem;
+  border-radius: 10px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  font-size: 1rem;
+  cursor: pointer;
+  letter-spacing: 0.5px;
+  position: relative;
+  overflow: hidden;
+  margin-right: 0.8rem;
+  background: transparent;
+}
+/* 💙 Primary Button - Neon Blue Glow */
+.btn.primary {
+  color: #fff;
+  border: 2px solid var(--primary-color);
+  background: transparent;
+  box-shadow: 0 0 15px rgba(37, 99, 235, 0.3), inset 0 0 10px rgba(37, 99, 235, 0.3);
+}
+
+.btn.primary:hover {
+  background: var(--primary-color);
+  color: #fff;
+  box-shadow:
+    0 0 25px var(--primary-color),
+    0 0 50px rgba(37, 99, 235, 0.6),
+    inset 0 0 15px rgba(37, 99, 235, 0.8);
+  transform: translateY(-3px);
+}
+
+/* ⚡ Secondary Button - Transparent Subtle Glow */
+.btn.secondary {
+  color: var(--text-color);
+  border: 2px solid rgba(37, 99, 235, 0.5);
+  background: transparent;
+  box-shadow: 0 0 10px rgba(37, 99, 235, 0.2), inset 0 0 5px rgba(37, 99, 235, 0.2);
+}
+
+.btn.secondary:hover {
+  color: var(--primary-color);
+  border-color: var(--primary-color);
+  box-shadow:
+    0 0 25px var(--primary-color),
+    0 0 50px rgba(37, 99, 235, 0.5),
+    inset 0 0 15px rgba(37, 99, 235, 0.8);
+  transform: translateY(-3px);
+}
+
+/* 💫 Full-Depth Neon Ambient Glow (Always visible, even on Home Page) */
+.neon-glow {
+  position: fixed;
+  left: 230px; /* perfectly aligned next to sidebar */
+  top: 0;
+  height: 100vh;
+  width: 160px; /* wider for more visible diffusion */
+  background: radial-gradient(
+    circle at left,
+    rgba(37, 99, 235, 0.45) 0%,
+    rgba(37, 99, 235, 0.25) 25%,
+    rgba(37, 99, 235, 0.12) 45%,
+    rgba(37, 99, 235, 0.05) 60%,
+    transparent 100%
+  );
+  filter: blur(45px);
+  opacity: 1;
+  pointer-events: none;
+
+  /* 🔹 This ensures the glow stays above background but below sidebar text */
+  z-index: 2;
+
+  /* Smooth ambient pulsing effect */
+  animation: ambientGlow 5s ease-in-out infinite alternate;
+}
+
+/* ✨ Ambient Pulse Animation for subtle breathing glow */
+@keyframes ambientGlow {
+  0% {
+    opacity: 0.85;
+    filter: blur(40px);
+  }
+  100% {
+    opacity: 1;
+    filter: blur(60px);
+  }
+}
+
+/*last added*/
+/* ----------------------------
+  Mobile / Small-screen fixes
+  (Only affects <= 900px - desktop unchanged)
+   - hides sidebar + footer
+   - stacks hero and profile image
+   - buttons full-width and non-overlapping
+   - skills in single column on small phones, two columns on small tablets
+   - disables neon vertical glow area on mobile
+----------------------------*/
+@media (max-width: 900px) {
+  /* hide sidebar and neon glow (menu hidden on mobile as requested) */
+  .sidebar {
+    display: none !important;
+  }
+  .neon-glow {
+    display: none !important;
   }
 
-  .two-col-edu {
-    grid-template-columns: 1fr !important;
+  /* hide footer on mobile */
+  .footer {
+    display: none !important;
   }
 
-  .education-item,
-  .about-card,
-  .connect-box {
+  /* content spacing (use full width) */
+  .content-align,
+  .new-layout {
+    margin-left: 0 !important;
+    padding: 20px !important;
+    text-align: left;
+  }
+
+  /* hero layout stacks vertically & centers nicely */
+  .hero-grid {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 1.25rem !important;
+    padding: 20px !important;
+    max-width: 100%;
+  }
+
+  .hero-text {
+    width: 100% !important;
     max-width: 100% !important;
+    text-align: center !important;
+    padding: 0 12px;
+  }
+
+  .hero-text h1 {
+    font-size: 2.2rem !important;
+    line-height: 1.05;
+  }
+
+  .hero-description {
+    font-size: 1rem !important;
+    margin-bottom: 1rem !important;
+  }
+
+  /* profile image reduced and positioned under/above text */
+  .hero-image {
+    width: 100% !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    order: 2;
+    margin-top: 6px;
+    left: 0 !important;
+  }
+
+  .profile-card {
+    width: 170px !important;
+    height: 170px !important;
+    box-shadow: 0 0 30px var(--primary-color) !important;
+    margin: 10px 0 0 0;
+  }
+
+  /* buttons stacked, full width but limited max-width so they don't stretch too far */
+  .hero-buttons {
+    width: 100% !important;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 12px !important;
+    align-items: center;
+    margin-top: 1rem !important;
+  }
+
+  .btn {
+    width: 85% !important;
+    max-width: 380px !important;
+    padding: 0.75rem 1rem !important;
+    margin-right: 0 !important;
+    box-sizing: border-box;
+  }
+
+  /* sections use full width but keep same boxed look */
+  .education-content,
+  .skills-grid,
+  .about-card,
+  .skill-category,
+  .education-item,
+  .connect-box {
+    width: 100% !important;
+    max-width: 720px !important;
+    margin: 18px auto !important;
+    padding: 1.2rem 1rem !important;
+    box-shadow: 0 0 18px rgba(37,99,235,0.12) !important;
+  }
+
+  .section-title {
+    font-size: 1.8rem !important;
+    margin-bottom: 0.8rem !important;
+  }
+
+  /* Skill columns: stacked on small phones, two columns on wider small screens */
+  .skills-wrapper {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 12px !important;
+  }
+
+  .skills-col {
+    width: 100% !important;
+  }
+
+  /* Make progress bars shorter and inside the boxed area */
+  .skill-bar {
+    height: 10px !important;
+    margin-top: 8px;
+  }
+  .skill-item {
+    padding: 8px 0 !important;
+  }
+
+  /* smaller edu/skill boxes heading sizes */
+  .education-item .edu-details h3,
+  .skill-category h3 {
+    font-size: 1.05rem !important;
+  }
+
+  /* contact box spacing tweaks */
+  .contact-content {
+    padding: 1.2rem 0 !important;
+  }
+  .contact-method {
+    margin: 10px 0 !important;
+  }
+
+  /* keep social icons visible and small */
+  .social-link {
+    width: 48px !important;
+    height: 48px !important;
+  }
+
+  /* ensure nav active link style doesn't force desktop-only layout */
+  .sidebar-links a {
+    width: 150px;
+  }
+
+  /* if panels still overlap due to custom inline styles, make sure z-index is reset */
+  .hero, .content-align, .education-content, .skills-grid {
+    position: relative !important;
+    z-index: 1 !important;
+  }
+
+  /* Optional: reduce font sizes inside boxed areas to avoid overflow */
+  .education-item p,
+  .connect-box p,
+  .hero-description {
+    font-size: 0.95rem !important;
+  }
+
+  /* Mobile-specific accessibility: increase hit area for links */
+  .sidebar-links a,
+  .btn,
+  .social-link,
+  .view-cert-btn,
+  .verify-cert-btn {
+    touch-action: manipulation;
+  }
+}
+
+/* 📱 Mobile: Move profile photo above text (keep desktop same) */
+@media (max-width: 900px) {
+  .hero-grid {
+    display: flex;
+    flex-direction: column-reverse !important; /* reverse order for mobile */
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
+  }
+
+  /* make sure image stays centered and visible */
+  .hero-image {
+    order: -1 !important; /* ensures image comes first */
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+
+  .profile-card {
+    width: 180px !important;
+    height: 180px !important;
+    margin: 10px auto;
+    box-shadow: 0 0 30px var(--primary-color);
+  }
+
+  .hero-text {
+    text-align: center;
+    padding: 0 15px;
+  }
+}
+/* 📱 Mobile Styling — Desktop untouched */
+@media (max-width: 900px) {
+
+  /* --- HERO SECTION FIX --- */
+  .hero-grid {
+    flex-direction: column-reverse !important;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    text-align: center;
+    padding: 1rem;
+  }
+
+  .hero-image {
+    order: -1 !important;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
+  .profile-card {
+    width: 180px !important;
+    height: 180px !important;
+    margin: 0 auto;
+  }
+
+  .hero-text {
+    text-align: center;
+    padding: 0 10px;
+  }
+
+  /* --- REMOVE SIDEBAR + FIX SPACE --- */
+  .sidebar {
+    display: none !important;
+  }
+
+  .content-align,
+  .new-layout {
+    margin-left: 0 !important;
+    padding: 20px !important;
   }
 
   .footer {
-    display: none;
+    display: none !important;
+  }
+
+  /* --- SECTION BOXES (About, Skills, Education, Contact) --- */
+  .education-item,
+  .connect-box,
+  .skill-category,
+  .about-card {
+    margin: 1.5rem auto !important;
+    width: 95% !important;
+    padding: 1.8rem !important;
+  }
+
+  /* --- SECTION HEADINGS CENTER FIX --- */
+  .section-title {
+    text-align: center !important;
+    margin-bottom: 1.5rem !important;
+    font-size: 1.8rem !important;
+  }
+
+  .section-title::after {
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+  }
+
+  /* --- SKILLS TWO COLUMN → ONE COLUMN FOR MOBILE --- */
+  .skills-wrapper {
+    display: flex;
+    flex-direction: column !important;
+    gap: 1.2rem;
+  }
+
+  .skills-col {
+    width: 100% !important;
+  }
+
+  /* --- Buttons full width on mobile --- */
+  .btn {
+    width: 100% !important;
+    justify-content: center !important;
+  }
+}
+
+.two-col-edu {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 25px;
+}
+
+.edu-col .education-item {
+  margin-bottom: 25px;
+}
+
+@media (max-width: 768px) {
+  .two-col-edu {
+    grid-template-columns: 1fr;
   }
 }
