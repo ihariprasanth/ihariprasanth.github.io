@@ -1082,3 +1082,116 @@ html {
     display: none; /* Remove fancy cursor on mobile */
   }
 }
+/* ----------------------------------------- */
+/* FIX: Remove Custom Cursor                 */
+/* ----------------------------------------- */
+
+#cursor {
+  display: none !important;
+}
+
+
+
+/* ----------------------------------------- */
+/* FIX: Section Alignment Centering          */
+/* ----------------------------------------- */
+
+/* Reduce left padding caused by sidebar */
+.content-align {
+  padding-left: 130px !important;
+  padding-right: 40px !important;
+}
+
+/* Center wide sections like About, Skills, Contact */
+section {
+  max-width: 1100px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
+/* ----------------------------------------- */
+/* FIX: Education Grid Centering             */
+/* ----------------------------------------- */
+
+.two-col-edu {
+  justify-content: center;
+  align-items: start;
+  margin: 0 auto !important;
+  width: 100%;
+  max-width: 1100px;
+}
+
+
+
+/* ----------------------------------------- */
+/* FIX: Desktop Spacing Improvement          */
+/* ----------------------------------------- */
+
+@media (min-width: 1024px) {
+  .content-align {
+    padding-left: 150px !important;
+  }
+}
+
+
+/* ----------------------------------------- */
+/* FIX: Mobile View                          */
+/* ----------------------------------------- */
+
+@media (max-width: 768px) {
+
+  /* Sidebar becomes top-aligned */
+  .sidebar {
+    width: 100%;
+    height: auto;
+    position: fixed;
+    top: 0;
+    left: 0;
+    padding: 10px 0;
+  }
+
+  .sidebar-links {
+    display: flex !important;
+    justify-content: space-around;
+  }
+
+  .sidebar-links li {
+    margin: 0 !important;
+  }
+
+  .sidebar-links a {
+    padding: 8px 12px !important;
+    font-size: 14px !important;
+  }
+
+  /* Sections move down (avoid behind sidebar) */
+  section {
+    margin-top: 70px;
+  }
+
+  /* Content margin fix */
+  .content-align {
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+  }
+
+  /* Education becomes single column */
+  .two-col-edu {
+    grid-template-columns: 1fr !important;
+    max-width: 100% !important;
+    padding-right: 0 !important;
+    gap: 25px !important;
+  }
+
+  /* Contact Section center */
+  .connect-box {
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+
+  /* Skills container fit */
+  .education-content {
+    width: 100% !important;
+  }
+}
