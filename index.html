@@ -4,13 +4,31 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>HARIPRASANTH T – Portfolio</title>
-  <link rel="icon" type="image/png" href="images/my-logo.png">
+
+  <!-- SEO -->
   <meta name="description" content="HARIPRASANTH T – Computer Science Student & Aspiring Full Stack Developer specializing in web development and e-commerce solutions." />
+  <meta name="keywords" content="Hariprasanth, Portfolio, Developer, Web Developer, Python, Java, CSE Student">
+  <meta name="author" content="Hariprasanth T">
+
+  <link rel="icon" type="image/png" href="images/my-logo.png">
   <link rel="stylesheet" href="style.css" />
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+  
+  <!-- AOS Animation -->
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
+
+  <!-- Smooth Scrolling -->
+  <style>
+    html { scroll-behavior: smooth; }
+  </style>
+
 </head>
 
 <body>
+
+  <!-- Custom Neon Cursor -->
+  <div id="cursor"></div>
+
   <!-- Sidebar -->
   <aside class="sidebar">
     <div class="logo"></div>
@@ -20,23 +38,22 @@
       <li><a href="#skills">Skills</a></li>
       <li><a href="#education">Education</a></li>
       <li><a href="#contact">Contact</a></li>
-      <!-- 🟦 Added LeetCode Menu Button -->
       <li><a href="https://linkedin.com/in/ihariprasanth/" target="_blank">LinkedIn</a></li>
       <li><a href="https://leetcode.com/u/hariprasanthoffl/" target="_blank">LeetCode</a></li>
     </ul>
   </aside>
 
-  <!-- 🔹 Permanent Glowing Vertical Line -->
-
   <!-- Hero Section -->
-  <section id="home" class="hero new-layout">
+  <section id="home" class="hero new-layout" data-aos="fade-up">
     <div class="hero-grid">
       <div class="hero-text">
         <h1>Hi, I'm <span class="highlight">HARIPRASANTH.T</span></h1>
+
         <p class="hero-description">
           Computer Science student passionate about web development, e-commerce solutions, 
           and creating digital experiences that make a difference.
         </p>
+
         <div class="hero-buttons">
           <a href="#education" class="btn primary">View Education</a>
           <a href="#contact" class="btn secondary">Get In Touch</a>
@@ -45,19 +62,18 @@
 
       <!-- Floating Profile Image -->
       <div class="hero-image">
-        <div class="profile-card">
+        <div class="profile-card floating">
           <img src="images/profile.jpg" alt="HARIPRASANTH T" />
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ✅ Updated About Section -->
-  <section id="about" class="content-align">
-    <h2 class="section-title">About Me</h2>
-    <br>
+  <!-- About Section -->
+  <section id="about" class="content-align" data-aos="fade-up">
+    <h2 class="section-title">About Me</h2><br>
     <div class="education-content">
-      <div class="education-item">
+      <div class="education-item glass">
         <div class="edu-details">
           <h3>Computer Science Student & Tech Enthusiast</h3><br>
           <p>
@@ -72,79 +88,46 @@
   </section>
 
   <!-- Skills -->
-  <section id="skills" class="content-align">
-    <h2 class="section-title">My Skills</h2>
-    <br>
-    <div class="education-content"> <!-- same glowing box style -->
-      <div class="education-item"> <!-- reused box for glow consistency -->
+  <section id="skills" class="content-align" data-aos="fade-up">
+    <h2 class="section-title">My Skills</h2><br>
+
+    <div class="education-content">
+      <div class="education-item glass">
         <div class="edu-details">
           <h3><i class="fas fa-code"></i> Programming</h3>
-  
+
           <div class="skills-wrapper">
+
             <!-- Left Column -->
             <div class="skills-col">
-              <div class="skill-item">
-                <span>Python</span>
-                <div class="skill-bar">
-                  <div class="skill-progress" data-width="90"></div>
-                </div>
-              </div>
-  
-              <div class="skill-item">
-                <span>Java</span>
-                <div class="skill-bar">
-                  <div class="skill-progress" data-width="70"></div>
-                </div>
-              </div>
-  
-              <div class="skill-item">
-                <span>C/C++</span>
-                <div class="skill-bar">
-                  <div class="skill-progress" data-width="78"></div>
-                </div>
-              </div>
+              <div class="skill-item"><span>Python</span><div class="skill-bar"><div class="skill-progress" data-width="90"></div></div></div>
+              <div class="skill-item"><span>Java</span><div class="skill-bar"><div class="skill-progress" data-width="70"></div></div></div>
+              <div class="skill-item"><span>C/C++</span><div class="skill-bar"><div class="skill-progress" data-width="78"></div></div></div>
             </div>
-  
+
             <!-- Right Column -->
             <div class="skills-col">
-              <div class="skill-item">
-                <span>HTML/CSS</span>
-                <div class="skill-bar">
-                  <div class="skill-progress" data-width="90"></div>
-                </div>
-              </div>
-  
-              <div class="skill-item">
-                <span>JavaScript</span>
-                <div class="skill-bar">
-                  <div class="skill-progress" data-width="75"></div>
-                </div>
-              </div>
-  
-              <div class="skill-item">
-                <span>MySQL</span>
-                <div class="skill-bar">
-                  <div class="skill-progress" data-width="70"></div>
-                </div>
-              </div>
+              <div class="skill-item"><span>HTML/CSS</span><div class="skill-bar"><div class="skill-progress" data-width="90"></div></div></div>
+              <div class="skill-item"><span>JavaScript</span><div class="skill-bar"><div class="skill-progress" data-width="75"></div></div></div>
+              <div class="skill-item"><span>MySQL</span><div class="skill-bar"><div class="skill-progress" data-width="70"></div></div></div>
             </div>
-          </div> <!-- skills wrapper -->
+
+          </div>
         </div>
       </div>
     </div>
   </section>
-<!-- Education -->
-  <section id="education" class="content-align">
-    <h2 class="section-title">Education & Certification</h2>
-    <br>
-  
+
+  <!-- Education Section -->
+  <section id="education" class="content-align" data-aos="fade-up">
+    <h2 class="section-title">Education & Certification</h2><br>
+
     <div class="education-content two-col-edu">
-  
+
       <!-- Column 1 -->
       <div class="edu-col">
-  
-        <!-- BE CSE -->
-        <div class="education-item">
+
+        <div class="education-item glass">
           <div class="edu-icon"><i class="fas fa-graduation-cap"></i></div><br>
           <div class="edu-details">
             <h3>BE Computer Science Engineering</h3>
@@ -152,106 +135,112 @@
             <p class="duration">2024 – 2028 (Expected)</p>
           </div>
         </div>
-  
-        <!-- Python Bootcamp -->
-        <div class="education-item">
+
+        <div class="education-item glass">
           <div class="edu-details">
             <h3>100 Days Python Bootcamp</h3>
             <p class="institution">Udemy</p>
             <p class="duration">Completed 2024</p>
-            <p class="achievement">
-              Mastered Python programming with hands-on projects and real-world applications.
-            </p>
-            <a href="https://www.udemy.com/certificate/UC-53a7649a-2c4f-40b5-95f0-a1b84026968b/"
-               target="_blank" class="verify-cert-btn">
-               Verify Certificate
+            <p class="achievement">Mastered Python programming with hands-on real projects.</p>
+            <a href="https://www.udemy.com/certificate/UC-53a7649a-2c4f-40b5-95f0-a1b84026968b/" target="_blank" class="verify-cert-btn">
+              Verify Certificate
             </a>
           </div>
         </div>
-  
+
       </div>
-  
+
       <!-- Column 2 -->
       <div class="edu-col">
-  
-        <!-- Java Programming -->
-        <div class="education-item">
+
+        <div class="education-item glass">
           <div class="edu-details">
             <h3>Java Programming for Beginners</h3>
             <p class="institution">Coursera</p>
             <p class="duration">Completed 2025</p>
-            <p class="achievement">
-              Completed the Java Beginners course on Coursera and earned an IDM-recognized
-              company certificate for practical Java proficiency.
-            </p>
-            <a href="https://coursera.org/verify/H7UFBNEMNQG3"
-               target="_blank" class="verify-cert-btn">
-               Verify Certificate
+            <p class="achievement">Earned IDM-recognized certificate for practical Java skills.</p>
+            <a href="https://coursera.org/verify/H7UFBNEMNQG3" target="_blank" class="verify-cert-btn">
+              Verify Certificate
             </a>
           </div>
         </div>
-  
-        <!-- Deloitte Certification -->
-        <div class="education-item">
+
+        <div class="education-item glass">
           <div class="edu-details">
             <h3>Data Analytics Job Simulation</h3>
-            <p class="institution">Deloitte (Issued via Forage)</p>
+            <p class="institution">Deloitte (Forage)</p>
             <p class="duration">Completed July 13, 2025</p>
-            <p class="achievement">
-              Completed practical tasks in Data Analysis and Forensic Technology under Deloitte’s virtual internship program.
-            </p>
+            <p class="achievement">Practical tasks in Data Analysis & Forensic Technology.</p>
             <p class="achievement"><strong>Verification Code:</strong> YAFtQ3R3SSGKDiFws</p>
             <a href="https://github.com/ihariprasanth/ihariprasanth.github.io/blob/main/Certifications/Deloitte%20Job%20Simulation.pdf"
-               target="_blank" class="view-cert-btn">
-               View Certificate
-            </a>
+               target="_blank" class="view-cert-btn">View Certificate</a>
           </div>
         </div>
-  
+
       </div>
-  
+
     </div>
   </section>
 
-  <!-- Contact -->
-  <section id="contact" class="content-align">
+  <!-- Contact Section -->
+  <section id="contact" class="content-align" data-aos="fade-up">
     <h2 class="section-title">Get In Touch</h2>
     <div class="contact-content">
-      <div class="connect-box">
+      <div class="connect-box glass">
         <div class="contact-info">
           <h3>Let's Connect!</h3>
-          <p>I'm always open to discussing new opportunities or collaborations. Feel free to reach out!</p>
+          <p>I'm always open to discussing opportunities and collaborations.</p>
         </div>
-        <div class="contact-method">
-          <h4>Email :</h4>
-          <p>hariprasanth.user@gmail.com</p>
-        </div>
-        
-        <div class="contact-method">
-          <h4>Phone :</h4>
-          <p>+91 9962322926</p>
-        </div>
-        
-        <div class="contact-method">
-          <h4>Location :</h4>
-          <p>Tiruppur, Tamil Nadu</p>
-        </div>
+
+        <div class="contact-method"><h4>Email :</h4><p>hariprasanth.user@gmail.com</p></div>
+        <div class="contact-method"><h4>Phone :</h4><p>+91 9962322926</p></div>
+        <div class="contact-method"><h4>Location :</h4><p>Tiruppur, Tamil Nadu</p></div>
+
         <div class="social-container">
           <a href="https://github.com/ihariprasanth" target="_blank" class="social-link"><i class="fab fa-github"></i></a>
           <a href="https://linkedin.com/in/ihariprasanth/" target="_blank" class="social-link"><i class="fab fa-linkedin"></i></a>
-
           <a href="https://wa.me/919962322926" target="_blank" class="social-link"><i class="fab fa-whatsapp"></i></a>
-
         </div>
+
       </div>
     </div>
   </section>
 
   <!-- Footer -->
-  <footer class="footer">
-    <p>Made With 🤍 HARIPRASANTH.T</p>
-  </footer>
+  <footer class="footer"><p>Made With 🤍 HARIPRASANTH.T</p></footer>
 
+  <!-- JS Files -->
   <script src="script.js"></script>
+
+  <!-- AOS Animation Script -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>AOS.init({ duration: 800, once: true });</script>
+
+  <!-- Active Sidebar Highlight Script -->
+  <script>
+    const sections = document.querySelectorAll("section");
+    const navLinks = document.querySelectorAll(".sidebar-links a");
+
+    window.addEventListener("scroll", () => {
+      let current = "";
+      sections.forEach(sec => {
+        if (pageYOffset >= sec.offsetTop - 200) current = sec.id;
+      });
+
+      navLinks.forEach(a => {
+        a.classList.remove("active");
+        if (a.getAttribute("href").includes(current)) a.classList.add("active");
+      });
+    });
+  </script>
+
+  <!-- Custom Cursor Script -->
+  <script>
+    const cursor = document.getElementById("cursor");
+    window.addEventListener("mousemove", e => {
+      cursor.style.transform = `translate(${e.clientX}px, ${e.clientY}px)`;
+    });
+  </script>
+
 </body>
 </html>
