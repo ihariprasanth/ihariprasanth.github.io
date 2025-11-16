@@ -949,3 +949,29 @@ a {
     grid-template-columns: 1fr;
   }
 }
+/* Equal height cards */
+.education-content.two-col-edu {
+  display: grid !important;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  align-items: stretch;
+}
+
+/* Each item same height */
+.education-item {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+/* Force same height for all education cards */
+.education-item {
+  min-height: 260px !important;   /* adjust height here */
+  height: 100% !important;
+}
+.education-item .edu-details {
+  padding: 20px 25px;
+}
+#education {
+  padding-left: 180px !important;
+}
