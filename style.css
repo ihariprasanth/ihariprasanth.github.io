@@ -1233,3 +1233,62 @@ section {
   margin-left: auto;
   margin-right: auto;
 }
+/* ----------------------------------------- */
+/* PERFECT CENTERING FOR EDUCATION SECTION   */
+/* ----------------------------------------- */
+
+/* Center the entire 2-column grid */
+.two-col-edu {
+  display: grid !important;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 40px;
+  justify-content: center !important;   /* horizontally center grid */
+  align-items: start;
+  width: 100%;
+  max-width: 1000px;                    /* controls total grid width */
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+/* Make all cards same width & centered */
+.education-item {
+  width: 420px !important;             /* fixed equal width */
+  margin-left: auto !important;
+  margin-right: auto !important;
+  text-align: center !important;       /* center text inside card */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* Center inside elements */
+.education-item .edu-details,
+.education-item .edu-icon {
+  text-align: center !important;
+}
+
+/* Center buttons */
+.verify-cert-btn,
+.view-cert-btn {
+  display: inline-block !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+/* ----------------------------------------- */
+/* MOBILE FIX – SINGLE COLUMN CENTERED       */
+/* ----------------------------------------- */
+
+@media (max-width: 768px) {
+
+  .two-col-edu {
+    grid-template-columns: 1fr !important;
+    max-width: 100% !important;
+    width: 100% !important;
+    gap: 25px !important;
+  }
+
+  .education-item {
+    width: 100% !important;
+  }
+}
