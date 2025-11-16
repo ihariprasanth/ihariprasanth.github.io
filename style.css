@@ -927,3 +927,25 @@ a {
     grid-template-columns: 1fr;
   }
 }
+
+/* FORCE 2 COLUMN EDUCATION LAYOUT */
+.education-content.two-col-edu {
+  display: grid !important;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+  width: 100%;
+}
+
+/* column container */
+.edu-col {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+/* responsive */
+@media (max-width: 768px) {
+  .education-content.two-col-edu {
+    grid-template-columns: 1fr;
+  }
+}
