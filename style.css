@@ -1214,3 +1214,22 @@ section {
     margin: 0 auto !important;
   }
 }
+/* Fix: Center content inside each education card */
+.education-item,
+.education-item .edu-details {
+  text-align: center !important;
+}
+
+/* Center icon also */
+.education-item .edu-icon {
+  text-align: center !important;
+  margin-bottom: 10px;
+}
+
+/* Ensure certificate buttons are centered */
+.verify-cert-btn,
+.view-cert-btn {
+  display: inline-block;
+  margin-left: auto;
+  margin-right: auto;
+}
