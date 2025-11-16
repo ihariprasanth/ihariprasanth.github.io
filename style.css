@@ -1195,3 +1195,22 @@ section {
     width: 100% !important;
   }
 }
+/* Center content BETWEEN sidebar and right edge */
+
+/* Desktop / Laptop Layout */
+@media (min-width: 1024px) {
+
+  .content-align,
+  section {
+    max-width: 1100px; /* your content width */
+    margin: 0 auto;
+    padding-left: calc(250px + 50px) !important; /* 250 = sidebar + glow, 50 = spacing */
+    padding-right: 50px !important;
+  }
+
+  /* Education grid center inside content zone */
+  .two-col-edu {
+    max-width: 1100px;
+    margin: 0 auto !important;
+  }
+}
