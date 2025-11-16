@@ -983,3 +983,102 @@ a {
   row-gap: 40px !important;     /* equal row spacing */
   padding-right: 40px;          /* prevents sticking to right side */
 }
+/* ----------------------------------------- */
+/* PREMIUM PORTFOLIO ENHANCEMENT CSS         */
+/* ----------------------------------------- */
+
+/* Glassmorphism Effect for Cards */
+.glass {
+  backdrop-filter: blur(12px);
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 15px;
+}
+
+/* Floating Animation for Profile Card */
+.floating {
+  animation: float 3s ease-in-out infinite;
+}
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-12px); }
+  100% { transform: translateY(0px); }
+}
+
+/* Custom Neon Cursor */
+#cursor {
+  width: 12px;
+  height: 12px;
+  position: fixed;
+  border-radius: 50%;
+  background: #00ffe1;
+  pointer-events: none;
+  mix-blend-mode: difference;
+  transition: transform 0.07s ease;
+  z-index: 9999;
+}
+
+/* Sidebar Hover Glow */
+.sidebar-links a:hover {
+  box-shadow: 0 0 15px #0e7bff, inset 0 0 10px #0e7bff;
+  transform: scale(1.05);
+}
+
+/* 2-column education grid */
+.two-col-edu {
+  display: grid !important;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px !important;
+  padding-right: 40px;
+}
+
+/* Match row/column spacing equally */
+.education-content.two-col-edu {
+  row-gap: 40px !important;
+  column-gap: 40px !important;
+}
+
+/* Equal height education boxes */
+.education-item {
+  min-height: 260px !important;
+  height: 100% !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: center !important;
+  padding: 20px !important;
+}
+
+/* Inside spacing */
+.education-item .edu-details {
+  padding: 10px 5px;
+}
+
+/* More spacing from sidebar */
+.content-align {
+  padding-left: 170px !important;
+}
+
+/* Smooth Scroll Fix */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Make profile pictures fit perfectly */
+.profile-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Responsive Fix for Mobile */
+@media (max-width: 768px) {
+  .two-col-edu {
+    grid-template-columns: 1fr !important;
+  }
+  .content-align {
+    padding-left: 40px !important;
+  }
+  #cursor {
+    display: none; /* Remove fancy cursor on mobile */
+  }
+}
