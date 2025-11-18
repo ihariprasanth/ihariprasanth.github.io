@@ -927,3 +927,62 @@ a {
     grid-template-columns: 1fr;
   }
 }
+/* --- Floating Action Button (FAB) Styles --- */
+
+/* FAB Container for fixed positioning */
+.fab-container {
+    position: fixed;
+    bottom: 25px; /* Distance from the bottom */
+    right: 25px; /* Distance from the right */
+    z-index: 999; /* High Z-index to ensure visibility */
+    transition: opacity 0.3s ease;
+}
+
+/* Base FAB button styling - consistent with .btn.primary */
+.fab-button.external-fab {
+    /* Dimensions and Shape */
+    width: 60px; /* Circular size */
+    height: 60px;
+    border-radius: 50%; 
+
+    /* Colors and Appearance (Consistent with .btn.primary) */
+    color: var(--text-color); /* White/Light text color */
+    border: 2px solid var(--primary-color);
+    background: transparent;
+    
+    /* Centering the icon */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 26px; /* Icon size */
+
+    /* Effects (Consistent with Primary Button Glow) */
+    text-decoration: none;
+    cursor: pointer;
+    box-shadow: 0 0 15px rgba(37, 99, 235, 0.3), inset 0 0 10px rgba(37, 99, 235, 0.3);
+    transition: all 0.3s ease;
+}
+
+/* Hover effect - Matches Primary Button Hover */
+.fab-button.external-fab:hover {
+    background: var(--primary-color);
+    color: #fff; 
+    box-shadow:
+        0 0 25px var(--primary-color),
+        0 0 50px rgba(37, 99, 235, 0.6),
+        inset 0 0 15px rgba(37, 99, 235, 0.8);
+    transform: translateY(-3px) scale(1.05); /* Slight lift and enlarge */
+}
+
+/* 📱 Mobile Adjustments */
+@media (max-width: 900px) {
+    .fab-container {
+        bottom: 20px;
+        right: 20px;
+    }
+    .fab-button.external-fab {
+        width: 50px;
+        height: 50px;
+        font-size: 22px;
+    }
+}
