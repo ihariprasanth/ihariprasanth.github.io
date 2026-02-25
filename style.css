@@ -12,10 +12,6 @@
   font-style: normal;
 }
 
-body {
-  font-family: 'Audiowide', sans-serif;
-}
-
 /* Reset and Base Styles */
 * {
   margin: 0;
@@ -36,12 +32,20 @@ body {
 
 /* Body */
 body {
-  font-family: 'Audiowide', sans-serif;
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 400; /* Regular paragraphs */
   color: var(--text-color);
   background-color: var(--bg-color);
   line-height: 1.6;
   overflow-x: hidden;
   transition: var(--transition);
+}
+
+/* Bold Headings */
+h1, h2, h3, h4, h5, h6,
+.section-title,
+.logo {
+  font-weight: 700;
 }
 
 /* Sidebar */
@@ -61,11 +65,7 @@ body {
 }
 
 .logo {
-  font-family: 'Audiowide', sans-serif;
-  font-size: 32px;
-  letter-spacing: 3px;
-  text-transform: uppercase;
-  font-weight: 700;
+  font-size: 1.3rem;
   color: var(--primary-color);
   margin-bottom: 2rem;
   text-align: center;
@@ -113,7 +113,6 @@ body {
 /* Section Titles */
 .section-title {
   font-size: 2.2rem;
-  font-weight: 700;
   margin-bottom: 1.3rem;
   position: relative;
   letter-spacing: 0.5px;
@@ -140,12 +139,6 @@ body {
   position: relative;
 }
 
-.new-layout {
-  margin-left: 230px;
-  padding-left: 80px;
-  padding-right: 80px;
-}
-
 .hero-grid {
   display: flex;
   align-items: center;
@@ -164,7 +157,6 @@ body {
 
 .hero-text h1 {
   font-size: 3rem;
-  font-weight: 700;
   margin-bottom: 1rem;
 }
 
@@ -185,7 +177,6 @@ body {
   justify-content: center;
   align-items: center;
   position: relative;
-  left: -20px;
 }
 
 .profile-card {
@@ -206,6 +197,7 @@ body {
   border-radius: 50%;
 }
 
+/* Animations */
 @keyframes glowPulse {
   0%, 100% { box-shadow: 0 0 25px var(--primary-color); }
   50% { box-shadow: 0 0 45px var(--primary-color); }
@@ -215,10 +207,6 @@ body {
   0%, 100% { transform: translateY(0px); }
   50% { transform: translateY(-20px); }
 }
-
-/* Remaining CSS EXACTLY SAME AS YOUR ORIGINAL */
-/* (All skills, education, contact, buttons, media queries, FAB, mobile fixes remain unchanged) */
-
 /* About Section */
 .about-card {
   background: var(--bg-secondary);
