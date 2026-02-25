@@ -1,18 +1,31 @@
-@font-face {
-  font-family: "SF Pro Display";
-  src: url("fonts/SF-Pro-Display-Regular.ttf") format("truetype");
-  font-weight: normal;
-  font-style: normal;
+/* ===============================
+   FONT SYSTEM - SORA
+================================= */
+
+body {
+  font-family: 'Sora', sans-serif;
+  font-weight: 400;
 }
 
-@font-face {
-  font-family: "SF Pro Display";
-  src: url("fonts/SF-Pro-Display-Bold.ttf") format("truetype");
-  font-weight: bold;
-  font-style: normal;
+/* Bold Headings */
+h1, h2, h3, h4, h5, h6,
+.section-title,
+.logo {
+  font-weight: 700;
 }
 
-/* Reset and Base Styles */
+/* Semi-bold for interactive elements */
+.sidebar-links a,
+.btn,
+.view-cert-btn,
+.verify-cert-btn {
+  font-weight: 600;
+}
+
+/* ===============================
+   RESET & BASE
+================================= */
+
 * {
   margin: 0;
   padding: 0;
@@ -30,10 +43,11 @@
   --transition: all 0.3s ease;
 }
 
-/* Body */
+/* ===============================
+   BODY
+================================= */
+
 body {
-  font-family: 'Space Grotesk', sans-serif;
-  font-weight: 400; /* Regular paragraphs */
   color: var(--text-color);
   background-color: var(--bg-color);
   line-height: 1.6;
@@ -41,14 +55,10 @@ body {
   transition: var(--transition);
 }
 
-/* Bold Headings */
-h1, h2, h3, h4, h5, h6,
-.section-title,
-.logo {
-  font-weight: 700;
-}
+/* ===============================
+   SIDEBAR
+================================= */
 
-/* Sidebar */
 .sidebar {
   position: fixed;
   top: 0;
@@ -69,9 +79,13 @@ h1, h2, h3, h4, h5, h6,
   color: var(--primary-color);
   margin-bottom: 2rem;
   text-align: center;
+  letter-spacing: -0.3px;
 }
 
-/* Sidebar Links */
+/* ===============================
+   SIDEBAR LINKS
+================================= */
+
 .sidebar-links {
   list-style: none;
   display: flex;
@@ -83,7 +97,6 @@ h1, h2, h3, h4, h5, h6,
 .sidebar-links a {
   text-decoration: none;
   color: var(--text-color);
-  font-weight: 500;
   background: transparent;
   border: 2px solid rgba(37, 99, 235, 0.5);
   border-radius: 10px;
@@ -103,19 +116,24 @@ h1, h2, h3, h4, h5, h6,
   transform: translateY(-3px);
 }
 
-/* Page Layout */
+/* ===============================
+   CONTENT LAYOUT
+================================= */
+
 .content-align {
   margin-left: 230px;
   padding: 60px;
   text-align: center;
 }
 
-/* Section Titles */
+/* ===============================
+   SECTION TITLES
+================================= */
+
 .section-title {
   font-size: 2.2rem;
   margin-bottom: 1.3rem;
   position: relative;
-  letter-spacing: 0.5px;
 }
 
 .section-title::after {
@@ -129,14 +147,15 @@ h1, h2, h3, h4, h5, h6,
   bottom: -8px;
 }
 
-/* Hero Section */
+/* ===============================
+   HERO SECTION
+================================= */
+
 .hero {
   min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: var(--bg-color);
-  position: relative;
 }
 
 .hero-grid {
@@ -158,6 +177,7 @@ h1, h2, h3, h4, h5, h6,
 .hero-text h1 {
   font-size: 3rem;
   margin-bottom: 1rem;
+  letter-spacing: -1px;
 }
 
 .highlight {
@@ -165,18 +185,15 @@ h1, h2, h3, h4, h5, h6,
 }
 
 .hero-description {
-  font-size: 1.2rem;
+  font-size: 1.15rem;
   color: var(--text-light);
   margin-bottom: 2rem;
-  line-height: 1.6;
 }
 
 .hero-image {
   flex: 1;
   display: flex;
   justify-content: center;
-  align-items: center;
-  position: relative;
 }
 
 .profile-card {
@@ -186,7 +203,6 @@ h1, h2, h3, h4, h5, h6,
   overflow: hidden;
   box-shadow: 0 0 25px var(--primary-color);
   animation: float 3s ease-in-out infinite, glowPulse 3s ease-in-out infinite;
-  position: relative;
   transition: all 0.4s ease;
 }
 
@@ -194,10 +210,12 @@ h1, h2, h3, h4, h5, h6,
   width: 100%;
   height: 100%;
   object-fit: cover;
-  border-radius: 50%;
 }
 
-/* Animations */
+/* ===============================
+   ANIMATIONS
+================================= */
+
 @keyframes glowPulse {
   0%, 100% { box-shadow: 0 0 25px var(--primary-color); }
   50% { box-shadow: 0 0 45px var(--primary-color); }
