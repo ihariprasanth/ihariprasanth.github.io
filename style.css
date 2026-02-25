@@ -987,3 +987,9 @@ a {
         transform: translateY(-3px) scale(1.05);
     }
 }
+.logo {
+  font-family: 'Audiowide', sans-serif;
+  font-size: 32px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+}
