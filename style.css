@@ -13,8 +13,7 @@
 }
 
 body {
-  font-family: "SF Pro Display", "SF Pro Text", -apple-system, BlinkMacSystemFont,
-               "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: 'Audiowide', sans-serif;
 }
 
 /* Reset and Base Styles */
@@ -37,7 +36,7 @@ body {
 
 /* Body */
 body {
-  font-family: "Inter", sans-serif;
+  font-family: 'Audiowide', sans-serif;
   color: var(--text-color);
   background-color: var(--bg-color);
   line-height: 1.6;
@@ -53,19 +52,19 @@ body {
   width: 230px;
   height: 100%;
   background: #0a0a0a;
-  /* remove this line if you still have it:
-  border-right: 2px solid var(--primary-color); */
   display: flex;
   flex-direction: column;
   align-items: center;
   padding-top: 2rem;
   box-shadow: 0 0 25px rgba(37, 99, 235, 0.3);
-  z-index: 3; /* 🔹 Keep the sidebar above the glow */
+  z-index: 3;
 }
 
-
 .logo {
-  font-size: 1.3rem;
+  font-family: 'Audiowide', sans-serif;
+  font-size: 32px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
   font-weight: 700;
   color: var(--primary-color);
   margin-bottom: 2rem;
@@ -147,7 +146,6 @@ body {
   padding-right: 80px;
 }
 
-/* 🧭 Centered Layout for Hero Section */
 .hero-grid {
   display: flex;
   align-items: center;
@@ -159,7 +157,6 @@ body {
   text-align: left;
 }
 
-/* 🧍‍♂️ Text Section */
 .hero-text {
   flex: 1;
   max-width: 550px;
@@ -182,14 +179,13 @@ body {
   line-height: 1.6;
 }
 
-/* 💫 Floating Image Section */
 .hero-image {
   flex: 1;
   display: flex;
   justify-content: center;
   align-items: center;
   position: relative;
-  left: -20px; /* adjust this for fine alignment */
+  left: -20px;
 }
 
 .profile-card {
@@ -210,7 +206,6 @@ body {
   border-radius: 50%;
 }
 
-/* Floating Animations */
 @keyframes glowPulse {
   0%, 100% { box-shadow: 0 0 25px var(--primary-color); }
   50% { box-shadow: 0 0 45px var(--primary-color); }
@@ -220,6 +215,9 @@ body {
   0%, 100% { transform: translateY(0px); }
   50% { transform: translateY(-20px); }
 }
+
+/* Remaining CSS EXACTLY SAME AS YOUR ORIGINAL */
+/* (All skills, education, contact, buttons, media queries, FAB, mobile fixes remain unchanged) */
 
 /* About Section */
 .about-card {
