@@ -32,12 +32,20 @@
     </ul>
   </aside>
 
-  <!-- Mobile Floating Menu (Hidden on Desktop) -->
+  <!-- Mobile Floating Menu - Centered Popup with Blur -->
   <div class="mobile-menu-container">
     <button class="mobile-menu-toggle" id="mobileMenuToggle">
       <i class="fas fa-bars"></i>
     </button>
-    <div class="mobile-menu-dropdown" id="mobileMenuDropdown">
+    
+    <!-- Blur Overlay -->
+    <div class="menu-overlay" id="menuOverlay"></div>
+    
+    <!-- Centered Popup Menu -->
+    <div class="mobile-menu-popup" id="mobileMenuPopup">
+      <button class="menu-close-btn" id="menuCloseBtn">
+        <i class="fas fa-times"></i>
+      </button>
       <ul class="mobile-menu-links">
         <li><a href="#home" class="active">Home</a></li>
         <li><a href="#about">About</a></li>
