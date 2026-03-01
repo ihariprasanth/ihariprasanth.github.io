@@ -15,10 +15,7 @@ document.querySelectorAll('.sidebar-links a[href^="#"], .mobile-menu-links a[hre
     this.classList.add('active');
     
     // Close mobile menu after clicking
-    const mobileDropdown = document.getElementById('mobileMenuDropdown');
-    if (mobileDropdown) {
-      mobileDropdown.classList.remove('active');
-    }
+    closeMobileMenu();
   });
 });
 
@@ -93,7 +90,7 @@ window.addEventListener("load", () => {
   }, 100);
 });
 
-// ✨ TYPING ANIMATION FOR HERO TITLE - NO CURSOR AFTER
+// ✨ TYPING ANIMATION FOR HERO TITLE - WITH SPACE
 document.addEventListener('DOMContentLoaded', function() {
   const heroTitle = document.querySelector('.hero-text h1');
   if (!heroTitle) return;
@@ -148,27 +145,44 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 });
 
-// 📱 MOBILE MENU TOGGLE
+// 📱 MOBILE MENU - CENTERED POPUP WITH BLUR
 document.addEventListener('DOMContentLoaded', function() {
   const menuToggle = document.getElementById('mobileMenuToggle');
-  const menuDropdown = document.getElementById('mobileMenuDropdown');
+  const menuPopup = document.getElementById('mobileMenuPopup');
+  const menuOverlay = document.getElementById('menuOverlay');
+  const menuCloseBtn = document.getElementById('menuCloseBtn');
   
-  if (menuToggle && menuDropdown) {
+  function openMobileMenu() {
+    menuPopup.classList.add('active');
+    menuOverlay.classList.add('active');
+    document.body.classList.add('menu-open');
+  }
+  
+  function closeMobileMenu() {
+    menuPopup.classList.remove('active');
+    menuOverlay.classList.remove('active');
+    document.body.classList.remove('menu-open');
+  }
+  
+  if (menuToggle && menuPopup && menuOverlay) {
     menuToggle.addEventListener('click', function(e) {
       e.stopPropagation();
-      menuDropdown.classList.toggle('active');
+      openMobileMenu();
     });
     
-    // Close menu when clicking outside
-    document.addEventListener('click', function(e) {
-      if (!menuToggle.contains(e.target) && !menuDropdown.contains(e.target)) {
-        menuDropdown.classList.remove('active');
+    // Close with close button
+    if (menuCloseBtn) {
+      menuCloseBtn.addEventListener('click', closeMobileMenu);
+    }
+    
+    // Close when clicking overlay
+    menuOverlay.addEventListener('click', closeMobileMenu);
+    
+    // Close on escape key
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape' && menuPopup.classList.contains('active')) {
+        closeMobileMenu();
       }
-    });
-    
-    // Close menu on scroll
-    window.addEventListener('scroll', function() {
-      menuDropdown.classList.remove('active');
     });
   }
 });
