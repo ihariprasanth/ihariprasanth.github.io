@@ -211,7 +211,7 @@ a {
   box-shadow: 0 0 25px var(--primary-color);
   animation: float 3s ease-in-out infinite;
   transition: all 0.4s ease;
-  border: 3px solid rgba(37, 99, 235, 0.3);
+  border: 3px solid #000; /* Changed to black border */
 }
 
 .profile-card img {
@@ -579,7 +579,7 @@ a {
 }
 
 /* ===============================
-   MOBILE RESPONSIVE - CLEAN LOOK, NO SHADOWS, PHOTO AT TOP, NO FAB
+   MOBILE RESPONSIVE - CLEAN LOOK, NO SHADOWS, PHOTO AT TOP, NO FAB, LARGER PHOTO
 ================================= */
 @media (max-width: 900px) {
   /* Hide sidebar and footer */
@@ -623,11 +623,11 @@ a {
   }
   
   .profile-card {
-    width: 160px;
-    height: 160px;
+    width: 200px !important;  /* Increased from 160px to 200px */
+    height: 200px !important; /* Increased from 160px to 200px */
     margin: 0 auto;
     animation: none !important;
-    border: 2px solid rgba(37, 99, 235, 0.3);
+    border: 3px solid #000; /* Changed to black border */
     /* Remove all shadows */
     box-shadow: none !important;
   }
@@ -855,8 +855,8 @@ a {
   }
   
   .profile-card {
-    width: 140px;
-    height: 140px;
+    width: 180px !important;  /* Increased from 140px to 180px */
+    height: 180px !important; /* Increased from 140px to 180px */
   }
   
   .hero-text h1 {
@@ -901,8 +901,8 @@ a {
 /* Very small phones */
 @media (max-width: 360px) {
   .profile-card {
-    width: 120px;
-    height: 120px;
+    width: 160px !important;  /* Increased from 120px to 160px */
+    height: 160px !important; /* Increased from 120px to 160px */
   }
   
   .hero-text h1 {
