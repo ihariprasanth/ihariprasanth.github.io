@@ -597,15 +597,7 @@ body.light-mode .profile-card {
 
 .skill-glass-card i {
   font-size: 1.6rem;
-  color: var(--primary-color);
-  filter: drop-shadow(0 0 6px var(--shadow-color));
   transition: all 0.3s ease;
-}
-
-.skill-glass-card:hover i {
-  transform: scale(1.1);
-  color: var(--primary-color);
-  filter: drop-shadow(0 0 10px var(--primary-color));
 }
 
 .skill-glass-card span {
@@ -618,6 +610,173 @@ body.light-mode .profile-card {
 
 .skill-glass-card:hover span {
   color: var(--primary-color);
+}
+
+/* ===============================
+   SKILL ICONS WITH BRAND COLORS
+================================= */
+
+/* Python - Blue/Yellow */
+.skill-glass-card.python i {
+  color: #3776AB;
+}
+.skill-glass-card.python:hover i {
+  color: #FFD43B;
+}
+
+/* Java - Orange/Blue */
+.skill-glass-card.java i {
+  color: #007396;
+}
+.skill-glass-card.java:hover i {
+  color: #F89820;
+}
+
+/* JavaScript - Yellow */
+.skill-glass-card.javascript i {
+  color: #F7DF1E;
+}
+.skill-glass-card.javascript:hover i {
+  color: #000000;
+}
+
+/* C++ - Blue */
+.skill-glass-card.cpp i {
+  color: #00599C;
+}
+.skill-glass-card.cpp:hover i {
+  color: #004482;
+}
+
+/* C - Blue/Grey */
+.skill-glass-card.c i {
+  color: #A8B9CC;
+}
+.skill-glass-card.c:hover i {
+  color: #00599C;
+}
+
+/* HTML5 - Orange */
+.skill-glass-card.html i {
+  color: #E34F26;
+}
+.skill-glass-card.html:hover i {
+  color: #F16529;
+}
+
+/* CSS3 - Blue */
+.skill-glass-card.css i {
+  color: #1572B6;
+}
+.skill-glass-card.css:hover i {
+  color: #33A9DC;
+}
+
+/* Bootstrap - Purple */
+.skill-glass-card.bootstrap i {
+  color: #7952B3;
+}
+.skill-glass-card.bootstrap:hover i {
+  color: #563D7C;
+}
+
+/* Node.js - Green */
+.skill-glass-card.nodejs i {
+  color: #339933;
+}
+.skill-glass-card.nodejs:hover i {
+  color: #68A063;
+}
+
+/* OpenCV - Red/Blue */
+.skill-glass-card.opencv i {
+  color: #5C3EE8;
+}
+.skill-glass-card.opencv:hover i {
+  color: #FF0000;
+}
+
+/* NumPy - Blue */
+.skill-glass-card.numpy i {
+  color: #013243;
+}
+.skill-glass-card.numpy:hover i {
+  color: #4DABCF;
+}
+
+/* Pandas - Blue/Purple */
+.skill-glass-card.pandas i {
+  color: #150458;
+}
+.skill-glass-card.pandas:hover i {
+  color: #FFCA00;
+}
+
+/* MongoDB - Green */
+.skill-glass-card.mongodb i {
+  color: #47A248;
+}
+.skill-glass-card.mongodb:hover i {
+  color: #4DB33D;
+}
+
+/* Firebase - Yellow/Orange */
+.skill-glass-card.firebase i {
+  color: #FFCA28;
+}
+.skill-glass-card.firebase:hover i {
+  color: #F57C00;
+}
+
+/* MySQL - Orange/Blue */
+.skill-glass-card.mysql i {
+  color: #00758F;
+}
+.skill-glass-card.mysql:hover i {
+  color: #F29111;
+}
+
+/* GitHub - Black/White */
+.skill-glass-card.github i {
+  color: #181717;
+}
+body.light-mode .skill-glass-card.github i {
+  color: #000000;
+}
+.skill-glass-card.github:hover i {
+  color: #6e5494;
+}
+
+/* Linux - Yellow/Black */
+.skill-glass-card.linux i {
+  color: #FCC624;
+}
+.skill-glass-card.linux:hover i {
+  color: #000000;
+}
+
+/* VS Code - Blue */
+.skill-glass-card.vscode i {
+  color: #007ACC;
+}
+.skill-glass-card.vscode:hover i {
+  color: #0066B8;
+}
+
+/* Vercel - Black/White */
+.skill-glass-card.vercel i {
+  color: #000000;
+}
+body.light-mode .skill-glass-card.vercel i {
+  color: #111111;
+}
+.skill-glass-card.vercel:hover i {
+  color: #666666;
+}
+
+/* Adjust for dark/light mode */
+body.light-mode .skill-glass-card i {
+  filter: drop-shadow(0 0 5px rgba(0,0,0,0.2));
 }
 
 /* Mobile - 4 columns */
@@ -1122,14 +1281,49 @@ body.light-mode .profile-card {
     margin-left: 200px !important;
   }
   
-  /* Desktop layout for hero */
+  /* Fix hero grid alignment */
   .hero-grid {
     flex-direction: row !important;
     gap: 2rem;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .hero-text {
+    text-align: left !important;
+    max-width: 60%;
+  }
+  
+  .hero-text h1 {
+    font-size: 2.5rem;
+    white-space: nowrap;
+    text-align: left !important;
+    align-items: flex-start !important;
+  }
+  
+  .static-text {
+    font-size: 2rem;
+    text-align: left !important;
+  }
+  
+  .name-line {
+    font-size: 2.5rem;
+    text-align: left !important;
+  }
+  
+  .hero-description {
+    text-align: left !important;
+    margin-left: 0 !important;
+    max-width: 100%;
+  }
+  
+  .hero-buttons {
+    justify-content: flex-start !important;
   }
   
   .hero-image {
     order: 0 !important;
+    max-width: 40%;
   }
   
   .profile-card {
@@ -1137,19 +1331,6 @@ body.light-mode .profile-card {
     height: 220px !important;
     animation: float 3s ease-in-out infinite !important;
     box-shadow: 0 0 25px var(--shadow-color) !important;
-  }
-  
-  .hero-text h1 {
-    font-size: 2.5rem;
-    white-space: nowrap;
-  }
-  
-  .static-text {
-    font-size: 2rem;
-  }
-  
-  .name-line {
-    font-size: 2.5rem;
   }
   
   /* Desktop button layout - row */
