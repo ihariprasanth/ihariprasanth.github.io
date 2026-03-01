@@ -1142,3 +1142,20 @@ a {
     font-size: 0.8rem;
   }
 }
+/* ===============================
+   DISABLE TEXT SELECTION - ADD TO style.css
+================================= */
+body {
+  -webkit-user-select: none;  /* Chrome, Safari, Opera */
+  -moz-user-select: none;     /* Firefox */
+  -ms-user-select: none;      /* Internet Explorer/Edge */
+  user-select: none;           /* Non-prefixed version */
+}
+
+/* Allow selection on input fields if you add them later */
+input, textarea {
+  user-select: text;
+  -webkit-user-select: text;
+  -moz-user-select: text;
+  -ms-user-select: text;
+}
