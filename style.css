@@ -409,69 +409,31 @@ a {
   text-align: center;
 }
 
-.hero-buttons {
-  display: flex;
-  gap: 1rem;
-  flex-wrap: wrap;
-  justify-content: center;
-}
-
-.hero-image {
-  flex: 1;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.profile-card {
-  width: 320px;
-  height: 320px;
-  border-radius: 50%;
-  overflow: hidden;
-  box-shadow: 0 0 25px var(--shadow-color);
-  animation: float 3s ease-in-out infinite;
-  transition: all 0.4s ease;
-  border: 3px solid #111111;
-  cursor: pointer;
-}
-
-body.light-mode .profile-card {
-  border: 3px solid #e0e0e0;
-}
-
-.profile-card img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 0.5s ease;
-}
-
-.profile-card:hover img {
-  transform: scale(1.05);
-}
-
-/* Triple-click indicator (optional) */
-.profile-card:active {
-  transform: scale(0.98);
-}
-
 /* ===============================
-   BUTTON STYLES
+   HERO BUTTONS - 2x2 GRID
 ================================= */
+.hero-buttons {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
 .btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 0.75rem 2rem;
+  padding: 0.75rem 1rem;
   border-radius: 10px;
   font-weight: 600;
   text-decoration: none;
   transition: all 0.3s ease;
-  font-size: 1rem;
+  font-size: 0.95rem;
   cursor: pointer;
   letter-spacing: 0.5px;
   background: transparent;
-  min-width: 140px;
+  min-width: 120px;
 }
 
 .btn.primary {
@@ -500,9 +462,7 @@ body.light-mode .profile-card {
   transform: translateY(-3px);
 }
 
-/* ===============================
-   RESUME BUTTON STYLES
-================================= */
+/* Resume Button */
 .btn.resume-btn {
   color: var(--text-color);
   border: 2px solid #00ffb7;
@@ -526,6 +486,74 @@ body.light-mode .profile-card {
 
 .btn.resume-btn:hover i {
   color: #111;
+}
+
+/* GitHub Button */
+.btn.github-btn {
+  color: var(--text-color);
+  border: 2px solid #6e5494;
+  box-shadow: 0 0 15px rgba(110, 84, 148, 0.3);
+  background: transparent;
+  gap: 0.5rem;
+}
+
+.btn.github-btn i {
+  color: #6e5494;
+  font-size: 1rem;
+  transition: var(--transition);
+}
+
+.btn.github-btn:hover {
+  background: #6e5494;
+  color: #fff;
+  box-shadow: 0 0 25px #6e5494;
+  transform: translateY(-3px);
+}
+
+.btn.github-btn:hover i {
+  color: #fff;
+}
+
+/* ===============================
+   PROFILE CARD STYLES
+================================= */
+.hero-image {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.profile-card {
+  width: 320px;
+  height: 320px;
+  border-radius: 50%;
+  overflow: hidden;
+  box-shadow: 0 0 25px var(--shadow-color);
+  animation: float 3s ease-in-out infinite;
+  transition: all 0.4s ease;
+  border: 3px solid var(--primary-color) !important; /* Changed to #2563eb */
+  cursor: pointer;
+}
+
+body.light-mode .profile-card {
+  border: 3px solid var(--primary-color) !important; /* Same blue in light mode */
+}
+
+.profile-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.profile-card:hover img {
+  transform: scale(1.05);
+}
+
+/* Triple-click indicator */
+.profile-card:active {
+  transform: scale(0.98);
 }
 
 /* ===============================
@@ -615,164 +643,64 @@ body.light-mode .profile-card {
 /* ===============================
    SKILL ICONS WITH BRAND COLORS
 ================================= */
+.skill-glass-card.python i { color: #3776AB; }
+.skill-glass-card.python:hover i { color: #FFD43B; }
 
-/* Python - Blue/Yellow */
-.skill-glass-card.python i {
-  color: #3776AB;
-}
-.skill-glass-card.python:hover i {
-  color: #FFD43B;
-}
+.skill-glass-card.java i { color: #007396; }
+.skill-glass-card.java:hover i { color: #F89820; }
 
-/* Java - Orange/Blue */
-.skill-glass-card.java i {
-  color: #007396;
-}
-.skill-glass-card.java:hover i {
-  color: #F89820;
-}
+.skill-glass-card.javascript i { color: #F7DF1E; }
+.skill-glass-card.javascript:hover i { color: #000000; }
 
-/* JavaScript - Yellow */
-.skill-glass-card.javascript i {
-  color: #F7DF1E;
-}
-.skill-glass-card.javascript:hover i {
-  color: #000000;
-}
+.skill-glass-card.cpp i { color: #00599C; }
+.skill-glass-card.cpp:hover i { color: #004482; }
 
-/* C++ - Blue */
-.skill-glass-card.cpp i {
-  color: #00599C;
-}
-.skill-glass-card.cpp:hover i {
-  color: #004482;
-}
+.skill-glass-card.c i { color: #A8B9CC; }
+.skill-glass-card.c:hover i { color: #00599C; }
 
-/* C - Blue/Grey */
-.skill-glass-card.c i {
-  color: #A8B9CC;
-}
-.skill-glass-card.c:hover i {
-  color: #00599C;
-}
+.skill-glass-card.html i { color: #E34F26; }
+.skill-glass-card.html:hover i { color: #F16529; }
 
-/* HTML5 - Orange */
-.skill-glass-card.html i {
-  color: #E34F26;
-}
-.skill-glass-card.html:hover i {
-  color: #F16529;
-}
+.skill-glass-card.css i { color: #1572B6; }
+.skill-glass-card.css:hover i { color: #33A9DC; }
 
-/* CSS3 - Blue */
-.skill-glass-card.css i {
-  color: #1572B6;
-}
-.skill-glass-card.css:hover i {
-  color: #33A9DC;
-}
+.skill-glass-card.bootstrap i { color: #7952B3; }
+.skill-glass-card.bootstrap:hover i { color: #563D7C; }
 
-/* Bootstrap - Purple */
-.skill-glass-card.bootstrap i {
-  color: #7952B3;
-}
-.skill-glass-card.bootstrap:hover i {
-  color: #563D7C;
-}
+.skill-glass-card.nodejs i { color: #339933; }
+.skill-glass-card.nodejs:hover i { color: #68A063; }
 
-/* Node.js - Green */
-.skill-glass-card.nodejs i {
-  color: #339933;
-}
-.skill-glass-card.nodejs:hover i {
-  color: #68A063;
-}
+.skill-glass-card.opencv i { color: #5C3EE8; }
+.skill-glass-card.opencv:hover i { color: #FF0000; }
 
-/* OpenCV - Red/Blue */
-.skill-glass-card.opencv i {
-  color: #5C3EE8;
-}
-.skill-glass-card.opencv:hover i {
-  color: #FF0000;
-}
+.skill-glass-card.numpy i { color: #013243; }
+.skill-glass-card.numpy:hover i { color: #4DABCF; }
 
-/* NumPy - Blue */
-.skill-glass-card.numpy i {
-  color: #013243;
-}
-.skill-glass-card.numpy:hover i {
-  color: #4DABCF;
-}
+.skill-glass-card.pandas i { color: #150458; }
+.skill-glass-card.pandas:hover i { color: #FFCA00; }
 
-/* Pandas - Blue/Purple */
-.skill-glass-card.pandas i {
-  color: #150458;
-}
-.skill-glass-card.pandas:hover i {
-  color: #FFCA00;
-}
+.skill-glass-card.mongodb i { color: #47A248; }
+.skill-glass-card.mongodb:hover i { color: #4DB33D; }
 
-/* MongoDB - Green */
-.skill-glass-card.mongodb i {
-  color: #47A248;
-}
-.skill-glass-card.mongodb:hover i {
-  color: #4DB33D;
-}
+.skill-glass-card.firebase i { color: #FFCA28; }
+.skill-glass-card.firebase:hover i { color: #F57C00; }
 
-/* Firebase - Yellow/Orange */
-.skill-glass-card.firebase i {
-  color: #FFCA28;
-}
-.skill-glass-card.firebase:hover i {
-  color: #F57C00;
-}
+.skill-glass-card.mysql i { color: #00758F; }
+.skill-glass-card.mysql:hover i { color: #F29111; }
 
-/* MySQL - Orange/Blue */
-.skill-glass-card.mysql i {
-  color: #00758F;
-}
-.skill-glass-card.mysql:hover i {
-  color: #F29111;
-}
+.skill-glass-card.github i { color: #181717; }
+body.light-mode .skill-glass-card.github i { color: #000000; }
+.skill-glass-card.github:hover i { color: #6e5494; }
 
-/* GitHub - Black/White */
-.skill-glass-card.github i {
-  color: #181717;
-}
-body.light-mode .skill-glass-card.github i {
-  color: #000000;
-}
-.skill-glass-card.github:hover i {
-  color: #6e5494;
-}
+.skill-glass-card.linux i { color: #FCC624; }
+.skill-glass-card.linux:hover i { color: #000000; }
 
-/* Linux - Yellow/Black */
-.skill-glass-card.linux i {
-  color: #FCC624;
-}
-.skill-glass-card.linux:hover i {
-  color: #000000;
-}
+.skill-glass-card.vscode i { color: #007ACC; }
+.skill-glass-card.vscode:hover i { color: #0066B8; }
 
-/* VS Code - Blue */
-.skill-glass-card.vscode i {
-  color: #007ACC;
-}
-.skill-glass-card.vscode:hover i {
-  color: #0066B8;
-}
-
-/* Vercel - Black/White */
-.skill-glass-card.vercel i {
-  color: #000000;
-}
-body.light-mode .skill-glass-card.vercel i {
-  color: #111111;
-}
-.skill-glass-card.vercel:hover i {
-  color: #666666;
-}
+.skill-glass-card.vercel i { color: #000000; }
+body.light-mode .skill-glass-card.vercel i { color: #111111; }
+.skill-glass-card.vercel:hover i { color: #666666; }
 
 /* Adjust for dark/light mode */
 body.light-mode .skill-glass-card i {
@@ -1071,10 +999,11 @@ body.light-mode .skill-glass-card i {
   
   .hero-buttons {
     justify-content: center;
+    max-width: 500px;
   }
   
   .btn {
-    min-width: 140px;
+    min-width: 130px;
   }
   
   .education-item h3,
@@ -1087,10 +1016,9 @@ body.light-mode .skill-glass-card i {
 }
 
 /* ===============================
-   PORTRAIT MODE (MOBILE VIEW)
-   Only applies when width <= 900px AND height > width (portrait)
+   MOBILE RESPONSIVE - 2x2 BUTTONS
 ================================= */
-@media (max-width: 900px) and (orientation: portrait) {
+@media (max-width: 900px) {
   /* Hide sidebar only */
   .sidebar {
     display: none !important;
@@ -1178,30 +1106,23 @@ body.light-mode .skill-glass-card i {
     color: var(--text-light);
   }
   
-  /* Mobile button layout - stacked with same dimensions */
+  /* Mobile button layout - 2x2 grid */
   .hero-buttons {
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
     gap: 0.8rem;
     width: 100%;
-    max-width: 280px;
+    max-width: 350px;
     margin: 0 auto;
   }
   
   .btn {
     width: 100%;
-    padding: 0.7rem 1rem;
-    font-size: 0.95rem;
+    padding: 0.7rem 0.5rem;
+    font-size: 0.9rem;
     box-shadow: none !important;
     min-height: 45px;
     min-width: auto;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  
-  .btn.resume-btn {
-    margin-top: 0;
   }
   
   /* Content sections */
@@ -1264,162 +1185,15 @@ body.light-mode .skill-glass-card i {
   }
 }
 
-/* ===============================
-   LANDSCAPE MODE (DESKTOP VIEW)
-   When width > height (landscape) on any device
-================================= */
-@media (orientation: landscape) and (max-width: 900px) {
-  /* Show desktop sidebar */
-  .sidebar {
-    display: flex !important;
-    width: 200px !important;
-  }
-  
-  /* Adjust content for sidebar */
-  .hero,
-  .content-align {
-    margin-left: 200px !important;
-  }
-  
-  /* Fix hero grid alignment */
-  .hero-grid {
-    flex-direction: row !important;
-    gap: 2rem;
-    align-items: center;
-    justify-content: center;
-  }
-  
-  .hero-text {
-    text-align: left !important;
-    max-width: 60%;
-  }
-  
-  .hero-text h1 {
-    font-size: 2.5rem;
-    white-space: nowrap;
-    text-align: left !important;
-    align-items: flex-start !important;
-  }
-  
-  .static-text {
-    font-size: 2rem;
-    text-align: left !important;
-  }
-  
-  .name-line {
-    font-size: 2.5rem;
-    text-align: left !important;
-  }
-  
-  .hero-description {
-    text-align: left !important;
-    margin-left: 0 !important;
-    max-width: 100%;
-  }
-  
-  .hero-buttons {
-    justify-content: flex-start !important;
-  }
-  
-  .hero-image {
-    order: 0 !important;
-    max-width: 40%;
-  }
-  
-  .profile-card {
-    width: 220px !important;
-    height: 220px !important;
-    animation: float 3s ease-in-out infinite !important;
-    box-shadow: 0 0 25px var(--shadow-color) !important;
-  }
-  
-  /* Desktop button layout - row */
-  .hero-buttons {
-    flex-direction: row !important;
-    max-width: 100% !important;
-    gap: 1rem;
-  }
-  
-  .btn {
-    width: auto !important;
-    min-width: 120px;
-    padding: 0.7rem 1.2rem !important;
-  }
-  
-  /* 7 columns for skills in landscape */
-  .skills-glass-grid {
-    grid-template-columns: repeat(7, 1fr) !important;
-    gap: 10px;
-  }
-  
-  .skill-glass-card i {
-    font-size: 1.5rem;
-  }
-  
-  /* Footer */
-  .footer {
-    margin-left: 200px !important;
-  }
-  
-  /* Hide mobile menu in landscape */
-  .mobile-menu-container {
-    display: none !important;
-  }
-}
-
-/* Small phones landscape adjustments */
-@media (orientation: landscape) and (max-width: 700px) {
-  .sidebar {
-    width: 160px !important;
-  }
-  
-  .hero,
-  .content-align {
-    margin-left: 160px !important;
-  }
-  
-  .footer {
-    margin-left: 160px !important;
-  }
-  
-  .sidebar-links a {
-    padding: 0.4rem 1.5rem;
-    width: 120px;
-  }
-  
-  .profile-card {
-    width: 160px !important;
-    height: 160px !important;
-  }
-  
-  .hero-text h1 {
-    font-size: 2rem;
-  }
-  
-  .static-text {
-    font-size: 1.6rem;
-  }
-  
-  .name-line {
-    font-size: 2rem;
-  }
-  
-  .btn {
-    min-width: 100px;
-    padding: 0.5rem 1rem !important;
-    font-size: 0.85rem;
-  }
-}
-
 /* Small phones */
-@media (max-width: 480px) and (orientation: portrait) {
+@media (max-width: 480px) {
   .hero {
     padding: 1.5rem 0.8rem 1rem;
   }
   
   .profile-card {
-    width: 180px !important;
-    height: 180px !important;
+    width: 160px !important;
+    height: 160px !important;
   }
   
   .static-text {
@@ -1436,13 +1210,14 @@ body.light-mode .skill-glass-card i {
   }
   
   .hero-buttons {
-    max-width: 240px;
+    max-width: 300px;
+    gap: 0.6rem;
   }
   
   .btn {
-    padding: 0.6rem 0.8rem;
-    font-size: 0.9rem;
-    min-height: 42px;
+    padding: 0.6rem 0.4rem;
+    font-size: 0.85rem;
+    min-height: 40px;
   }
   
   .section-title {
@@ -1472,10 +1247,10 @@ body.light-mode .skill-glass-card i {
 }
 
 /* Very small phones */
-@media (max-width: 360px) and (orientation: portrait) {
+@media (max-width: 360px) {
   .profile-card {
-    width: 160px !important;
-    height: 160px !important;
+    width: 140px !important;
+    height: 140px !important;
   }
   
   .static-text {
@@ -1487,13 +1262,13 @@ body.light-mode .skill-glass-card i {
   }
   
   .hero-buttons {
-    max-width: 200px;
+    max-width: 260px;
   }
   
   .btn {
-    padding: 0.5rem 0.7rem;
-    font-size: 0.85rem;
-    min-height: 38px;
+    padding: 0.5rem 0.3rem;
+    font-size: 0.8rem;
+    min-height: 36px;
   }
   
   .footer {
