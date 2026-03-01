@@ -171,11 +171,28 @@ a {
   letter-spacing: -1px;
   line-height: 1.2;
   text-align: center;
+  min-height: 120px; /* Prevents layout shift during typing animation */
 }
 
 .highlight {
   color: var(--primary-color);
   text-shadow: 0 0 10px rgba(37, 99, 235, 0.3);
+}
+
+/* Typing cursor animation */
+.typed-cursor {
+  display: inline-block;
+  width: 3px;
+  height: 3.2rem;
+  background-color: var(--primary-color);
+  margin-left: 5px;
+  animation: blink 0.7s infinite;
+  vertical-align: middle;
+}
+
+@keyframes blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
 }
 
 .hero-description {
@@ -211,7 +228,7 @@ a {
   box-shadow: 0 0 25px var(--primary-color);
   animation: float 3s ease-in-out infinite;
   transition: all 0.4s ease;
-  border: 3px solid #000; /* Changed to black border */
+  border: 3px solid #111111; /* Changed to #111111 */
 }
 
 .profile-card img {
@@ -358,7 +375,7 @@ a {
 }
 
 /* ===============================
-   CONTACT SECTION - CENTERED
+   CONTACT SECTION - CENTERED (PC STYLE ON MOBILE)
 ================================= */
 .contact-content {
   display: flex;
@@ -410,7 +427,7 @@ a {
 
 .contact-method h4 {
   font-size: 1.1rem;
-  color: var(--text-color);
+  color: var(--text-color); /* Changed from blue to white */
   margin-bottom: 0.3rem;
   text-align: center;
 }
@@ -557,6 +574,7 @@ a {
   
   .hero-text h1 {
     text-align: center;
+    min-height: 120px;
   }
   
   .hero-description {
@@ -579,7 +597,7 @@ a {
 }
 
 /* ===============================
-   MOBILE RESPONSIVE - CLEAN LOOK, NO SHADOWS, PHOTO AT TOP, NO FAB, LARGER PHOTO
+   MOBILE RESPONSIVE - CLEAN LOOK, PC STYLE CONTACT
 ================================= */
 @media (max-width: 900px) {
   /* Hide sidebar and footer */
@@ -623,11 +641,11 @@ a {
   }
   
   .profile-card {
-    width: 200px !important;  /* Increased from 160px to 200px */
-    height: 200px !important; /* Increased from 160px to 200px */
+    width: 200px !important;
+    height: 200px !important;
     margin: 0 auto;
     animation: none !important;
-    border: 3px solid #000; /* Changed to black border */
+    border: 3px solid #111111; /* Changed to #111111 */
     /* Remove all shadows */
     box-shadow: none !important;
   }
@@ -644,6 +662,11 @@ a {
     text-align: center !important;
     margin-bottom: 0.8rem;
     line-height: 1.2;
+    min-height: 80px;
+  }
+  
+  .typed-cursor {
+    height: 2rem;
   }
   
   .hero-description {
@@ -755,7 +778,7 @@ a {
     box-shadow: none !important;
   }
   
-  /* Contact mobile - Clean */
+  /* Contact mobile - PC STYLE (no blue text) */
   .contact-content {
     padding: 0;
   }
@@ -773,21 +796,18 @@ a {
   .contact-method h4,
   .contact-method p {
     text-align: center !important;
-    color: #ccc;
-  }
-  
-  .contact-method {
-    margin: 0.8rem 0;
+    color: #ccc; /* Matching PC style */
   }
   
   .contact-method h4 {
     font-size: 1rem;
-    color: var(--primary-color);
+    color: var(--text-color); /* White like PC, not blue */
     margin-bottom: 0.2rem;
   }
   
   .contact-method p {
     font-size: 0.95rem;
+    color: var(--text-light); /* Light gray like PC */
   }
   
   /* Social icons - Clean */
@@ -855,12 +875,13 @@ a {
   }
   
   .profile-card {
-    width: 180px !important;  /* Increased from 140px to 180px */
-    height: 180px !important; /* Increased from 140px to 180px */
+    width: 180px !important;
+    height: 180px !important;
   }
   
   .hero-text h1 {
     font-size: 1.8rem;
+    min-height: 70px;
   }
   
   .hero-description {
@@ -901,12 +922,13 @@ a {
 /* Very small phones */
 @media (max-width: 360px) {
   .profile-card {
-    width: 160px !important;  /* Increased from 120px to 160px */
-    height: 160px !important; /* Increased from 120px to 160px */
+    width: 160px !important;
+    height: 160px !important;
   }
   
   .hero-text h1 {
     font-size: 1.5rem;
+    min-height: 60px;
   }
   
   .hero-buttons {
