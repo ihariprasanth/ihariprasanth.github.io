@@ -381,3 +381,100 @@ document.addEventListener('copy', function(e) {
   e.preventDefault();
 });
 */
+// ============================================
+// 🌓 DARK/LIGHT MODE TOGGLE - Triple click on profile image
+// ============================================
+
+let clickCount = 0;
+let clickTimer = null;
+
+const profileImage = document.querySelector('.profile-card');
+if (profileImage) {
+  profileImage.addEventListener('click', function() {
+    clickCount++;
+    
+    // Clear previous timer
+    if (clickTimer) {
+      clearTimeout(clickTimer);
+    }
+    
+    // Set timer to reset click count after 1 second
+    clickTimer = setTimeout(() => {
+      clickCount = 0;
+    }, 1000);
+    
+    // Triple click detected
+    if (clickCount === 3) {
+      // Toggle light/dark mode
+      document.body.classList.toggle('light-mode');
+      
+      // Optional: Show a small notification
+      const mode = document.body.classList.contains('light-mode') ? 'Light' : 'Dark';
+      showModeNotification(`${mode} mode activated`);
+      
+      // Reset click count
+      clickCount = 0;
+      clearTimeout(clickTimer);
+    }
+  });
+}
+
+// Optional: Show mode notification
+function showModeNotification(message) {
+  // Remove existing notification
+  const oldNotification = document.querySelector('.mode-notification');
+  if (oldNotification) {
+    oldNotification.remove();
+  }
+  
+  // Create notification element
+  const notification = document.createElement('div');
+  notification.className = 'mode-notification';
+  notification.textContent = message;
+  
+  // Add styles dynamically
+  notification.style.cssText = `
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: var(--primary-color);
+    color: white;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-weight: 600;
+    z-index: 9999;
+    animation: slideIn 0.3s ease, fadeOut 0.3s ease 1.7s forwards;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+  `;
+  
+  // Add animation styles
+  const style = document.createElement('style');
+  style.textContent = `
+    @keyframes slideIn {
+      from {
+        transform: translateX(100px);
+        opacity: 0;
+      }
+      to {
+        transform: translateX(0);
+        opacity: 1;
+      }
+    }
+    @keyframes fadeOut {
+      to {
+        opacity: 0;
+        transform: translateY(-20px);
+      }
+    }
+  `;
+  document.head.appendChild(style);
+  
+  document.body.appendChild(notification);
+  
+  // Remove after 2 seconds
+  setTimeout(() => {
+    if (notification && notification.parentNode) {
+      notification.remove();
+    }
+  }, 2000);
+}
