@@ -579,7 +579,7 @@ a {
 }
 
 /* ===============================
-   MOBILE RESPONSIVE - CLEAN LOOK, NO SHADOWS, PHOTO AT TOP
+   MOBILE RESPONSIVE - CLEAN LOOK, NO SHADOWS, PHOTO AT TOP, NO FAB
 ================================= */
 @media (max-width: 900px) {
   /* Hide sidebar and footer */
@@ -588,6 +588,11 @@ a {
   }
   
   .footer {
+    display: none !important;
+  }
+  
+  /* 🚫 HIDE FLOATING LINKEDIN BUTTON ON MOBILE */
+  .fab-container {
     display: none !important;
   }
   
@@ -825,34 +830,11 @@ a {
     border-color: #00ffb7;
   }
   
-  /* FAB mobile */
-  .fab-container {
-    bottom: 16px;
-    right: 16px;
-  }
-  
-  .fab-button.external-fab {
-    width: 48px;
-    height: 48px;
-    font-size: 20px;
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(37, 99, 235, 0.3);
-    /* Remove shadows */
-    box-shadow: none !important;
-  }
-  
-  .fab-button.external-fab:hover {
-    transform: translateY(-2px);
-    border-color: var(--primary-color);
-    box-shadow: none !important;
-  }
-  
   /* Remove ALL hover effects on mobile */
   .education-item:hover,
   .connect-box:hover,
   .btn:hover,
   .social-link:hover,
-  .fab-button.external-fab:hover,
   .view-cert-btn:hover,
   .verify-cert-btn:hover {
     transform: translateY(-1px);
