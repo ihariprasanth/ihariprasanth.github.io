@@ -138,7 +138,7 @@ a {
 }
 
 /* ===============================
-   HERO SECTION - PERFECTLY CENTERED
+   HERO SECTION - ALL CENTERED
 ================================= */
 .hero {
   min-height: 100vh;
@@ -162,6 +162,7 @@ a {
 .hero-text {
   flex: 1;
   max-width: 600px;
+  text-align: center; /* Center all text */
 }
 
 .hero-text h1 {
@@ -169,6 +170,7 @@ a {
   margin-bottom: 1.2rem;
   letter-spacing: -1px;
   line-height: 1.2;
+  text-align: center; /* Center heading */
 }
 
 .highlight {
@@ -182,12 +184,16 @@ a {
   margin-bottom: 2rem;
   line-height: 1.7;
   max-width: 550px;
+  margin-left: auto; /* Center the paragraph block */
+  margin-right: auto; /* Center the paragraph block */
+  text-align: center; /* Center text */
 }
 
 .hero-buttons {
   display: flex;
   gap: 1.2rem;
   flex-wrap: wrap;
+  justify-content: center; /* Center buttons */
 }
 
 .hero-image {
@@ -264,7 +270,7 @@ a {
 }
 
 /* ===============================
-   EDUCATION & SKILLS CARDS
+   EDUCATION & SKILLS CARDS - CENTERED
 ================================= */
 .education-content {
   display: flex;
@@ -282,15 +288,29 @@ a {
   max-width: 700px;
   box-shadow: 0 0 15px rgba(37, 99, 235, 0.15);
   transition: var(--transition);
-  text-align: left;
+  text-align: center; /* Center all text in education items */
 }
 
 .education-item:hover {
   box-shadow: 0 0 25px var(--primary-color);
 }
 
+.education-item h3 {
+  text-align: center;
+  margin-bottom: 0.8rem;
+}
+
+.education-item p {
+  text-align: center;
+  margin-bottom: 0.5rem;
+}
+
+.institution, .duration, .achievement {
+  text-align: center;
+}
+
 /* ===============================
-   SKILLS SECTION
+   SKILLS SECTION - CENTERED
 ================================= */
 .skills-wrapper {
   display: flex;
@@ -306,12 +326,17 @@ a {
   gap: 1.2rem;
 }
 
+.skill-item {
+  text-align: center;
+}
+
 .skill-item span {
   display: block;
   font-weight: 600;
   font-size: 0.95rem;
   margin-bottom: 0.4rem;
   color: var(--text-color);
+  text-align: center;
 }
 
 .skill-bar {
@@ -333,7 +358,7 @@ a {
 }
 
 /* ===============================
-   CONTACT SECTION
+   CONTACT SECTION - CENTERED
 ================================= */
 .contact-content {
   display: flex;
@@ -353,6 +378,7 @@ a {
   max-width: 700px;
   box-shadow: 0 0 15px rgba(37, 99, 235, 0.2);
   transition: all 0.4s ease;
+  text-align: center;
 }
 
 .connect-box:hover {
@@ -365,6 +391,7 @@ a {
   font-size: 1.8rem;
   margin-bottom: 1rem;
   color: var(--text-color);
+  text-align: center;
 }
 
 .contact-info p {
@@ -373,21 +400,25 @@ a {
   max-width: 600px;
   margin: 0 auto 1rem auto;
   line-height: 1.7;
+  text-align: center;
 }
 
 .contact-method {
   margin: 1rem 0;
+  text-align: center;
 }
 
 .contact-method h4 {
   font-size: 1.1rem;
   color: var(--text-color);
   margin-bottom: 0.3rem;
+  text-align: center;
 }
 
 .contact-method p {
   color: var(--text-light);
   font-size: 1rem;
+  text-align: center;
 }
 
 .social-container {
@@ -513,7 +544,7 @@ a {
 }
 
 /* ===============================
-   DESKTOP OPTIMIZATIONS
+   DESKTOP OPTIMIZATIONS - ALL CENTERED
 ================================= */
 @media (min-width: 901px) {
   .hero {
@@ -521,24 +552,34 @@ a {
   }
   
   .hero-text {
-    text-align: left;
+    text-align: center;
   }
   
   .hero-text h1 {
-    text-align: left;
+    text-align: center;
   }
   
   .hero-description {
-    text-align: left;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
   }
   
   .hero-buttons {
-    justify-content: flex-start;
+    justify-content: center;
+  }
+  
+  .education-item h3,
+  .education-item p,
+  .institution,
+  .duration,
+  .achievement {
+    text-align: center;
   }
 }
 
 /* ===============================
-   MOBILE RESPONSIVE - NO GLOW EFFECTS
+   MOBILE RESPONSIVE - NO GLOW EFFECTS, ALL CENTERED
 ================================= */
 @media (max-width: 900px) {
   /* Hide sidebar and footer */
@@ -566,7 +607,6 @@ a {
     flex-direction: column-reverse !important;
     gap: 2rem;
     padding: 0;
-    text-align: center;
   }
   
   .hero-text {
@@ -611,7 +651,7 @@ a {
     width: 200px;
     height: 200px;
     margin: 0 auto;
-    animation: none !important; /* Remove float animation on mobile */
+    animation: none !important;
   }
   
   /* Content sections */
@@ -630,7 +670,15 @@ a {
     max-width: 100% !important;
     margin: 1rem auto !important;
     padding: 1.5rem !important;
-    text-align: left;
+    text-align: center !important;
+  }
+  
+  .education-item h3,
+  .education-item p,
+  .institution,
+  .duration,
+  .achievement {
+    text-align: center !important;
   }
   
   /* Skills mobile */
@@ -643,6 +691,14 @@ a {
     width: 100%;
   }
   
+  .skill-item {
+    text-align: center;
+  }
+  
+  .skill-item span {
+    text-align: center;
+  }
+  
   .skill-bar {
     height: 10px;
   }
@@ -650,6 +706,17 @@ a {
   /* Contact mobile */
   .contact-content {
     padding: 1rem 0;
+  }
+  
+  .connect-box {
+    text-align: center !important;
+  }
+  
+  .contact-info h3,
+  .contact-info p,
+  .contact-method h4,
+  .contact-method p {
+    text-align: center !important;
   }
   
   .social-link {
