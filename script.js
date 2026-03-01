@@ -19,17 +19,17 @@ document.querySelectorAll('.sidebar-links a[href^="#"], .mobile-menu-links a[hre
   });
 });
 
-// ⚡ Animate Skill Bars
+// ⚡ Animate Skill Bars (keeping for backward compatibility)
 const observerOptions = {
   threshold: 0.2,
   rootMargin: "0px 0px -100px 0px"
 };
 
+// Optional: If you still have progress bars somewhere
 const skillObserver = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
       const skillBars = entry.target.querySelectorAll(".skill-progress");
-
       skillBars.forEach((bar, index) => {
         const width = bar.getAttribute("data-width");
         if (!bar.classList.contains("filled")) {
@@ -39,7 +39,6 @@ const skillObserver = new IntersectionObserver((entries) => {
           }, index * 150);
         }
       });
-
       skillObserver.unobserve(entry.target);
     }
   });
@@ -49,7 +48,27 @@ document.querySelectorAll(".education-item, .skills-grid, .skill-category").forE
   skillObserver.observe(skillBox);
 });
 
-// 🔢 Animate Counter Numbers
+// ✨ Staggered animation for glass icon cards
+const glassObserver = new IntersectionObserver((entries) => {
+  entries.forEach((entry, index) => {
+    if (entry.isIntersecting) {
+      setTimeout(() => {
+        entry.target.style.opacity = '1';
+        entry.target.style.transform = 'translateY(0)';
+      }, index * 50);
+      glassObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.1 });
+
+document.querySelectorAll('.skill-glass-card').forEach((card, index) => {
+  card.style.opacity = '0';
+  card.style.transform = 'translateY(20px)';
+  card.style.transition = 'all 0.4s ease';
+  glassObserver.observe(card);
+});
+
+// 🔢 Animate Counter Numbers (if you add stats section later)
 const counterObserver = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
