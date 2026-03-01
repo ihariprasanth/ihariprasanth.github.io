@@ -1,20 +1,17 @@
 /* ===============================
    FONT SYSTEM - SORA
 ================================= */
-
 body {
   font-family: 'Sora', sans-serif;
   font-weight: 400;
 }
 
-/* Bold Headings */
 h1, h2, h3, h4, h5, h6,
 .section-title,
 .logo {
   font-weight: 700;
 }
 
-/* Semi-bold for interactive elements */
 .sidebar-links a,
 .btn,
 .view-cert-btn,
@@ -25,7 +22,6 @@ h1, h2, h3, h4, h5, h6,
 /* ===============================
    RESET & BASE
 ================================= */
-
 * {
   margin: 0;
   padding: 0;
@@ -43,10 +39,6 @@ h1, h2, h3, h4, h5, h6,
   --transition: all 0.3s ease;
 }
 
-/* ===============================
-   BODY
-================================= */
-
 body {
   color: var(--text-color);
   background-color: var(--bg-color);
@@ -55,10 +47,13 @@ body {
   transition: var(--transition);
 }
 
+a {
+  text-decoration: none !important;
+}
+
 /* ===============================
    SIDEBAR
 ================================= */
-
 .sidebar {
   position: fixed;
   top: 0;
@@ -81,10 +76,6 @@ body {
   text-align: center;
   letter-spacing: -0.3px;
 }
-
-/* ===============================
-   SIDEBAR LINKS
-================================= */
 
 .sidebar-links {
   list-style: none;
@@ -119,7 +110,6 @@ body {
 /* ===============================
    CONTENT LAYOUT
 ================================= */
-
 .content-align {
   margin-left: 230px;
   padding: 60px;
@@ -129,11 +119,11 @@ body {
 /* ===============================
    SECTION TITLES
 ================================= */
-
 .section-title {
   font-size: 2.2rem;
   margin-bottom: 1.3rem;
   position: relative;
+  text-align: center;
 }
 
 .section-title::after {
@@ -148,14 +138,15 @@ body {
 }
 
 /* ===============================
-   HERO SECTION
+   HERO SECTION - PERFECTLY CENTERED
 ================================= */
-
 .hero {
   min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
+  margin-left: 230px;
+  padding: 2rem;
 }
 
 .hero-grid {
@@ -163,146 +154,118 @@ body {
   align-items: center;
   justify-content: center;
   gap: 4rem;
-  max-width: 1100px;
+  max-width: 1200px;
   margin: 0 auto;
   padding: 0 2rem;
-  text-align: left;
 }
 
 .hero-text {
   flex: 1;
-  max-width: 550px;
+  max-width: 600px;
 }
 
 .hero-text h1 {
-  font-size: 3rem;
-  margin-bottom: 1rem;
+  font-size: 3.2rem;
+  margin-bottom: 1.2rem;
   letter-spacing: -1px;
+  line-height: 1.2;
 }
 
 .highlight {
   color: var(--primary-color);
+  text-shadow: 0 0 10px rgba(37, 99, 235, 0.3);
 }
 
 .hero-description {
-  font-size: 1.15rem;
+  font-size: 1.2rem;
   color: var(--text-light);
   margin-bottom: 2rem;
+  line-height: 1.7;
+  max-width: 550px;
+}
+
+.hero-buttons {
+  display: flex;
+  gap: 1.2rem;
+  flex-wrap: wrap;
 }
 
 .hero-image {
   flex: 1;
   display: flex;
   justify-content: center;
+  align-items: center;
 }
 
 .profile-card {
-  width: 280px;
-  height: 280px;
+  width: 320px;
+  height: 320px;
   border-radius: 50%;
   overflow: hidden;
   box-shadow: 0 0 25px var(--primary-color);
-  animation: float 3s ease-in-out infinite, glowPulse 3s ease-in-out infinite;
+  animation: float 3s ease-in-out infinite;
   transition: all 0.4s ease;
+  border: 3px solid rgba(37, 99, 235, 0.3);
 }
 
 .profile-card img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.profile-card:hover img {
+  transform: scale(1.05);
 }
 
 /* ===============================
-   ANIMATIONS
+   BUTTON STYLES
 ================================= */
-
-@keyframes glowPulse {
-  0%, 100% { box-shadow: 0 0 25px var(--primary-color); }
-  50% { box-shadow: 0 0 45px var(--primary-color); }
-}
-
-@keyframes float {
-  0%, 100% { transform: translateY(0px); }
-  50% { transform: translateY(-20px); }
-}
-/* About Section */
-.about-card {
-  background: var(--bg-secondary);
-  border: 2px solid rgba(37, 99, 235, 0.4);
-  border-radius: 1rem;
-  padding: 2.3rem;
-  width: 80%;
-  max-width: 700px;
-  margin: 2rem auto;
-  box-shadow: 0 0 15px rgba(37, 99, 235, 0.2);
-  transition: var(--transition);
-}
-
-.about-card:hover {
-  box-shadow: 0 0 25px var(--primary-color);
-  transform: translateY(-5px);
-}
-
-/* 🌟 Two-column compact Skills Layout */
-.skills-wrapper {
-  display: flex;
-  justify-content: space-between;
-  gap: 2rem;
-  margin-top: 1rem;
-}
-
-.skills-col {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  gap: 1.2rem;
-}
-
-/* Each skill item text */
-.skill-item span {
-  display: block;
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75rem 2rem;
+  border-radius: 10px;
   font-weight: 600;
-  font-size: 0.95rem;
-  margin-bottom: 0.4rem;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  font-size: 1rem;
+  cursor: pointer;
+  letter-spacing: 0.5px;
+  background: transparent;
+}
+
+.btn.primary {
+  color: #fff;
+  border: 2px solid var(--primary-color);
+  box-shadow: 0 0 15px rgba(37, 99, 235, 0.3);
+}
+
+.btn.primary:hover {
+  background: var(--primary-color);
+  color: #fff;
+  box-shadow: 0 0 25px var(--primary-color);
+  transform: translateY(-3px);
+}
+
+.btn.secondary {
   color: var(--text-color);
+  border: 2px solid rgba(37, 99, 235, 0.5);
+  box-shadow: 0 0 10px rgba(37, 99, 235, 0.2);
 }
 
-/* 🌈 Compact Skill Bars */
-.skill-bar {
-  height: 8px;
-  width: 90%;
-  margin: 0 auto;
-  background: rgba(255, 255, 255, 0.08);
-  border-radius: 5px;
-  overflow: hidden;
-  box-shadow: inset 0 0 8px rgba(37, 99, 235, 0.4);
+.btn.secondary:hover {
+  color: var(--primary-color);
+  border-color: var(--primary-color);
+  box-shadow: 0 0 25px var(--primary-color);
+  transform: translateY(-3px);
 }
 
-.skill-progress {
-  height: 100%;
-  width: 0; /* Start from 0 */
-  background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
-  border-radius: 5px;
-  box-shadow: 0 0 15px var(--primary-color);
-  transition: width 1.5s ease-in-out;
-}
-
-
-
-/* Responsive - stack columns for smaller screens */
-@media (max-width: 768px) {
-  .skills-wrapper {
-    flex-direction: column;
-    gap: 1.5rem;
-  }
-
-  .skill-bar {
-    width: 100%;
-  }
-}
-
-
-/* Education Section */
+/* ===============================
+   EDUCATION & SKILLS CARDS
+================================= */
 .education-content {
   display: flex;
   flex-direction: column;
@@ -319,13 +282,59 @@ body {
   max-width: 700px;
   box-shadow: 0 0 15px rgba(37, 99, 235, 0.15);
   transition: var(--transition);
+  text-align: left;
 }
 
 .education-item:hover {
   box-shadow: 0 0 25px var(--primary-color);
 }
 
-/* 🌟 Contact Section */
+/* ===============================
+   SKILLS SECTION
+================================= */
+.skills-wrapper {
+  display: flex;
+  justify-content: space-between;
+  gap: 2rem;
+  margin-top: 1.5rem;
+}
+
+.skills-col {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.skill-item span {
+  display: block;
+  font-weight: 600;
+  font-size: 0.95rem;
+  margin-bottom: 0.4rem;
+  color: var(--text-color);
+}
+
+.skill-bar {
+  height: 8px;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 5px;
+  overflow: hidden;
+  box-shadow: inset 0 0 8px rgba(37, 99, 235, 0.4);
+}
+
+.skill-progress {
+  height: 100%;
+  width: 0;
+  background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+  border-radius: 5px;
+  box-shadow: 0 0 15px var(--primary-color);
+  transition: width 1.5s ease-in-out;
+}
+
+/* ===============================
+   CONTACT SECTION
+================================= */
 .contact-content {
   display: flex;
   flex-direction: column;
@@ -335,7 +344,6 @@ body {
   padding: 3rem 0;
 }
 
-/* Neon Contact Box */
 .connect-box {
   background: var(--bg-secondary);
   border: 2px solid rgba(37, 99, 235, 0.4);
@@ -382,7 +390,6 @@ body {
   font-size: 1rem;
 }
 
-/* Centered Social Icons */
 .social-container {
   display: flex;
   justify-content: center;
@@ -409,62 +416,16 @@ body {
   box-shadow: 0 0 25px var(--primary-color);
 }
 
-.social-link i,
-.social-link img {
+.social-link i {
   font-size: 1.6rem;
   color: white;
-  width: 26px;
-  height: 26px;
 }
 
-.leetcode-icon {
-  width: 26px;
-  height: 26px;
-  filter: invert(1);
-}
-
-/* Footer */
-.footer {
-  text-align: center;
-  padding: 2rem 0;
-  color: var(--text-light);
-  background: var(--bg-secondary);
-  margin-left: 230px;
-}
-
-/* Responsive */
-@media (max-width: 900px) {
-  .sidebar {
-    position: relative;
-    width: 100%;
-    height: auto;
-    flex-direction: row;
-    justify-content: center;
-    border-right: none;
-    border-bottom: 2px solid var(--primary-color);
-  }
-
-  .content-align, .new-layout {
-    margin-left: 0;
-    padding: 2rem;
-  }
-
-  .hero-grid {
-    flex-direction: column;
-    text-align: center;
-  }
-
-  .profile-card {
-    margin-top: 2rem;
-  }
-}
-
-/* Remove underline globally */
-a {
-  text-decoration: none !important;
-}
-/* 🌟 View Certificate (Deloitte) Button — Blue Neon Glow */
-.view-cert-btn {
+/* ===============================
+   CERTIFICATE BUTTONS
+================================= */
+.view-cert-btn,
+.verify-cert-btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -481,519 +442,304 @@ a {
   box-shadow: 0 0 20px rgba(37, 99, 235, 0.4);
 }
 
-.view-cert-btn i {
-  font-size: 1.2rem;
-  color: var(--primary-color);
-}
-
-.view-cert-btn:hover {
-  background: var(--primary-color);
-  color: white;
-  box-shadow: 0 0 25px var(--primary-color), 0 0 45px rgba(37, 99, 235, 0.6);
-  transform: translateY(-3px);
-}
-
-/* 💚 Verify Certificate (Udemy) Button — Neon Green Glow */
 .verify-cert-btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
-  margin-top: 1rem;
-  padding: 0.7rem 1.8rem;
-  color: white;
-  background: transparent;
   border: 2px solid #00ffb7;
-  border-radius: 10px;
-  font-weight: 600;
-  text-decoration: none;
-  transition: var(--transition);
   box-shadow: 0 0 20px rgba(0, 255, 183, 0.4);
 }
 
-.verify-cert-btn i {
-  color: #00ffb7;
-  font-size: 1.2rem;
+.view-cert-btn:hover,
+.verify-cert-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 0 25px var(--primary-color);
 }
 
 .verify-cert-btn:hover {
   background: #00ffb7;
   color: #111;
-  box-shadow: 0 0 25px #00ffb7, 0 0 45px rgba(0, 255, 183, 0.6);
-  transform: translateY(-3px);
+  box-shadow: 0 0 25px #00ffb7;
 }
-/* 🌟 Universal Button Style */
-.btn {
-  display: inline-flex;
+
+/* ===============================
+   FAB BUTTON
+================================= */
+.fab-container {
+  position: fixed;
+  bottom: 25px;
+  right: 25px;
+  z-index: 999;
+  transition: opacity 0.3s ease;
+}
+
+.fab-button.external-fab {
+  width: 60px;
+  height: 60px;
+  border-radius: 12px;
+  background: var(--bg-secondary);
+  border: 2px solid rgba(37, 99, 235, 0.5);
+  box-shadow: 0 0 15px rgba(37, 99, 235, 0.3);
+  display: flex;
   align-items: center;
   justify-content: center;
-  padding: 0.75rem 2rem;
-  border-radius: 10px;
-  font-weight: 600;
+  font-size: 26px;
+  color: white;
   text-decoration: none;
-  transition: all 0.3s ease;
-  font-size: 1rem;
   cursor: pointer;
-  letter-spacing: 0.5px;
-  position: relative;
-  overflow: hidden;
-  margin-right: 0.8rem;
-  background: transparent;
-}
-/* 💙 Primary Button - Neon Blue Glow */
-.btn.primary {
-  color: #fff;
-  border: 2px solid var(--primary-color);
-  background: transparent;
-  box-shadow: 0 0 15px rgba(37, 99, 235, 0.3), inset 0 0 10px rgba(37, 99, 235, 0.3);
+  transition: all 0.3s ease;
 }
 
-.btn.primary:hover {
-  background: var(--primary-color);
-  color: #fff;
-  box-shadow:
-    0 0 25px var(--primary-color),
-    0 0 50px rgba(37, 99, 235, 0.6),
-    inset 0 0 15px rgba(37, 99, 235, 0.8);
-  transform: translateY(-3px);
-}
-
-/* ⚡ Secondary Button - Transparent Subtle Glow */
-.btn.secondary {
-  color: var(--text-color);
-  border: 2px solid rgba(37, 99, 235, 0.5);
-  background: transparent;
-  box-shadow: 0 0 10px rgba(37, 99, 235, 0.2), inset 0 0 5px rgba(37, 99, 235, 0.2);
-}
-
-.btn.secondary:hover {
-  color: var(--primary-color);
+.fab-button.external-fab:hover {
+  transform: translateY(-5px);
   border-color: var(--primary-color);
-  box-shadow:
-    0 0 25px var(--primary-color),
-    0 0 50px rgba(37, 99, 235, 0.5),
-    inset 0 0 15px rgba(37, 99, 235, 0.8);
-  transform: translateY(-3px);
+  box-shadow: 0 0 25px var(--primary-color);
 }
 
-/* 💫 Full-Depth Neon Ambient Glow (Always visible, even on Home Page) */
-.neon-glow {
-  position: fixed;
-  left: 230px; /* perfectly aligned next to sidebar */
-  top: 0;
-  height: 100vh;
-  width: 160px; /* wider for more visible diffusion */
-  background: radial-gradient(
-    circle at left,
-    rgba(37, 99, 235, 0.45) 0%,
-    rgba(37, 99, 235, 0.25) 25%,
-    rgba(37, 99, 235, 0.12) 45%,
-    rgba(37, 99, 235, 0.05) 60%,
-    transparent 100%
-  );
-  filter: blur(45px);
-  opacity: 1;
-  pointer-events: none;
-
-  /* 🔹 This ensures the glow stays above background but below sidebar text */
-  z-index: 2;
-
-  /* Smooth ambient pulsing effect */
-  animation: ambientGlow 5s ease-in-out infinite alternate;
+/* ===============================
+   FOOTER
+================================= */
+.footer {
+  text-align: center;
+  padding: 2rem 0;
+  color: var(--text-light);
+  background: var(--bg-secondary);
+  margin-left: 230px;
 }
 
-/* ✨ Ambient Pulse Animation for subtle breathing glow */
-@keyframes ambientGlow {
-  0% {
-    opacity: 0.85;
-    filter: blur(40px);
+/* ===============================
+   ANIMATIONS
+================================= */
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-15px); }
+}
+
+/* ===============================
+   DESKTOP OPTIMIZATIONS
+================================= */
+@media (min-width: 901px) {
+  .hero {
+    margin-left: 230px;
   }
-  100% {
-    opacity: 1;
-    filter: blur(60px);
+  
+  .hero-text {
+    text-align: left;
+  }
+  
+  .hero-text h1 {
+    text-align: left;
+  }
+  
+  .hero-description {
+    text-align: left;
+  }
+  
+  .hero-buttons {
+    justify-content: flex-start;
   }
 }
 
-/*last added*/
-/* ----------------------------
-  Mobile / Small-screen fixes
-  (Only affects <= 900px - desktop unchanged)
-   - hides sidebar + footer
-   - stacks hero and profile image
-   - buttons full-width and non-overlapping
-   - skills in single column on small phones, two columns on small tablets
-   - disables neon vertical glow area on mobile
-----------------------------*/
+/* ===============================
+   MOBILE RESPONSIVE - NO GLOW EFFECTS
+================================= */
 @media (max-width: 900px) {
-  /* hide sidebar and neon glow (menu hidden on mobile as requested) */
+  /* Hide sidebar and footer */
   .sidebar {
     display: none !important;
   }
-  .neon-glow {
-    display: none !important;
-  }
-
-  /* hide footer on mobile */
+  
   .footer {
     display: none !important;
   }
-
-  /* content spacing (use full width) */
-  .content-align,
-  .new-layout {
+  
+  /* Reset margins */
+  .hero,
+  .content-align {
     margin-left: 0 !important;
-    padding: 20px !important;
-    text-align: left;
   }
-
-  /* hero layout stacks vertically & centers nicely */
+  
+  /* Hero section mobile */
+  .hero {
+    min-height: auto;
+    padding: 3rem 1rem;
+  }
+  
   .hero-grid {
-    display: flex !important;
-    flex-direction: column !important;
-    align-items: center !important;
-    justify-content: center !important;
-    gap: 1.25rem !important;
-    padding: 20px !important;
-    max-width: 100%;
+    flex-direction: column-reverse !important;
+    gap: 2rem;
+    padding: 0;
+    text-align: center;
   }
-
+  
   .hero-text {
-    width: 100% !important;
-    max-width: 100% !important;
+    width: 100%;
+    max-width: 100%;
     text-align: center !important;
-    padding: 0 12px;
   }
-
+  
   .hero-text h1 {
-    font-size: 2.2rem !important;
-    line-height: 1.05;
+    font-size: 2.2rem;
+    text-align: center !important;
+    margin-bottom: 1rem;
   }
-
+  
   .hero-description {
-    font-size: 1rem !important;
-    margin-bottom: 1rem !important;
+    font-size: 1rem;
+    text-align: center !important;
+    max-width: 100%;
+    margin: 0 auto 1.5rem;
+    padding: 0 0.5rem;
   }
-
-  /* profile image reduced and positioned under/above text */
-  .hero-image {
-    width: 100% !important;
-    display: flex !important;
-    justify-content: center !important;
-    align-items: center !important;
-    order: 2;
-    margin-top: 6px;
-    left: 0 !important;
-  }
-
-  .profile-card {
-    width: 170px !important;
-    height: 170px !important;
-    box-shadow: 0 0 30px var(--primary-color) !important;
-    margin: 10px 0 0 0;
-  }
-
-  /* buttons stacked, full width but limited max-width so they don't stretch too far */
+  
   .hero-buttons {
-    width: 100% !important;
-    display: flex !important;
-    flex-direction: column !important;
-    gap: 12px !important;
-    align-items: center;
-    margin-top: 1rem !important;
+    justify-content: center !important;
+    width: 100%;
+    max-width: 300px;
+    margin: 0 auto;
   }
-
+  
   .btn {
-    width: 85% !important;
-    max-width: 380px !important;
-    padding: 0.75rem 1rem !important;
-    margin-right: 0 !important;
-    box-sizing: border-box;
+    width: 100%;
+    margin-right: 0;
   }
-
-  /* sections use full width but keep same boxed look */
-  .education-content,
-  .skills-grid,
-  .about-card,
-  .skill-category,
+  
+  /* Profile image */
+  .hero-image {
+    order: -1 !important;
+    width: 100%;
+  }
+  
+  .profile-card {
+    width: 200px;
+    height: 200px;
+    margin: 0 auto;
+    animation: none !important; /* Remove float animation on mobile */
+  }
+  
+  /* Content sections */
+  .content-align {
+    padding: 40px 20px !important;
+  }
+  
+  .section-title {
+    font-size: 1.8rem !important;
+    text-align: center !important;
+  }
+  
   .education-item,
   .connect-box {
     width: 100% !important;
-    max-width: 720px !important;
-    margin: 18px auto !important;
-    padding: 1.2rem 1rem !important;
-    box-shadow: 0 0 18px rgba(37,99,235,0.12) !important;
+    max-width: 100% !important;
+    margin: 1rem auto !important;
+    padding: 1.5rem !important;
+    text-align: left;
   }
-
-  .section-title {
-    font-size: 1.8rem !important;
-    margin-bottom: 0.8rem !important;
-  }
-
-  /* Skill columns: stacked on small phones, two columns on wider small screens */
+  
+  /* Skills mobile */
   .skills-wrapper {
-    display: flex !important;
     flex-direction: column !important;
-    gap: 12px !important;
+    gap: 1rem;
   }
-
+  
   .skills-col {
-    width: 100% !important;
+    width: 100%;
   }
-
-  /* Make progress bars shorter and inside the boxed area */
+  
   .skill-bar {
-    height: 10px !important;
-    margin-top: 8px;
+    height: 10px;
   }
-  .skill-item {
-    padding: 8px 0 !important;
-  }
-
-  /* smaller edu/skill boxes heading sizes */
-  .education-item .edu-details h3,
-  .skill-category h3 {
-    font-size: 1.05rem !important;
-  }
-
-  /* contact box spacing tweaks */
+  
+  /* Contact mobile */
   .contact-content {
-    padding: 1.2rem 0 !important;
+    padding: 1rem 0;
   }
-  .contact-method {
-    margin: 10px 0 !important;
-  }
-
-  /* keep social icons visible and small */
+  
   .social-link {
-    width: 48px !important;
-    height: 48px !important;
+    width: 50px;
+    height: 50px;
   }
-
-  /* ensure nav active link style doesn't force desktop-only layout */
-  .sidebar-links a {
-    width: 150px;
+  
+  .social-link i {
+    font-size: 1.4rem;
   }
-
-  /* if panels still overlap due to custom inline styles, make sure z-index is reset */
-  .hero, .content-align, .education-content, .skills-grid {
-    position: relative !important;
-    z-index: 1 !important;
+  
+  /* FAB mobile */
+  .fab-container {
+    bottom: 20px;
+    right: 20px;
   }
-
-  /* Optional: reduce font sizes inside boxed areas to avoid overflow */
-  .education-item p,
-  .connect-box p,
-  .hero-description {
-    font-size: 0.95rem !important;
+  
+  .fab-button.external-fab {
+    width: 50px;
+    height: 50px;
+    font-size: 22px;
   }
-
-  /* Mobile-specific accessibility: increase hit area for links */
-  .sidebar-links a,
-  .btn,
-  .social-link,
-  .view-cert-btn,
-  .verify-cert-btn {
-    touch-action: manipulation;
-  }
-}
-
-/* 📱 Mobile: Move profile photo above text (keep desktop same) */
-@media (max-width: 900px) {
-  .hero-grid {
-    display: flex;
-    flex-direction: column-reverse !important; /* reverse order for mobile */
-    align-items: center;
-    justify-content: center;
-    gap: 1.5rem;
-  }
-
-  /* make sure image stays centered and visible */
-  .hero-image {
-    order: -1 !important; /* ensures image comes first */
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 10px;
-  }
-
-  .profile-card {
-    width: 180px !important;
-    height: 180px !important;
-    margin: 10px auto;
-    box-shadow: 0 0 30px var(--primary-color);
-  }
-
-  .hero-text {
-    text-align: center;
-    padding: 0 15px;
-  }
-}
-/* 📱 Mobile Styling — Desktop untouched */
-@media (max-width: 900px) {
-
-  /* --- HERO SECTION FIX --- */
-  .hero-grid {
-    flex-direction: column-reverse !important;
-    align-items: center;
-    justify-content: center;
-    gap: 2rem;
-    text-align: center;
-    padding: 1rem;
-  }
-
-  .hero-image {
-    order: -1 !important;
-    display: flex;
-    justify-content: center;
-    width: 100%;
-    margin-bottom: 10px;
-  }
-
-  .profile-card {
-    width: 180px !important;
-    height: 180px !important;
-    margin: 0 auto;
-  }
-
-  .hero-text {
-    text-align: center;
-    padding: 0 10px;
-  }
-
-  /* --- REMOVE SIDEBAR + FIX SPACE --- */
-  .sidebar {
-    display: none !important;
-  }
-
-  .content-align,
-  .new-layout {
-    margin-left: 0 !important;
-    padding: 20px !important;
-  }
-
-  .footer {
-    display: none !important;
-  }
-
-  /* --- SECTION BOXES (About, Skills, Education, Contact) --- */
+  
+  /* Remove all glow effects on mobile */
+  .profile-card,
   .education-item,
   .connect-box,
-  .skill-category,
-  .about-card {
-    margin: 1.5rem auto !important;
-    width: 95% !important;
-    padding: 1.8rem !important;
+  .btn,
+  .social-link,
+  .fab-button.external-fab,
+  .view-cert-btn,
+  .verify-cert-btn {
+    box-shadow: none !important;
   }
-
-  /* --- SECTION HEADINGS CENTER FIX --- */
-  .section-title {
-    text-align: center !important;
-    margin-bottom: 1.5rem !important;
-    font-size: 1.8rem !important;
+  
+  .education-item:hover,
+  .connect-box:hover,
+  .btn:hover,
+  .social-link:hover,
+  .fab-button.external-fab:hover {
+    transform: translateY(-2px);
+    box-shadow: none !important;
   }
+}
 
-  .section-title::after {
-    left: 50% !important;
-    transform: translateX(-50%) !important;
+/* Small phones */
+@media (max-width: 480px) {
+  .hero-text h1 {
+    font-size: 1.8rem;
   }
-
-  /* --- SKILLS TWO COLUMN → ONE COLUMN FOR MOBILE --- */
-  .skills-wrapper {
-    display: flex;
-    flex-direction: column !important;
-    gap: 1.2rem;
+  
+  .profile-card {
+    width: 160px;
+    height: 160px;
   }
-
-  .skills-col {
-    width: 100% !important;
+  
+  .hero-buttons {
+    max-width: 250px;
   }
-
-  /* --- Buttons full width on mobile --- */
+  
   .btn {
-    width: 100% !important;
-    justify-content: center !important;
+    padding: 0.7rem 1rem;
+    font-size: 0.95rem;
+  }
+  
+  .section-title {
+    font-size: 1.6rem !important;
+  }
+  
+  .education-item h3 {
+    font-size: 1.1rem;
+  }
+  
+  .education-item p {
+    font-size: 0.9rem;
   }
 }
 
-.two-col-edu {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 25px;
-}
-
-.edu-col .education-item {
-  margin-bottom: 25px;
-}
-
-@media (max-width: 768px) {
-  .two-col-edu {
-    grid-template-columns: 1fr;
+/* Very small phones */
+@media (max-width: 360px) {
+  .hero-text h1 {
+    font-size: 1.5rem;
   }
-}
-/* --- Floating Action Button (FAB) Styles: MATCHING SOCIAL ICONS --- */
-
-/* FAB Container for fixed positioning (same as before) */
-.fab-container {
-    position: fixed;
-    bottom: 25px; 
-    right: 25px; 
-    z-index: 999; 
-    transition: opacity 0.3s ease;
-}
-
-/* FAB button styling - Matches the .social-link class */
-.fab-button.external-fab {
-    /* Dimensions and Shape (Match social icons: 60px size, 12px border-radius) */
-    width: 60px;
-    height: 60px;
-    border-radius: 12px; /* Smooth square corners */
-
-    /* Appearance (Matches social icons: background and border) */
-    background: var(--bg-secondary); /* Dark background */
-    border: 2px solid rgba(37, 99, 235, 0.5); /* Semi-transparent border */
-    box-shadow: 0 0 15px rgba(37, 99, 235, 0.3); /* Initial glow */
-    
-    /* Centering the icon */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 26px; /* Icon size */
-    color: white; /* Icon color */
-
-    /* Effects */
-    text-decoration: none;
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-/* Hover effect - Matches social icon hover */
-.fab-button.external-fab:hover {
-    transform: translateY(-5px); /* Lift effect */
-    border-color: var(--primary-color); /* Bright border on hover */
-    box-shadow: 0 0 25px var(--primary-color); /* Stronger neon glow */
-}
-
-
-/* 📱 Mobile Adjustments */
-@media (max-width: 900px) {
-    .fab-container {
-        bottom: 20px;
-        right: 20px;
-    }
-    .fab-button.external-fab {
-        width: 48px; /* Match mobile social icon size */
-        height: 48px;
-        font-size: 22px;
-    }
-    .fab-button.external-fab:hover {
-        /* Reduce lift on mobile to be less distracting */
-        transform: translateY(-3px) scale(1.05);
-    }
-}
-.logo {
-  font-family: 'Audiowide', sans-serif;
-  font-size: 32px;
-  letter-spacing: 3px;
-  text-transform: uppercase;
+  
+  .profile-card {
+    width: 140px;
+    height: 140px;
+  }
+  
+  .hero-buttons {
+    max-width: 220px;
+  }
 }
