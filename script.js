@@ -90,7 +90,7 @@ window.addEventListener("load", () => {
   }, 100);
 });
 
-// ✨ TYPING ANIMATION FOR HERO TITLE
+// ✨ TYPING ANIMATION FOR HERO TITLE - TWO LINES
 document.addEventListener('DOMContentLoaded', function() {
   // Add cursor styles dynamically if not in CSS
   if (!document.querySelector('#typing-styles')) {
@@ -122,8 +122,8 @@ document.addEventListener('DOMContentLoaded', function() {
   const heroTitle = document.querySelector('.hero-text h1');
   if (!heroTitle) return;
   
-  // Clear and set up the title structure
-  heroTitle.innerHTML = '<span class="static-text">Hi, I\'m  </span><span class="highlight"></span>';
+  // Set up the title structure for two lines
+  heroTitle.innerHTML = '<span class="static-text">Hi, I\'m</span><span class="name-line"><span class="highlight"></span></span>';
   
   const highlightSpan = heroTitle.querySelector('.highlight');
   if (!highlightSpan) return;
