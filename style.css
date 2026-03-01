@@ -890,15 +890,22 @@ a {
 
 /* ===============================
    MOBILE RESPONSIVE - TWO LINES WITH STACKED BUTTONS
+   FOOTER NOW VISIBLE ON MOBILE
 ================================= */
 @media (max-width: 900px) {
-  /* Hide sidebar and footer */
+  /* Hide sidebar only */
   .sidebar {
     display: none !important;
   }
   
+  /* Show footer on mobile - REMOVED display: none */
   .footer {
-    display: none !important;
+    display: block !important;
+    margin-left: 0 !important;
+    padding: 1.5rem 1rem !important;
+    font-size: 0.9rem;
+    background: var(--bg-secondary);
+    border-top: 1px solid rgba(37, 99, 235, 0.2);
   }
   
   /* Hide FAB on mobile */
@@ -1098,6 +1105,11 @@ a {
   .connect-box {
     padding: 1.5rem !important;
   }
+  
+  .footer {
+    padding: 1.2rem 0.8rem !important;
+    font-size: 0.85rem;
+  }
 }
 
 /* Very small phones */
@@ -1123,5 +1135,10 @@ a {
     padding: 0.5rem 0.7rem;
     font-size: 0.85rem;
     min-height: 38px;
+  }
+  
+  .footer {
+    padding: 1rem 0.5rem !important;
+    font-size: 0.8rem;
   }
 }
