@@ -18,7 +18,7 @@
     </a>
   </div>
   
-  <!-- Sidebar -->
+  <!-- Desktop Sidebar -->
   <aside class="sidebar">
     <div class="logo"></div>
     <ul class="sidebar-links">
@@ -32,11 +32,30 @@
     </ul>
   </aside>
 
+  <!-- Mobile Floating Menu (Hidden on Desktop) -->
+  <div class="mobile-menu-container">
+    <button class="mobile-menu-toggle" id="mobileMenuToggle">
+      <i class="fas fa-bars"></i>
+    </button>
+    <div class="mobile-menu-dropdown" id="mobileMenuDropdown">
+      <ul class="mobile-menu-links">
+        <li><a href="#home" class="active">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#education">Education</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li class="mobile-divider"></li>
+        <li><a href="https://linkedin.com/in/ihariprasanth/" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a></li>
+        <li><a href="https://leetcode.com/u/ihariprasanth/" target="_blank"><i class="fas fa-code"></i> LeetCode</a></li>
+      </ul>
+    </div>
+  </div>
+
   <!-- Hero Section -->
   <section id="home" class="hero">
     <div class="hero-grid">
       <div class="hero-text">
-        <h1>Hi, I'm <span class="highlight"></span></h1>
+        <h1><span class="static-text">Hi, I'm </span><span class="highlight"></span></h1>
         <p class="hero-description">
           Computer Science student passionate about web development, e-commerce solutions, 
           and creating digital experiences that make a difference.
