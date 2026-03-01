@@ -265,13 +265,18 @@ window.addEventListener('scroll', function() {
     }
   });
 });
-// 🚫 DISABLE RIGHT-CLICK CONTEXT MENU
+
+// ============================================
+// 🚫 COPY PROTECTION - ADD THESE LINES AFTER YOUR EXISTING CODE
+// ============================================
+
+// 🚫 DISABLE RIGHT-CLICK CONTEXT MENU (Already have this)
 document.addEventListener('contextmenu', function(e) {
   e.preventDefault();
   return false;
 });
 
-// Optional: Also disable F12, Ctrl+Shift+I, Ctrl+Shift+J, Ctrl+U
+// 🚫 DISABLE KEYBOARD SHORTCUTS (Already have this)
 document.addEventListener('keydown', function(e) {
   // F12
   if (e.key === 'F12') {
@@ -293,4 +298,86 @@ document.addEventListener('keydown', function(e) {
     e.preventDefault();
     return false;
   }
+  
+  // ===== NEW ADDITIONS BELOW =====
+  
+  // 🚫 DISABLE COPY (Ctrl+C, Cmd+C)
+  if (e.ctrlKey && e.key === 'c') {
+    e.preventDefault();
+    return false;
+  }
+  
+  // 🚫 DISABLE CUT (Ctrl+X, Cmd+X)
+  if (e.ctrlKey && e.key === 'x') {
+    e.preventDefault();
+    return false;
+  }
+  
+  // 🚫 DISABLE PASTE (Ctrl+V, Cmd+V) - Optional
+  if (e.ctrlKey && e.key === 'v') {
+    e.preventDefault();
+    return false;
+  }
+  
+  // 🚫 DISABLE SELECT ALL (Ctrl+A, Cmd+A)
+  if (e.ctrlKey && e.key === 'a') {
+    e.preventDefault();
+    return false;
+  }
+  
+  // 🚫 DISABLE SAVE (Ctrl+S, Cmd+S)
+  if (e.ctrlKey && e.key === 's') {
+    e.preventDefault();
+    return false;
+  }
+  
+  // 🚫 DISABLE PRINT (Ctrl+P, Cmd+P)
+  if (e.ctrlKey && e.key === 'p') {
+    e.preventDefault();
+    return false;
+  }
 });
+
+// 🚫 DISABLE TEXT SELECTION
+document.addEventListener('selectstart', function(e) {
+  e.preventDefault();
+  return false;
+});
+
+// 🚫 DISABLE COPY EVENT
+document.addEventListener('copy', function(e) {
+  e.preventDefault();
+  return false;
+});
+
+// 🚫 DISABLE CUT EVENT
+document.addEventListener('cut', function(e) {
+  e.preventDefault();
+  return false;
+});
+
+// 🚫 DISABLE DRAG AND DROP
+document.addEventListener('dragstart', function(e) {
+  e.preventDefault();
+  return false;
+});
+
+// 🚫 DISABLE DROP
+document.addEventListener('drop', function(e) {
+  e.preventDefault();
+  return false;
+});
+
+// Optional: Show a message when someone tries to copy
+document.addEventListener('copy', function(e) {
+  e.clipboardData.setData('text/plain', '⚠️ Copying is disabled on this portfolio. Please contact HARIPRASANTH.T for any information.');
+  e.preventDefault();
+});
+
+// Optional: Alert when trying to copy (can be annoying, so commented out)
+/*
+document.addEventListener('copy', function(e) {
+  alert('Copying is disabled on this portfolio!');
+  e.preventDefault();
+});
+*/
