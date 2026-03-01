@@ -162,7 +162,7 @@ a {
 .hero-text {
   flex: 1;
   max-width: 600px;
-  text-align: center; /* Center all text */
+  text-align: center;
 }
 
 .hero-text h1 {
@@ -170,7 +170,7 @@ a {
   margin-bottom: 1.2rem;
   letter-spacing: -1px;
   line-height: 1.2;
-  text-align: center; /* Center heading */
+  text-align: center;
 }
 
 .highlight {
@@ -184,16 +184,16 @@ a {
   margin-bottom: 2rem;
   line-height: 1.7;
   max-width: 550px;
-  margin-left: auto; /* Center the paragraph block */
-  margin-right: auto; /* Center the paragraph block */
-  text-align: center; /* Center text */
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
 }
 
 .hero-buttons {
   display: flex;
   gap: 1.2rem;
   flex-wrap: wrap;
-  justify-content: center; /* Center buttons */
+  justify-content: center;
 }
 
 .hero-image {
@@ -288,7 +288,7 @@ a {
   max-width: 700px;
   box-shadow: 0 0 15px rgba(37, 99, 235, 0.15);
   transition: var(--transition);
-  text-align: center; /* Center all text in education items */
+  text-align: center;
 }
 
 .education-item:hover {
@@ -579,7 +579,7 @@ a {
 }
 
 /* ===============================
-   MOBILE RESPONSIVE - NO GLOW EFFECTS, ALL CENTERED
+   MOBILE RESPONSIVE - CLEAN LOOK, NO SHADOWS, PHOTO AT TOP
 ================================= */
 @media (max-width: 900px) {
   /* Hide sidebar and footer */
@@ -597,73 +597,97 @@ a {
     margin-left: 0 !important;
   }
   
-  /* Hero section mobile */
+  /* Hero section mobile - Photo at TOP */
   .hero {
     min-height: auto;
-    padding: 3rem 1rem;
+    padding: 2rem 1rem 1.5rem;
   }
   
   .hero-grid {
-    flex-direction: column-reverse !important;
-    gap: 2rem;
+    display: flex;
+    flex-direction: column !important;
+    gap: 1rem;
     padding: 0;
+  }
+  
+  /* Force image to be FIRST (top) */
+  .hero-image {
+    order: -1 !important;
+    width: 100%;
+    margin-bottom: 0.5rem;
+  }
+  
+  .profile-card {
+    width: 160px;
+    height: 160px;
+    margin: 0 auto;
+    animation: none !important;
+    border: 2px solid rgba(37, 99, 235, 0.3);
+    /* Remove all shadows */
+    box-shadow: none !important;
   }
   
   .hero-text {
     width: 100%;
     max-width: 100%;
     text-align: center !important;
+    order: 0 !important;
   }
   
   .hero-text h1 {
-    font-size: 2.2rem;
+    font-size: 2rem;
     text-align: center !important;
-    margin-bottom: 1rem;
+    margin-bottom: 0.8rem;
+    line-height: 1.2;
   }
   
   .hero-description {
     font-size: 1rem;
     text-align: center !important;
     max-width: 100%;
-    margin: 0 auto 1.5rem;
-    padding: 0 0.5rem;
+    margin: 0 auto 1.2rem;
+    padding: 0 1rem;
+    color: #ccc;
   }
   
   .hero-buttons {
     justify-content: center !important;
     width: 100%;
-    max-width: 300px;
+    max-width: 280px;
     margin: 0 auto;
+    gap: 0.8rem;
   }
   
   .btn {
     width: 100%;
     margin-right: 0;
+    padding: 0.7rem 1rem;
+    font-size: 0.95rem;
+    /* Remove shadows on mobile */
+    box-shadow: none !important;
   }
   
-  /* Profile image */
-  .hero-image {
-    order: -1 !important;
-    width: 100%;
+  .btn.primary {
+    border: 2px solid var(--primary-color);
+    background: transparent;
   }
   
-  .profile-card {
-    width: 200px;
-    height: 200px;
-    margin: 0 auto;
-    animation: none !important;
+  .btn.secondary {
+    border: 2px solid rgba(37, 99, 235, 0.5);
   }
   
-  /* Content sections */
+  /* Content sections - Clean look */
   .content-align {
-    padding: 40px 20px !important;
+    padding: 30px 16px !important;
   }
   
   .section-title {
     font-size: 1.8rem !important;
     text-align: center !important;
+    margin-bottom: 1.5rem !important;
   }
   
+  /* Education items - Clean cards */
   .education-item,
   .connect-box {
     width: 100% !important;
@@ -671,20 +695,33 @@ a {
     margin: 1rem auto !important;
     padding: 1.5rem !important;
     text-align: center !important;
+    background: var(--bg-secondary);
+    border: 1px solid rgba(37, 99, 235, 0.2);
+    /* Remove all shadows */
+    box-shadow: none !important;
+    border-radius: 12px;
   }
   
-  .education-item h3,
+  .education-item h3 {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+    color: #fff;
+  }
+  
   .education-item p,
   .institution,
   .duration,
   .achievement {
     text-align: center !important;
+    color: #ccc;
+    font-size: 0.95rem;
+    line-height: 1.5;
   }
   
-  /* Skills mobile */
+  /* Skills mobile - Clean */
   .skills-wrapper {
     flex-direction: column !important;
-    gap: 1rem;
+    gap: 1.2rem;
   }
   
   .skills-col {
@@ -697,93 +734,173 @@ a {
   
   .skill-item span {
     text-align: center;
+    color: #fff;
+    margin-bottom: 0.3rem;
   }
   
   .skill-bar {
-    height: 10px;
+    height: 8px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+    /* Remove inner shadow */
+    box-shadow: none !important;
   }
   
-  /* Contact mobile */
+  .skill-progress {
+    box-shadow: none !important;
+  }
+  
+  /* Contact mobile - Clean */
   .contact-content {
-    padding: 1rem 0;
+    padding: 0;
   }
   
   .connect-box {
-    text-align: center !important;
+    padding: 1.8rem !important;
   }
   
-  .contact-info h3,
+  .contact-info h3 {
+    font-size: 1.5rem;
+    margin-bottom: 0.8rem;
+  }
+  
   .contact-info p,
   .contact-method h4,
   .contact-method p {
     text-align: center !important;
+    color: #ccc;
+  }
+  
+  .contact-method {
+    margin: 0.8rem 0;
+  }
+  
+  .contact-method h4 {
+    font-size: 1rem;
+    color: var(--primary-color);
+    margin-bottom: 0.2rem;
+  }
+  
+  .contact-method p {
+    font-size: 0.95rem;
+  }
+  
+  /* Social icons - Clean */
+  .social-container {
+    gap: 1rem;
+    margin-top: 1.2rem;
   }
   
   .social-link {
-    width: 50px;
-    height: 50px;
+    width: 48px;
+    height: 48px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(37, 99, 235, 0.3);
+    /* Remove shadows */
+    box-shadow: none !important;
   }
   
   .social-link i {
-    font-size: 1.4rem;
+    font-size: 1.3rem;
+  }
+  
+  .social-link:hover {
+    transform: translateY(-2px);
+    border-color: var(--primary-color);
+    box-shadow: none !important;
+  }
+  
+  /* Certificate buttons - Clean */
+  .view-cert-btn,
+  .verify-cert-btn {
+    margin-top: 0.8rem;
+    padding: 0.6rem 1.2rem;
+    font-size: 0.9rem;
+    border-width: 1.5px;
+    /* Remove shadows */
+    box-shadow: none !important;
+  }
+  
+  .verify-cert-btn {
+    border-color: #00ffb7;
   }
   
   /* FAB mobile */
   .fab-container {
-    bottom: 20px;
-    right: 20px;
+    bottom: 16px;
+    right: 16px;
   }
   
   .fab-button.external-fab {
-    width: 50px;
-    height: 50px;
-    font-size: 22px;
-  }
-  
-  /* Remove all glow effects on mobile */
-  .profile-card,
-  .education-item,
-  .connect-box,
-  .btn,
-  .social-link,
-  .fab-button.external-fab,
-  .view-cert-btn,
-  .verify-cert-btn {
+    width: 48px;
+    height: 48px;
+    font-size: 20px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(37, 99, 235, 0.3);
+    /* Remove shadows */
     box-shadow: none !important;
   }
   
+  .fab-button.external-fab:hover {
+    transform: translateY(-2px);
+    border-color: var(--primary-color);
+    box-shadow: none !important;
+  }
+  
+  /* Remove ALL hover effects on mobile */
   .education-item:hover,
   .connect-box:hover,
   .btn:hover,
   .social-link:hover,
-  .fab-button.external-fab:hover {
-    transform: translateY(-2px);
+  .fab-button.external-fab:hover,
+  .view-cert-btn:hover,
+  .verify-cert-btn:hover {
+    transform: translateY(-1px);
     box-shadow: none !important;
+  }
+  
+  /* Remove all after/before pseudo-element shadows */
+  .section-title::after {
+    height: 2px;
+    width: 50px;
   }
 }
 
 /* Small phones */
 @media (max-width: 480px) {
+  .hero {
+    padding: 1.5rem 0.8rem 1rem;
+  }
+  
+  .profile-card {
+    width: 140px;
+    height: 140px;
+  }
+  
   .hero-text h1 {
     font-size: 1.8rem;
   }
   
-  .profile-card {
-    width: 160px;
-    height: 160px;
+  .hero-description {
+    font-size: 0.95rem;
+    padding: 0 0.5rem;
   }
   
   .hero-buttons {
-    max-width: 250px;
+    max-width: 240px;
   }
   
   .btn {
-    padding: 0.7rem 1rem;
-    font-size: 0.95rem;
+    padding: 0.6rem 0.8rem;
+    font-size: 0.9rem;
   }
   
   .section-title {
     font-size: 1.6rem !important;
+  }
+  
+  .education-item {
+    padding: 1.2rem !important;
   }
   
   .education-item h3 {
@@ -793,20 +910,24 @@ a {
   .education-item p {
     font-size: 0.9rem;
   }
+  
+  .connect-box {
+    padding: 1.5rem !important;
+  }
 }
 
 /* Very small phones */
 @media (max-width: 360px) {
+  .profile-card {
+    width: 120px;
+    height: 120px;
+  }
+  
   .hero-text h1 {
     font-size: 1.5rem;
   }
   
-  .profile-card {
-    width: 140px;
-    height: 140px;
-  }
-  
   .hero-buttons {
-    max-width: 220px;
+    max-width: 200px;
   }
 }
