@@ -265,3 +265,32 @@ window.addEventListener('scroll', function() {
     }
   });
 });
+// 🚫 DISABLE RIGHT-CLICK CONTEXT MENU
+document.addEventListener('contextmenu', function(e) {
+  e.preventDefault();
+  return false;
+});
+
+// Optional: Also disable F12, Ctrl+Shift+I, Ctrl+Shift+J, Ctrl+U
+document.addEventListener('keydown', function(e) {
+  // F12
+  if (e.key === 'F12') {
+    e.preventDefault();
+    return false;
+  }
+  // Ctrl+Shift+I (Inspect)
+  if (e.ctrlKey && e.shiftKey && e.key === 'I') {
+    e.preventDefault();
+    return false;
+  }
+  // Ctrl+Shift+J (Console)
+  if (e.ctrlKey && e.shiftKey && e.key === 'J') {
+    e.preventDefault();
+    return false;
+  }
+  // Ctrl+U (View Source)
+  if (e.ctrlKey && e.key === 'u') {
+    e.preventDefault();
+    return false;
+  }
+});
