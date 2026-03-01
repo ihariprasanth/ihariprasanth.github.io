@@ -267,16 +267,16 @@ window.addEventListener('scroll', function() {
 });
 
 // ============================================
-// 🚫 COPY PROTECTION - ADD THESE LINES AFTER YOUR EXISTING CODE
+// 🚫 COPY PROTECTION
 // ============================================
 
-// 🚫 DISABLE RIGHT-CLICK CONTEXT MENU (Already have this)
+// 🚫 DISABLE RIGHT-CLICK CONTEXT MENU
 document.addEventListener('contextmenu', function(e) {
   e.preventDefault();
   return false;
 });
 
-// 🚫 DISABLE KEYBOARD SHORTCUTS (Already have this)
+// 🚫 DISABLE KEYBOARD SHORTCUTS
 document.addEventListener('keydown', function(e) {
   // F12
   if (e.key === 'F12') {
@@ -299,8 +299,6 @@ document.addEventListener('keydown', function(e) {
     return false;
   }
   
-  // ===== NEW ADDITIONS BELOW =====
-  
   // 🚫 DISABLE COPY (Ctrl+C, Cmd+C)
   if (e.ctrlKey && e.key === 'c') {
     e.preventDefault();
@@ -313,7 +311,7 @@ document.addEventListener('keydown', function(e) {
     return false;
   }
   
-  // 🚫 DISABLE PASTE (Ctrl+V, Cmd+V) - Optional
+  // 🚫 DISABLE PASTE (Ctrl+V, Cmd+V)
   if (e.ctrlKey && e.key === 'v') {
     e.preventDefault();
     return false;
@@ -368,19 +366,6 @@ document.addEventListener('drop', function(e) {
   return false;
 });
 
-// Optional: Show a message when someone tries to copy
-document.addEventListener('copy', function(e) {
-  e.clipboardData.setData('text/plain', '⚠️ Copying is disabled on this portfolio. Please contact HARIPRASANTH.T for any information.');
-  e.preventDefault();
-});
-
-// Optional: Alert when trying to copy (can be annoying, so commented out)
-/*
-document.addEventListener('copy', function(e) {
-  alert('Copying is disabled on this portfolio!');
-  e.preventDefault();
-});
-*/
 // ============================================
 // 🌓 DARK/LIGHT MODE TOGGLE - Triple click on profile image
 // ============================================
@@ -388,9 +373,11 @@ document.addEventListener('copy', function(e) {
 let clickCount = 0;
 let clickTimer = null;
 
-const profileImage = document.querySelector('.profile-card');
+// Use both class and ID to ensure it works
+const profileImage = document.querySelector('.profile-card, #profileImage');
 if (profileImage) {
-  profileImage.addEventListener('click', function() {
+  profileImage.addEventListener('click', function(e) {
+    e.stopPropagation(); // Prevent event bubbling
     clickCount++;
     
     // Clear previous timer
@@ -408,7 +395,7 @@ if (profileImage) {
       // Toggle light/dark mode
       document.body.classList.toggle('light-mode');
       
-      // Optional: Show a small notification
+      // Show notification
       const mode = document.body.classList.contains('light-mode') ? 'Light' : 'Dark';
       showModeNotification(`${mode} mode activated`);
       
@@ -417,9 +404,15 @@ if (profileImage) {
       clearTimeout(clickTimer);
     }
   });
+  
+  // Add touch event for mobile
+  profileImage.addEventListener('touchstart', function(e) {
+    e.preventDefault(); // Prevent double-tap zoom
+    // The click event will handle the counting
+  });
 }
 
-// Optional: Show mode notification
+// Show mode notification
 function showModeNotification(message) {
   // Remove existing notification
   const oldNotification = document.querySelector('.mode-notification');
@@ -447,27 +440,30 @@ function showModeNotification(message) {
     box-shadow: 0 4px 15px rgba(0,0,0,0.3);
   `;
   
-  // Add animation styles
-  const style = document.createElement('style');
-  style.textContent = `
-    @keyframes slideIn {
-      from {
-        transform: translateX(100px);
-        opacity: 0;
+  // Add animation styles if not already present
+  if (!document.querySelector('#notification-styles')) {
+    const style = document.createElement('style');
+    style.id = 'notification-styles';
+    style.textContent = `
+      @keyframes slideIn {
+        from {
+          transform: translateX(100px);
+          opacity: 0;
+        }
+        to {
+          transform: translateX(0);
+          opacity: 1;
+        }
       }
-      to {
-        transform: translateX(0);
-        opacity: 1;
+      @keyframes fadeOut {
+        to {
+          opacity: 0;
+          transform: translateY(-20px);
+        }
       }
-    }
-    @keyframes fadeOut {
-      to {
-        opacity: 0;
-        transform: translateY(-20px);
-      }
-    }
-  `;
-  document.head.appendChild(style);
+    `;
+    document.head.appendChild(style);
+  }
   
   document.body.appendChild(notification);
   
