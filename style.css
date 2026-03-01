@@ -108,6 +108,107 @@ a {
 }
 
 /* ===============================
+   MOBILE FLOATING MENU
+================================= */
+.mobile-menu-container {
+  display: none;
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 1000;
+}
+
+.mobile-menu-toggle {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: var(--bg-secondary);
+  border: 2px solid var(--primary-color);
+  color: white;
+  font-size: 1.5rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 15px rgba(37, 99, 235, 0.3);
+  transition: var(--transition);
+}
+
+.mobile-menu-toggle:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 25px var(--primary-color);
+}
+
+.mobile-menu-dropdown {
+  position: absolute;
+  top: 60px;
+  right: 0;
+  width: 220px;
+  background: var(--bg-secondary);
+  border: 2px solid var(--primary-color);
+  border-radius: 12px;
+  padding: 1rem 0;
+  box-shadow: 0 0 25px rgba(37, 99, 235, 0.3);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-10px);
+  transition: all 0.3s ease;
+}
+
+.mobile-menu-dropdown.active {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.mobile-menu-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.mobile-menu-links li {
+  margin: 0;
+  padding: 0;
+}
+
+.mobile-menu-links a {
+  display: block;
+  padding: 0.8rem 1.5rem;
+  color: var(--text-color);
+  text-decoration: none;
+  font-weight: 500;
+  transition: var(--transition);
+  border-left: 3px solid transparent;
+}
+
+.mobile-menu-links a:hover,
+.mobile-menu-links a.active {
+  background: rgba(37, 99, 235, 0.1);
+  border-left-color: var(--primary-color);
+  color: var(--primary-color);
+}
+
+.mobile-menu-links a i {
+  margin-right: 10px;
+  width: 20px;
+  color: var(--primary-color);
+}
+
+.mobile-divider {
+  height: 1px;
+  background: rgba(255, 255, 255, 0.1);
+  margin: 0.5rem 0;
+}
+
+/* Show mobile menu only on mobile */
+@media (max-width: 900px) {
+  .mobile-menu-container {
+    display: block;
+  }
+}
+
+/* ===============================
    CONTENT LAYOUT
 ================================= */
 .content-align {
@@ -171,23 +272,38 @@ a {
   letter-spacing: -1px;
   line-height: 1.2;
   text-align: center;
-  min-height: 120px; /* Prevents layout shift during typing animation */
+  min-height: 120px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 0px;
+  white-space: nowrap;
+}
+
+.static-text {
+  display: inline;
+  color: var(--text-color);
 }
 
 .highlight {
+  display: inline;
   color: var(--primary-color);
   text-shadow: 0 0 10px rgba(37, 99, 235, 0.3);
 }
 
-/* Typing cursor animation */
 .typed-cursor {
   display: inline-block;
   width: 3px;
-  height: 3.2rem;
+  height: 1.2em;
   background-color: var(--primary-color);
-  margin-left: 5px;
+  margin-left: 2px;
   animation: blink 0.7s infinite;
   vertical-align: middle;
+}
+
+.typed-cursor.hide-cursor {
+  display: none !important;
 }
 
 @keyframes blink {
@@ -228,7 +344,7 @@ a {
   box-shadow: 0 0 25px var(--primary-color);
   animation: float 3s ease-in-out infinite;
   transition: all 0.4s ease;
-  border: 3px solid #111111; /* Changed to #111111 */
+  border: 3px solid #111111;
 }
 
 .profile-card img {
@@ -427,7 +543,7 @@ a {
 
 .contact-method h4 {
   font-size: 1.1rem;
-  color: var(--text-color); /* Changed from blue to white */
+  color: var(--text-color);
   margin-bottom: 0.3rem;
   text-align: center;
 }
@@ -645,7 +761,7 @@ a {
     height: 200px !important;
     margin: 0 auto;
     animation: none !important;
-    border: 3px solid #111111; /* Changed to #111111 */
+    border: 3px solid #111111;
     /* Remove all shadows */
     box-shadow: none !important;
   }
@@ -663,10 +779,11 @@ a {
     margin-bottom: 0.8rem;
     line-height: 1.2;
     min-height: 80px;
+    white-space: nowrap;
   }
   
   .typed-cursor {
-    height: 2rem;
+    height: 1.2em;
   }
   
   .hero-description {
@@ -796,18 +913,18 @@ a {
   .contact-method h4,
   .contact-method p {
     text-align: center !important;
-    color: #ccc; /* Matching PC style */
+    color: #ccc;
   }
   
   .contact-method h4 {
     font-size: 1rem;
-    color: var(--text-color); /* White like PC, not blue */
+    color: var(--text-color);
     margin-bottom: 0.2rem;
   }
   
   .contact-method p {
     font-size: 0.95rem;
-    color: var(--text-light); /* Light gray like PC */
+    color: var(--text-light);
   }
   
   /* Social icons - Clean */
@@ -880,8 +997,9 @@ a {
   }
   
   .hero-text h1 {
-    font-size: 1.8rem;
+    font-size: 1.6rem;
     min-height: 70px;
+    white-space: nowrap;
   }
   
   .hero-description {
@@ -927,8 +1045,9 @@ a {
   }
   
   .hero-text h1 {
-    font-size: 1.5rem;
+    font-size: 1.4rem;
     min-height: 60px;
+    white-space: nowrap;
   }
   
   .hero-buttons {
