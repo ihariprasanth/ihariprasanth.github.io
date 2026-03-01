@@ -14,7 +14,7 @@ document.querySelectorAll('.sidebar-links a[href^="#"], .mobile-menu-links a[hre
     document.querySelectorAll('.sidebar-links a, .mobile-menu-links a').forEach(link => link.classList.remove('active'));
     this.classList.add('active');
     
-    // Close mobile menu after clicking
+    // AUTO-CLOSE mobile menu after clicking
     closeMobileMenu();
   });
 });
@@ -90,13 +90,40 @@ window.addEventListener("load", () => {
   }, 100);
 });
 
-// ✨ TYPING ANIMATION FOR HERO TITLE - WITH SPACE
+// ✨ TYPING ANIMATION FOR HERO TITLE
 document.addEventListener('DOMContentLoaded', function() {
+  // Add cursor styles dynamically if not in CSS
+  if (!document.querySelector('#typing-styles')) {
+    const style = document.createElement('style');
+    style.id = 'typing-styles';
+    style.textContent = `
+      .typed-cursor {
+        display: inline-block;
+        width: 3px;
+        height: 1.2em;
+        background-color: var(--primary-color);
+        margin-left: 2px;
+        animation: blink 0.7s infinite;
+        vertical-align: middle;
+      }
+      
+      .typed-cursor.hide-cursor {
+        display: none !important;
+      }
+      
+      @keyframes blink {
+        0%, 50% { opacity: 1; }
+        51%, 100% { opacity: 0; }
+      }
+    `;
+    document.head.appendChild(style);
+  }
+
   const heroTitle = document.querySelector('.hero-text h1');
   if (!heroTitle) return;
   
   // Clear and set up the title structure
-  heroTitle.innerHTML = '<span class="static-text">Hi, I\'m </span><span class="highlight"></span>';
+  heroTitle.innerHTML = '<span class="static-text">Hi, I\'m  </span><span class="highlight"></span>';
   
   const highlightSpan = heroTitle.querySelector('.highlight');
   if (!highlightSpan) return;
@@ -145,24 +172,33 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 });
 
-// 📱 MOBILE MENU - CENTERED POPUP WITH BLUR
+// 📱 MOBILE MENU FUNCTIONS
+function closeMobileMenu() {
+  const menuPopup = document.getElementById('mobileMenuPopup');
+  const menuOverlay = document.getElementById('menuOverlay');
+  if (menuPopup && menuOverlay) {
+    menuPopup.classList.remove('active');
+    menuOverlay.classList.remove('active');
+    document.body.classList.remove('menu-open');
+  }
+}
+
+function openMobileMenu() {
+  const menuPopup = document.getElementById('mobileMenuPopup');
+  const menuOverlay = document.getElementById('menuOverlay');
+  if (menuPopup && menuOverlay) {
+    menuPopup.classList.add('active');
+    menuOverlay.classList.add('active');
+    document.body.classList.add('menu-open');
+  }
+}
+
+// Mobile menu event listeners
 document.addEventListener('DOMContentLoaded', function() {
   const menuToggle = document.getElementById('mobileMenuToggle');
   const menuPopup = document.getElementById('mobileMenuPopup');
   const menuOverlay = document.getElementById('menuOverlay');
   const menuCloseBtn = document.getElementById('menuCloseBtn');
-  
-  function openMobileMenu() {
-    menuPopup.classList.add('active');
-    menuOverlay.classList.add('active');
-    document.body.classList.add('menu-open');
-  }
-  
-  function closeMobileMenu() {
-    menuPopup.classList.remove('active');
-    menuOverlay.classList.remove('active');
-    document.body.classList.remove('menu-open');
-  }
   
   if (menuToggle && menuPopup && menuOverlay) {
     menuToggle.addEventListener('click', function(e) {
