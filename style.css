@@ -42,6 +42,9 @@ h1, h2, h3, h4, h5, h6,
   --shadow-color: rgba(37, 99, 235, 0.3);
   --footer-bg: #1a1a1a;
   --menu-bg: #1a1a1a;
+  --success-color: #00ffb7;
+  --warning-color: #ffaa00;
+  --danger-color: #ff6b6b;
 }
 
 body {
@@ -116,8 +119,7 @@ a {
 }
 
 /* ===============================
-   MOBILE FLOATING MENU - TOP LEFT WITH DOWN ARROW
-   SMALLER CENTERED DIALOG BOX
+   MOBILE FLOATING MENU
 ================================= */
 .mobile-menu-container {
   display: none;
@@ -150,7 +152,6 @@ a {
   box-shadow: 0 0 25px var(--primary-color);
 }
 
-/* Blur overlay */
 .menu-overlay {
   position: fixed;
   top: 0;
@@ -171,7 +172,6 @@ a {
   visibility: visible;
 }
 
-/* SMALLER CENTERED POPUP MENU */
 .mobile-menu-popup {
   position: fixed;
   top: 50%;
@@ -196,7 +196,6 @@ a {
   transform: translate(-50%, -50%) scale(1);
 }
 
-/* Close button */
 .menu-close-btn {
   position: absolute;
   top: 8px;
@@ -228,16 +227,10 @@ a {
   text-align: center;
 }
 
-.mobile-menu-links li {
-  margin: 0;
-  padding: 0;
-}
-
 .mobile-menu-links a {
   display: block;
   padding: 0.6rem 1rem;
   color: var(--text-color);
-  text-decoration: none;
   font-weight: 500;
   font-size: 0.95rem;
   transition: var(--transition);
@@ -265,7 +258,6 @@ a {
   margin: 0.8rem 0;
 }
 
-/* Show mobile menu only on mobile */
 @media (max-width: 900px) {
   .mobile-menu-container {
     display: block;
@@ -291,10 +283,8 @@ a {
   color: var(--text-color);
 }
 
-/* REMOVED the ::after underline */
-
 /* ===============================
-   HERO SECTION - TWO LINES
+   HERO SECTION
 ================================= */
 .hero {
   min-height: 100vh;
@@ -382,7 +372,7 @@ a {
 }
 
 /* ===============================
-   HERO BUTTONS - 2x2 GRID
+   HERO BUTTONS
 ================================= */
 .hero-buttons {
   display: grid;
@@ -434,7 +424,6 @@ a {
   transform: translateY(-3px);
 }
 
-/* Resume Button */
 .btn.resume-btn {
   color: var(--text-color);
   border: 2px solid #00ffb7;
@@ -460,7 +449,6 @@ a {
   color: #111;
 }
 
-/* GitHub Button */
 .btn.github-btn {
   color: var(--text-color);
   border: 2px solid #00ffb7;
@@ -486,8 +474,35 @@ a {
   color: #111;
 }
 
+.btn.leetcode-btn {
+  color: var(--text-color);
+  border: 2px solid #ffaa00;
+  box-shadow: 0 0 15px rgba(255, 170, 0, 0.3);
+  background: transparent;
+  gap: 0.5rem;
+  padding: 0.8rem 2rem;
+  margin-top: 2rem;
+}
+
+.btn.leetcode-btn i {
+  color: #ffaa00;
+  font-size: 1rem;
+  transition: var(--transition);
+}
+
+.btn.leetcode-btn:hover {
+  background: #ffaa00;
+  color: #111;
+  box-shadow: 0 0 25px #ffaa00;
+  transform: translateY(-3px);
+}
+
+.btn.leetcode-btn:hover i {
+  color: #111;
+}
+
 /* ===============================
-   PROFILE CARD STYLES
+   PROFILE CARD
 ================================= */
 .hero-image {
   flex: 1;
@@ -520,8 +535,7 @@ a {
 }
 
 /* ===============================
-   LIQUID GLASS ICON SKILLS - WITH ROW ANIMATIONS
-   7 COLUMNS DESKTOP, 4 COLUMNS MOBILE
+   SKILLS SECTION
 ================================= */
 .skills-glass-container {
   max-width: 1200px;
@@ -539,7 +553,6 @@ a {
   box-shadow: 0 0 25px var(--primary-color);
 }
 
-/* Desktop - 7 columns */
 .skills-glass-grid {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
@@ -587,23 +600,270 @@ a {
   left: 100%;
 }
 
+/* Base icon styling for all skill cards */
 .skill-glass-card i {
-  font-size: 2rem;
+  font-size: 2.2rem;
   transition: all 0.4s ease;
-  filter: drop-shadow(0 0 5px rgba(37, 99, 235, 0.5));
+  filter: drop-shadow(0 0 8px currentColor);
+  background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 100%);
+  padding: 8px;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.skill-glass-card span {
-  font-size: 0.7rem;
-  font-weight: 600;
-  color: var(--text-color);
-  text-align: center;
-  transition: all 0.3s ease;
-  letter-spacing: 0.3px;
+.skill-glass-card:hover i {
+  transform: scale(1.15) rotate(5deg);
+  filter: drop-shadow(0 0 15px currentColor);
 }
 
-.skill-glass-card:hover span {
-  color: var(--primary-color);
+/* Skill Icons with Enhanced Styling */
+.skill-glass-card.python i { 
+  color: #FFD43B; 
+  background: linear-gradient(135deg, #306998 0%, #1E415E 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  text-shadow: 0 0 15px rgba(48, 105, 152, 0.8);
+}
+.skill-glass-card.python:hover i { 
+  color: #FFE873;
+  text-shadow: 0 0 25px #FFD43B;
+}
+
+.skill-glass-card.java i { 
+  color: #F89820; 
+  background: linear-gradient(135deg, #007396 0%, #054A5F 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  text-shadow: 0 0 15px rgba(0, 115, 150, 0.8);
+}
+.skill-glass-card.java:hover i { 
+  color: #F58025;
+  text-shadow: 0 0 25px #F89820;
+}
+
+.skill-glass-card.javascript i { 
+  color: #F7DF1E; 
+  background: linear-gradient(135deg, #323330 0%, #1E1F1C 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  text-shadow: 0 0 15px rgba(247, 223, 30, 0.8);
+}
+.skill-glass-card.javascript:hover i { 
+  color: #FFFF00;
+  text-shadow: 0 0 25px #F7DF1E;
+}
+
+.skill-glass-card.cpp i { 
+  color: #00599C; 
+  background: linear-gradient(135deg, #659AD2 0%, #3D7EB3 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  text-shadow: 0 0 15px rgba(0, 89, 156, 0.8);
+}
+.skill-glass-card.cpp:hover i { 
+  color: #004482;
+  text-shadow: 0 0 25px #00599C;
+}
+
+.skill-glass-card.c i { 
+  color: #A8B9CC; 
+  background: linear-gradient(135deg, #384958 0%, #1F2A33 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  text-shadow: 0 0 15px rgba(56, 73, 88, 0.8);
+}
+.skill-glass-card.c:hover i { 
+  color: #FFFFFF;
+  text-shadow: 0 0 25px #A8B9CC;
+}
+
+.skill-glass-card.html i { 
+  color: #E34F26; 
+  background: linear-gradient(135deg, #F16529 0%, #D14F21 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  text-shadow: 0 0 15px rgba(227, 79, 38, 0.8);
+}
+.skill-glass-card.html:hover i { 
+  color: #FF7A3D;
+  text-shadow: 0 0 25px #E34F26;
+}
+
+.skill-glass-card.css i { 
+  color: #1572B6; 
+  background: linear-gradient(135deg, #33A9DC 0%, #1E7EB0 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  text-shadow: 0 0 15px rgba(21, 114, 182, 0.8);
+}
+.skill-glass-card.css:hover i { 
+  color: #3CB0E8;
+  text-shadow: 0 0 25px #1572B6;
+}
+
+.skill-glass-card.bootstrap i { 
+  color: #7952B3; 
+  background: linear-gradient(135deg, #9B6FCF 0%, #6A4A9E 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  text-shadow: 0 0 15px rgba(121, 82, 179, 0.8);
+}
+.skill-glass-card.bootstrap:hover i { 
+  color: #AA7FD9;
+  text-shadow: 0 0 25px #7952B3;
+}
+
+.skill-glass-card.nodejs i { 
+  color: #339933; 
+  background: linear-gradient(135deg, #68A063 0%, #2E7D32 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  text-shadow: 0 0 15px rgba(51, 153, 51, 0.8);
+}
+.skill-glass-card.nodejs:hover i { 
+  color: #44BB44;
+  text-shadow: 0 0 25px #339933;
+}
+
+.skill-glass-card.opencv i { 
+  color: #5C3EE8; 
+  background: linear-gradient(135deg, #8B5CF6 0%, #4C1D95 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  text-shadow: 0 0 15px rgba(92, 62, 232, 0.8);
+}
+.skill-glass-card.opencv:hover i { 
+  color: #9F7AFF;
+  text-shadow: 0 0 25px #5C3EE8;
+}
+
+.skill-glass-card.numpy i { 
+  color: #4DABCF; 
+  background: linear-gradient(135deg, #013243 0%, #022B39 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  text-shadow: 0 0 15px rgba(77, 171, 207, 0.8);
+}
+.skill-glass-card.numpy:hover i { 
+  color: #6BC2E0;
+  text-shadow: 0 0 25px #4DABCF;
+}
+
+.skill-glass-card.pandas i { 
+  color: #FFCA00; 
+  background: linear-gradient(135deg, #150458 0%, #2B0B6B 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  text-shadow: 0 0 15px rgba(255, 202, 0, 0.8);
+}
+.skill-glass-card.pandas:hover i { 
+  color: #FFD966;
+  text-shadow: 0 0 25px #FFCA00;
+}
+
+.skill-glass-card.mongodb i { 
+  color: #4DB33D; 
+  background: linear-gradient(135deg, #47A248 0%, #2E7D32 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  text-shadow: 0 0 15px rgba(71, 162, 72, 0.8);
+}
+.skill-glass-card.mongodb:hover i { 
+  color: #68C85C;
+  text-shadow: 0 0 25px #4DB33D;
+}
+
+.skill-glass-card.firebase i { 
+  color: #FFCA28; 
+  background: linear-gradient(135deg, #F57C00 0%, #E65100 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  text-shadow: 0 0 15px rgba(255, 202, 40, 0.8);
+}
+.skill-glass-card.firebase:hover i { 
+  color: #FFD966;
+  text-shadow: 0 0 25px #FFCA28;
+}
+
+.skill-glass-card.mysql i { 
+  color: #F29111; 
+  background: linear-gradient(135deg, #00758F 0%, #005E73 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  text-shadow: 0 0 15px rgba(0, 117, 143, 0.8);
+}
+.skill-glass-card.mysql:hover i { 
+  color: #FFA726;
+  text-shadow: 0 0 25px #F29111;
+}
+
+.skill-glass-card.github i { 
+  color: #FFFFFF; 
+  background: linear-gradient(135deg, #6e5494 0%, #4C3A6B 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  text-shadow: 0 0 15px rgba(110, 84, 148, 0.8);
+}
+.skill-glass-card.github:hover i { 
+  color: #C3B1E1;
+  text-shadow: 0 0 25px #FFFFFF;
+}
+
+.skill-glass-card.linux i { 
+  color: #FCC624; 
+  background: linear-gradient(135deg, #000000 0%, #1A1A1A 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  text-shadow: 0 0 15px rgba(252, 198, 36, 0.8);
+}
+.skill-glass-card.linux:hover i { 
+  color: #FFD966;
+  text-shadow: 0 0 25px #FCC624;
+}
+
+.skill-glass-card.vscode i { 
+  color: #007ACC; 
+  background: linear-gradient(135deg, #0066B8 0%, #004E8C 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  text-shadow: 0 0 15px rgba(0, 122, 204, 0.8);
+}
+.skill-glass-card.vscode:hover i { 
+  color: #2D9EE0;
+  text-shadow: 0 0 25px #007ACC;
+}
+
+.skill-glass-card.vercel i { 
+  color: #FFFFFF; 
+  background: linear-gradient(135deg, #666666 0%, #333333 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  text-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
+}
+.skill-glass-card.vercel:hover i { 
+  color: #E5E5E5;
+  text-shadow: 0 0 25px #FFFFFF;
+}
+
+.skill-glass-card:hover {
+  background: rgba(37, 99, 235, 0.15);
+}
+
+.skill-glass-card:hover i {
+  animation: iconPulse 1.5s ease-in-out infinite;
+}
+
+@keyframes iconPulse {
+  0%, 100% {
+    filter: drop-shadow(0 0 8px currentColor);
+  }
+  50% {
+    filter: drop-shadow(0 0 20px currentColor);
+  }
 }
 
 /* Row-based animations */
@@ -611,27 +871,22 @@ a {
   animation: none;
 }
 
-/* First row - forward movement (odd rows) */
 .skills-glass-grid .skill-glass-card:nth-child(-n+7) {
   animation: slideForward 3s ease-in-out infinite;
 }
 
-/* Second row - backward movement */
 .skills-glass-grid .skill-glass-card:nth-child(n+8):nth-child(-n+14) {
   animation: slideBackward 3.2s ease-in-out infinite;
 }
 
-/* Third row - forward movement */
 .skills-glass-grid .skill-glass-card:nth-child(n+15):nth-child(-n+21) {
   animation: slideForward 2.8s ease-in-out infinite;
 }
 
-/* For any remaining cards */
 .skills-glass-grid .skill-glass-card:nth-child(n+22) {
   animation: slideForward 3s ease-in-out infinite;
 }
 
-/* Animation keyframes */
 @keyframes slideForward {
   0%, 100% {
     transform: translateX(0) translateY(0);
@@ -662,181 +917,12 @@ a {
   }
 }
 
-/* Pause animation on hover */
 .skill-glass-card:hover {
   animation-play-state: paused !important;
 }
 
 /* ===============================
-   SKILL ICONS WITH BRAND COLORS - MORE ATTRACTIVE
-================================= */
-.skill-glass-card.python i { 
-  color: #3776AB; 
-  text-shadow: 0 0 10px rgba(55, 118, 171, 0.5);
-}
-.skill-glass-card.python:hover i { color: #FFD43B; }
-
-.skill-glass-card.java i { 
-  color: #007396; 
-  text-shadow: 0 0 10px rgba(0, 115, 150, 0.5);
-}
-.skill-glass-card.java:hover i { color: #F89820; }
-
-.skill-glass-card.javascript i { 
-  color: #F7DF1E; 
-  text-shadow: 0 0 10px rgba(247, 223, 30, 0.5);
-}
-.skill-glass-card.javascript:hover i { color: #000000; }
-
-.skill-glass-card.cpp i { 
-  color: #00599C; 
-  text-shadow: 0 0 10px rgba(0, 89, 156, 0.5);
-}
-.skill-glass-card.cpp:hover i { color: #004482; }
-
-.skill-glass-card.c i { 
-  color: #A8B9CC; 
-  text-shadow: 0 0 10px rgba(168, 185, 204, 0.5);
-}
-.skill-glass-card.c:hover i { color: #00599C; }
-
-.skill-glass-card.html i { 
-  color: #E34F26; 
-  text-shadow: 0 0 10px rgba(227, 79, 38, 0.5);
-}
-.skill-glass-card.html:hover i { color: #F16529; }
-
-.skill-glass-card.css i { 
-  color: #1572B6; 
-  text-shadow: 0 0 10px rgba(21, 114, 182, 0.5);
-}
-.skill-glass-card.css:hover i { color: #33A9DC; }
-
-.skill-glass-card.bootstrap i { 
-  color: #7952B3; 
-  text-shadow: 0 0 10px rgba(121, 82, 179, 0.5);
-}
-.skill-glass-card.bootstrap:hover i { color: #563D7C; }
-
-.skill-glass-card.nodejs i { 
-  color: #339933; 
-  text-shadow: 0 0 10px rgba(51, 153, 51, 0.5);
-}
-.skill-glass-card.nodejs:hover i { color: #68A063; }
-
-.skill-glass-card.opencv i { 
-  color: #5C3EE8; 
-  text-shadow: 0 0 10px rgba(92, 62, 232, 0.5);
-}
-.skill-glass-card.opencv:hover i { color: #FF0000; }
-
-.skill-glass-card.numpy i { 
-  color: #013243; 
-  text-shadow: 0 0 10px rgba(1, 50, 67, 0.5);
-}
-.skill-glass-card.numpy:hover i { color: #4DABCF; }
-
-.skill-glass-card.pandas i { 
-  color: #150458; 
-  text-shadow: 0 0 10px rgba(21, 4, 88, 0.5);
-}
-.skill-glass-card.pandas:hover i { color: #FFCA00; }
-
-.skill-glass-card.mongodb i { 
-  color: #47A248; 
-  text-shadow: 0 0 10px rgba(71, 162, 72, 0.5);
-}
-.skill-glass-card.mongodb:hover i { color: #4DB33D; }
-
-.skill-glass-card.firebase i { 
-  color: #FFCA28; 
-  text-shadow: 0 0 10px rgba(255, 202, 40, 0.5);
-}
-.skill-glass-card.firebase:hover i { color: #F57C00; }
-
-.skill-glass-card.mysql i { 
-  color: #00758F; 
-  text-shadow: 0 0 10px rgba(0, 117, 143, 0.5);
-}
-.skill-glass-card.mysql:hover i { color: #F29111; }
-
-.skill-glass-card.github i { 
-  color: #f5f5f5; 
-  text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
-}
-.skill-glass-card.github:hover i { color: #6e5494; }
-
-.skill-glass-card.linux i { 
-  color: #FCC624; 
-  text-shadow: 0 0 10px rgba(252, 198, 36, 0.5);
-}
-.skill-glass-card.linux:hover i { color: #000000; }
-
-.skill-glass-card.vscode i { 
-  color: #007ACC; 
-  text-shadow: 0 0 10px rgba(0, 122, 204, 0.5);
-}
-.skill-glass-card.vscode:hover i { color: #0066B8; }
-
-.skill-glass-card.vercel i { 
-  color: #f5f5f5; 
-  text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
-}
-.skill-glass-card.vercel:hover i { color: #cccccc; }
-
-/* Mobile - 4 columns */
-@media (max-width: 900px) {
-  .skills-glass-grid {
-    grid-template-columns: repeat(4, 1fr);
-    gap: 8px;
-  }
-  
-  .skill-glass-card {
-    padding: 10px 3px;
-  }
-  
-  .skill-glass-card i {
-    font-size: 1.6rem;
-  }
-  
-  .skill-glass-card span {
-    font-size: 0.65rem;
-  }
-  
-  /* Adjust row animations for mobile */
-  .skills-glass-grid .skill-glass-card:nth-child(-n+4) {
-    animation: slideForward 3s ease-in-out infinite;
-  }
-  
-  .skills-glass-grid .skill-glass-card:nth-child(n+5):nth-child(-n+8) {
-    animation: slideBackward 3.2s ease-in-out infinite;
-  }
-  
-  .skills-glass-grid .skill-glass-card:nth-child(n+9):nth-child(-n+12) {
-    animation: slideForward 2.8s ease-in-out infinite;
-  }
-  
-  .skills-glass-grid .skill-glass-card:nth-child(n+13):nth-child(-n+16) {
-    animation: slideBackward 3s ease-in-out infinite;
-  }
-  
-  .skills-glass-grid .skill-glass-card:nth-child(n+17) {
-    animation: slideForward 3.1s ease-in-out infinite;
-  }
-}
-
-@media (max-width: 480px) {
-  .skill-glass-card i {
-    font-size: 1.4rem;
-  }
-  
-  .skill-glass-card span {
-    font-size: 0.6rem;
-  }
-}
-
-/* ===============================
-   EDUCATION & SKILLS CARDS - CENTERED
+   EDUCATION, CERTIFICATIONS & CARDS
 ================================= */
 .education-content {
   display: flex;
@@ -879,7 +965,131 @@ a {
 }
 
 /* ===============================
-   CONTACT SECTION - CENTERED
+   ACHIEVEMENTS SECTION
+================================= */
+.achievements-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+}
+
+.achievement-card {
+  background: var(--bg-secondary);
+  border: 2px solid rgba(37, 99, 235, 0.4);
+  border-radius: 1rem;
+  padding: 2rem 1.5rem;
+  text-align: center;
+  transition: var(--transition);
+  box-shadow: 0 0 15px var(--shadow-color);
+}
+
+.achievement-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 0 25px var(--primary-color);
+  border-color: var(--primary-color);
+}
+
+.achievement-card h3 {
+  font-size: 1.3rem;
+  margin: 1rem 0 0.5rem;
+  color: var(--text-color);
+}
+
+.achievement-card p {
+  color: var(--text-light);
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+}
+
+/* Circular Progress */
+.circular-progress {
+  position: relative;
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  background: conic-gradient(var(--primary-color) 0deg, rgba(37, 99, 235, 0.2) 0deg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1rem;
+  transition: background 0.3s ease;
+}
+
+.circular-progress::before {
+  content: '';
+  position: absolute;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background: var(--bg-secondary);
+  border: 2px solid rgba(37, 99, 235, 0.2);
+}
+
+.progress-value {
+  position: relative;
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--primary-color);
+  z-index: 1;
+}
+
+.achievement-stats {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-top: 1rem;
+}
+
+.stat-label {
+  font-size: 0.85rem;
+  color: var(--text-light);
+  background: rgba(37, 99, 235, 0.1);
+  padding: 0.3rem 0.6rem;
+  border-radius: 20px;
+  border: 1px solid rgba(37, 99, 235, 0.3);
+}
+
+.stat-label span {
+  color: var(--primary-color);
+  font-weight: 600;
+  margin-left: 0.2rem;
+}
+
+.achievement-badges {
+  display: flex;
+  justify-content: center;
+  gap: 0.8rem;
+  flex-wrap: wrap;
+  margin-top: 1rem;
+}
+
+.badge-icon {
+  font-size: 0.9rem;
+  color: var(--text-color);
+  background: rgba(37, 99, 235, 0.1);
+  padding: 0.4rem 0.8rem;
+  border-radius: 20px;
+  border: 1px solid rgba(37, 99, 235, 0.3);
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.badge-icon i {
+  font-size: 1rem;
+}
+
+.leetcode-profile-link {
+  text-align: center;
+  margin-top: 2rem;
+}
+
+/* ===============================
+   CONTACT SECTION
 ================================= */
 .contact-content {
   display: flex;
@@ -1113,15 +1323,13 @@ a {
 }
 
 /* ===============================
-   MOBILE RESPONSIVE - 2x2 BUTTONS
+   MOBILE RESPONSIVE
 ================================= */
 @media (max-width: 900px) {
-  /* Hide sidebar only */
   .sidebar {
     display: none !important;
   }
   
-  /* Show footer on mobile */
   .footer {
     display: block !important;
     margin-left: 0 !important;
@@ -1129,18 +1337,15 @@ a {
     font-size: 0.9rem;
   }
   
-  /* Hide FAB on mobile */
   .fab-container {
     display: none !important;
   }
   
-  /* Reset margins */
   .hero,
   .content-align {
     margin-left: 0 !important;
   }
   
-  /* Hero section mobile */
   .hero {
     min-height: auto;
     padding: 2rem 1rem 1.5rem;
@@ -1190,20 +1395,14 @@ a {
     font-size: 2rem;
   }
   
-  .typed-cursor {
-    height: 1.2em;
-  }
-  
   .hero-description {
     font-size: 1rem;
     text-align: center !important;
     max-width: 100%;
     margin: 0 auto 1.2rem;
     padding: 0 1rem;
-    color: var(--text-light);
   }
   
-  /* Mobile button layout - 2x2 grid */
   .hero-buttons {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -1222,7 +1421,6 @@ a {
     min-width: auto;
   }
   
-  /* Content sections */
   .content-align {
     padding: 30px 16px !important;
   }
@@ -1257,11 +1455,53 @@ a {
   }
   
   .skill-glass-card i {
-    font-size: 1.4rem;
+    font-size: 1.8rem;
+    width: 45px;
+    height: 45px;
   }
   
   .skill-glass-card span {
     font-size: 0.65rem;
+  }
+  
+  .skills-glass-grid .skill-glass-card:nth-child(-n+4) {
+    animation: slideForward 3s ease-in-out infinite;
+  }
+  
+  .skills-glass-grid .skill-glass-card:nth-child(n+5):nth-child(-n+8) {
+    animation: slideBackward 3.2s ease-in-out infinite;
+  }
+  
+  .skills-glass-grid .skill-glass-card:nth-child(n+9):nth-child(-n+12) {
+    animation: slideForward 2.8s ease-in-out infinite;
+  }
+  
+  .skills-glass-grid .skill-glass-card:nth-child(n+13):nth-child(-n+16) {
+    animation: slideBackward 3s ease-in-out infinite;
+  }
+  
+  .skills-glass-grid .skill-glass-card:nth-child(n+17) {
+    animation: slideForward 3.1s ease-in-out infinite;
+  }
+  
+  .achievements-container {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    padding: 0 1rem;
+  }
+  
+  .circular-progress {
+    width: 130px;
+    height: 130px;
+  }
+  
+  .circular-progress::before {
+    width: 100px;
+    height: 100px;
+  }
+  
+  .progress-value {
+    font-size: 1.6rem;
   }
   
   .contact-method h4 {
@@ -1282,7 +1522,6 @@ a {
   }
 }
 
-/* Small phones */
 @media (max-width: 480px) {
   .hero {
     padding: 1.5rem 0.8rem 1rem;
@@ -1333,6 +1572,35 @@ a {
     font-size: 0.9rem;
   }
   
+  .skill-glass-card i {
+    font-size: 1.4rem;
+    width: 40px;
+    height: 40px;
+    padding: 6px;
+  }
+  
+  .skill-glass-card span {
+    font-size: 0.6rem;
+  }
+  
+  .achievement-card {
+    padding: 1.5rem 1rem;
+  }
+  
+  .circular-progress {
+    width: 110px;
+    height: 110px;
+  }
+  
+  .circular-progress::before {
+    width: 85px;
+    height: 85px;
+  }
+  
+  .progress-value {
+    font-size: 1.4rem;
+  }
+  
   .connect-box {
     padding: 1.5rem !important;
   }
@@ -1343,7 +1611,6 @@ a {
   }
 }
 
-/* Very small phones */
 @media (max-width: 360px) {
   .profile-card {
     width: 140px !important;
@@ -1384,7 +1651,6 @@ body {
   user-select: none;
 }
 
-/* Allow selection on input fields if you add them later */
 input, textarea {
   user-select: text;
   -webkit-user-select: text;
