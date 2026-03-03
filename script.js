@@ -312,15 +312,15 @@ document.addEventListener('DOMContentLoaded', function() {
   // LeetCode stats (update these numbers with your actual data)
   const leetcodeStats = {
     problemsSolved: 221,
-    easy: 122,
+    easy: 120,
     medium: 82,
     hard: 19,
-    currentStreak: 69,
+    currentStreak: 140,
     maxStreak: 69
   };
   
   // Calculate percentages
-  const problemsPercentage = (leetcodeStats.problemsSolved / 500) * 100; // Assuming 300 total target
+  const problemsPercentage = (leetcodeStats.problemsSolved / 300) * 100; // Assuming 300 total target
   const streakPercentage = (leetcodeStats.maxStreak / 100) * 100; // Assuming 100 days as target
   
   // Update text values
@@ -334,16 +334,18 @@ document.addEventListener('DOMContentLoaded', function() {
   
   // Update streak message based on streak length
   const streakMessage = document.getElementById('streakMessage');
-  if (leetcodeStats.currentStreak >= 30) {
-    streakMessage.textContent = '🔥 On Fire!';
+  if (leetcodeStats.currentStreak >= 50) {
+    streakMessage.textContent = 'Legendary!';
+  } else if (leetcodeStats.currentStreak >= 30) {
+    streakMessage.textContent = 'On Fire!';
   } else if (leetcodeStats.currentStreak >= 15) {
-    streakMessage.textContent = '⚡ Great Momentum!';
+    streakMessage.textContent = 'Great Momentum!';
   } else if (leetcodeStats.currentStreak >= 7) {
-    streakMessage.textContent = '🌟 Good Streak!';
+    streakMessage.textContent = 'Good Streak!';
   } else if (leetcodeStats.currentStreak >= 3) {
-    streakMessage.textContent = '👍 Getting There!';
+    streakMessage.textContent = 'Getting There!';
   } else {
-    streakMessage.textContent = '🌱 Start Streak!';
+    streakMessage.textContent = 'Start Streak!';
   }
   
   // Animate circular progress
