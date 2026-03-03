@@ -74,40 +74,6 @@ document.querySelectorAll('.skill-glass-card').forEach((card, index) => {
 });
 
 // ============================================
-// 🔢 COUNTER ANIMATION
-// ============================================
-const counterObserver = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      const counters = entry.target.querySelectorAll(".stat-number");
-      counters.forEach(counter => {
-        const target = parseInt(counter.getAttribute("data-count"));
-        const duration = 1800;
-        const step = target / (duration / 16);
-        let current = 0;
-
-        if (!counter.classList.contains("counted")) {
-          const timer = setInterval(() => {
-            current += step;
-            if (current >= target) {
-              counter.textContent = target + "+";
-              clearInterval(timer);
-            } else {
-              counter.textContent = Math.floor(current);
-            }
-          }, 16);
-          counter.classList.add("counted");
-        }
-      });
-    }
-  });
-}, observerOptions);
-
-document.querySelectorAll(".about-stats").forEach(stats => {
-  counterObserver.observe(stats);
-});
-
-// ============================================
 // 💫 PAGE LOAD FADE-IN
 // ============================================
 window.addEventListener("load", () => {
@@ -380,9 +346,3 @@ document.addEventListener('drop', function(e) {
   e.preventDefault();
   return false;
 });
-
-// ============================================
-// REMOVED: Camera permissions and theme changing
-// REMOVED: Triple-click theme toggle
-// Default theme: Dark mode only
-// ============================================
