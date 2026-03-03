@@ -63,7 +63,7 @@ a {
 }
 
 /* ===============================
-   SIDEBAR
+   SIDEBAR - IMPROVED SPACING
 ================================= */
 .sidebar {
   position: fixed;
@@ -92,10 +92,10 @@ a {
   list-style: none;
   display: flex;
   flex-direction: column;
-  gap: 0.8rem;
+  gap: 0.7rem;
   align-items: center;
   width: 100%;
-  padding: 0 1rem;
+  padding: 0 0.5rem;
 }
 
 .sidebar-links li {
@@ -109,22 +109,23 @@ a {
   color: var(--text-color);
   background: transparent;
   border: 2px solid rgba(37, 99, 235, 0.5);
-  border-radius: 10px;
-  padding: 0.6rem 1rem;
+  border-radius: 8px;
+  padding: 0.5rem 0.5rem;
   display: inline-block;
-  box-shadow: 0 0 10px var(--shadow-color);
+  box-shadow: 0 0 8px var(--shadow-color);
   transition: var(--transition);
   width: 140px;
   text-align: center;
-  font-size: 0.95rem;
+  font-size: 0.9rem;
+  letter-spacing: 0.3px;
 }
 
 .sidebar-links a:hover,
 .sidebar-links a.active {
   color: var(--primary-color);
   border-color: var(--primary-color);
-  box-shadow: 0 0 20px var(--primary-color);
-  transform: translateY(-3px);
+  box-shadow: 0 0 15px var(--primary-color);
+  transform: translateY(-2px);
 }
 
 /* ===============================
@@ -242,13 +243,13 @@ a {
 
 .mobile-menu-links a {
   display: block;
-  padding: 0.6rem 1rem;
+  padding: 0.5rem 1rem;
   color: var(--text-color);
   font-weight: 500;
-  font-size: 0.95rem;
+  font-size: 0.9rem;
   transition: var(--transition);
   border-radius: 8px;
-  margin: 0.2rem 0;
+  margin: 0.1rem 0;
 }
 
 .mobile-menu-links a:hover,
@@ -269,7 +270,7 @@ a {
 ================================= */
 .content-align {
   margin-left: 230px;
-  padding: 60px;
+  padding: 50px 60px;
   text-align: center;
 }
 
@@ -277,8 +278,8 @@ a {
    SECTION TITLES - NO UNDERLINE
 ================================= */
 .section-title {
-  font-size: 2.2rem;
-  margin-bottom: 1.3rem;
+  font-size: 2rem;
+  margin-bottom: 1.2rem;
   text-align: center;
   color: var(--text-color);
 }
@@ -312,7 +313,7 @@ a {
 }
 
 .hero-text h1 {
-  font-size: 3.2rem;
+  font-size: 3rem;
   margin-bottom: 1.2rem;
   letter-spacing: -1px;
   line-height: 1.3;
@@ -327,12 +328,12 @@ a {
 .static-text {
   display: block;
   color: var(--text-color);
-  font-size: 2.5rem;
+  font-size: 2.3rem;
 }
 
 .name-line {
   display: block;
-  font-size: 3.2rem;
+  font-size: 3rem;
 }
 
 .highlight {
@@ -361,7 +362,7 @@ a {
 }
 
 .hero-description {
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   color: var(--text-light);
   margin-bottom: 2rem;
   line-height: 1.7;
@@ -386,12 +387,12 @@ a {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 0.75rem 1rem;
-  border-radius: 10px;
+  padding: 0.7rem 1rem;
+  border-radius: 8px;
   font-weight: 600;
   text-decoration: none;
   transition: all 0.3s ease;
-  font-size: 0.95rem;
+  font-size: 0.9rem;
   cursor: pointer;
   letter-spacing: 0.5px;
   background: transparent;
@@ -401,33 +402,33 @@ a {
 .btn.primary {
   color: var(--text-color);
   border: 2px solid var(--primary-color);
-  box-shadow: 0 0 15px var(--shadow-color);
+  box-shadow: 0 0 12px var(--shadow-color);
 }
 
 .btn.primary:hover {
   background: var(--primary-color);
   color: #fff;
-  box-shadow: 0 0 25px var(--primary-color);
+  box-shadow: 0 0 20px var(--primary-color);
   transform: translateY(-3px);
 }
 
 .btn.secondary {
   color: var(--text-color);
   border: 2px solid rgba(37, 99, 235, 0.5);
-  box-shadow: 0 0 10px var(--shadow-color);
+  box-shadow: 0 0 8px var(--shadow-color);
 }
 
 .btn.secondary:hover {
   color: var(--primary-color);
   border-color: var(--primary-color);
-  box-shadow: 0 0 25px var(--primary-color);
+  box-shadow: 0 0 20px var(--primary-color);
   transform: translateY(-3px);
 }
 
 .btn.resume-btn {
   color: var(--text-color);
   border: 2px solid #00ffb7;
-  box-shadow: 0 0 15px rgba(0, 255, 183, 0.3);
+  box-shadow: 0 0 12px rgba(0, 255, 183, 0.3);
   background: transparent;
   gap: 0.5rem;
 }
@@ -441,7 +442,7 @@ a {
 .btn.resume-btn:hover {
   background: #00ffb7;
   color: #111;
-  box-shadow: 0 0 25px #00ffb7;
+  box-shadow: 0 0 20px #00ffb7;
   transform: translateY(-3px);
 }
 
@@ -452,7 +453,7 @@ a {
 .btn.github-btn {
   color: var(--text-color);
   border: 2px solid #00ffb7;
-  box-shadow: 0 0 15px rgba(0, 255, 183, 0.3);
+  box-shadow: 0 0 12px rgba(0, 255, 183, 0.3);
   background: transparent;
   gap: 0.5rem;
 }
@@ -466,7 +467,7 @@ a {
 .btn.github-btn:hover {
   background: #00ffb7;
   color: #111;
-  box-shadow: 0 0 25px #00ffb7;
+  box-shadow: 0 0 20px #00ffb7;
   transform: translateY(-3px);
 }
 
@@ -477,11 +478,12 @@ a {
 .btn.leetcode-btn {
   color: var(--text-color);
   border: 2px solid #ffaa00;
-  box-shadow: 0 0 15px rgba(255, 170, 0, 0.3);
+  box-shadow: 0 0 12px rgba(255, 170, 0, 0.3);
   background: transparent;
   gap: 0.5rem;
-  padding: 0.8rem 2rem;
-  margin-top: 2rem;
+  padding: 0.7rem 1.8rem;
+  margin-top: 1.5rem;
+  font-size: 0.9rem;
 }
 
 .btn.leetcode-btn i {
@@ -493,7 +495,7 @@ a {
 .btn.leetcode-btn:hover {
   background: #ffaa00;
   color: #111;
-  box-shadow: 0 0 25px #ffaa00;
+  box-shadow: 0 0 20px #ffaa00;
   transform: translateY(-3px);
 }
 
@@ -512,8 +514,8 @@ a {
 }
 
 .profile-card {
-  width: 320px;
-  height: 320px;
+  width: 300px;
+  height: 300px;
   border-radius: 50%;
   overflow: hidden;
   box-shadow: 0 0 25px var(--shadow-color);
@@ -536,31 +538,31 @@ a {
 
 @keyframes float {
   0%, 100% { transform: translateY(0px); }
-  50% { transform: translateY(-15px); }
+  50% { transform: translateY(-12px); }
 }
 
 /* ===============================
    SKILLS SECTION - SIMPLE NO ANIMATIONS
 ================================= */
 .skills-glass-container {
-  max-width: 1200px;
+  max-width: 1100px;
   margin: 0 auto;
-  padding: 30px;
+  padding: 25px;
   background: var(--bg-secondary);
   border: 2px solid rgba(37, 99, 235, 0.4);
   border-radius: 1rem;
-  box-shadow: 0 0 15px var(--shadow-color);
+  box-shadow: 0 0 12px var(--shadow-color);
   transition: var(--transition);
 }
 
 .skills-glass-container:hover {
-  box-shadow: 0 0 25px var(--primary-color);
+  box-shadow: 0 0 20px var(--primary-color);
 }
 
 .skills-glass-grid {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
-  gap: 12px;
+  gap: 10px;
   justify-content: center;
 }
 
@@ -569,13 +571,13 @@ a {
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
   border: 1px solid rgba(37, 99, 235, 0.2);
-  border-radius: 10px;
-  padding: 12px 4px;
+  border-radius: 8px;
+  padding: 10px 3px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 6px;
+  gap: 5px;
   transition: all 0.3s ease;
   cursor: default;
 }
@@ -583,22 +585,21 @@ a {
 .skill-glass-card:hover {
   transform: translateY(-3px);
   border-color: var(--primary-color);
-  box-shadow: 0 8px 20px -5px var(--shadow-color);
+  box-shadow: 0 5px 15px -5px var(--shadow-color);
   background: rgba(37, 99, 235, 0.1);
 }
 
 .skill-glass-card i {
-  font-size: 2rem;
+  font-size: 1.8rem;
   transition: all 0.3s ease;
 }
 
 .skill-glass-card span {
-  font-size: 0.7rem;
+  font-size: 0.65rem;
   font-weight: 600;
   color: var(--text-color);
   text-align: center;
   transition: all 0.3s ease;
-  letter-spacing: 0.3px;
 }
 
 .skill-glass-card:hover span {
@@ -669,7 +670,7 @@ a {
 .education-content {
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  gap: 1.8rem;
   align-items: center;
 }
 
@@ -677,28 +678,30 @@ a {
   background: var(--bg-secondary);
   border: 2px solid rgba(37, 99, 235, 0.4);
   border-radius: 1rem;
-  padding: 2rem;
+  padding: 1.8rem;
   width: 80%;
   max-width: 700px;
-  box-shadow: 0 0 15px var(--shadow-color);
+  box-shadow: 0 0 12px var(--shadow-color);
   transition: var(--transition);
   text-align: center;
 }
 
 .education-item:hover {
-  box-shadow: 0 0 25px var(--primary-color);
+  box-shadow: 0 0 20px var(--primary-color);
 }
 
 .education-item h3 {
   text-align: center;
-  margin-bottom: 0.8rem;
+  margin-bottom: 0.7rem;
   color: var(--text-color);
+  font-size: 1.3rem;
 }
 
 .education-item p {
   text-align: center;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.4rem;
   color: var(--text-light);
+  font-size: 0.95rem;
 }
 
 .institution, .duration, .achievement {
@@ -707,14 +710,14 @@ a {
 }
 
 /* ===============================
-   ACHIEVEMENTS SECTION
+   ACHIEVEMENTS SECTION - REDUCED SIZE
 ================================= */
 .achievements-container {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 2rem;
-  max-width: 900px;
-  margin: 2rem auto;
+  gap: 1.5rem;
+  max-width: 700px;
+  margin: 1.5rem auto;
   padding: 0 1rem;
 }
 
@@ -722,54 +725,55 @@ a {
   background: var(--bg-secondary);
   border: 2px solid rgba(37, 99, 235, 0.4);
   border-radius: 1rem;
-  padding: 2rem 1.5rem;
+  padding: 1.2rem 1rem;
   text-align: center;
   transition: var(--transition);
-  box-shadow: 0 0 15px var(--shadow-color);
+  box-shadow: 0 0 12px var(--shadow-color);
   aspect-ratio: 1 / 1;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  max-height: 280px;
 }
 
 .achievement-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 0 25px var(--primary-color);
+  transform: translateY(-3px);
+  box-shadow: 0 0 20px var(--primary-color);
   border-color: var(--primary-color);
 }
 
 .achievement-card h3 {
-  font-size: 1.3rem;
-  margin: 1rem 0 0.5rem;
+  font-size: 1.1rem;
+  margin: 0.5rem 0 0.2rem;
   color: var(--text-color);
 }
 
 .achievement-card p {
   color: var(--text-light);
-  font-size: 0.9rem;
-  margin-bottom: 1rem;
+  font-size: 0.8rem;
+  margin-bottom: 0.5rem;
 }
 
 .circular-progress {
   position: relative;
-  width: 150px;
-  height: 150px;
+  width: 110px;
+  height: 110px;
   border-radius: 50%;
   background: conic-gradient(var(--primary-color) 0deg, rgba(37, 99, 235, 0.2) 0deg);
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 0 auto 1rem;
+  margin: 0 auto 0.3rem;
   transition: background 0.3s ease;
-  box-shadow: 0 0 20px var(--shadow-color);
+  box-shadow: 0 0 15px var(--shadow-color);
 }
 
 .circular-progress::before {
   content: '';
   position: absolute;
-  width: 120px;
-  height: 120px;
+  width: 90px;
+  height: 90px;
   border-radius: 50%;
   background: var(--bg-secondary);
   border: 2px solid rgba(37, 99, 235, 0.2);
@@ -777,7 +781,7 @@ a {
 
 .progress-value {
   position: relative;
-  font-size: 2rem;
+  font-size: 1.6rem;
   font-weight: 700;
   color: var(--primary-color);
   z-index: 1;
@@ -786,57 +790,57 @@ a {
 .achievement-stats {
   display: flex;
   justify-content: center;
-  gap: 1rem;
+  gap: 0.5rem;
   flex-wrap: wrap;
-  margin-top: 1rem;
+  margin-top: 0.4rem;
   width: 100%;
 }
 
 .stat-label {
-  font-size: 0.9rem;
+  font-size: 0.75rem;
   color: var(--text-light);
   background: rgba(37, 99, 235, 0.1);
-  padding: 0.4rem 0.8rem;
-  border-radius: 20px;
+  padding: 0.2rem 0.5rem;
+  border-radius: 15px;
   border: 1px solid rgba(37, 99, 235, 0.3);
   display: flex;
   align-items: center;
-  gap: 0.3rem;
+  gap: 0.2rem;
 }
 
 .stat-label span {
   color: var(--primary-color);
   font-weight: 600;
-  font-size: 1rem;
+  font-size: 0.8rem;
 }
 
 .streak-badge {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 0.5rem;
-  margin-top: 1rem;
-  font-size: 1rem;
+  gap: 0.3rem;
+  margin-top: 0.5rem;
+  font-size: 0.8rem;
   color: var(--text-color);
   background: rgba(255, 107, 107, 0.1);
-  padding: 0.5rem 1rem;
-  border-radius: 30px;
+  padding: 0.3rem 0.8rem;
+  border-radius: 25px;
   border: 1px solid rgba(255, 107, 107, 0.3);
 }
 
 .streak-badge i {
-  font-size: 1.2rem;
+  font-size: 1rem;
   animation: flameFlicker 1.5s ease-in-out infinite;
 }
 
 @keyframes flameFlicker {
   0%, 100% { transform: scale(1); opacity: 1; }
-  50% { transform: scale(1.2); opacity: 0.8; }
+  50% { transform: scale(1.15); opacity: 0.8; }
 }
 
 .leetcode-profile-link {
   text-align: center;
-  margin-top: 2rem;
+  margin-top: 1rem;
 }
 
 /* ===============================
@@ -848,89 +852,89 @@ a {
   align-items: center;
   text-align: center;
   gap: 1.5rem;
-  padding: 3rem 0;
+  padding: 2rem 0;
 }
 
 .connect-box {
   background: var(--bg-secondary);
   border: 2px solid rgba(37, 99, 235, 0.4);
   border-radius: 1rem;
-  padding: 2.2rem 2.5rem;
+  padding: 1.8rem 2rem;
   width: 80%;
   max-width: 700px;
-  box-shadow: 0 0 15px var(--shadow-color);
+  box-shadow: 0 0 12px var(--shadow-color);
   transition: all 0.4s ease;
   text-align: center;
 }
 
 .connect-box:hover {
-  box-shadow: 0 0 25px var(--primary-color);
+  box-shadow: 0 0 20px var(--primary-color);
   border-color: var(--primary-color);
-  transform: translateY(-5px);
+  transform: translateY(-3px);
 }
 
 .contact-info h3 {
-  font-size: 1.8rem;
-  margin-bottom: 1rem;
+  font-size: 1.6rem;
+  margin-bottom: 0.8rem;
   color: var(--text-color);
   text-align: center;
 }
 
 .contact-info p {
   color: var(--text-light);
-  font-size: 1rem;
+  font-size: 0.95rem;
   max-width: 600px;
-  margin: 0 auto 1rem auto;
-  line-height: 1.7;
+  margin: 0 auto 0.8rem auto;
+  line-height: 1.6;
   text-align: center;
 }
 
 .contact-method {
-  margin: 1rem 0;
+  margin: 0.8rem 0;
   text-align: center;
 }
 
 .contact-method h4 {
-  font-size: 1.1rem;
+  font-size: 1rem;
   color: var(--text-color);
-  margin-bottom: 0.3rem;
+  margin-bottom: 0.2rem;
   text-align: center;
 }
 
 .contact-method p {
   color: var(--text-light);
-  font-size: 1rem;
+  font-size: 0.95rem;
   text-align: center;
 }
 
 .social-container {
   display: flex;
   justify-content: center;
-  gap: 1.5rem;
-  margin-top: 1.5rem;
+  gap: 1.2rem;
+  margin-top: 1.2rem;
 }
 
 .social-link {
-  width: 60px;
-  height: 60px;
+  width: 50px;
+  height: 50px;
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 12px;
+  border-radius: 10px;
   background: var(--bg-secondary);
   border: 2px solid rgba(37, 99, 235, 0.5);
-  box-shadow: 0 0 15px var(--shadow-color);
+  box-shadow: 0 0 12px var(--shadow-color);
   transition: var(--transition);
 }
 
 .social-link:hover {
-  transform: translateY(-5px);
+  transform: translateY(-3px);
   border-color: var(--primary-color);
-  box-shadow: 0 0 25px var(--primary-color);
+  box-shadow: 0 0 20px var(--primary-color);
 }
 
 .social-link i {
-  font-size: 1.6rem;
+  font-size: 1.4rem;
   color: var(--text-color);
 }
 
@@ -943,33 +947,34 @@ a {
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
-  margin-top: 1rem;
-  padding: 0.7rem 1.8rem;
+  margin-top: 0.8rem;
+  padding: 0.5rem 1.5rem;
   color: var(--text-color);
   background: transparent;
   border: 2px solid var(--primary-color);
-  border-radius: 10px;
+  border-radius: 8px;
   font-weight: 600;
   text-decoration: none;
   transition: var(--transition);
-  box-shadow: 0 0 20px var(--shadow-color);
+  box-shadow: 0 0 15px var(--shadow-color);
+  font-size: 0.9rem;
 }
 
 .verify-cert-btn {
   border: 2px solid #00ffb7;
-  box-shadow: 0 0 20px rgba(0, 255, 183, 0.3);
+  box-shadow: 0 0 15px rgba(0, 255, 183, 0.3);
 }
 
 .view-cert-btn:hover,
 .verify-cert-btn:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 0 25px var(--primary-color);
+  transform: translateY(-2px);
+  box-shadow: 0 0 20px var(--primary-color);
 }
 
 .verify-cert-btn:hover {
   background: #00ffb7;
   color: #111;
-  box-shadow: 0 0 25px #00ffb7;
+  box-shadow: 0 0 20px #00ffb7;
 }
 
 /* ===============================
@@ -977,23 +982,23 @@ a {
 ================================= */
 .fab-container {
   position: fixed;
-  bottom: 25px;
-  right: 25px;
+  bottom: 20px;
+  right: 20px;
   z-index: 999;
   transition: opacity 0.3s ease;
 }
 
 .fab-button.external-fab {
-  width: 60px;
-  height: 60px;
-  border-radius: 12px;
+  width: 55px;
+  height: 55px;
+  border-radius: 10px;
   background: var(--bg-secondary);
   border: 2px solid rgba(37, 99, 235, 0.5);
-  box-shadow: 0 0 15px var(--shadow-color);
+  box-shadow: 0 0 12px var(--shadow-color);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 26px;
+  font-size: 24px;
   color: var(--text-color);
   text-decoration: none;
   cursor: pointer;
@@ -1001,9 +1006,9 @@ a {
 }
 
 .fab-button.external-fab:hover {
-  transform: translateY(-5px);
+  transform: translateY(-3px);
   border-color: var(--primary-color);
-  box-shadow: 0 0 25px var(--primary-color);
+  box-shadow: 0 0 20px var(--primary-color);
 }
 
 /* ===============================
@@ -1011,10 +1016,11 @@ a {
 ================================= */
 .footer {
   text-align: center;
-  padding: 2rem 0;
+  padding: 1.5rem 0;
   color: var(--text-light);
   background: var(--footer-bg);
   margin-left: 230px;
+  font-size: 0.9rem;
 }
 
 /* ===============================
@@ -1034,11 +1040,11 @@ a {
   }
   
   .static-text {
-    font-size: 2.5rem;
+    font-size: 2.3rem;
   }
   
   .name-line {
-    font-size: 3.2rem;
+    font-size: 3rem;
   }
   
   .hero-description {
@@ -1053,7 +1059,7 @@ a {
   }
   
   .btn {
-    min-width: 130px;
+    min-width: 120px;
   }
 }
 
@@ -1068,8 +1074,8 @@ a {
   .footer {
     display: block !important;
     margin-left: 0 !important;
-    padding: 1.5rem 1rem !important;
-    font-size: 0.9rem;
+    padding: 1.2rem 1rem !important;
+    font-size: 0.85rem;
   }
   
   .fab-container {
@@ -1083,25 +1089,25 @@ a {
   
   .hero {
     min-height: auto;
-    padding: 2rem 1rem 1.5rem;
+    padding: 1.8rem 1rem 1.2rem;
   }
   
   .hero-grid {
     display: flex;
     flex-direction: column !important;
-    gap: 1rem;
+    gap: 0.8rem;
     padding: 0;
   }
   
   .hero-image {
     order: -1 !important;
     width: 100%;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.3rem;
   }
   
   .profile-card {
-    width: 200px !important;
-    height: 200px !important;
+    width: 180px !important;
+    height: 180px !important;
     margin: 0 auto;
     animation: none !important;
     box-shadow: none !important;
@@ -1115,138 +1121,11 @@ a {
   }
   
   .hero-text h1 {
-    font-size: 2rem;
+    font-size: 1.8rem;
     text-align: center !important;
-    margin-bottom: 0.8rem;
-    line-height: 1.3;
+    margin-bottom: 0.6rem;
+    line-height: 1.2;
     gap: 0.1rem;
-  }
-  
-  .static-text {
-    font-size: 1.8rem;
-  }
-  
-  .name-line {
-    font-size: 2rem;
-  }
-  
-  .hero-description {
-    font-size: 1rem;
-    text-align: center !important;
-    max-width: 100%;
-    margin: 0 auto 1.2rem;
-    padding: 0 1rem;
-  }
-  
-  .hero-buttons {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 0.8rem;
-    width: 100%;
-    max-width: 350px;
-    margin: 0 auto;
-  }
-  
-  .btn {
-    width: 100%;
-    padding: 0.7rem 0.5rem;
-    font-size: 0.9rem;
-    box-shadow: none !important;
-    min-height: 45px;
-    min-width: auto;
-  }
-  
-  .content-align {
-    padding: 30px 16px !important;
-  }
-  
-  .section-title {
-    font-size: 1.8rem !important;
-    text-align: center !important;
-    margin-bottom: 1.5rem !important;
-  }
-  
-  .education-item,
-  .connect-box,
-  .skills-glass-container {
-    width: 100% !important;
-    max-width: 100% !important;
-    margin: 1rem auto !important;
-    padding: 1.5rem !important;
-    text-align: center !important;
-    background: var(--bg-secondary);
-    border: 1px solid rgba(37, 99, 235, 0.2);
-    box-shadow: none !important;
-    border-radius: 12px;
-  }
-  
-  .skills-glass-grid {
-    grid-template-columns: repeat(4, 1fr);
-    gap: 8px;
-  }
-  
-  .skill-glass-card {
-    padding: 10px 3px;
-  }
-  
-  .skill-glass-card i {
-    font-size: 1.8rem;
-  }
-  
-  .skill-glass-card span {
-    font-size: 0.65rem;
-  }
-  
-  .achievements-container {
-    grid-template-columns: 1fr;
-    max-width: 450px;
-    gap: 1.5rem;
-  }
-  
-  .achievement-card {
-    padding: 1.5rem;
-  }
-  
-  .circular-progress {
-    width: 130px;
-    height: 130px;
-  }
-  
-  .circular-progress::before {
-    width: 100px;
-    height: 100px;
-  }
-  
-  .progress-value {
-    font-size: 1.6rem;
-  }
-  
-  .contact-method h4 {
-    color: var(--text-color);
-  }
-  
-  .social-link {
-    width: 48px;
-    height: 48px;
-    background: var(--card-bg);
-    border: 1px solid rgba(37, 99, 235, 0.3);
-    box-shadow: none !important;
-  }
-  
-  .view-cert-btn,
-  .verify-cert-btn {
-    box-shadow: none !important;
-  }
-}
-
-@media (max-width: 480px) {
-  .hero {
-    padding: 1.5rem 0.8rem 1rem;
-  }
-  
-  .profile-card {
-    width: 160px !important;
-    height: 160px !important;
   }
   
   .static-text {
@@ -1259,52 +1138,91 @@ a {
   
   .hero-description {
     font-size: 0.95rem;
-    padding: 0 0.5rem;
+    text-align: center !important;
+    max-width: 100%;
+    margin: 0 auto 1rem;
+    padding: 0 0.8rem;
   }
   
   .hero-buttons {
-    max-width: 300px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
     gap: 0.6rem;
+    width: 100%;
+    max-width: 320px;
+    margin: 0 auto;
   }
   
   .btn {
+    width: 100%;
     padding: 0.6rem 0.4rem;
     font-size: 0.85rem;
+    box-shadow: none !important;
     min-height: 40px;
+    min-width: auto;
+  }
+  
+  .content-align {
+    padding: 25px 15px !important;
   }
   
   .section-title {
     font-size: 1.6rem !important;
+    text-align: center !important;
+    margin-bottom: 1.2rem !important;
   }
   
-  .education-item {
+  .education-item,
+  .connect-box,
+  .skills-glass-container {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0.8rem auto !important;
     padding: 1.2rem !important;
+    text-align: center !important;
+    background: var(--bg-secondary);
+    border: 1px solid rgba(37, 99, 235, 0.2);
+    box-shadow: none !important;
+    border-radius: 10px;
   }
   
-  .education-item h3 {
-    font-size: 1.1rem;
+  .skills-glass-grid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 6px;
   }
   
-  .education-item p {
-    font-size: 0.9rem;
+  .skill-glass-card {
+    padding: 8px 2px;
   }
   
   .skill-glass-card i {
-    font-size: 1.4rem;
+    font-size: 1.5rem;
   }
   
   .skill-glass-card span {
     font-size: 0.6rem;
   }
   
+  .achievements-container {
+    grid-template-columns: 1fr;
+    max-width: 280px;
+    gap: 1rem;
+    margin: 1rem auto;
+  }
+  
+  .achievement-card {
+    padding: 1rem;
+    max-height: 250px;
+  }
+  
   .circular-progress {
-    width: 110px;
-    height: 110px;
+    width: 95px;
+    height: 95px;
   }
   
   .circular-progress::before {
-    width: 85px;
-    height: 85px;
+    width: 75px;
+    height: 75px;
   }
   
   .progress-value {
@@ -1312,24 +1230,51 @@ a {
   }
   
   .stat-label {
-    font-size: 0.8rem;
-    padding: 0.3rem 0.6rem;
+    font-size: 0.7rem;
+    padding: 0.15rem 0.4rem;
   }
   
-  .connect-box {
-    padding: 1.5rem !important;
+  .stat-label span {
+    font-size: 0.75rem;
   }
   
-  .footer {
-    padding: 1.2rem 0.8rem !important;
+  .streak-badge {
+    font-size: 0.75rem;
+    padding: 0.2rem 0.6rem;
+  }
+  
+  .contact-method h4 {
+    color: var(--text-color);
+  }
+  
+  .social-link {
+    width: 42px;
+    height: 42px;
+    background: var(--card-bg);
+    border: 1px solid rgba(37, 99, 235, 0.3);
+    box-shadow: none !important;
+  }
+  
+  .social-link i {
+    font-size: 1.2rem;
+  }
+  
+  .view-cert-btn,
+  .verify-cert-btn {
+    box-shadow: none !important;
+    padding: 0.4rem 1.2rem;
     font-size: 0.85rem;
   }
 }
 
-@media (max-width: 360px) {
+@media (max-width: 480px) {
+  .hero {
+    padding: 1.2rem 0.6rem 0.8rem;
+  }
+  
   .profile-card {
-    width: 140px !important;
-    height: 140px !important;
+    width: 150px !important;
+    height: 150px !important;
   }
   
   .static-text {
@@ -1340,8 +1285,14 @@ a {
     font-size: 1.6rem;
   }
   
+  .hero-description {
+    font-size: 0.9rem;
+    padding: 0 0.4rem;
+  }
+  
   .hero-buttons {
-    max-width: 260px;
+    max-width: 280px;
+    gap: 0.5rem;
   }
   
   .btn {
@@ -1350,25 +1301,62 @@ a {
     min-height: 36px;
   }
   
+  .section-title {
+    font-size: 1.4rem !important;
+  }
+  
+  .education-item {
+    padding: 1rem !important;
+  }
+  
+  .education-item h3 {
+    font-size: 1rem;
+  }
+  
+  .education-item p {
+    font-size: 0.85rem;
+  }
+  
+  .skill-glass-card i {
+    font-size: 1.3rem;
+  }
+  
+  .skill-glass-card span {
+    font-size: 0.55rem;
+  }
+  
+  .achievements-container {
+    max-width: 240px;
+  }
+  
+  .circular-progress {
+    width: 85px;
+    height: 85px;
+  }
+  
+  .circular-progress::before {
+    width: 68px;
+    height: 68px;
+  }
+  
+  .progress-value {
+    font-size: 1.2rem;
+  }
+  
+  .achievement-card h3 {
+    font-size: 1rem;
+  }
+  
+  .achievement-card p {
+    font-size: 0.75rem;
+  }
+  
+  .connect-box {
+    padding: 1.2rem !important;
+  }
+  
   .footer {
-    padding: 1rem 0.5rem !important;
+    padding: 1rem 0.6rem !important;
     font-size: 0.8rem;
   }
-}
-
-/* ===============================
-   DISABLE TEXT SELECTION
-================================= */
-body {
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-}
-
-input, textarea {
-  user-select: text;
-  -webkit-user-select: text;
-  -moz-user-select: text;
-  -ms-user-select: text;
 }
