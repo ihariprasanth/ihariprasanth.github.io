@@ -74,40 +74,6 @@ document.querySelectorAll('.skill-glass-card').forEach((card, index) => {
 });
 
 // ============================================
-// 🔢 COUNTER ANIMATION
-// ============================================
-const counterObserver = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      const counters = entry.target.querySelectorAll(".stat-number");
-      counters.forEach(counter => {
-        const target = parseInt(counter.getAttribute("data-count"));
-        const duration = 1800;
-        const step = target / (duration / 16);
-        let current = 0;
-
-        if (!counter.classList.contains("counted")) {
-          const timer = setInterval(() => {
-            current += step;
-            if (current >= target) {
-              counter.textContent = target + "+";
-              clearInterval(timer);
-            } else {
-              counter.textContent = Math.floor(current);
-            }
-          }, 16);
-          counter.classList.add("counted");
-        }
-      });
-    }
-  });
-}, observerOptions);
-
-document.querySelectorAll(".about-stats").forEach(stats => {
-  counterObserver.observe(stats);
-});
-
-// ============================================
 // 💫 PAGE LOAD FADE-IN
 // ============================================
 window.addEventListener("load", () => {
@@ -152,17 +118,14 @@ document.addEventListener('DOMContentLoaded', function() {
   const heroTitle = document.querySelector('.hero-text h1');
   if (!heroTitle) return;
   
-  // Set up the title structure for two lines
   heroTitle.innerHTML = '<span class="static-text">Hi, I\'m</span><span class="name-line"><span class="highlight"></span></span>';
   
   const highlightSpan = heroTitle.querySelector('.highlight');
   if (!highlightSpan) return;
   
-  // Create cursor element
   const cursor = document.createElement('span');
   cursor.className = 'typed-cursor';
   
-  // Add cursor after the highlight span
   if (highlightSpan.nextSibling) {
     highlightSpan.parentNode.insertBefore(cursor, highlightSpan.nextSibling);
   } else {
@@ -184,17 +147,14 @@ document.addEventListener('DOMContentLoaded', function() {
         setTimeout(typeWriter, typeSpeed);
       }
     } else {
-      // Animation complete - hide the cursor after a delay
       setTimeout(() => {
         cursor.classList.add('hide-cursor');
       }, 300);
     }
   }
   
-  // Start typing animation
   setTimeout(typeWriter, 500);
   
-  // Force start on mobile
   if (/Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent)) {
     setTimeout(() => {
       if (i === 0) typeWriter();
@@ -225,7 +185,6 @@ function openMobileMenu() {
   }
 }
 
-// Mobile menu event listeners
 document.addEventListener('DOMContentLoaded', function() {
   const menuToggle = document.getElementById('mobileMenuToggle');
   const menuPopup = document.getElementById('mobileMenuPopup');
@@ -238,15 +197,12 @@ document.addEventListener('DOMContentLoaded', function() {
       openMobileMenu();
     });
     
-    // Close with close button
     if (menuCloseBtn) {
       menuCloseBtn.addEventListener('click', closeMobileMenu);
     }
     
-    // Close when clicking overlay
     menuOverlay.addEventListener('click', closeMobileMenu);
     
-    // Close on escape key
     document.addEventListener('keydown', function(e) {
       if (e.key === 'Escape' && menuPopup.classList.contains('active')) {
         closeMobileMenu();
@@ -268,12 +224,10 @@ window.addEventListener('scroll', function() {
     const sectionId = section.getAttribute('id');
     
     if (scrollPosition >= sectionTop && scrollPosition < sectionBottom) {
-      // Remove active class from all links
       document.querySelectorAll('.sidebar-links a, .mobile-menu-links a').forEach(link => {
         link.classList.remove('active');
       });
       
-      // Add active class to matching links
       document.querySelectorAll(`.sidebar-links a[href="#${sectionId}"], .mobile-menu-links a[href="#${sectionId}"]`).forEach(link => {
         link.classList.add('active');
       });
@@ -382,7 +336,52 @@ document.addEventListener('drop', function(e) {
 });
 
 // ============================================
-// REMOVED: Camera permissions and theme changing
-// REMOVED: Triple-click theme toggle
-// Default theme: Dark mode only
+// 📊 LEETCODE ACHIEVEMENTS ANIMATION
 // ============================================
+document.addEventListener('DOMContentLoaded', function() {
+  // LeetCode stats (you can update these numbers)
+  const leetcodeStats = {
+    problemsSolved: 150,
+    easy: 65,
+    medium: 70,
+    hard: 15,
+    rating: 1450,
+    badgeCount: 2
+  };
+  
+  // Calculate percentages for circles
+  const problemsPercentage = (leetcodeStats.problemsSolved / 300) * 100; // Assuming 300 total
+  const ratingPercentage = (leetcodeStats.rating / 3000) * 100; // Assuming 3000 max rating
+  const badgesPercentage = (leetcodeStats.badgeCount / 10) * 100; // Assuming 10 max badges
+  
+  // Update text values
+  document.getElementById('problemsValue').textContent = leetcodeStats.problemsSolved;
+  document.getElementById('easyCount').textContent = leetcodeStats.easy;
+  document.getElementById('mediumCount').textContent = leetcodeStats.medium;
+  document.getElementById('hardCount').textContent = leetcodeStats.hard;
+  document.getElementById('ratingValue').textContent = leetcodeStats.rating;
+  document.getElementById('badgesValue').textContent = leetcodeStats.badgeCount;
+  
+  // Animate circular progress
+  animateProgress('problemsProgress', problemsPercentage);
+  animateProgress('ratingProgress', ratingPercentage);
+  animateProgress('badgesProgress', badgesPercentage);
+});
+
+function animateProgress(elementId, percentage) {
+  const progress = document.getElementById(elementId);
+  if (!progress) return;
+  
+  const degrees = (percentage / 100) * 360;
+  let currentDegrees = 0;
+  const step = degrees / 50; // 50 steps animation
+  const interval = setInterval(() => {
+    if (currentDegrees >= degrees) {
+      clearInterval(interval);
+      progress.style.background = `conic-gradient(var(--primary-color) ${degrees}deg, rgba(37, 99, 235, 0.2) ${degrees}deg)`;
+    } else {
+      currentDegrees += step;
+      progress.style.background = `conic-gradient(var(--primary-color) ${currentDegrees}deg, rgba(37, 99, 235, 0.2) ${currentDegrees}deg)`;
+    }
+  }, 30);
+}
