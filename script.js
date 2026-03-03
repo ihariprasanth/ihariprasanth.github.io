@@ -22,36 +22,6 @@ document.querySelectorAll('.sidebar-links a[href^="#"], .mobile-menu-links a[hre
 });
 
 // ============================================
-// ⚡ SKILL BARS ANIMATION
-// ============================================
-const observerOptions = {
-  threshold: 0.2,
-  rootMargin: "0px 0px -100px 0px"
-};
-
-const skillObserver = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      const skillBars = entry.target.querySelectorAll(".skill-progress");
-      skillBars.forEach((bar, index) => {
-        const width = bar.getAttribute("data-width");
-        if (!bar.classList.contains("filled")) {
-          setTimeout(() => {
-            bar.style.width = width + "%";
-            bar.classList.add("filled");
-          }, index * 150);
-        }
-      });
-      skillObserver.unobserve(entry.target);
-    }
-  });
-}, observerOptions);
-
-document.querySelectorAll(".education-item, .skills-grid, .skill-category").forEach(skillBox => {
-  skillObserver.observe(skillBox);
-});
-
-// ============================================
 // ✨ GLASS ICON CARDS ANIMATION
 // ============================================
 const glassObserver = new IntersectionObserver((entries) => {
@@ -339,33 +309,46 @@ document.addEventListener('drop', function(e) {
 // 📊 LEETCODE ACHIEVEMENTS ANIMATION
 // ============================================
 document.addEventListener('DOMContentLoaded', function() {
-  // LeetCode stats (you can update these numbers)
+  // LeetCode stats (update these numbers with your actual data)
   const leetcodeStats = {
-    problemsSolved: 150,
-    easy: 65,
-    medium: 70,
-    hard: 15,
-    rating: 1450,
-    badgeCount: 2
+    problemsSolved: 221,
+    easy: 122,
+    medium: 82,
+    hard: 19,
+    currentStreak: 69,
+    maxStreak: 69
   };
   
-  // Calculate percentages for circles
-  const problemsPercentage = (leetcodeStats.problemsSolved / 300) * 100; // Assuming 300 total
-  const ratingPercentage = (leetcodeStats.rating / 3000) * 100; // Assuming 3000 max rating
-  const badgesPercentage = (leetcodeStats.badgeCount / 10) * 100; // Assuming 10 max badges
+  // Calculate percentages
+  const problemsPercentage = (leetcodeStats.problemsSolved / 500) * 100; // Assuming 300 total target
+  const streakPercentage = (leetcodeStats.maxStreak / 100) * 100; // Assuming 100 days as target
   
   // Update text values
   document.getElementById('problemsValue').textContent = leetcodeStats.problemsSolved;
   document.getElementById('easyCount').textContent = leetcodeStats.easy;
   document.getElementById('mediumCount').textContent = leetcodeStats.medium;
   document.getElementById('hardCount').textContent = leetcodeStats.hard;
-  document.getElementById('ratingValue').textContent = leetcodeStats.rating;
-  document.getElementById('badgesValue').textContent = leetcodeStats.badgeCount;
+  document.getElementById('streakValue').textContent = leetcodeStats.maxStreak;
+  document.getElementById('currentStreak').textContent = leetcodeStats.currentStreak;
+  document.getElementById('maxStreak').textContent = leetcodeStats.maxStreak;
+  
+  // Update streak message based on streak length
+  const streakMessage = document.getElementById('streakMessage');
+  if (leetcodeStats.currentStreak >= 30) {
+    streakMessage.textContent = '🔥 On Fire!';
+  } else if (leetcodeStats.currentStreak >= 15) {
+    streakMessage.textContent = '⚡ Great Momentum!';
+  } else if (leetcodeStats.currentStreak >= 7) {
+    streakMessage.textContent = '🌟 Good Streak!';
+  } else if (leetcodeStats.currentStreak >= 3) {
+    streakMessage.textContent = '👍 Getting There!';
+  } else {
+    streakMessage.textContent = '🌱 Start Streak!';
+  }
   
   // Animate circular progress
   animateProgress('problemsProgress', problemsPercentage);
-  animateProgress('ratingProgress', ratingPercentage);
-  animateProgress('badgesProgress', badgesPercentage);
+  animateProgress('streakProgress', streakPercentage);
 });
 
 function animateProgress(elementId, percentage) {
