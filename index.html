@@ -26,6 +26,8 @@
       <li><a href="#about">About</a></li>
       <li><a href="#skills">Skills</a></li>
       <li><a href="#education">Education</a></li>
+      <li><a href="#certifications">Certifications</a></li>
+      <li><a href="#achievements">Achievements</a></li>
       <li><a href="#contact">Contact</a></li>
       <li><a href="https://linkedin.com/in/ihariprasanth/" target="_blank">LinkedIn</a></li>
       <li><a href="https://leetcode.com/u/ihariprasanth/" target="_blank">LeetCode</a></li>
@@ -51,6 +53,8 @@
         <li><a href="#about">About</a></li>
         <li><a href="#skills">Skills</a></li>
         <li><a href="#education">Education</a></li>
+        <li><a href="#certifications">Certifications</a></li>
+        <li><a href="#achievements">Achievements</a></li>
         <li><a href="#contact">Contact</a></li>
         <li class="mobile-divider"></li>
         <li><a href="https://linkedin.com/in/ihariprasanth/" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a></li>
@@ -212,9 +216,9 @@
     </div>
   </section>
 
-  <!-- Education -->
+  <!-- Education Section (Only BE Computer Science) -->
   <section id="education" class="content-align">
-    <h2 class="section-title">Education & Certification</h2>
+    <h2 class="section-title">Education</h2>
     <div class="education-content">
       <div class="education-item">
         <div class="edu-icon"><i class="fas fa-graduation-cap"></i></div>
@@ -222,9 +226,16 @@
           <h3>BE Computer Science Engineering</h3>
           <p class="institution">VSB College of Engineering and Technical Campus, Coimbatore</p>
           <p class="duration">2024 – 2028 (Expected)</p>
+          <p class="achievement">CGPA: 8.5/10 (Current)</p>
         </div>
       </div>
+    </div>
+  </section>
 
+  <!-- Certifications Section -->
+  <section id="certifications" class="content-align">
+    <h2 class="section-title">Certifications</h2>
+    <div class="education-content">
       <!-- Udemy Certification -->
       <div class="education-item">
         <div class="edu-details">
@@ -239,6 +250,7 @@
         </div>
       </div>
 
+      <!-- Coursera Certification -->
       <div class="education-item">
         <div class="edu-details">
           <h3>Java Programming for Beginners</h3>
@@ -266,6 +278,59 @@
           </a>
         </div>
       </div>
+    </div>
+  </section>
+
+  <!-- Achievements Section with LeetCode Progress -->
+  <section id="achievements" class="content-align">
+    <h2 class="section-title">LeetCode Achievements</h2>
+    <div class="achievements-container">
+      <!-- Problems Solved Card -->
+      <div class="achievement-card">
+        <div class="circular-progress" id="problemsProgress">
+          <div class="progress-value" id="problemsValue">0</div>
+        </div>
+        <h3>Problems Solved</h3>
+        <p>Total problems solved on LeetCode</p>
+        <div class="achievement-stats">
+          <span class="stat-label">Easy: <span id="easyCount">0</span></span>
+          <span class="stat-label">Medium: <span id="mediumCount">0</span></span>
+          <span class="stat-label">Hard: <span id="hardCount">0</span></span>
+        </div>
+      </div>
+
+      <!-- Contest Rating Card -->
+      <div class="achievement-card">
+        <div class="circular-progress" id="ratingProgress">
+          <div class="progress-value" id="ratingValue">0</div>
+        </div>
+        <h3>Contest Rating</h3>
+        <p>Current LeetCode contest rating</p>
+        <div class="achievement-stats">
+          <span class="stat-label">Global Rank: <span id="globalRank">Top 30%</span></span>
+          <span class="stat-label">Badges: <span id="badgeCount">2</span></span>
+        </div>
+      </div>
+
+      <!-- Badges Card -->
+      <div class="achievement-card">
+        <div class="circular-progress" id="badgesProgress">
+          <div class="progress-value" id="badgesValue">0</div>
+        </div>
+        <h3>Badges Earned</h3>
+        <p>LeetCode badges and achievements</p>
+        <div class="achievement-badges">
+          <span class="badge-icon"><i class="fas fa-fire" style="color: #FF6B6B;"></i> 50 Day</span>
+          <span class="badge-icon"><i class="fas fa-trophy" style="color: #FFD700;"></i> Top 30%</span>
+        </div>
+      </div>
+    </div>
+    
+    <!-- LeetCode Profile Link -->
+    <div class="leetcode-profile-link">
+      <a href="https://leetcode.com/u/ihariprasanth/" target="_blank" class="btn leetcode-btn">
+        <i class="fas fa-code"></i> View Full LeetCode Profile
+      </a>
     </div>
   </section>
 
