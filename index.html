@@ -29,8 +29,6 @@
       <li><a href="#certifications">Certifications</a></li>
       <li><a href="#achievements">Achievements</a></li>
       <li><a href="#contact">Contact</a></li>
-      <li><a href="https://linkedin.com/in/ihariprasanth/" target="_blank">LinkedIn</a></li>
-      <li><a href="https://leetcode.com/u/ihariprasanth/" target="_blank">LeetCode</a></li>
     </ul>
   </aside>
 
@@ -56,9 +54,6 @@
         <li><a href="#certifications">Certifications</a></li>
         <li><a href="#achievements">Achievements</a></li>
         <li><a href="#contact">Contact</a></li>
-        <li class="mobile-divider"></li>
-        <li><a href="https://linkedin.com/in/ihariprasanth/" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a></li>
-        <li><a href="https://leetcode.com/u/ihariprasanth/" target="_blank"><i class="fas fa-code"></i> LeetCode</a></li>
       </ul>
     </div>
   </div>
@@ -119,14 +114,14 @@
     </div>
   </section>
 
-  <!-- Skills - Liquid Glass Icon Grid with Brand Colors -->
+  <!-- Skills - Simple Icon Grid -->
   <section id="skills" class="content-align">
     <h2 class="section-title">My Skills</h2>
     <div class="skills-glass-container education-item">
       
-      <!-- All Skills in One Grid - No Categories -->
+      <!-- All Skills in One Grid -->
       <div class="skills-glass-grid">
-        <!-- Languages with Brand Colors -->
+        <!-- Languages -->
         <div class="skill-glass-card python">
           <i class="fab fa-python"></i>
           <span>Python</span>
@@ -156,7 +151,7 @@
           <span>CSS</span>
         </div>
 
-        <!-- Frontend & Backend with Brand Colors -->
+        <!-- Frontend & Backend -->
         <div class="skill-glass-card bootstrap">
           <i class="fab fa-bootstrap"></i>
           <span>Bootstrap</span>
@@ -180,7 +175,7 @@
           <span>Pandas</span>
         </div>
 
-        <!-- Databases with Brand Colors -->
+        <!-- Databases -->
         <div class="skill-glass-card mongodb">
           <i class="fas fa-leaf"></i>
           <span>MongoDB</span>
@@ -194,7 +189,7 @@
           <span>MySQL</span>
         </div>
 
-        <!-- DevOps & Tools with Brand Colors -->
+        <!-- DevOps & Tools -->
         <div class="skill-glass-card github">
           <i class="fab fa-github"></i>
           <span>GitHub</span>
@@ -299,29 +294,20 @@
         </div>
       </div>
 
-      <!-- Contest Rating Card -->
+      <!-- Consistency Streak Card -->
       <div class="achievement-card">
-        <div class="circular-progress" id="ratingProgress">
-          <div class="progress-value" id="ratingValue">0</div>
+        <div class="circular-progress" id="streakProgress">
+          <div class="progress-value" id="streakValue">0</div>
         </div>
-        <h3>Contest Rating</h3>
-        <p>Current LeetCode contest rating</p>
+        <h3>Max Consistency Streak</h3>
+        <p>Longest streak of consecutive days</p>
         <div class="achievement-stats">
-          <span class="stat-label">Global Rank: <span id="globalRank">Top 30%</span></span>
-          <span class="stat-label">Badges: <span id="badgeCount">2</span></span>
+          <span class="stat-label">Current: <span id="currentStreak">0</span> days</span>
+          <span class="stat-label">Max: <span id="maxStreak">0</span> days</span>
         </div>
-      </div>
-
-      <!-- Badges Card -->
-      <div class="achievement-card">
-        <div class="circular-progress" id="badgesProgress">
-          <div class="progress-value" id="badgesValue">0</div>
-        </div>
-        <h3>Badges Earned</h3>
-        <p>LeetCode badges and achievements</p>
-        <div class="achievement-badges">
-          <span class="badge-icon"><i class="fas fa-fire" style="color: #FF6B6B;"></i> 50 Day</span>
-          <span class="badge-icon"><i class="fas fa-trophy" style="color: #FFD700;"></i> Top 30%</span>
+        <div class="streak-badge">
+          <i class="fas fa-fire" style="color: #FF6B6B;"></i>
+          <span id="streakMessage">Keep going!</span>
         </div>
       </div>
     </div>
