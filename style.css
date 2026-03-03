@@ -44,8 +44,6 @@ h1, h2, h3, h4, h5, h6,
   --menu-bg: #1a1a1a;
 }
 
-/* Light Mode - REMOVED - Dark mode only */
-
 body {
   color: var(--text-color);
   background-color: var(--bg-color);
@@ -62,7 +60,7 @@ a {
 }
 
 /* ===============================
-   SIDEBAR
+   SIDEBAR - FIXED ALIGNMENT
 ================================= */
 .sidebar {
   position: fixed;
@@ -91,8 +89,16 @@ a {
   list-style: none;
   display: flex;
   flex-direction: column;
-  gap: 1.4rem;
+  gap: 1rem;
   align-items: center;
+  width: 100%;
+  padding: 0;
+}
+
+.sidebar-links li {
+  width: 100%;
+  display: flex;
+  justify-content: center;
 }
 
 .sidebar-links a {
@@ -101,12 +107,13 @@ a {
   background: transparent;
   border: 2px solid rgba(37, 99, 235, 0.5);
   border-radius: 10px;
-  padding: 0.6rem 2.5rem;
-  display: inline-block;
+  padding: 0.6rem 1rem;
+  display: block;
   box-shadow: 0 0 10px var(--shadow-color);
   transition: var(--transition);
-  width: 150px;
+  width: 160px;
   text-align: center;
+  font-size: 0.95rem;
 }
 
 .sidebar-links a:hover,
@@ -118,8 +125,7 @@ a {
 }
 
 /* ===============================
-   MOBILE FLOATING MENU - TOP LEFT WITH DOWN ARROW
-   SMALLER CENTERED DIALOG BOX
+   MOBILE FLOATING MENU
 ================================= */
 .mobile-menu-container {
   display: none;
@@ -173,7 +179,7 @@ a {
   visibility: visible;
 }
 
-/* SMALLER CENTERED POPUP MENU */
+/* Centered Popup Menu */
 .mobile-menu-popup {
   position: fixed;
   top: 50%;
@@ -306,7 +312,7 @@ a {
 }
 
 /* ===============================
-   HERO SECTION - TWO LINES
+   HERO SECTION
 ================================= */
 .hero {
   min-height: 100vh;
@@ -499,7 +505,7 @@ a {
 }
 
 /* ===============================
-   PROFILE CARD STYLES
+   PROFILE CARD
 ================================= */
 .hero-image {
   flex: 1;
@@ -532,8 +538,7 @@ a {
 }
 
 /* ===============================
-   LIQUID GLASS ICON SKILLS - NO SUBHEADINGS, SMALLER ICONS
-   7 COLUMNS DESKTOP, 4 COLUMNS MOBILE
+   SKILLS GLASS GRID
 ================================= */
 .skills-glass-container {
   max-width: 1200px;
@@ -550,7 +555,6 @@ a {
   box-shadow: 0 0 25px var(--primary-color);
 }
 
-/* Desktop - 7 columns */
 .skills-glass-grid {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
@@ -615,98 +619,48 @@ a {
   color: var(--primary-color);
 }
 
-/* ===============================
-   SKILL ICONS WITH BRAND COLORS
-================================= */
+/* Skill Icon Colors */
 .skill-glass-card.python i { color: #3776AB; }
 .skill-glass-card.python:hover i { color: #FFD43B; }
-
 .skill-glass-card.java i { color: #007396; }
 .skill-glass-card.java:hover i { color: #F89820; }
-
 .skill-glass-card.javascript i { color: #F7DF1E; }
 .skill-glass-card.javascript:hover i { color: #000000; }
-
 .skill-glass-card.cpp i { color: #00599C; }
 .skill-glass-card.cpp:hover i { color: #004482; }
-
 .skill-glass-card.c i { color: #A8B9CC; }
 .skill-glass-card.c:hover i { color: #00599C; }
-
 .skill-glass-card.html i { color: #E34F26; }
 .skill-glass-card.html:hover i { color: #F16529; }
-
 .skill-glass-card.css i { color: #1572B6; }
 .skill-glass-card.css:hover i { color: #33A9DC; }
-
 .skill-glass-card.bootstrap i { color: #7952B3; }
 .skill-glass-card.bootstrap:hover i { color: #563D7C; }
-
 .skill-glass-card.nodejs i { color: #339933; }
 .skill-glass-card.nodejs:hover i { color: #68A063; }
-
 .skill-glass-card.opencv i { color: #5C3EE8; }
 .skill-glass-card.opencv:hover i { color: #FF0000; }
-
 .skill-glass-card.numpy i { color: #013243; }
 .skill-glass-card.numpy:hover i { color: #4DABCF; }
-
 .skill-glass-card.pandas i { color: #150458; }
 .skill-glass-card.pandas:hover i { color: #FFCA00; }
-
 .skill-glass-card.mongodb i { color: #47A248; }
 .skill-glass-card.mongodb:hover i { color: #4DB33D; }
-
 .skill-glass-card.firebase i { color: #FFCA28; }
 .skill-glass-card.firebase:hover i { color: #F57C00; }
-
 .skill-glass-card.mysql i { color: #00758F; }
 .skill-glass-card.mysql:hover i { color: #F29111; }
-
 .skill-glass-card.github i { color: #f5f5f5; }
 .skill-glass-card.github:hover i { color: #6e5494; }
-
 .skill-glass-card.linux i { color: #FCC624; }
 .skill-glass-card.linux:hover i { color: #000000; }
-
 .skill-glass-card.vscode i { color: #007ACC; }
 .skill-glass-card.vscode:hover i { color: #0066B8; }
-
 .skill-glass-card.vercel i { color: #f5f5f5; }
 .skill-glass-card.vercel:hover i { color: #cccccc; }
 
-/* Mobile - 4 columns */
-@media (max-width: 900px) {
-  .skills-glass-grid {
-    grid-template-columns: repeat(4, 1fr);
-    gap: 8px;
-  }
-  
-  .skill-glass-card {
-    padding: 10px 3px;
-  }
-  
-  .skill-glass-card i {
-    font-size: 1.4rem;
-  }
-  
-  .skill-glass-card span {
-    font-size: 0.65rem;
-  }
-}
-
-@media (max-width: 480px) {
-  .skill-glass-card i {
-    font-size: 1.2rem;
-  }
-  
-  .skill-glass-card span {
-    font-size: 0.6rem;
-  }
-}
-
 /* ===============================
-   EDUCATION & SKILLS CARDS - CENTERED
+   EDUCATION & CERTIFICATION CARDS
 ================================= */
 .education-content {
   display: flex;
@@ -749,7 +703,7 @@ a {
 }
 
 /* ===============================
-   CONTACT SECTION - CENTERED
+   CONTACT SECTION
 ================================= */
 .contact-content {
   display: flex;
@@ -983,7 +937,7 @@ a {
 }
 
 /* ===============================
-   MOBILE RESPONSIVE - 2x2 BUTTONS
+   MOBILE RESPONSIVE
 ================================= */
 @media (max-width: 900px) {
   /* Hide sidebar only */
