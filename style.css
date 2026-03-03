@@ -44,8 +44,6 @@ h1, h2, h3, h4, h5, h6,
   --menu-bg: #1a1a1a;
 }
 
-/* Light Mode - REMOVED - Dark mode only */
-
 body {
   color: var(--text-color);
   background-color: var(--bg-color);
@@ -284,26 +282,16 @@ a {
 }
 
 /* ===============================
-   SECTION TITLES
+   SECTION TITLES - NO UNDERLINE
 ================================= */
 .section-title {
   font-size: 2.2rem;
   margin-bottom: 1.3rem;
-  position: relative;
   text-align: center;
   color: var(--text-color);
 }
 
-.section-title::after {
-  content: "";
-  position: absolute;
-  width: 60px;
-  height: 3px;
-  background: var(--primary-color);
-  left: 50%;
-  transform: translateX(-50%);
-  bottom: -8px;
-}
+/* REMOVED the ::after underline */
 
 /* ===============================
    HERO SECTION - TWO LINES
@@ -532,7 +520,7 @@ a {
 }
 
 /* ===============================
-   LIQUID GLASS ICON SKILLS - NO SUBHEADINGS, SMALLER ICONS
+   LIQUID GLASS ICON SKILLS - WITH ROW ANIMATIONS
    7 COLUMNS DESKTOP, 4 COLUMNS MOBILE
 ================================= */
 .skills-glass-container {
@@ -544,6 +532,7 @@ a {
   border-radius: 1rem;
   box-shadow: 0 0 15px var(--shadow-color);
   transition: var(--transition);
+  overflow: hidden;
 }
 
 .skills-glass-container:hover {
@@ -570,7 +559,7 @@ a {
   align-items: center;
   justify-content: center;
   gap: 6px;
-  transition: all 0.3s ease;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   cursor: default;
   position: relative;
   overflow: hidden;
@@ -599,80 +588,200 @@ a {
 }
 
 .skill-glass-card i {
-  font-size: 1.6rem;
-  transition: all 0.3s ease;
+  font-size: 2rem;
+  transition: all 0.4s ease;
+  filter: drop-shadow(0 0 5px rgba(37, 99, 235, 0.5));
 }
 
 .skill-glass-card span {
   font-size: 0.7rem;
-  font-weight: 500;
+  font-weight: 600;
   color: var(--text-color);
   text-align: center;
   transition: all 0.3s ease;
+  letter-spacing: 0.3px;
 }
 
 .skill-glass-card:hover span {
   color: var(--primary-color);
 }
 
+/* Row-based animations */
+.skills-glass-grid:hover .skill-glass-card {
+  animation: none;
+}
+
+/* First row - forward movement (odd rows) */
+.skills-glass-grid .skill-glass-card:nth-child(-n+7) {
+  animation: slideForward 3s ease-in-out infinite;
+}
+
+/* Second row - backward movement */
+.skills-glass-grid .skill-glass-card:nth-child(n+8):nth-child(-n+14) {
+  animation: slideBackward 3.2s ease-in-out infinite;
+}
+
+/* Third row - forward movement */
+.skills-glass-grid .skill-glass-card:nth-child(n+15):nth-child(-n+21) {
+  animation: slideForward 2.8s ease-in-out infinite;
+}
+
+/* For any remaining cards */
+.skills-glass-grid .skill-glass-card:nth-child(n+22) {
+  animation: slideForward 3s ease-in-out infinite;
+}
+
+/* Animation keyframes */
+@keyframes slideForward {
+  0%, 100% {
+    transform: translateX(0) translateY(0);
+  }
+  25% {
+    transform: translateX(5px) translateY(-2px);
+  }
+  50% {
+    transform: translateX(0) translateY(0);
+  }
+  75% {
+    transform: translateX(-5px) translateY(2px);
+  }
+}
+
+@keyframes slideBackward {
+  0%, 100% {
+    transform: translateX(0) translateY(0);
+  }
+  25% {
+    transform: translateX(-5px) translateY(2px);
+  }
+  50% {
+    transform: translateX(0) translateY(0);
+  }
+  75% {
+    transform: translateX(5px) translateY(-2px);
+  }
+}
+
+/* Pause animation on hover */
+.skill-glass-card:hover {
+  animation-play-state: paused !important;
+}
+
 /* ===============================
-   SKILL ICONS WITH BRAND COLORS
+   SKILL ICONS WITH BRAND COLORS - MORE ATTRACTIVE
 ================================= */
-.skill-glass-card.python i { color: #3776AB; }
+.skill-glass-card.python i { 
+  color: #3776AB; 
+  text-shadow: 0 0 10px rgba(55, 118, 171, 0.5);
+}
 .skill-glass-card.python:hover i { color: #FFD43B; }
 
-.skill-glass-card.java i { color: #007396; }
+.skill-glass-card.java i { 
+  color: #007396; 
+  text-shadow: 0 0 10px rgba(0, 115, 150, 0.5);
+}
 .skill-glass-card.java:hover i { color: #F89820; }
 
-.skill-glass-card.javascript i { color: #F7DF1E; }
+.skill-glass-card.javascript i { 
+  color: #F7DF1E; 
+  text-shadow: 0 0 10px rgba(247, 223, 30, 0.5);
+}
 .skill-glass-card.javascript:hover i { color: #000000; }
 
-.skill-glass-card.cpp i { color: #00599C; }
+.skill-glass-card.cpp i { 
+  color: #00599C; 
+  text-shadow: 0 0 10px rgba(0, 89, 156, 0.5);
+}
 .skill-glass-card.cpp:hover i { color: #004482; }
 
-.skill-glass-card.c i { color: #A8B9CC; }
+.skill-glass-card.c i { 
+  color: #A8B9CC; 
+  text-shadow: 0 0 10px rgba(168, 185, 204, 0.5);
+}
 .skill-glass-card.c:hover i { color: #00599C; }
 
-.skill-glass-card.html i { color: #E34F26; }
+.skill-glass-card.html i { 
+  color: #E34F26; 
+  text-shadow: 0 0 10px rgba(227, 79, 38, 0.5);
+}
 .skill-glass-card.html:hover i { color: #F16529; }
 
-.skill-glass-card.css i { color: #1572B6; }
+.skill-glass-card.css i { 
+  color: #1572B6; 
+  text-shadow: 0 0 10px rgba(21, 114, 182, 0.5);
+}
 .skill-glass-card.css:hover i { color: #33A9DC; }
 
-.skill-glass-card.bootstrap i { color: #7952B3; }
+.skill-glass-card.bootstrap i { 
+  color: #7952B3; 
+  text-shadow: 0 0 10px rgba(121, 82, 179, 0.5);
+}
 .skill-glass-card.bootstrap:hover i { color: #563D7C; }
 
-.skill-glass-card.nodejs i { color: #339933; }
+.skill-glass-card.nodejs i { 
+  color: #339933; 
+  text-shadow: 0 0 10px rgba(51, 153, 51, 0.5);
+}
 .skill-glass-card.nodejs:hover i { color: #68A063; }
 
-.skill-glass-card.opencv i { color: #5C3EE8; }
+.skill-glass-card.opencv i { 
+  color: #5C3EE8; 
+  text-shadow: 0 0 10px rgba(92, 62, 232, 0.5);
+}
 .skill-glass-card.opencv:hover i { color: #FF0000; }
 
-.skill-glass-card.numpy i { color: #013243; }
+.skill-glass-card.numpy i { 
+  color: #013243; 
+  text-shadow: 0 0 10px rgba(1, 50, 67, 0.5);
+}
 .skill-glass-card.numpy:hover i { color: #4DABCF; }
 
-.skill-glass-card.pandas i { color: #150458; }
+.skill-glass-card.pandas i { 
+  color: #150458; 
+  text-shadow: 0 0 10px rgba(21, 4, 88, 0.5);
+}
 .skill-glass-card.pandas:hover i { color: #FFCA00; }
 
-.skill-glass-card.mongodb i { color: #47A248; }
+.skill-glass-card.mongodb i { 
+  color: #47A248; 
+  text-shadow: 0 0 10px rgba(71, 162, 72, 0.5);
+}
 .skill-glass-card.mongodb:hover i { color: #4DB33D; }
 
-.skill-glass-card.firebase i { color: #FFCA28; }
+.skill-glass-card.firebase i { 
+  color: #FFCA28; 
+  text-shadow: 0 0 10px rgba(255, 202, 40, 0.5);
+}
 .skill-glass-card.firebase:hover i { color: #F57C00; }
 
-.skill-glass-card.mysql i { color: #00758F; }
+.skill-glass-card.mysql i { 
+  color: #00758F; 
+  text-shadow: 0 0 10px rgba(0, 117, 143, 0.5);
+}
 .skill-glass-card.mysql:hover i { color: #F29111; }
 
-.skill-glass-card.github i { color: #f5f5f5; }
+.skill-glass-card.github i { 
+  color: #f5f5f5; 
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
 .skill-glass-card.github:hover i { color: #6e5494; }
 
-.skill-glass-card.linux i { color: #FCC624; }
+.skill-glass-card.linux i { 
+  color: #FCC624; 
+  text-shadow: 0 0 10px rgba(252, 198, 36, 0.5);
+}
 .skill-glass-card.linux:hover i { color: #000000; }
 
-.skill-glass-card.vscode i { color: #007ACC; }
+.skill-glass-card.vscode i { 
+  color: #007ACC; 
+  text-shadow: 0 0 10px rgba(0, 122, 204, 0.5);
+}
 .skill-glass-card.vscode:hover i { color: #0066B8; }
 
-.skill-glass-card.vercel i { color: #f5f5f5; }
+.skill-glass-card.vercel i { 
+  color: #f5f5f5; 
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
 .skill-glass-card.vercel:hover i { color: #cccccc; }
 
 /* Mobile - 4 columns */
@@ -687,17 +796,38 @@ a {
   }
   
   .skill-glass-card i {
-    font-size: 1.4rem;
+    font-size: 1.6rem;
   }
   
   .skill-glass-card span {
     font-size: 0.65rem;
   }
+  
+  /* Adjust row animations for mobile */
+  .skills-glass-grid .skill-glass-card:nth-child(-n+4) {
+    animation: slideForward 3s ease-in-out infinite;
+  }
+  
+  .skills-glass-grid .skill-glass-card:nth-child(n+5):nth-child(-n+8) {
+    animation: slideBackward 3.2s ease-in-out infinite;
+  }
+  
+  .skills-glass-grid .skill-glass-card:nth-child(n+9):nth-child(-n+12) {
+    animation: slideForward 2.8s ease-in-out infinite;
+  }
+  
+  .skills-glass-grid .skill-glass-card:nth-child(n+13):nth-child(-n+16) {
+    animation: slideBackward 3s ease-in-out infinite;
+  }
+  
+  .skills-glass-grid .skill-glass-card:nth-child(n+17) {
+    animation: slideForward 3.1s ease-in-out infinite;
+  }
 }
 
 @media (max-width: 480px) {
   .skill-glass-card i {
-    font-size: 1.2rem;
+    font-size: 1.4rem;
   }
   
   .skill-glass-card span {
