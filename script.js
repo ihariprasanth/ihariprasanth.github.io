@@ -11,8 +11,6 @@ document.querySelectorAll('.sidebar-links a[href^="#"], .mobile-menu-links a[hre
         block: "start"
       });
     }
-
-    // Highlight the active menu item
     document.querySelectorAll('.sidebar-links a, .mobile-menu-links a').forEach(link => link.classList.remove('active'));
     this.classList.add('active');
     
