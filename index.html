@@ -3,320 +3,1029 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>HARIPRASANTH T – Portfolio</title>
-  <link rel="icon" type="image/png" href="images/my-logo.png">
-  <meta name="description" content="HARIPRASANTH T – Computer Science Student & Aspiring Full Stack Developer specializing in web development and e-commerce solutions." />
+  <title>HARIPRASANTH T | Full-Stack Developer & CS Undergrad</title>
+  <link rel="icon" type="image/png" href="images/my-logo.png" />
+  <meta name="description" content="Portfolio of HARIPRASANTH T – Third-year Computer Science undergraduate, Full-Stack Developer, and Cloud Enthusiast specializing in React, TypeScript, Node.js, and Supabase." />
+  <meta name="keywords" content="Hariprasanth T, Portfolio, Full-Stack Developer, React, TypeScript, Node.js, Supabase, Cloud Computing, VSB College of Engineering" />
+  <meta name="author" content="Hariprasanth T" />
+
+  <!-- Google Fonts: Plus Jakarta Sans & JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <!-- FontAwesome 6 Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+  <!-- Custom Styles -->
   <link rel="stylesheet" href="style.css" />
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
-  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-  <!-- FAB -->
-  <div class="fab-container">
-    <a href="https://linkedin.com/in/ihariprasanth/" target="_blank" class="fab-button external-fab" title="Connect on LinkedIn">
-        <i class="fab fa-linkedin-in"></i>
-    </a>
-  </div>
-  
-  <!-- Desktop Sidebar -->
-  <aside class="sidebar">
-    <div class="logo"></div>
-    <ul class="sidebar-links">
-      <li><a href="#home" class="active">Home</a></li>
-      <li><a href="#about">About</a></li>
-      <li><a href="#skills">Skills</a></li>
-      <li><a href="#education">Education</a></li>
-      <li><a href="#certifications">Certifications</a></li>
-      <li><a href="#contact">Contact</a></li>
-      <li><a href="https://linkedin.com/in/ihariprasanth/" target="_blank">LinkedIn</a></li>
-      <li><a href="https://leetcode.com/u/ihariprasanth/" target="_blank">LeetCode</a></li>
-    </ul>
-  </aside>
+  <!-- Scroll Progress Indicator -->
+  <div class="scroll-progress-bar" id="scrollProgressBar"></div>
 
-  <!-- Mobile Floating Menu - Top Left with Down Arrow -->
-  <div class="mobile-menu-container">
-    <button class="mobile-menu-toggle" id="mobileMenuToggle">
-      <i class="fas fa-chevron-down"></i>
-    </button>
-    
-    <!-- Blur Overlay -->
-    <div class="menu-overlay" id="menuOverlay"></div>
-    
-    <!-- Centered Popup Menu -->
-    <div class="mobile-menu-popup" id="mobileMenuPopup">
-      <button class="menu-close-btn" id="menuCloseBtn">
+  <!-- Background Ambient Glow & Grid -->
+  <div class="ambient-glow glow-1"></div>
+  <div class="ambient-glow glow-2"></div>
+  <div class="ambient-grid"></div>
+
+  <!-- Top Glassmorphic Navbar -->
+  <header class="navbar" id="navbar">
+    <div class="nav-container">
+      <a href="#home" class="nav-logo">
+        <span class="logo-symbol">&lt;</span><span class="logo-name">HT</span><span class="logo-symbol">/&gt;</span>
+        <span class="logo-dot"></span>
+      </a>
+
+      <nav class="nav-menu" id="navMenu">
+        <ul class="nav-links">
+          <li><a href="#home" class="nav-link active">Home</a></li>
+          <li><a href="#about" class="nav-link">About</a></li>
+          <li><a href="#experience" class="nav-link">Experience</a></li>
+          <li><a href="#projects" class="nav-link">Projects</a></li>
+          <li><a href="#skills" class="nav-link">Skills</a></li>
+          <li><a href="#education" class="nav-link">Education</a></li>
+          <li><a href="#certifications" class="nav-link">Certifications</a></li>
+          <li><a href="#contact" class="nav-link">Contact</a></li>
+        </ul>
+      </nav>
+
+      <div class="nav-actions">
+        <a href="HARIPRASANTH_RESUME.pdf" download="Hariprasanth_T_Resume.pdf" class="btn btn-sm btn-outline-glow" title="Download Resume">
+          <i class="fas fa-file-arrow-down"></i>
+          <span>Resume</span>
+        </a>
+        <div class="nav-social-icons">
+          <a href="https://github.com/ihariprasanth" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+            <i class="fab fa-github"></i>
+          </a>
+          <a href="https://linkedin.com/in/ihariprasanth" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+            <i class="fab fa-linkedin-in"></i>
+          </a>
+          <a href="https://leetcode.com/ihariprasanth" target="_blank" rel="noopener noreferrer" aria-label="LeetCode">
+            <i class="fas fa-code"></i>
+          </a>
+        </div>
+        <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle navigation menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Drawer Menu Overlay -->
+  <div class="mobile-drawer-overlay" id="drawerOverlay"></div>
+
+  <!-- Mobile Drawer Menu -->
+  <div class="mobile-drawer" id="mobileDrawer">
+    <div class="drawer-header">
+      <div class="nav-logo">
+        <span class="logo-symbol">&lt;</span><span class="logo-name">HT</span><span class="logo-symbol">/&gt;</span>
+      </div>
+      <button class="drawer-close" id="drawerClose" aria-label="Close menu">
         <i class="fas fa-times"></i>
       </button>
-      <ul class="mobile-menu-links">
-        <li><a href="#home" class="active">Home</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#skills">Skills</a></li>
-        <li><a href="#education">Education</a></li>
-        <li><a href="#certifications">Certifications</a></li>
-        <li><a href="#contact">Contact</a></li>
-        <li class="mobile-divider"></li>
-        <li><a href="https://linkedin.com/in/ihariprasanth/" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a></li>
-        <li><a href="https://leetcode.com/u/ihariprasanth/" target="_blank"><i class="fas fa-code"></i> LeetCode</a></li>
-      </ul>
+    </div>
+    <ul class="drawer-links">
+      <li><a href="#home" class="drawer-link active"><i class="fas fa-house"></i> Home</a></li>
+      <li><a href="#about" class="drawer-link"><i class="fas fa-user"></i> About</a></li>
+      <li><a href="#experience" class="drawer-link"><i class="fas fa-briefcase"></i> Experience</a></li>
+      <li><a href="#projects" class="drawer-link"><i class="fas fa-layer-group"></i> Projects</a></li>
+      <li><a href="#skills" class="drawer-link"><i class="fas fa-code"></i> Skills</a></li>
+      <li><a href="#education" class="drawer-link"><i class="fas fa-graduation-cap"></i> Education</a></li>
+      <li><a href="#certifications" class="drawer-link"><i class="fas fa-certificate"></i> Certifications</a></li>
+      <li><a href="#contact" class="drawer-link"><i class="fas fa-envelope"></i> Contact</a></li>
+    </ul>
+    <div class="drawer-footer">
+      <a href="HARIPRASANTH_RESUME.pdf" download="Hariprasanth_T_Resume.pdf" class="btn btn-primary btn-block">
+        <i class="fas fa-file-arrow-down"></i> Download Resume
+      </a>
+      <div class="drawer-socials">
+        <a href="https://github.com/ihariprasanth" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i></a>
+        <a href="https://linkedin.com/in/ihariprasanth" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin-in"></i></a>
+        <a href="https://leetcode.com/ihariprasanth" target="_blank" rel="noopener noreferrer"><i class="fas fa-code"></i></a>
+      </div>
     </div>
   </div>
 
-  <!-- Hero Section -->
-  <section id="home" class="hero">
-    <div class="hero-grid">
-      <div class="hero-text">
-        <h1>
-          <span class="static-text">Hi, I'm</span>
-          <span class="name-line"><span class="highlight"></span></span>
-        </h1>
-        <p class="hero-description">
-          Computer Science student passionate about web development, e-commerce solutions, 
-          and creating digital experiences that make a difference.
-        </p>
-        <div class="hero-buttons">
-          <a href="#education" class="btn primary">View Education</a>
-          <a href="#contact" class="btn secondary">Get In Touch</a>
-          <!-- Resume Download Button -->
-          <a href="https://drive.usercontent.google.com/download?id=1WTJFOQfKuQzoWiZNyAW0bmENyj88CpE2&export=download&authuser=0&confirm=t&uuid=1fc60908-165c-4aec-ae29-45eba8ef0c32&at=AFYLz4N0GbB5xm-pxH4cFSaAniEH:1787009108083" 
-             download="RESUME.pdf" 
-             class="btn resume-btn" 
-             title="Download Resume">
-            <i class="fas fa-download"></i> Resume
-          </a>
-          <!-- GitHub Button -->
-          <a href="https://github.com/ihariprasanth" target="_blank" class="btn github-btn" title="Visit GitHub">
-            <i class="fab fa-github"></i> GitHub
-          </a>
-        </div>
-      </div>
+  <main>
+    <!-- HERO SECTION -->
+    <section id="home" class="hero-section">
+      <div class="container hero-container">
+        <div class="hero-content">
+          <div class="status-badge">
+            <span class="pulse-indicator">
+              <span class="pulse-ring"></span>
+              <span class="pulse-dot"></span>
+            </span>
+            <span>Available for Opportunities & Internships</span>
+          </div>
 
-      <!-- Floating Profile Image -->
-      <div class="hero-image">
-        <div class="profile-card" id="profileImage">
-          <img src="images/profile.jpg" alt="HARIPRASANTH T" />
-        </div>
-      </div>
-    </div>
-  </section>
+          <p class="hero-greeting">Hi, I'm</p>
+          <h1 class="hero-title">
+            HARIPRASANTH <span class="gradient-text">T</span>
+          </h1>
 
-  <!-- About Section -->
-  <section id="about" class="content-align">
-    <h2 class="section-title">About Me</h2>
-    <div class="education-content">
-      <div class="education-item">
-        <div class="edu-details">
-          <h3>Computer Science Student & Tech Enthusiast</h3>
-          <p>
-            I'm currently pursuing my B.E in Computer Science & Engineering at 
-            <strong>VSB College of Engineering and Technical Campus, Coimbatore</strong>. 
-            My passion for technology drives me to constantly learn and explore 
-            new areas in web development and software engineering.
+          <div class="hero-typing-box">
+            <span class="typing-prefix">I am a </span>
+            <span class="typing-text" id="typingText">Full-Stack Developer</span>
+            <span class="typing-cursor">|</span>
+          </div>
+
+          <p class="hero-bio">
+            Third-year Computer Science undergraduate with hands-on experience building and deploying 
+            end-to-end full-stack web applications, real-time distributed platforms, and cloud solutions. 
+            Passionate about transforming practical engineering into impactful software.
           </p>
+
+          <div class="hero-actions">
+            <a href="#projects" class="btn btn-primary">
+              <i class="fas fa-rocket"></i>
+              <span>Explore Projects</span>
+            </a>
+            <a href="HARIPRASANTH_RESUME.pdf" download="Hariprasanth_T_Resume.pdf" class="btn btn-secondary">
+              <i class="fas fa-file-arrow-down"></i>
+              <span>Download Resume</span>
+            </a>
+            <a href="#contact" class="btn btn-outline">
+              <i class="fas fa-paper-plane"></i>
+              <span>Get In Touch</span>
+            </a>
+          </div>
+
+          <!-- Quick Metrics Bar -->
+          <div class="hero-metrics">
+            <div class="metric-item">
+              <span class="metric-number">8.52</span>
+              <span class="metric-label">B.E CGPA</span>
+            </div>
+            <div class="metric-separator"></div>
+            <div class="metric-item">
+              <span class="metric-number">3+</span>
+              <span class="metric-label">Featured Projects</span>
+            </div>
+            <div class="metric-separator"></div>
+            <div class="metric-item">
+              <span class="metric-number">2</span>
+              <span class="metric-label">Internships</span>
+            </div>
+            <div class="metric-separator"></div>
+            <div class="metric-item">
+              <span class="metric-number">5+</span>
+              <span class="metric-label">Certifications</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-visual">
+          <div class="profile-card-wrapper">
+            <div class="profile-ambient-blur"></div>
+            <div class="profile-card">
+              <div class="profile-image-container">
+                <img src="images/profile.jpg" alt="Hariprasanth T - Full Stack Developer" class="profile-photo" />
+                <div class="profile-image-overlay"></div>
+              </div>
+              <div class="profile-floating-badge badge-top">
+                <i class="fas fa-laptop-code"></i>
+                <span>Full-Stack Dev</span>
+              </div>
+              <div class="profile-floating-badge badge-bottom">
+                <i class="fas fa-location-dot"></i>
+                <span>Tiruppur / Coimbatore, TN</span>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Skills - Liquid Glass Icon Grid with Brand Colors -->
-  <section id="skills" class="content-align">
-    <h2 class="section-title">My Skills</h2>
-    <div class="skills-glass-container education-item">
-      
-      <!-- All Skills in One Grid - No Categories -->
-      <div class="skills-glass-grid">
-        <!-- Languages with Brand Colors -->
-        <div class="skill-glass-card python">
-          <i class="fab fa-python"></i>
-          <span>Python</span>
-        </div>
-        <div class="skill-glass-card java">
-          <i class="fab fa-java"></i>
-          <span>Java</span>
-        </div>
-        <div class="skill-glass-card javascript">
-          <i class="fab fa-js"></i>
-          <span>JavaScript</span>
-        </div>
-        <div class="skill-glass-card cpp">
-          <i class="fas fa-code"></i>
-          <span>C++</span>
-        </div>
-        <div class="skill-glass-card c">
-          <i class="fas fa-code"></i>
-          <span>C</span>
-        </div>
-        <div class="skill-glass-card html">
-          <i class="fab fa-html5"></i>
-          <span>HTML</span>
-        </div>
-        <div class="skill-glass-card css">
-          <i class="fab fa-css3-alt"></i>
-          <span>CSS</span>
+    <!-- ABOUT SECTION -->
+    <section id="about" class="section">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag"><i class="fas fa-user"></i> About Me</span>
+          <h2 class="section-title">Who I Am & What I Do</h2>
+          <p class="section-subtitle">Dedicated to creating elegant, robust, and scalable software solutions</p>
         </div>
 
-        <!-- Frontend & Backend with Brand Colors -->
-        <div class="skill-glass-card bootstrap">
-          <i class="fab fa-bootstrap"></i>
-          <span>Bootstrap</span>
-        </div>
-        <div class="skill-glass-card nodejs">
-          <i class="fab fa-node-js"></i>
-          <span>Node.js</span>
-        </div>
+        <div class="about-grid">
+          <div class="about-card main-bio-card">
+            <h3 class="card-title"><i class="fas fa-terminal"></i> Career Objective</h3>
+            <p>
+              I am a third-year <strong>Computer Science and Engineering</strong> undergraduate (Batch 2024–2028) at 
+              <strong>VSB College of Engineering and Technical Campus, Coimbatore</strong>.
+            </p>
+            <p>
+              My journey centers around hands-on development: building full-stack web applications from intuitive frontend interfaces 
+              to robust backend APIs, relational & real-time databases, and cloud deployments. I actively seek internship and entry-level 
+              opportunities to apply modern software engineering skills to solve real-world problems.
+            </p>
 
-        <!-- AI/ML & Data Science -->
-        <div class="skill-glass-card opencv">
-          <i class="fas fa-eye"></i>
-          <span>OpenCV</span>
-        </div>
-        <div class="skill-glass-card numpy">
-          <i class="fas fa-calculator"></i>
-          <span>NumPy</span>
-        </div>
-        <div class="skill-glass-card pandas">
-          <i class="fas fa-chart-bar"></i>
-          <span>Pandas</span>
-        </div>
+            <div class="interest-chips-container">
+              <span class="interest-label">Areas of Interest:</span>
+              <div class="interest-chips">
+                <span class="chip"><i class="fas fa-globe"></i> Web Development</span>
+                <span class="chip"><i class="fas fa-cloud"></i> Cloud Computing</span>
+                <span class="chip"><i class="fas fa-puzzle-piece"></i> Problem Solving</span>
+                <span class="chip"><i class="fas fa-wand-magic-sparkles"></i> UI/UX Design</span>
+                <span class="chip"><i class="fas fa-network-wired"></i> Distributed Systems</span>
+              </div>
+            </div>
+          </div>
 
-        <!-- Databases with Brand Colors -->
-        <div class="skill-glass-card mongodb">
-          <i class="fas fa-leaf"></i>
-          <span>MongoDB</span>
-        </div>
-        <div class="skill-glass-card firebase">
-          <i class="fas fa-fire"></i>
-          <span>Firebase</span>
-        </div>
-        <div class="skill-glass-card mysql">
-          <i class="fas fa-database"></i>
-          <span>MySQL</span>
-        </div>
-
-        <!-- DevOps & Tools with Brand Colors -->
-        <div class="skill-glass-card github">
-          <i class="fab fa-github"></i>
-          <span>GitHub</span>
-        </div>
-        <div class="skill-glass-card linux">
-          <i class="fab fa-linux"></i>
-          <span>Linux</span>
-        </div>
-        <div class="skill-glass-card vscode">
-          <i class="fas fa-code"></i>
-          <span>VS Code</span>
-        </div>
-        <div class="skill-glass-card vercel">
-          <i class="fas fa-cloud"></i>
-          <span>Vercel</span>
+          <div class="about-details-column">
+            <div class="about-card detail-pill-card">
+              <div class="detail-item">
+                <div class="detail-icon"><i class="fas fa-graduation-cap"></i></div>
+                <div class="detail-content">
+                  <span class="detail-title">Degree</span>
+                  <span class="detail-val">B.E. Computer Science (2024–2028)</span>
+                </div>
+              </div>
+              <div class="detail-item">
+                <div class="detail-icon"><i class="fas fa-building-columns"></i></div>
+                <div class="detail-content">
+                  <span class="detail-title">Institution</span>
+                  <span class="detail-val">VSB College of Engg, Coimbatore</span>
+                </div>
+              </div>
+              <div class="detail-item">
+                <div class="detail-icon"><i class="fas fa-award"></i></div>
+                <div class="detail-content">
+                  <span class="detail-title">Current CGPA</span>
+                  <span class="detail-val highlight-val">8.52 / 10.0</span>
+                </div>
+              </div>
+              <div class="detail-item">
+                <div class="detail-icon"><i class="fas fa-location-dot"></i></div>
+                <div class="detail-content">
+                  <span class="detail-title">Location</span>
+                  <span class="detail-val">Tiruppur, Tamil Nadu, India</span>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
+    </section>
 
-    </div>
-  </section>
+    <!-- EXPERIENCE / INTERNSHIPS SECTION -->
+    <section id="experience" class="section">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag"><i class="fas fa-briefcase"></i> Experience</span>
+          <h2 class="section-title">Internships & Industrial Exposure</h2>
+          <p class="section-subtitle">Real-world experience building cloud architectures and full-stack platforms</p>
+        </div>
 
-  <!-- Education Section (Only BE Computer Science) -->
-  <section id="education" class="content-align">
-    <h2 class="section-title">Education</h2>
-    <div class="education-content">
-      <div class="education-item">
-        <div class="edu-icon"><i class="fas fa-graduation-cap"></i></div>
-        <div class="edu-details">
-          <h3>BE Computer Science Engineering</h3>
-          <p class="institution">VSB College of Engineering and Technical Campus, Coimbatore</p>
-          <p class="duration">2024 – 2028 (Expected)</p>
-          <p class="achievement">CGPA: 8.5/10 (Current)</p>
+        <div class="experience-timeline">
+          <!-- Skill Nexis - AWS -->
+          <div class="timeline-item">
+            <div class="timeline-marker">
+              <i class="fab fa-aws"></i>
+            </div>
+            <div class="timeline-card">
+              <div class="card-top-row">
+                <div>
+                  <h3 class="experience-role">Cloud Computing Intern (AWS)</h3>
+                  <h4 class="experience-company">
+                    <i class="fas fa-building"></i> Skill Nexis
+                    <span class="experience-mode"><i class="fas fa-laptop-house"></i> Online Internship</span>
+                  </h4>
+                </div>
+                <div class="badge-status-ongoing">
+                  <span class="pulse-dot-small"></span> Ongoing
+                </div>
+              </div>
+              <div class="experience-duration">
+                <i class="far fa-calendar-alt"></i> 22 September 2026 – Present
+              </div>
+              <p class="experience-desc">
+                Engaging in cloud engineering and infrastructure deployment within the Amazon Web Services (AWS) ecosystem. 
+                Gaining practical experience in cloud architectures, serverless computing concepts, cloud security, and scalable systems.
+              </p>
+              <div class="tech-tags">
+                <span class="tech-tag">AWS</span>
+                <span class="tech-tag">Cloud Computing</span>
+                <span class="tech-tag">Cloud Architecture</span>
+                <span class="tech-tag">Serverless</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Emertxe - MERN Stack -->
+          <div class="timeline-item">
+            <div class="timeline-marker">
+              <i class="fab fa-react"></i>
+            </div>
+            <div class="timeline-card">
+              <div class="card-top-row">
+                <div>
+                  <h3 class="experience-role">MERN Stack Development Intern</h3>
+                  <h4 class="experience-company">
+                    <i class="fas fa-building"></i> Emertxe Information Technologies, Bangalore
+                    <span class="experience-mode"><i class="fas fa-laptop-house"></i> Cohort WMSI26_008</span>
+                  </h4>
+                </div>
+                <div class="badge-status-completed">
+                  <i class="fas fa-check-circle"></i> Completed
+                </div>
+              </div>
+              <div class="experience-duration">
+                <i class="far fa-calendar-alt"></i> 12 August 2026 – 16 September 2026
+              </div>
+              <p class="experience-desc">
+                Built <strong>"HomelyHub – Property Booking Platform"</strong> end-to-end using the MERN stack. Designed responsive user interfaces 
+                in React, developed RESTful backend endpoints in Node.js/Express, integrated MongoDB for data storage, and implemented 
+                seamless property search, booking reservations, and authentication flows.
+              </p>
+              <div class="tech-tags">
+                <span class="tech-tag">MongoDB</span>
+                <span class="tech-tag">Express.js</span>
+                <span class="tech-tag">React.js</span>
+                <span class="tech-tag">Node.js</span>
+                <span class="tech-tag">REST APIs</span>
+              </div>
+              <div class="card-actions">
+                <a href="Certifications/Emertxe-MERN-Internship-Certificate.pdf" target="_blank" class="btn btn-sm btn-outline-glow">
+                  <i class="fas fa-file-pdf"></i> View Internship Certificate
+                </a>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Certifications Section -->
-  <section id="certifications" class="content-align">
-    <h2 class="section-title">Certifications</h2>
-    <div class="education-content">
-      <!-- Udemy Certification -->
-      <div class="education-item">
-        <div class="edu-details">
-          <h3>100 Days Python Bootcamp</h3>
-          <p class="institution">Udemy</p>
-          <p class="duration">Completed 2024</p>
-          <p class="achievement">Mastered Python programming with hands-on projects and real-world applications.</p>
-          <a href="https://www.udemy.com/certificate/UC-53a7649a-2c4f-40b5-95f0-a1b84026968b/"
-             target="_blank" class="verify-cert-btn">
-             Verify Certificate
-          </a>
+    <!-- FEATURED PROJECTS SECTION -->
+    <section id="projects" class="section">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag"><i class="fas fa-layer-group"></i> Portfolio</span>
+          <h2 class="section-title">Featured Projects</h2>
+          <p class="section-subtitle">Real-world applications engineered for reliability, performance, and user privacy</p>
+        </div>
+
+        <div class="projects-grid">
+          <!-- Project 1: Digi Bus -->
+          <div class="project-card">
+            <div class="project-card-header">
+              <div class="project-icon-box">
+                <i class="fas fa-bus"></i>
+              </div>
+              <div class="project-badges">
+                <span class="status-chip chip-ongoing">Ongoing</span>
+                <span class="status-chip chip-fullstack">Full-Stack</span>
+              </div>
+            </div>
+            <div class="project-card-body">
+              <h3 class="project-title">Digi Bus — Real-Time Public Transit Platform</h3>
+              <p class="project-summary">
+                An end-to-end transit ecosystem connecting a conductor Android mobile app to a passenger web portal 
+                via a unified Supabase cloud backend with live, zero-polling GPS telemetry.
+              </p>
+              <ul class="project-highlights">
+                <li>
+                  <i class="fas fa-circle-check"></i>
+                  <span>Live GPS bus tracking using <strong>Supabase Realtime</strong> websockets (no polling overhead).</span>
+                </li>
+                <li>
+                  <i class="fas fa-circle-check"></i>
+                  <span>Passenger web app with phone OTP authentication, interactive <strong>Leaflet maps</strong>, wallet-based ticket booking.</span>
+                </li>
+                <li>
+                  <i class="fas fa-circle-check"></i>
+                  <span>Strict Row Level Security (RLS) policies securing 10+ relational database tables.</span>
+                </li>
+              </ul>
+              <div class="tech-tags">
+                <span class="tech-tag">React</span>
+                <span class="tech-tag">TypeScript</span>
+                <span class="tech-tag">Vite</span>
+                <span class="tech-tag">Tailwind CSS</span>
+                <span class="tech-tag">Supabase Realtime</span>
+                <span class="tech-tag">Kotlin</span>
+                <span class="tech-tag">Leaflet</span>
+              </div>
+            </div>
+            <div class="project-card-footer">
+              <a href="https://github.com/ihariprasanth/digi-bus" target="_blank" rel="noopener noreferrer" class="btn btn-outline-glow btn-sm">
+                <i class="fab fa-github"></i> <span>GitHub Code</span>
+              </a>
+            </div>
+          </div>
+
+          <!-- Project 2: RemindGo -->
+          <div class="project-card featured-card">
+            <div class="project-card-header">
+              <div class="project-icon-box">
+                <i class="fas fa-clock"></i>
+              </div>
+              <div class="project-badges">
+                <span class="status-chip chip-live">Live Demo</span>
+                <span class="status-chip chip-desktop">Desktop App</span>
+              </div>
+            </div>
+            <div class="project-card-body">
+              <h3 class="project-title">RemindGo — Privacy-First Windows Task & Reminder Manager</h3>
+              <p class="project-summary">
+                A 100% offline desktop application built for high-performance productivity, scheduled tasks, and local data sovereignty.
+              </p>
+              <ul class="project-highlights">
+                <li>
+                  <i class="fas fa-circle-check"></i>
+                  <span>Always-on-top alarm popups, native Windows toast notifications, and sleep/unlock snooze recovery.</span>
+                </li>
+                <li>
+                  <i class="fas fa-circle-check"></i>
+                  <span>GitHub-style <strong>52-week productivity heatmap</strong> with daily streak analytics, task tags, and recurring intervals.</span>
+                </li>
+                <li>
+                  <i class="fas fa-circle-check"></i>
+                  <span>Local SQLite database with JSON backup & restore — zero accounts, zero cloud servers, zero telemetry.</span>
+                </li>
+              </ul>
+              <div class="tech-tags">
+                <span class="tech-tag">Electron</span>
+                <span class="tech-tag">React</span>
+                <span class="tech-tag">TypeScript</span>
+                <span class="tech-tag">SQLite</span>
+                <span class="tech-tag">Tailwind CSS</span>
+              </div>
+            </div>
+            <div class="project-card-footer">
+              <a href="https://ihariprasanth.github.io/remindgo/" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm">
+                <i class="fas fa-arrow-up-right-from-square"></i> <span>Live Web Preview</span>
+              </a>
+              <a href="https://github.com/ihariprasanth/remindgo" target="_blank" rel="noopener noreferrer" class="btn btn-outline-glow btn-sm">
+                <i class="fab fa-github"></i> <span>GitHub Code</span>
+              </a>
+            </div>
+          </div>
+
+          <!-- Project 3: SysScan -->
+          <div class="project-card">
+            <div class="project-card-header">
+              <div class="project-icon-box">
+                <i class="fas fa-microchip"></i>
+              </div>
+              <div class="project-badges">
+                <span class="status-chip chip-ongoing">Ongoing</span>
+                <span class="status-chip chip-system">System Tool</span>
+              </div>
+            </div>
+            <div class="project-card-body">
+              <h3 class="project-title">SysScan — Windows System Diagnostics Tool</h3>
+              <p class="project-summary">
+                A lightweight, background daemon-powered hardware telemetry scanner and automated health analytics engine.
+              </p>
+              <ul class="project-highlights">
+                <li>
+                  <i class="fas fa-circle-check"></i>
+                  <span>Scheduled, four-tier diagnostic scanning architecture (Level 0/2/3/4) with background daemon execution.</span>
+                </li>
+                <li>
+                  <i class="fas fa-circle-check"></i>
+                  <span>Rolling timeseries telemetry logging system formatted in structured <strong>JSONL</strong>.</span>
+                </li>
+                <li>
+                  <i class="fas fa-circle-check"></i>
+                  <span>Intelligent alert engine flagging CRITICAL and WARNING alerts for overheating, disk SMART wear, and battery degradation.</span>
+                </li>
+              </ul>
+              <div class="tech-tags">
+                <span class="tech-tag">Python</span>
+                <span class="tech-tag">System Diagnostics</span>
+                <span class="tech-tag">JSONL</span>
+                <span class="tech-tag">Background Daemon</span>
+                <span class="tech-tag">Hardware Telemetry</span>
+              </div>
+            </div>
+            <div class="project-card-footer">
+              <a href="https://github.com/ihariprasanth/sysscan" target="_blank" rel="noopener noreferrer" class="btn btn-outline-glow btn-sm">
+                <i class="fab fa-github"></i> <span>GitHub Code</span>
+              </a>
+            </div>
+          </div>
         </div>
       </div>
+    </section>
 
-      <!-- Coursera Certification -->
-      <div class="education-item">
-        <div class="edu-details">
-          <h3>Java Programming for Beginners</h3>
-          <p class="institution">Coursera</p>
-          <p class="duration">Completed 2025</p>
-          <p class="achievement">Completed the Java Beginners course on Coursera and earned an IDM-recognized company certificate for practical Java proficiency.</p>
-          <a href="https://coursera.org/verify/H7UFBNEMNQG3"
-             target="_blank" class="verify-cert-btn">
-             Verify Certificate
-          </a>
+    <!-- TECHNICAL SKILLS SECTION -->
+    <section id="skills" class="section">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag"><i class="fas fa-code"></i> Toolkit</span>
+          <h2 class="section-title">Technical Skills</h2>
+          <p class="section-subtitle">Proficiencies in modern languages, frontend frameworks, backend runtimes, and databases</p>
+        </div>
+
+        <div class="skills-bento-grid">
+          <!-- Languages -->
+          <div class="skill-category-card">
+            <div class="skill-cat-header">
+              <div class="skill-cat-icon"><i class="fas fa-code"></i></div>
+              <h3>Programming Languages</h3>
+            </div>
+            <div class="skill-items-list">
+              <div class="skill-badge-item">
+                <i class="fab fa-js text-yellow"></i> <span>JavaScript</span>
+              </div>
+              <div class="skill-badge-item">
+                <i class="fas fa-file-code text-blue"></i> <span>TypeScript</span>
+              </div>
+              <div class="skill-badge-item">
+                <i class="fab fa-python text-blue"></i> <span>Python</span>
+              </div>
+              <div class="skill-badge-item">
+                <i class="fab fa-java text-orange"></i> <span>Java</span>
+              </div>
+              <div class="skill-badge-item">
+                <i class="fas fa-database text-cyan"></i> <span>SQL</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Frontend -->
+          <div class="skill-category-card">
+            <div class="skill-cat-header">
+              <div class="skill-cat-icon"><i class="fab fa-react"></i></div>
+              <h3>Frontend Development</h3>
+            </div>
+            <div class="skill-items-list">
+              <div class="skill-badge-item">
+                <i class="fab fa-react text-cyan"></i> <span>React.js</span>
+              </div>
+              <div class="skill-badge-item">
+                <i class="fab fa-html5 text-orange"></i> <span>HTML5</span>
+              </div>
+              <div class="skill-badge-item">
+                <i class="fab fa-css3-alt text-blue"></i> <span>CSS3</span>
+              </div>
+              <div class="skill-badge-item">
+                <i class="fas fa-wind text-teal"></i> <span>Tailwind CSS</span>
+              </div>
+              <div class="skill-badge-item">
+                <i class="fas fa-mobile-screen text-purple"></i> <span>Responsive UI</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Backend & Cloud -->
+          <div class="skill-category-card">
+            <div class="skill-cat-header">
+              <div class="skill-cat-icon"><i class="fas fa-server"></i></div>
+              <h3>Backend & Cloud</h3>
+            </div>
+            <div class="skill-items-list">
+              <div class="skill-badge-item">
+                <i class="fab fa-node-js text-green"></i> <span>Node.js</span>
+              </div>
+              <div class="skill-badge-item">
+                <i class="fas fa-network-wired text-light"></i> <span>Express.js</span>
+              </div>
+              <div class="skill-badge-item">
+                <i class="fas fa-bolt text-emerald"></i> <span>Supabase</span>
+              </div>
+              <div class="skill-badge-item">
+                <i class="fab fa-aws text-amber"></i> <span>AWS Cloud</span>
+              </div>
+              <div class="skill-badge-item">
+                <i class="fas fa-cubes text-indigo"></i> <span>RESTful APIs</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Databases -->
+          <div class="skill-category-card">
+            <div class="skill-cat-header">
+              <div class="skill-cat-icon"><i class="fas fa-database"></i></div>
+              <h3>Databases & Storage</h3>
+            </div>
+            <div class="skill-items-list">
+              <div class="skill-badge-item">
+                <i class="fas fa-database text-blue"></i> <span>PostgreSQL</span>
+              </div>
+              <div class="skill-badge-item">
+                <i class="fas fa-database text-orange"></i> <span>MySQL</span>
+              </div>
+              <div class="skill-badge-item">
+                <i class="fas fa-database text-indigo"></i> <span>SQLite</span>
+              </div>
+              <div class="skill-badge-item">
+                <i class="fas fa-leaf text-green"></i> <span>MongoDB</span>
+              </div>
+              <div class="skill-badge-item">
+                <i class="fas fa-lock text-yellow"></i> <span>Row Level Security (RLS)</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Tools & Platforms -->
+          <div class="skill-category-card">
+            <div class="skill-cat-header">
+              <div class="skill-cat-icon"><i class="fas fa-toolbox"></i></div>
+              <h3>Tools & Platforms</h3>
+            </div>
+            <div class="skill-items-list">
+              <div class="skill-badge-item">
+                <i class="fab fa-git-alt text-orange"></i> <span>Git</span>
+              </div>
+              <div class="skill-badge-item">
+                <i class="fab fa-github text-white"></i> <span>GitHub</span>
+              </div>
+              <div class="skill-badge-item">
+                <i class="fas fa-triangle text-white"></i> <span>Vercel</span>
+              </div>
+              <div class="skill-badge-item">
+                <i class="fas fa-laptop-code text-blue"></i> <span>VS Code</span>
+              </div>
+              <div class="skill-badge-item">
+                <i class="fas fa-server text-indigo"></i> <span>Hostinger & phpMyAdmin</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Core Competencies -->
+          <div class="skill-category-card">
+            <div class="skill-cat-header">
+              <div class="skill-cat-icon"><i class="fas fa-brain"></i></div>
+              <h3>Core Engineering</h3>
+            </div>
+            <div class="skill-items-list">
+              <div class="skill-badge-item">
+                <i class="fas fa-diagram-project text-cyan"></i> <span>Data Structures & Algo</span>
+              </div>
+              <div class="skill-badge-item">
+                <i class="fas fa-gears text-purple"></i> <span>System Diagnostics</span>
+              </div>
+              <div class="skill-badge-item">
+                <i class="fas fa-shield-halved text-emerald"></i> <span>Auth & RLS Security</span>
+              </div>
+              <div class="skill-badge-item">
+                <i class="fas fa-arrows-split-up-and-left text-amber"></i> <span>Version Control</span>
+              </div>
+              <div class="skill-badge-item">
+                <i class="fas fa-lightbulb text-yellow"></i> <span>Analytical Problem Solving</span>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
+    </section>
 
-      <!-- Deloitte Certification -->
-      <div class="education-item">
-        <div class="edu-details">
-          <h3>Data Analytics Job Simulation</h3>
-          <p class="institution">Deloitte (Issued via Forage)</p>
-          <p class="duration">Completed July 13, 2025</p>
-          <p class="achievement">Completed practical tasks in Data Analysis and Forensic Technology under Deloitte's virtual internship program.</p>
-          <p class="achievement"><strong>Verification Code:</strong> YAFtQ3R3SSGKDiFws</p>
-          <a href="https://github.com/ihariprasanth/ihariprasanth.github.io/blob/main/Certifications/Deloitte%20Job%20Simulation.pdf"
-             target="_blank" class="view-cert-btn">
-             View Certificate
-          </a>
+    <!-- EDUCATION SECTION -->
+    <section id="education" class="section">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag"><i class="fas fa-graduation-cap"></i> Education</span>
+          <h2 class="section-title">Academic Background</h2>
+          <p class="section-subtitle">Consistent academic foundation in engineering and mathematics</p>
+        </div>
+
+        <div class="education-grid">
+          <!-- College -->
+          <div class="education-card highlight-border">
+            <div class="edu-card-header">
+              <div class="edu-badge-icon">
+                <i class="fas fa-university"></i>
+              </div>
+              <div class="edu-score-pill">
+                <span>CGPA</span>
+                <strong>8.52 / 10</strong>
+              </div>
+            </div>
+            <div class="edu-card-body">
+              <h3 class="edu-degree">B.E. Computer Science and Engineering</h3>
+              <h4 class="edu-college">VSB College of Engineering and Technical Campus</h4>
+              <p class="edu-location"><i class="fas fa-location-dot"></i> Coimbatore, Tamil Nadu</p>
+              <div class="edu-meta">
+                <span class="edu-year"><i class="far fa-calendar-alt"></i> Batch 2024 – 2028</span>
+                <span class="edu-status"><i class="fas fa-spinner fa-spin"></i> Third Year Undergraduate</span>
+              </div>
+              <p class="edu-summary">
+                Pursuing comprehensive studies in core computer science disciplines including Data Structures & Algorithms, 
+                Object-Oriented Programming, Database Management Systems, Computer Networks, and Cloud Infrastructure.
+              </p>
+            </div>
+          </div>
+
+          <!-- School -->
+          <div class="education-card">
+            <div class="edu-card-header">
+              <div class="edu-badge-icon">
+                <i class="fas fa-school"></i>
+              </div>
+              <div class="edu-score-pill score-secondary">
+                <span>HSC (12th)</span>
+                <strong>87.16%</strong>
+              </div>
+            </div>
+            <div class="edu-card-body">
+              <h3 class="edu-degree">Higher Secondary Certificate (HSC - 12th)</h3>
+              <h4 class="edu-college">Kathiravan Matriculation Higher Secondary School</h4>
+              <p class="edu-location"><i class="fas fa-location-dot"></i> Tamil Nadu</p>
+              <div class="edu-meta">
+                <span class="edu-year"><i class="far fa-calendar-alt"></i> Batch 2023 – 2024</span>
+                <span class="edu-status status-done"><i class="fas fa-check-circle"></i> Completed</span>
+              </div>
+              <p class="edu-summary">
+                Completed secondary higher education with strong academic rigor in Mathematics, Physics, Chemistry, 
+                and Computer Science.
+              </p>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Contact -->
-  <section id="contact" class="content-align">
-    <h2 class="section-title">Get In Touch</h2>
-    <div class="contact-content">
-      <div class="connect-box">
-        <div class="contact-info">
-          <h3>Let's Connect!</h3>
-          <p>I'm always open to discussing new opportunities or collaborations. Feel free to reach out!</p>
+    <!-- CERTIFICATIONS SECTION -->
+    <section id="certifications" class="section">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag"><i class="fas fa-certificate"></i> Credentials</span>
+          <h2 class="section-title">Certifications & Simulations</h2>
+          <p class="section-subtitle">Verified technical certifications and industry job simulations</p>
         </div>
-        <div class="contact-method">
-          <h4>Email :</h4>
-          <p>hariprasanth.user@gmail.com</p>
-        </div>
-        
-        <div class="contact-method">
-          <h4>Phone :</h4>
-          <p>+91 9962322926</p>
-        </div>
-        
-        <div class="contact-method">
-          <h4>Location :</h4>
-          <p>Coimbatore, Tamil Nadu</p>
-        </div>
-        <div class="social-container">
-          <a href="https://github.com/ihariprasanth" target="_blank" class="social-link"><i class="fab fa-github"></i></a>
-          <a href="https://linkedin.com/in/ihariprasanth/" target="_blank" class="social-link"><i class="fab fa-linkedin"></i></a>
-          <a href="https://wa.me/919962322926" target="_blank" class="social-link"><i class="fab fa-whatsapp"></i></a>
+
+        <div class="certifications-grid">
+          <!-- NPTEL Java -->
+          <div class="cert-card">
+            <div class="cert-header">
+              <div class="cert-issuer-icon nptel-icon">
+                <i class="fab fa-java"></i>
+              </div>
+              <div class="cert-badge-score">
+                <i class="fas fa-trophy text-amber"></i> Elite (83%)
+              </div>
+            </div>
+            <h3 class="cert-title">Programming in Java</h3>
+            <p class="cert-issuer"><i class="fas fa-building-columns"></i> NPTEL (Ministry of Education, Govt. of India)</p>
+            <p class="cert-desc">
+              Comprehensive certification covering advanced Object-Oriented Programming, multithreading, 
+              exception handling, Java Collections Framework, and applet engineering with an 83% score.
+            </p>
+            <div class="cert-tags">
+              <span>Java</span>
+              <span>OOP</span>
+              <span>Collections</span>
+              <span>NPTEL</span>
+            </div>
+          </div>
+
+          <!-- IBM Java -->
+          <div class="cert-card">
+            <div class="cert-header">
+              <div class="cert-issuer-icon ibm-icon">
+                <i class="fas fa-award"></i>
+              </div>
+              <span class="cert-date">Nov 2025</span>
+            </div>
+            <h3 class="cert-title">Java Programming for Beginners</h3>
+            <p class="cert-issuer"><i class="fas fa-award"></i> IBM (Issued via Coursera)</p>
+            <p class="cert-desc">
+              Completed foundational and practical Java development, understanding syntax, classes, inheritance, 
+              and practical code problem-solving.
+            </p>
+            <div class="cert-card-actions">
+              <a href="https://coursera.org/verify/H7UFBNEMNQG3" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-outline-glow">
+                <i class="fas fa-arrow-up-right-from-square"></i> Verify on Coursera
+              </a>
+              <a href="Certifications/Coursera-Java Programming for Beginners.pdf" target="_blank" class="btn btn-sm btn-secondary">
+                <i class="fas fa-file-pdf"></i> View PDF
+              </a>
+            </div>
+          </div>
+
+          <!-- Deloitte Australia Data Analytics -->
+          <div class="cert-card">
+            <div class="cert-header">
+              <div class="cert-issuer-icon deloitte-icon">
+                <i class="fas fa-chart-line"></i>
+              </div>
+              <span class="cert-date">Jul 2025</span>
+            </div>
+            <h3 class="cert-title">Data Analytics Job Simulation</h3>
+            <p class="cert-issuer"><i class="fas fa-briefcase"></i> Deloitte Australia (via Forage)</p>
+            <p class="cert-desc">
+              Completed practical simulation tasks in Data Analysis, Forensic Technology, and business insight delivery 
+              under Deloitte's virtual internship framework. Verification code: <code>YAFtQ3R3SSGKDiFws</code>.
+            </p>
+            <div class="cert-card-actions">
+              <a href="Certifications/Deloitte Job Simulation.pdf" target="_blank" class="btn btn-sm btn-outline-glow">
+                <i class="fas fa-file-pdf"></i> View Certificate PDF
+              </a>
+            </div>
+          </div>
+
+          <!-- AWS Solutions Architecture -->
+          <div class="cert-card">
+            <div class="cert-header">
+              <div class="cert-issuer-icon aws-icon">
+                <i class="fab fa-aws"></i>
+              </div>
+              <span class="cert-date">Jan 2026</span>
+            </div>
+            <h3 class="cert-title">Solutions Architecture Job Simulation</h3>
+            <p class="cert-issuer"><i class="fab fa-aws"></i> Amazon Web Services (via Forage)</p>
+            <p class="cert-desc">
+              Engaged in architecting scalable and highly available cloud architectures on AWS, exploring VPCs, security groups, 
+              managed database services, and elastic compute workloads.
+            </p>
+            <div class="cert-tags">
+              <span>AWS</span>
+              <span>Cloud Architecture</span>
+              <span>VPC</span>
+              <span>Forage</span>
+            </div>
+          </div>
+
+          <!-- 100 Days of Code Udemy -->
+          <div class="cert-card">
+            <div class="cert-header">
+              <div class="cert-issuer-icon udemy-icon">
+                <i class="fab fa-python"></i>
+              </div>
+              <span class="cert-date">2024</span>
+            </div>
+            <h3 class="cert-title">100 Days of Code: Python Pro Bootcamp</h3>
+            <p class="cert-issuer"><i class="fas fa-graduation-cap"></i> Udemy</p>
+            <p class="cert-desc">
+              Completed intensive project-based curriculum covering Python fundamentals, automation scripting, 
+              web scraping, API integration, and algorithmic problem-solving.
+            </p>
+            <div class="cert-card-actions">
+              <a href="https://www.udemy.com/certificate/UC-53a7649a-2c4f-40b5-95f0-a1b84026968b/" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-outline-glow">
+                <i class="fas fa-arrow-up-right-from-square"></i> Verify Certificate
+              </a>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Footer -->
+    <!-- CONTACT SECTION -->
+    <section id="contact" class="section">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag"><i class="fas fa-paper-plane"></i> Connect</span>
+          <h2 class="section-title">Let's Build Something Great</h2>
+          <p class="section-subtitle">Feel free to reach out for opportunities, internships, or technical collaboration</p>
+        </div>
+
+        <div class="contact-grid">
+          <!-- Contact Info Cards -->
+          <div class="contact-cards-column">
+            <!-- Email -->
+            <div class="contact-channel-card">
+              <div class="channel-icon">
+                <i class="fas fa-envelope"></i>
+              </div>
+              <div class="channel-details">
+                <span class="channel-label">Email</span>
+                <a href="mailto:hariprasanth.user@gmail.com" class="channel-value" id="emailText">hariprasanth.user@gmail.com</a>
+              </div>
+              <div class="channel-actions">
+                <button class="copy-btn" data-copy="hariprasanth.user@gmail.com" title="Copy Email">
+                  <i class="far fa-copy"></i>
+                </button>
+                <a href="mailto:hariprasanth.user@gmail.com" class="action-link-btn" title="Send Email">
+                  <i class="fas fa-arrow-up-right-from-square"></i>
+                </a>
+              </div>
+            </div>
+
+            <!-- Phone -->
+            <div class="contact-channel-card">
+              <div class="channel-icon">
+                <i class="fas fa-phone"></i>
+              </div>
+              <div class="channel-details">
+                <span class="channel-label">Phone</span>
+                <a href="tel:+919962322926" class="channel-value" id="phoneText">+91 9962322926</a>
+              </div>
+              <div class="channel-actions">
+                <button class="copy-btn" data-copy="+919962322926" title="Copy Phone Number">
+                  <i class="far fa-copy"></i>
+                </button>
+                <a href="tel:+919962322926" class="action-link-btn" title="Call Now">
+                  <i class="fas fa-phone-flip"></i>
+                </a>
+              </div>
+            </div>
+
+            <!-- WhatsApp Direct -->
+            <div class="contact-channel-card">
+              <div class="channel-icon text-green">
+                <i class="fab fa-whatsapp"></i>
+              </div>
+              <div class="channel-details">
+                <span class="channel-label">WhatsApp</span>
+                <span class="channel-value">+91 9962322926</span>
+              </div>
+              <div class="channel-actions">
+                <a href="https://wa.me/919962322926" target="_blank" rel="noopener noreferrer" class="action-link-btn btn-whatsapp" title="Chat on WhatsApp">
+                  <i class="fab fa-whatsapp"></i>
+                </a>
+              </div>
+            </div>
+
+            <!-- Location -->
+            <div class="contact-channel-card">
+              <div class="channel-icon">
+                <i class="fas fa-location-dot"></i>
+              </div>
+              <div class="channel-details">
+                <span class="channel-label">Location</span>
+                <span class="channel-value">Tiruppur & Coimbatore, Tamil Nadu, India</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Social Profiles & Quick Message Box -->
+          <div class="contact-hub-card">
+            <h3 class="hub-title"><i class="fas fa-share-nodes"></i> Developer Profiles</h3>
+            <p class="hub-subtitle">Check out my repositories, professional network, and competitive coding journey:</p>
+
+            <div class="social-bento-links">
+              <a href="https://github.com/ihariprasanth" target="_blank" rel="noopener noreferrer" class="social-bento-item github-bento">
+                <div class="bento-icon"><i class="fab fa-github"></i></div>
+                <div class="bento-text">
+                  <span class="bento-name">GitHub</span>
+                  <span class="bento-handle">@ihariprasanth</span>
+                </div>
+                <i class="fas fa-arrow-up-right-from-square bento-arrow"></i>
+              </a>
+
+              <a href="https://linkedin.com/in/ihariprasanth" target="_blank" rel="noopener noreferrer" class="social-bento-item linkedin-bento">
+                <div class="bento-icon"><i class="fab fa-linkedin-in"></i></div>
+                <div class="bento-text">
+                  <span class="bento-name">LinkedIn</span>
+                  <span class="bento-handle">in/ihariprasanth</span>
+                </div>
+                <i class="fas fa-arrow-up-right-from-square bento-arrow"></i>
+              </a>
+
+              <a href="https://leetcode.com/ihariprasanth" target="_blank" rel="noopener noreferrer" class="social-bento-item leetcode-bento">
+                <div class="bento-icon"><i class="fas fa-code"></i></div>
+                <div class="bento-text">
+                  <span class="bento-name">LeetCode</span>
+                  <span class="bento-handle">@ihariprasanth</span>
+                </div>
+                <i class="fas fa-arrow-up-right-from-square bento-arrow"></i>
+              </a>
+            </div>
+
+            <div class="direct-contact-cta">
+              <p>Ready to collaborate or discuss an internship role?</p>
+              <a href="mailto:hariprasanth.user@gmail.com?subject=Opportunity%20Discussion%20with%20Hariprasanth%20T" class="btn btn-primary btn-block">
+                <i class="fas fa-envelope-open-text"></i> Send Me an Email
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
   <footer class="footer">
-    <p>Designed and Developed By HARIPRASANTH.T</p>
-    <p>&copy; 2026</p>
+    <div class="container footer-container">
+      <div class="footer-left">
+        <div class="footer-logo">
+          <span class="logo-symbol">&lt;</span><span class="logo-name">HT</span><span class="logo-symbol">/&gt;</span>
+        </div>
+        <p class="footer-credit">Designed & Built by <strong>HARIPRASANTH T</strong> &bull; &copy; 2026</p>
+      </div>
+
+      <div class="footer-center">
+        <ul class="footer-links">
+          <li><a href="#home">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#experience">Experience</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-right">
+        <button class="back-to-top" id="backToTop" aria-label="Scroll back to top">
+          <i class="fas fa-chevron-up"></i>
+        </button>
+      </div>
+    </div>
   </footer>
 
+  <!-- Toast Notification for Copy -->
+  <div class="copy-toast" id="copyToast">
+    <i class="fas fa-circle-check"></i>
+    <span id="toastMsg">Copied to clipboard!</span>
+  </div>
+
+  <!-- Main JavaScript -->
   <script src="script.js"></script>
 </body>
 </html>

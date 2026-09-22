@@ -1,346 +1,243 @@
-// ============================================
-// 🌐 SMOOTH SCROLLING FOR MENU LINKS
-// ============================================
-document.querySelectorAll('.sidebar-links a[href^="#"], .mobile-menu-links a[href^="#"]').forEach(anchor => {
-  anchor.addEventListener("click", function (e) {
-    e.preventDefault();
-    const target = document.querySelector(this.getAttribute("href"));
-    if (target) {
-      target.scrollIntoView({
-        behavior: "smooth",
-        block: "start"
-      });
+/**
+ * HARIPRASANTH T - PORTFOLIO SCRIPTS
+ * Modern Interactive Animations, Typing Effect, Drawer Menu, and Copy Features
+ */
+
+document.addEventListener('DOMContentLoaded', () => {
+  // --------------------------------------------------------------------------
+  // 1. DYNAMIC ROTATING TYPING EFFECT
+  // --------------------------------------------------------------------------
+  const typingElement = document.getElementById('typingText');
+  const roles = [
+    'Full-Stack Developer',
+    'React & TypeScript Builder',
+    'Cloud & AWS Enthusiast',
+    'Node.js & Supabase Dev',
+    'B.E Computer Science Undergrad',
+    'Problem Solver'
+  ];
+
+  let roleIndex = 0;
+  let charIndex = 0;
+  let isDeleting = false;
+  let typingSpeed = 100;
+
+  function typeRole() {
+    if (!typingElement) return;
+
+    const currentRole = roles[roleIndex];
+
+    if (isDeleting) {
+      typingElement.textContent = currentRole.substring(0, charIndex - 1);
+      charIndex--;
+      typingSpeed = 50;
+    } else {
+      typingElement.textContent = currentRole.substring(0, charIndex + 1);
+      charIndex++;
+      typingSpeed = 100;
     }
-    document.querySelectorAll('.sidebar-links a, .mobile-menu-links a').forEach(link => link.classList.remove('active'));
-    this.classList.add('active');
-    
-    // AUTO-CLOSE mobile menu after clicking
-    closeMobileMenu();
+
+    if (!isDeleting && charIndex === currentRole.length) {
+      isDeleting = true;
+      typingSpeed = 1800; // Pause at full word
+    } else if (isDeleting && charIndex === 0) {
+      isDeleting = false;
+      roleIndex = (roleIndex + 1) % roles.length;
+      typingSpeed = 400; // Pause before new word
+    }
+
+    setTimeout(typeRole, typingSpeed);
+  }
+
+  // Start typing
+  setTimeout(typeRole, 600);
+
+  // --------------------------------------------------------------------------
+  // 2. NAVBAR SCROLL & PROGRESS BAR
+  // --------------------------------------------------------------------------
+  const navbar = document.getElementById('navbar');
+  const scrollProgressBar = document.getElementById('scrollProgressBar');
+  const backToTopBtn = document.getElementById('backToTop');
+
+  window.addEventListener('scroll', () => {
+    const scrollY = window.scrollY;
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const scrollPercent = docHeight > 0 ? (scrollY / docHeight) * 100 : 0;
+
+    // Scroll progress bar width
+    if (scrollProgressBar) {
+      scrollProgressBar.style.width = `${scrollPercent}%`;
+    }
+
+    // Navbar style on scroll
+    if (navbar) {
+      if (scrollY > 30) {
+        navbar.classList.add('scrolled');
+      } else {
+        navbar.classList.remove('scrolled');
+      }
+    }
+
+    // Back to top button visibility
+    if (backToTopBtn) {
+      if (scrollY > 400) {
+        backToTopBtn.style.opacity = '1';
+        backToTopBtn.style.pointerEvents = 'auto';
+      } else {
+        backToTopBtn.style.opacity = '0.7';
+      }
+    }
   });
-});
 
-// ============================================
-// ⚡ SKILL BARS ANIMATION
-// ============================================
-const observerOptions = {
-  threshold: 0.2,
-  rootMargin: "0px 0px -100px 0px"
-};
+  // Back to top click
+  if (backToTopBtn) {
+    backToTopBtn.addEventListener('click', () => {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    });
+  }
 
-const skillObserver = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      const skillBars = entry.target.querySelectorAll(".skill-progress");
-      skillBars.forEach((bar, index) => {
-        const width = bar.getAttribute("data-width");
-        if (!bar.classList.contains("filled")) {
+  // --------------------------------------------------------------------------
+  // 3. MOBILE DRAWER NAVIGATION
+  // --------------------------------------------------------------------------
+  const mobileToggle = document.getElementById('mobileToggle');
+  const drawerClose = document.getElementById('drawerClose');
+  const mobileDrawer = document.getElementById('mobileDrawer');
+  const drawerOverlay = document.getElementById('drawerOverlay');
+  const drawerLinks = document.querySelectorAll('.drawer-link');
+
+  function openDrawer() {
+    if (mobileDrawer && drawerOverlay) {
+      mobileDrawer.classList.add('active');
+      drawerOverlay.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+  }
+
+  function closeDrawer() {
+    if (mobileDrawer && drawerOverlay) {
+      mobileDrawer.classList.remove('active');
+      drawerOverlay.classList.remove('active');
+      document.body.style.overflow = '';
+    }
+  }
+
+  if (mobileToggle) mobileToggle.addEventListener('click', openDrawer);
+  if (drawerClose) drawerClose.addEventListener('click', closeDrawer);
+  if (drawerOverlay) drawerOverlay.addEventListener('click', closeDrawer);
+
+  drawerLinks.forEach(link => {
+    link.addEventListener('click', closeDrawer);
+  });
+
+  // Close on Escape key
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && mobileDrawer && mobileDrawer.classList.contains('active')) {
+      closeDrawer();
+    }
+  });
+
+  // --------------------------------------------------------------------------
+  // 4. ACTIVE SECTION SCROLL SPY
+  // --------------------------------------------------------------------------
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('.nav-link');
+
+  function highlightNavOnScroll() {
+    const scrollY = window.scrollY + 120;
+
+    sections.forEach(section => {
+      const sectionHeight = section.offsetHeight;
+      const sectionTop = section.offsetTop;
+      const sectionId = section.getAttribute('id');
+
+      if (scrollY >= sectionTop && scrollY < sectionTop + sectionHeight) {
+        navLinks.forEach(link => {
+          link.classList.remove('active');
+          if (link.getAttribute('href') === `#${sectionId}`) {
+            link.classList.add('active');
+          }
+        });
+
+        drawerLinks.forEach(link => {
+          link.classList.remove('active');
+          if (link.getAttribute('href') === `#${sectionId}`) {
+            link.classList.add('active');
+          }
+        });
+      }
+    });
+  }
+
+  window.addEventListener('scroll', highlightNavOnScroll);
+
+  // --------------------------------------------------------------------------
+  // 5. CLICK TO COPY TO CLIPBOARD WITH TOAST
+  // --------------------------------------------------------------------------
+  const copyButtons = document.querySelectorAll('.copy-btn');
+  const copyToast = document.getElementById('copyToast');
+  const toastMsg = document.getElementById('toastMsg');
+  let toastTimeout = null;
+
+  function showToast(message) {
+    if (!copyToast) return;
+    if (toastMsg) toastMsg.textContent = message;
+
+    copyToast.classList.add('show');
+
+    if (toastTimeout) clearTimeout(toastTimeout);
+    toastTimeout = setTimeout(() => {
+      copyToast.classList.remove('show');
+    }, 2500);
+  }
+
+  copyButtons.forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      const textToCopy = btn.getAttribute('data-copy');
+      if (textToCopy) {
+        navigator.clipboard.writeText(textToCopy).then(() => {
+          // Success icon animation
+          const originalIcon = btn.innerHTML;
+          btn.innerHTML = '<i class="fas fa-check" style="color:#10b981;"></i>';
+          showToast(`Copied "${textToCopy}" to clipboard!`);
+
           setTimeout(() => {
-            bar.style.width = width + "%";
-            bar.classList.add("filled");
-          }, index * 150);
-        }
-      });
-      skillObserver.unobserve(entry.target);
-    }
+            btn.innerHTML = originalIcon;
+          }, 1800);
+        }).catch(() => {
+          showToast('Failed to copy');
+        });
+      }
+    });
   });
-}, observerOptions);
 
-document.querySelectorAll(".education-item, .skills-grid, .skill-category").forEach(skillBox => {
-  skillObserver.observe(skillBox);
-});
+  // --------------------------------------------------------------------------
+  // 6. SUBTLE CARD REVEAL ANIMATIONS ON SCROLL
+  // --------------------------------------------------------------------------
+  const revealElements = document.querySelectorAll(
+    '.project-card, .timeline-item, .skill-category-card, .education-card, .cert-card, .about-card, .contact-channel-card'
+  );
 
-// ============================================
-// ✨ GLASS ICON CARDS ANIMATION
-// ============================================
-const glassObserver = new IntersectionObserver((entries) => {
-  entries.forEach((entry, index) => {
-    if (entry.isIntersecting) {
-      setTimeout(() => {
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
         entry.target.style.opacity = '1';
         entry.target.style.transform = 'translateY(0)';
-      }, index * 50);
-      glassObserver.unobserve(entry.target);
-    }
-  });
-}, { threshold: 0.1 });
-
-document.querySelectorAll('.skill-glass-card').forEach((card, index) => {
-  card.style.opacity = '0';
-  card.style.transform = 'translateY(20px)';
-  card.style.transition = 'all 0.4s ease';
-  glassObserver.observe(card);
-});
-
-// ============================================
-// 💫 PAGE LOAD FADE-IN
-// ============================================
-window.addEventListener("load", () => {
-  document.body.style.opacity = "0";
-  document.body.style.transition = "opacity 0.5s ease";
-  setTimeout(() => {
-    document.body.style.opacity = "1";
-  }, 100);
-});
-
-// ============================================
-// ✨ TYPING ANIMATION FOR HERO TITLE
-// ============================================
-document.addEventListener('DOMContentLoaded', function() {
-  // Add cursor styles dynamically if not in CSS
-  if (!document.querySelector('#typing-styles')) {
-    const style = document.createElement('style');
-    style.id = 'typing-styles';
-    style.textContent = `
-      .typed-cursor {
-        display: inline-block;
-        width: 3px;
-        height: 1.2em;
-        background-color: var(--primary-color);
-        margin-left: 2px;
-        animation: blink 0.7s infinite;
-        vertical-align: middle;
-      }
-      
-      .typed-cursor.hide-cursor {
-        display: none !important;
-      }
-      
-      @keyframes blink {
-        0%, 50% { opacity: 1; }
-        51%, 100% { opacity: 0; }
-      }
-    `;
-    document.head.appendChild(style);
-  }
-
-  const heroTitle = document.querySelector('.hero-text h1');
-  if (!heroTitle) return;
-  
-  // Set up the title structure for two lines
-  heroTitle.innerHTML = '<span class="static-text">Hi, I\'m</span><span class="name-line"><span class="highlight"></span></span>';
-  
-  const highlightSpan = heroTitle.querySelector('.highlight');
-  if (!highlightSpan) return;
-  
-  // Create cursor element
-  const cursor = document.createElement('span');
-  cursor.className = 'typed-cursor';
-  
-  // Add cursor after the highlight span
-  if (highlightSpan.nextSibling) {
-    highlightSpan.parentNode.insertBefore(cursor, highlightSpan.nextSibling);
-  } else {
-    highlightSpan.parentNode.appendChild(cursor);
-  }
-  
-  const nameText = "HARIPRASANTH.T";
-  let i = 0;
-  const typeSpeed = 100;
-  
-  function typeWriter() {
-    if (i < nameText.length) {
-      highlightSpan.innerHTML += nameText.charAt(i);
-      i++;
-      
-      if (window.innerWidth <= 900) {
-        setTimeout(typeWriter, 80);
-      } else {
-        setTimeout(typeWriter, typeSpeed);
-      }
-    } else {
-      // Animation complete - hide the cursor after a delay
-      setTimeout(() => {
-        cursor.classList.add('hide-cursor');
-      }, 300);
-    }
-  }
-  
-  // Start typing animation
-  setTimeout(typeWriter, 500);
-  
-  // Force start on mobile
-  if (/Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent)) {
-    setTimeout(() => {
-      if (i === 0) typeWriter();
-    }, 100);
-  }
-});
-
-// ============================================
-// 📱 MOBILE MENU FUNCTIONS
-// ============================================
-function closeMobileMenu() {
-  const menuPopup = document.getElementById('mobileMenuPopup');
-  const menuOverlay = document.getElementById('menuOverlay');
-  if (menuPopup && menuOverlay) {
-    menuPopup.classList.remove('active');
-    menuOverlay.classList.remove('active');
-    document.body.classList.remove('menu-open');
-  }
-}
-
-function openMobileMenu() {
-  const menuPopup = document.getElementById('mobileMenuPopup');
-  const menuOverlay = document.getElementById('menuOverlay');
-  if (menuPopup && menuOverlay) {
-    menuPopup.classList.add('active');
-    menuOverlay.classList.add('active');
-    document.body.classList.add('menu-open');
-  }
-}
-
-// Mobile menu event listeners
-document.addEventListener('DOMContentLoaded', function() {
-  const menuToggle = document.getElementById('mobileMenuToggle');
-  const menuPopup = document.getElementById('mobileMenuPopup');
-  const menuOverlay = document.getElementById('menuOverlay');
-  const menuCloseBtn = document.getElementById('menuCloseBtn');
-  
-  if (menuToggle && menuPopup && menuOverlay) {
-    menuToggle.addEventListener('click', function(e) {
-      e.stopPropagation();
-      openMobileMenu();
-    });
-    
-    // Close with close button
-    if (menuCloseBtn) {
-      menuCloseBtn.addEventListener('click', closeMobileMenu);
-    }
-    
-    // Close when clicking overlay
-    menuOverlay.addEventListener('click', closeMobileMenu);
-    
-    // Close on escape key
-    document.addEventListener('keydown', function(e) {
-      if (e.key === 'Escape' && menuPopup.classList.contains('active')) {
-        closeMobileMenu();
+        revealObserver.unobserve(entry.target);
       }
     });
-  }
-});
-
-// ============================================
-// 🔍 ACTIVE MENU HIGHLIGHT ON SCROLL
-// ============================================
-window.addEventListener('scroll', function() {
-  const sections = document.querySelectorAll('section[id]');
-  const scrollPosition = window.scrollY + 100;
-  
-  sections.forEach(section => {
-    const sectionTop = section.offsetTop;
-    const sectionBottom = sectionTop + section.offsetHeight;
-    const sectionId = section.getAttribute('id');
-    
-    if (scrollPosition >= sectionTop && scrollPosition < sectionBottom) {
-      // Remove active class from all links
-      document.querySelectorAll('.sidebar-links a, .mobile-menu-links a').forEach(link => {
-        link.classList.remove('active');
-      });
-      
-      // Add active class to matching links
-      document.querySelectorAll(`.sidebar-links a[href="#${sectionId}"], .mobile-menu-links a[href="#${sectionId}"]`).forEach(link => {
-        link.classList.add('active');
-      });
-    }
+  }, {
+    threshold: 0.08,
+    rootMargin: '0px 0px -40px 0px'
   });
-});
 
-// ============================================
-// 🚫 COPY PROTECTION
-// ============================================
-
-// Disable right-click context menu
-document.addEventListener('contextmenu', function(e) {
-  e.preventDefault();
-  return false;
-});
-
-// Disable keyboard shortcuts
-document.addEventListener('keydown', function(e) {
-  // F12
-  if (e.key === 'F12') {
-    e.preventDefault();
-    return false;
-  }
-  // Ctrl+Shift+I (Inspect)
-  if (e.ctrlKey && e.shiftKey && e.key === 'I') {
-    e.preventDefault();
-    return false;
-  }
-  // Ctrl+Shift+J (Console)
-  if (e.ctrlKey && e.shiftKey && e.key === 'J') {
-    e.preventDefault();
-    return false;
-  }
-  // Ctrl+U (View Source)
-  if (e.ctrlKey && e.key === 'u') {
-    e.preventDefault();
-    return false;
-  }
-  
-  // Disable copy
-  if (e.ctrlKey && e.key === 'c') {
-    e.preventDefault();
-    return false;
-  }
-  
-  // Disable cut
-  if (e.ctrlKey && e.key === 'x') {
-    e.preventDefault();
-    return false;
-  }
-  
-  // Disable paste
-  if (e.ctrlKey && e.key === 'v') {
-    e.preventDefault();
-    return false;
-  }
-  
-  // Disable select all
-  if (e.ctrlKey && e.key === 'a') {
-    e.preventDefault();
-    return false;
-  }
-  
-  // Disable save
-  if (e.ctrlKey && e.key === 's') {
-    e.preventDefault();
-    return false;
-  }
-  
-  // Disable print
-  if (e.ctrlKey && e.key === 'p') {
-    e.preventDefault();
-    return false;
-  }
-});
-
-// Disable text selection
-document.addEventListener('selectstart', function(e) {
-  e.preventDefault();
-  return false;
-});
-
-// Disable copy event
-document.addEventListener('copy', function(e) {
-  e.preventDefault();
-  return false;
-});
-
-// Disable cut event
-document.addEventListener('cut', function(e) {
-  e.preventDefault();
-  return false;
-});
-
-// Disable drag and drop
-document.addEventListener('dragstart', function(e) {
-  e.preventDefault();
-  return false;
-});
-
-// Disable drop
-document.addEventListener('drop', function(e) {
-  e.preventDefault();
-  return false;
+  revealElements.forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(24px)';
+    el.style.transition = 'opacity 0.5s ease-out, transform 0.5s cubic-bezier(0.16, 1, 0.3, 1)';
+    revealObserver.observe(el);
+  });
 });
