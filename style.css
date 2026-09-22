@@ -278,14 +278,18 @@ main {
 }
 
 .hero__title {
-  font-size: clamp(2.5rem, 5vw, 4.4rem);
+  font-size: clamp(2.2rem, 4.5vw, 4.2rem);
   font-weight: 800;
   letter-spacing: -0.02em;
-  line-height: 1.1;
+  line-height: 1.12;
   margin: 0 0 var(--space-xl);
   color: var(--color-text);
   text-transform: uppercase;
-  word-break: break-word;
+}
+
+.hero__name-wrapper {
+  white-space: nowrap;
+  display: inline-block;
 }
 
 .hero__name-accent {
@@ -294,6 +298,11 @@ main {
 
 .hero__name-rest {
   color: #ffffff;
+}
+
+.hero__name-initial {
+  color: #ffffff;
+  display: inline-block;
 }
 
 .hero__subtitle {
@@ -343,7 +352,7 @@ main {
   transform: translateY(-2px);
 }
 
-/* Avatar Photo Placement */
+/* Avatar Photo Placement — Transparent Seamless Cutout */
 .hero__illustration {
   display: flex;
   align-items: center;
@@ -352,19 +361,16 @@ main {
 
 .hero__avatar {
   width: 100%;
-  max-width: 360px;
-  height: 400px;
-  object-fit: cover;
-  object-position: center top;
-  border-radius: 12px;
-  border: 1px solid var(--color-border);
-  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.7);
-  transition: transform var(--transition-base), border-color var(--transition-base);
+  max-width: 380px;
+  height: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 15px 35px rgba(0, 0, 0, 0.85));
+  transition: transform var(--transition-base), filter var(--transition-base);
 }
 
 .hero__avatar:hover {
   transform: translateY(-4px);
-  border-color: var(--color-accent);
+  filter: drop-shadow(0 20px 40px rgba(239, 68, 68, 0.25));
 }
 
 /* Core Tech Strip */
@@ -926,8 +932,7 @@ main {
 
   .hero__avatar {
     max-width: 240px;
-    height: 270px;
-    border-radius: 14px;
+    height: auto;
   }
 
   .hero__greeting {
@@ -1042,7 +1047,7 @@ main {
 
   .hero__avatar {
     max-width: 200px;
-    height: 230px;
+    height: auto;
   }
 
   .hero__actions {
