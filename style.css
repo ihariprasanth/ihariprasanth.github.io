@@ -252,26 +252,20 @@ main {
 
 .hero__title {
   font-size: clamp(3.2rem, 5.5vw, 4.5rem);
-  font-weight: 700;
-  letter-spacing: -0.03em;
+  font-weight: 800;
+  letter-spacing: -0.02em;
   line-height: 1.1;
   margin: 0 0 var(--space-xl);
   color: var(--color-text);
+  text-transform: uppercase;
 }
 
-.hero__title-wrapper {
-  position: relative;
-  display: inline-block;
+.hero__name-accent {
+  color: var(--color-accent);
 }
 
-.hero__title-accent {
-  position: absolute;
-  left: 0;
-  bottom: 0.1em;
-  width: 6.5ch;
-  height: 4px;
-  background: var(--color-accent);
-  border-radius: 2px;
+.hero__name-rest {
+  color: #ffffff;
 }
 
 .hero__subtitle {
