@@ -10,44 +10,50 @@ document.addEventListener('DOMContentLoaded', function () {
     yearEl.textContent = new Date().getFullYear();
   }
 
-  // 2. Mobile Navigation Toggle
+  // 2. Mobile Navigation Toggle & Backdrop
   var navToggle = document.getElementById('navToggle');
   var navList = document.getElementById('navList');
+  var navBackdrop = document.getElementById('navBackdrop');
+
+  function closeNav() {
+    if (navToggle) navToggle.setAttribute('aria-expanded', 'false');
+    if (navList) navList.classList.remove('active');
+    if (navBackdrop) navBackdrop.classList.remove('active');
+    document.body.style.overflow = '';
+  }
+
+  function openNav() {
+    if (navToggle) navToggle.setAttribute('aria-expanded', 'true');
+    if (navList) navList.classList.add('active');
+    if (navBackdrop) navBackdrop.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
 
   if (navToggle && navList) {
     navToggle.addEventListener('click', function (e) {
       e.stopPropagation();
       var isExpanded = navToggle.getAttribute('aria-expanded') === 'true';
-      navToggle.setAttribute('aria-expanded', !isExpanded);
-      navList.classList.toggle('active');
-      document.body.style.overflow = !isExpanded ? 'hidden' : '';
+      if (isExpanded) {
+        closeNav();
+      } else {
+        openNav();
+      }
     });
+
+    if (navBackdrop) {
+      navBackdrop.addEventListener('click', closeNav);
+    }
 
     // Close menu when clicking any nav link
     var navLinks = navList.querySelectorAll('a');
     navLinks.forEach(function (link) {
-      link.addEventListener('click', function () {
-        navToggle.setAttribute('aria-expanded', 'false');
-        navList.classList.remove('active');
-        document.body.style.overflow = '';
-      });
-    });
-
-    // Close menu when clicking outside
-    document.addEventListener('click', function (e) {
-      if (navList.classList.contains('active') && !navList.contains(e.target) && !navToggle.contains(e.target)) {
-        navToggle.setAttribute('aria-expanded', 'false');
-        navList.classList.remove('active');
-        document.body.style.overflow = '';
-      }
+      link.addEventListener('click', closeNav);
     });
 
     // Close menu on Escape key
     document.addEventListener('keydown', function (e) {
       if (e.key === 'Escape' && navList.classList.contains('active')) {
-        navToggle.setAttribute('aria-expanded', 'false');
-        navList.classList.remove('active');
-        document.body.style.overflow = '';
+        closeNav();
       }
     });
   }
